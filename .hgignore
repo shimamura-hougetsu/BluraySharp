@@ -1,0 +1,13 @@
+syntax: regexp
+
+(?i)\$.*$
+(?i)\~.*$
+(?i)^[\w\.]*.sdf$
+(?i)^[\w\.]*.7z$
+(?i)\b([\w\.]*)/\1\.sdf$
+(?i)\bbin/.*/.*$
+(?i)\bobj/.*/.*$
+(?i)\bIpch/.*$
+(?i)\bTestResults/.*$
+(?i)\b.*\.suo$
+(?i)\b.*\.pdb$
