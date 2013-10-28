@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using BluraySharp;
-using LibElfin.Memory;
+using LibElfin.WinApi.MemoryBlock;
 using System.IO;
 using BluraySharp.PlayList;
 

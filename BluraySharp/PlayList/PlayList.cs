@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LibElfin.WinApi;
-using LibElfin.Memory;
+using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp.PlayList
 {

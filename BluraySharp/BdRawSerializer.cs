@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-using LibElfin.Memory;
+using LibElfin.WinApi.MemoryBlock;
 using LibElfin.WinApi;
 using System.Runtime.InteropServices;
 

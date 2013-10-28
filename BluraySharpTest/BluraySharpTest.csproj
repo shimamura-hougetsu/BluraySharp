@@ -72,9 +72,9 @@
       <Project>{4FF5CF31-DB94-4962-A92D-17A149135012}</Project>
       <Name>BluraySharp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cs.LibElfin\LibElfin.Memory\LibElfin.Memory.csproj">
-      <Project>{CBB44C27-48B9-47B2-88B1-770F6F3839CE}</Project>
-      <Name>LibElfin.Memory</Name>
+    <ProjectReference Include="..\cs.LibElfin\LibElfin.WinApi\LibElfin.WinApi.csproj">
+      <Project>{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}</Project>
+      <Name>LibElfin.WinApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
