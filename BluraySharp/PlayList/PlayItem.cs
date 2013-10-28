@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class PlayItem : IBdRawSerializable
+	public class PlayItem : IBdRawSerializable, BluraySharp.PlayList.IPlayItemClip
 	{
 		public string ClipId
 		{
@@ -61,7 +61,13 @@ namespace BluraySharp.PlayList
 			private set;
 		}
 
-		public AngleTable AngleTable
+		public MultiAngleInfo MultiAngleInfo
+		{
+			get;
+			set;
+		}
+
+		public IList<PlaybackAngle> MultiAngleList
 		{
 			get;
 			private set;
@@ -102,7 +108,14 @@ namespace BluraySharp.PlayList
 
 				if (ArrangingFlags.IsMultiAngle)
 				{
-					AngleTable = context.Deserialize<AngleTable>();
+					byte tAngleCount = context.DeserializeByte();
+
+					MultiAngleInfo = context.Deserialize<MultiAngleInfo>();
+
+					for(byte i = 0; i< tAngleCount; ++i)
+					{
+						MultiAngleList.Add(context.Deserialize<PlaybackAngle>());
+					}
 				}
 
 				StnTable = context.Deserialize<StnTable>();
@@ -118,6 +131,11 @@ namespace BluraySharp.PlayList
 		public long Length
 		{
 			get { throw new NotImplementedException(); }
+		}
+
+		public PlayItem()
+		{
+			MultiAngleList = new List<PlaybackAngle>();
 		}
 	}
 }

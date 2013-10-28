@@ -17,7 +17,7 @@ namespace BluraySharpTest
 		[STAThread]
 		static void Main()
 		{
-			string tFilePath = @"C:\StoreBase\_Temp\玉响\[BDMV][111221] たまゆら～hitotose～ 第1巻\TAMAYURA_HITOTOSE_1\BDMV\PLAYLIST\00003.mpls";
+			string tFilePath = @"C:\StoreBase\_Temp\玉响\!CMD.DIR\SUB\[BDMV][111221] たまゆら～hitotose～ 第1巻\TAMAYURA_HITOTOSE_1\BDMV\PLAYLIST\00002.mpls";
 			FileInfo tFileInfo = new FileInfo(tFilePath);
 			
 

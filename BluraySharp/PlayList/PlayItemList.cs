@@ -47,10 +47,16 @@ namespace BluraySharp.PlayList
 				uint tPlayItemCount = context.DeserializeUInt16();
 				uint tSubPathCount = context.DeserializeUInt16();
 
-				PlayItems = new List<PlayItem>();
+				PlayItems.Clear();
 				for (uint i = 0; i < tPlayItemCount; ++i)
 				{
 					PlayItems.Add(context.Deserialize<PlayItem>());
+				}
+
+				SubPaths.Clear();
+				for (uint i = 0; i < tSubPathCount; ++i)
+				{
+					SubPaths.Add(context.Deserialize<SubPath>());
 				}
 			}
 			finally
@@ -64,6 +70,12 @@ namespace BluraySharp.PlayList
 		public long Length
 		{
 			get { throw new NotImplementedException(); }
+		}
+
+		public PlayItemList()
+		{
+			PlayItems = new List<PlayItem>();
+			SubPaths = new List<SubPath>();
 		}
 	}
 }

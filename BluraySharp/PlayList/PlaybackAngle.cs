@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class AngleTable : IBdRawSerializable
+	public class PlaybackAngle : IBdRawSerializable
 	{
 		public long SerializeTo(BdRawSerializeContext context)
 		{
