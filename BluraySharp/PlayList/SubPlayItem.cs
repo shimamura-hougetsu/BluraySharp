@@ -2,11 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public class SubPlayItem : IPlayItemClip, IBdRawSerializable
+	public class SubPlayItem : IPlayItem, IBdRawSerializable
 	{
+		public byte StcId { get; set; }
+		public BdTime InTime { get; set; }
+		public BdTime OutTime { get; set; }
+
+		public ushort SyncPlayItemId { get; set; }
+		public BdTime SyncPlayTimeOffset { get; set; }
+
+		public ArrangingInfo ArrangingInfo { get; set; }
+
+		public IList<IClipReferance> AngleList { get; private set; }
+
+		public void AddAngle(string codec, string id)
+		{
+			PlaybackAngle tAngle = new PlaybackAngle() { ClipCodec = codec, ClipId = id };
+			AngleList.Add(tAngle);
+		}
+
 		public long SerializeTo(BdRawSerializeContext context)
 		{
 			throw new NotImplementedException();
@@ -21,10 +39,11 @@ namespace BluraySharp.PlayList
 
 			try
 			{
-				ClipId = context.DeserializeString(5);
-				ClipCodec = context.DeserializeString(4);
+				string tClipId = context.DeserializeString(5);
+				string tClipCodec = context.DeserializeString(4);
+				this.AddAngle(tClipCodec, tClipId);
 
-				ArrangingFlags = context.Deserialize<PlaybackArrangingFlags>();
+				ArrangingInfo = context.Deserialize<ArrangingInfo>();
 				StcId = context.DeserializeByte();
 
 				InTime = context.Deserialize<BdTime>();
@@ -33,13 +52,17 @@ namespace BluraySharp.PlayList
 				SyncPlayItemId = context.DeserializeUInt16();
 				SyncPlayTimeOffset = context.Deserialize<BdTime>();
 
-				if (ArrangingFlags.IsMultiAngle)
+				if (ArrangingInfo.IsMultiAngle)
 				{
 					byte tAngleCount = context.DeserializeByte();
-
-					for (byte i = 0; i < tAngleCount; ++i)
+					if (tAngleCount < 1)
 					{
-						MultiAngleList.Add(context.Deserialize<PlaybackAngle>());
+						tAngleCount = 1;
+					}
+
+					for (byte i = 1; i < tAngleCount; ++i)
+					{
+						AngleList.Add(context.Deserialize<PlaybackAngle>());
 					}
 				}
 			}
@@ -51,27 +74,14 @@ namespace BluraySharp.PlayList
 			return context.Offset += tDataLen;
 		}
 
-		public long Length
+		public long RawLength
 		{
 			get { throw new NotImplementedException(); }
 		}
 
-		public PlaybackArrangingFlags ArrangingFlags { get; set; }
-
-		public string ClipCodec { get; set; }
-
-		public string ClipId { get; set; }
-
-		public BdTime InTime { get; set; }
-
-		public IList<PlaybackAngle> MultiAngleList { get; private set; }
-
-		public BdTime OutTime { get; set; }
-
-		public byte StcId { get; set; }
-
-		public ushort SyncPlayItemId { get; set; }
-
-		public BdTime SyncPlayTimeOffset { get; set; }
+		public SubPlayItem()
+		{
+			this.AngleList = new List<IClipReferance>();
+		}
 	}
 }

@@ -60,7 +60,7 @@ namespace BluraySharp.PlayList
 			return context.Offset += tDataLen;
 		}
 
-		public long Length
+		public long RawLength
 		{
 			get {
 				return _DataLen + 4; 

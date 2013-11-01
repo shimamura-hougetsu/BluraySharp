@@ -51,15 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBdRawSerializable.cs" />
-    <Compile Include="PlayList\IPlayItemClip.cs" />
+    <Compile Include="PlayList\IArrangingInfo.cs" />
+    <Compile Include="PlayList\IPlayItem.cs" />
+    <Compile Include="PlayList\IClipReferance.cs" />
     <Compile Include="PlayList\MultiAngleInfo.cs" />
     <Compile Include="PlayList\PlaybackAngle.cs" />
-    <Compile Include="PlayList\BdTime.cs" />
-    <Compile Include="PlayList\ConjunctionType.cs" />
+    <Compile Include="Common\BdTime.cs" />
+    <Compile Include="Common\ConjunctionType.cs" />
     <Compile Include="PlayList\ExtDatList.cs" />
     <Compile Include="PlayList\MarkList.cs" />
     <Compile Include="PlayList\PlayItem.cs" />
-    <Compile Include="PlayList\PlaybackArrangingFlags.cs" />
+    <Compile Include="PlayList\ArrangingInfo.cs" />
     <Compile Include="PlayList\PlaybackSeekingFlags.cs" />
     <Compile Include="PlayList\PlaybackStillInfo.cs" />
     <Compile Include="PlayList\PlayList.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="PlayList\SubPathType.cs" />
     <Compile Include="PlayList\SubPlayItem.cs" />
     <Compile Include="PlayList\UOMask.cs" />
+    <Compile Include="PlayList\UOFlag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\VersionInfo.cs" />
     <Compile Include="Properties\~Revision.cs" />

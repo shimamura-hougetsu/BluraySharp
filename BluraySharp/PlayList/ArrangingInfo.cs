@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public class PlaybackArrangingFlags : IBdRawSerializable
+	public class ArrangingInfo : IBdRawSerializable, BluraySharp.PlayList.IArrangingInfo
 	{
 		private uint _Value = 1;
 
@@ -33,7 +34,7 @@ namespace BluraySharp.PlayList
 			return context.Offset;
 		}
 
-		public long Length
+		public long RawLength
 		{
 			get
 			{

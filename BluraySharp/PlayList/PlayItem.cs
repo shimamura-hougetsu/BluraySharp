@@ -2,75 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public class PlayItem : IBdRawSerializable, BluraySharp.PlayList.IPlayItemClip
+	public class PlayItem : IBdRawSerializable, IPlayItem
 	{
-		public string ClipId
-		{
-			get;
-			set;
-		}
+		public byte StcId { get; set; }
+		public BdTime InTime { get; set; }
+		public BdTime OutTime { get; set; }
 
-		public string ClipCodec
-		{
-			get;
-			set;
-		}
+		public UOMask UOMask { get; private set; }
+		public PlaybackSeekingFlags SeekingFlags { get; private set; }
 
-		public byte StcId
-		{
-			get;
-			set;
-		}
+		public PlaybackStillInfo StillInfo { get; private set; }
 
-		public PlaybackArrangingFlags ArrangingFlags
-		{
-			get;
-			private set;
-		}
+		public ArrangingInfo ArrangingInfo { get; private set; }
 
-		public BdTime InTime
-		{
-			get;
-			private set;
-		}
+		public MultiAngleInfo MultiAngleInfo { get; private set; }
 
-		public BdTime OutTime
+		public IList<IClipReferance> AngleList { get; private set; }
+		public void AddAngle(string codec, string id)
 		{
-			get;
-			private set;
-		}
-
-		public UOMask UOMask
-		{
-			get;
-			private set;
-		}
-
-		public PlaybackSeekingFlags SeekingFlags
-		{
-			get;
-			private set;
-		}
-
-		public PlaybackStillInfo StillInfo
-		{
-			get;
-			private set;
-		}
-
-		public MultiAngleInfo MultiAngleInfo
-		{
-			get;
-			set;
-		}
-
-		public IList<PlaybackAngle> MultiAngleList
-		{
-			get;
-			private set;
+			PlaybackAngle tAngle = new PlaybackAngle() { ClipCodec = codec, ClipId = id };
+			AngleList.Add(tAngle);
 		}
 
 		public StnTable StnTable
@@ -93,10 +48,11 @@ namespace BluraySharp.PlayList
 
 			try
 			{
-				ClipId = context.DeserializeString(5);
-				ClipCodec = context.DeserializeString(4);
+				string tClipId = context.DeserializeString(5);
+				string tClipCodec = context.DeserializeString(4);
+				this.AddAngle(tClipCodec, tClipId);
 
-				ArrangingFlags = context.Deserialize<PlaybackArrangingFlags>();
+				ArrangingInfo = context.Deserialize<ArrangingInfo>();
 				StcId = context.DeserializeByte();
 
 				InTime = context.Deserialize<BdTime>();
@@ -106,15 +62,20 @@ namespace BluraySharp.PlayList
 				SeekingFlags = context.Deserialize<PlaybackSeekingFlags>();
 				StillInfo = context.Deserialize<PlaybackStillInfo>();
 
-				if (ArrangingFlags.IsMultiAngle)
+				if (ArrangingInfo.IsMultiAngle)
 				{
 					byte tAngleCount = context.DeserializeByte();
 
 					MultiAngleInfo = context.Deserialize<MultiAngleInfo>();
 
+					if (tAngleCount < 1)
+					{
+						tAngleCount = 1;
+					}
+
 					for(byte i = 0; i< tAngleCount; ++i)
 					{
-						MultiAngleList.Add(context.Deserialize<PlaybackAngle>());
+						AngleList.Add(context.Deserialize<PlaybackAngle>());
 					}
 				}
 
@@ -128,14 +89,14 @@ namespace BluraySharp.PlayList
 			return context.Offset += tDataLen;
 		}
 
-		public long Length
+		public long RawLength
 		{
 			get { throw new NotImplementedException(); }
 		}
 
 		public PlayItem()
 		{
-			MultiAngleList = new List<PlaybackAngle>();
+			AngleList = new List<IClipReferance>();
 		}
 	}
 }

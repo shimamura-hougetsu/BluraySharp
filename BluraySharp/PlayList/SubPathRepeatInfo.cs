@@ -21,7 +21,7 @@ namespace BluraySharp.PlayList
 			return context.Offset;
 		}
 
-		public long Length
+		public long RawLength
 		{
 			get { throw new NotImplementedException(); }
 		}

@@ -10,6 +10,27 @@ namespace BluraySharp.PlayList
 	{
 		private ulong _Value = 0;
 
+		public bool this[UOFlag index]
+		{
+			get
+			{
+				return ((_Value >> (byte)index) & 0x01) == 1;
+			}
+			set
+			{
+				ulong tMask = ((value ? 1UL : 0UL) << (byte)index);
+
+				if (value)
+				{
+					_Value |= tMask;
+				}
+				else
+				{
+					_Value &= tMask;
+				}
+			}
+		}
+
 		public long SerializeTo(BdRawSerializeContext context)
 		{
 			context.Serialize(_Value);
@@ -24,8 +45,7 @@ namespace BluraySharp.PlayList
 			return context.Offset;
 		}
 
-
-		public long Length
+		public long RawLength
 		{
 			get
 			{

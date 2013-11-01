@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Common
 {
 	public class BdTime: IBdRawSerializable
 	{
+		public override string ToString()
+		{
+			return this.AsSpan.ToString();
+		}
+
 		public TimeSpan AsSpan
 		{
 			get
@@ -33,7 +35,7 @@ namespace BluraySharp.PlayList
 			return context.Offset;
 		}
 
-		public long Length
+		public long RawLength
 		{
 			get
 			{

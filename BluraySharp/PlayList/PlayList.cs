@@ -70,17 +70,17 @@ namespace BluraySharp.PlayList
 			return context.Offset;
 		}
 
-		public long Length
+		public long RawLength
 		{
 			get {
 				return
 					8 + //MPLS Mark + Ver
 					12 + //Offsets of lists
 					Reserved.Length + //Reserved
-					PlayListInfo.Length +
-					PlayItemList.Length +
-					MarkList.Length +
-					ExtDatList.Length;
+					PlayListInfo.RawLength +
+					PlayItemList.RawLength +
+					MarkList.RawLength +
+					ExtDatList.RawLength;
 			}
 		}
 	}

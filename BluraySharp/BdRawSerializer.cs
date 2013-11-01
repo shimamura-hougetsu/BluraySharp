@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Reflection;
-using LibElfin.WinApi.MemoryBlock;
-using LibElfin.WinApi;
 using System.Runtime.InteropServices;
+using System.Text;
+using LibElfin.WinApi;
+using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp
 {
@@ -121,7 +120,7 @@ namespace BluraySharp
 			else
 			{
 				long tOffset;
-				this.EnterScope(tObjectSerializalbe.Length);
+				this.EnterScope(tObjectSerializalbe.RawLength);
 				try
 				{
 					tOffset = tObjectSerializalbe.SerializeTo(this);

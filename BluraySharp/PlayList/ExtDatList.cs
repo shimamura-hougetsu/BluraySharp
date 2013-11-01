@@ -22,7 +22,7 @@ namespace BluraySharp.PlayList
 		}
 
 
-		public long Length
+		public long RawLength
 		{
 			get { throw new NotImplementedException(); }
 		}
