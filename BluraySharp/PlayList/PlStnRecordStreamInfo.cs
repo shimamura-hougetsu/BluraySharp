@@ -5,11 +5,8 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class PlaybackAngle : IClipReferance, IBdRawSerializable
+	public class PlStnRecordStreamInfo : IBdRawSerializable
 	{
-		public string ClipCodec { get; set; }
-		public string ClipId { get; set; }
-
 		public long SerializeTo(BdRawSerializeContext context)
 		{
 			throw new NotImplementedException();
@@ -17,7 +14,10 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(BdRawSerializeContext context)
 		{
-			throw new NotImplementedException();
+			byte tDataLen;
+			tDataLen = context.DeserializeByte();
+
+			return context.Offset += tDataLen;
 		}
 
 		public long RawLength

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class MultiAngleInfo
+	public class PlMultiAngleInfo
 	{
 
 	}

@@ -5,11 +5,8 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class PlaybackStillInfo: IBdRawSerializable
+	public class PlStnRecordCodecInfo : IBdRawSerializable
 	{
-		private byte _ModeValue;
-		private ushort _TimeValue;
-
 		public long SerializeTo(BdRawSerializeContext context)
 		{
 			throw new NotImplementedException();
@@ -17,10 +14,10 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(BdRawSerializeContext context)
 		{
-			_ModeValue = context.DeserializeByte();
-			_TimeValue = context.DeserializeUInt16();
+			byte tDataLen;
+			tDataLen = context.DeserializeByte();
 
-			return context.Offset;
+			return context.Offset += tDataLen;
 		}
 
 		public long RawLength

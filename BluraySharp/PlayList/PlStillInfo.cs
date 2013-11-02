@@ -5,22 +5,23 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class MarkList : IBdRawSerializable
+	public class PlStillInfo: IBdRawSerializable
 	{
+		private byte _ModeValue;
+		private ushort _TimeValue;
+
 		public long SerializeTo(BdRawSerializeContext context)
 		{
-			//throw new NotImplementedException();
-			System.Diagnostics.Debug.Print("MarkList.Sz");
-			return 0;
+			throw new NotImplementedException();
 		}
 
 		public long DeserializeFrom(BdRawSerializeContext context)
 		{
-			//throw new NotImplementedException();
-			System.Diagnostics.Debug.Print("MarkList.Dz");
-			return 0;
-		}
+			_ModeValue = context.DeserializeByte();
+			_TimeValue = context.DeserializeUInt16();
 
+			return context.Offset;
+		}
 
 		public long RawLength
 		{

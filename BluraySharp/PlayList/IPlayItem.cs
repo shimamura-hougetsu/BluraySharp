@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using BluraySharp.Common;
 namespace BluraySharp.PlayList
 {
-	interface IPlayItem
+	public interface IPlayItem
 	{
 		byte StcId { get; set; }
 		BdTime InTime { get; set; }
 		BdTime OutTime { get; set; }
 
-		ArrangingInfo ArrangingInfo { get; }
-		IList<IClipReferance> AngleList { get; }
+		IPlArrangingInfo ArrangingInfo { get; }
+		IList<IPlClipInfo> AngleList { get; }
 		void AddAngle(string codec, string id);
 	}
 }

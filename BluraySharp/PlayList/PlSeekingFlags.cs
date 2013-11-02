@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class PlaybackSeekingFlags : IBdRawSerializable
+	public class PlSeekingFlags : IBdRawSerializable
 	{
 		private byte _Value;
 

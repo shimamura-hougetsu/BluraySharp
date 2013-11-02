@@ -14,10 +14,10 @@ namespace BluraySharp.PlayList
 		{
 			this.MplsMark = "MPLS";
 			this.MplsVer = "0200";
-			this.PlayListInfo = new PlayListInfo();
+			this.PlayListInfo = new PlApplicationInfo();
 			
-			this.PlayItemList = new PlayItemList();
-			this.MarkList = new MarkList();
+			this.PlayItemList = new PlPlayItemList();
+			this.MarkList = new PlMarkList();
 			this.ExtensionData = new BdExtensionData();
 		}
 
@@ -25,10 +25,10 @@ namespace BluraySharp.PlayList
 		public string MplsVer { get; private set; }
 
 		private byte[] Reserved { get; set; }
-		public PlayListInfo PlayListInfo { get; private set; }
+		public PlApplicationInfo PlayListInfo { get; private set; }
 
-		public PlayItemList PlayItemList { get; private set; }
-		public MarkList MarkList { get; private set; }
+		public PlPlayItemList PlayItemList { get; private set; }
+		public PlMarkList MarkList { get; private set; }
 		public BdExtensionData ExtensionData { get; private set; }
 
 		public long SerializeTo(BdRawSerializeContext context)
@@ -48,18 +48,18 @@ namespace BluraySharp.PlayList
 
 			this.Reserved = context.DeserializeBytes(20);
 
-			this.PlayListInfo = context.Deserialize<PlayListInfo>();
+			this.PlayListInfo = context.Deserialize<PlApplicationInfo>();
 
 			if (tOffsetPlayItemList != 0)
 			{
 				context.Offset = tOffsetPlayItemList;
-				this.PlayItemList = context.Deserialize<PlayItemList>();
+				this.PlayItemList = context.Deserialize<PlPlayItemList>();
 			}
 
 			if (tOffsetMarkList != 0)
 			{
 				context.Offset = tOffsetMarkList;
-				this.MarkList = context.Deserialize<MarkList>();
+				this.MarkList = context.Deserialize<PlMarkList>();
 			}
 
 			if (tOffsetExtDatList != 0)

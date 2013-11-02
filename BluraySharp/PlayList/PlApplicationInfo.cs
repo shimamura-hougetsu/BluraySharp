@@ -7,7 +7,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public class PlayListInfo : IBdRawSerializable
+	public class PlApplicationInfo : IBdRawSerializable
 	{
 		private readonly uint _DataLen = 14;
 		private byte Reserved { get; set; }

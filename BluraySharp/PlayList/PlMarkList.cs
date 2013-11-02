@@ -5,20 +5,22 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class StnRecordStreamInfo : IBdRawSerializable
+	public class PlMarkList : IBdRawSerializable
 	{
 		public long SerializeTo(BdRawSerializeContext context)
 		{
-			throw new NotImplementedException();
+			//throw new NotImplementedException();
+			System.Diagnostics.Debug.Print("MarkList.Sz");
+			return 0;
 		}
 
 		public long DeserializeFrom(BdRawSerializeContext context)
 		{
-			byte tDataLen;
-			tDataLen = context.DeserializeByte();
-
-			return context.Offset += tDataLen;
+			//throw new NotImplementedException();
+			System.Diagnostics.Debug.Print("MarkList.Dz");
+			return 0;
 		}
+
 
 		public long RawLength
 		{

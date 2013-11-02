@@ -6,7 +6,7 @@ using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp.PlayList
 {
-	public class PlayItemList : IBdRawSerializable
+	public class PlPlayItemList : IBdRawSerializable
 	{
 		private ushort Reserved
 		{
@@ -14,13 +14,13 @@ namespace BluraySharp.PlayList
 			set;
 		}
 
-		public IList<PlayItem> PlayItems
+		public IList<PlPlayItem> PlayItems
 		{
 			get;
 			private set;
 		}
 
-		public IList<SubPath> SubPaths
+		public IList<PlSubPath> SubPaths
 		{
 			get;
 			private set;
@@ -28,9 +28,7 @@ namespace BluraySharp.PlayList
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
-			//throw new NotImplementedException();
-			System.Diagnostics.Debug.Print("PlayItemList.Sz");
-			return 0;
+			throw new NotImplementedException();
 		}
 
 		public long DeserializeFrom(BdRawSerializeContext context)
@@ -50,13 +48,13 @@ namespace BluraySharp.PlayList
 				PlayItems.Clear();
 				for (uint i = 0; i < tPlayItemCount; ++i)
 				{
-					PlayItems.Add(context.Deserialize<PlayItem>());
+					PlayItems.Add(context.Deserialize<PlPlayItem>());
 				}
 
 				SubPaths.Clear();
 				for (uint i = 0; i < tSubPathCount; ++i)
 				{
-					SubPaths.Add(context.Deserialize<SubPath>());
+					SubPaths.Add(context.Deserialize<PlSubPath>());
 				}
 			}
 			finally
@@ -72,10 +70,10 @@ namespace BluraySharp.PlayList
 			get { throw new NotImplementedException(); }
 		}
 
-		public PlayItemList()
+		public PlPlayItemList()
 		{
-			PlayItems = new List<PlayItem>();
-			SubPaths = new List<SubPath>();
+			PlayItems = new List<PlPlayItem>();
+			SubPaths = new List<PlSubPath>();
 		}
 	}
 }

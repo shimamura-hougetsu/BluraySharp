@@ -5,12 +5,12 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class StnTable: IBdRawSerializable
+	public class PlStnTable: IBdRawSerializable
 	{
-		private List<StnRecord>[] _RecordTables = new List<StnRecord>[(int)StnRecordTypes.Count];
+		private List<PlStnRecord>[] _RecordTables = new List<PlStnRecord>[(int)StnRecordTypes.Count];
 		private ushort Reserved { get; set; }
 
-		public IList<StnRecord> this[StnRecordTypes index]
+		public IList<PlStnRecord> this[StnRecordTypes index]
 		{
 			get
 			{
@@ -38,10 +38,10 @@ namespace BluraySharp.PlayList
 
 				for (int iType = 0; iType < (int)StnRecordTypes.Count; iType++)
 				{
-					_RecordTables[iType] = new List<StnRecord>();
+					_RecordTables[iType] = new List<PlStnRecord>();
 					for (int iCount = 0; iCount < tRecordCount[iType]; iCount++)
 					{
-						_RecordTables[iType].Add(context.Deserialize<StnRecord>());
+						_RecordTables[iType].Add(context.Deserialize<PlStnRecord>());
 					}
 				}
 			}

@@ -2,25 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public class ArrangingInfo : IBdRawSerializable, BluraySharp.PlayList.IArrangingInfo
+	public class PlSubPathRepeatInfo : IBdRawSerializable
 	{
-		private uint _Value = 1;
-
-		public bool IsMultiAngle
-		{
-			get;
-			set;
-		}
-
-		public BdConnectionCondition ConjunctionType
-		{
-			get;
-			set;
-		}
+		private ushort _Value = 0;
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
@@ -36,10 +23,7 @@ namespace BluraySharp.PlayList
 
 		public long RawLength
 		{
-			get
-			{
-				return sizeof(ushort);
-			}
+			get { throw new NotImplementedException(); }
 		}
 	}
 }

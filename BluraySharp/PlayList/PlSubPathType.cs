@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public enum SubPathType : byte
+	public enum PlSubPathType : byte
 	{
 	}
 }
