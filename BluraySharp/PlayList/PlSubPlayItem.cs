@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public class PlSubPlayItem : IPlayItem, IBdRawSerializable
+	public class PlSubPlayItem : IPlPlayItem
 	{
 		public byte StcId { get; set; }
 		public BdTime InTime { get; set; }
@@ -17,13 +15,7 @@ namespace BluraySharp.PlayList
 
 		public IPlArrangingInfo ArrangingInfo { get; set; }
 
-		public IList<IPlClipInfo> AngleList { get; private set; }
-
-		public void AddAngle(string codec, string id)
-		{
-			PlAngleClipInfo tAngle = new PlAngleClipInfo() { ClipCodec = codec, ClipId = id };
-			AngleList.Add(tAngle);
-		}
+		public IList<PlAngleClipInfo> AngleList { get; private set; }
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
@@ -39,11 +31,10 @@ namespace BluraySharp.PlayList
 
 			try
 			{
-				string tClipId = context.DeserializeString(5);
-				string tClipCodec = context.DeserializeString(4);
-				this.AddAngle(tClipCodec, tClipId);
+				PlAngleClipInfo tAngle = context.Deserialize<PlAngleClipInfo>();
+				this.AngleList.Add(tAngle);
 
-				ArrangingInfo = context.Deserialize<PlArrangingInfo>();
+				ArrangingInfo = context.Deserialize<PlSubPlayItemArrangingInfo>();
 				StcId = context.DeserializeByte();
 
 				InTime = context.Deserialize<BdTime>();
@@ -76,12 +67,28 @@ namespace BluraySharp.PlayList
 
 		public long RawLength
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				long tDataLen = sizeof(ushort);
+
+				tDataLen += sizeof(byte);
+				tDataLen += this.InTime.RawLength;
+				tDataLen += this.OutTime.RawLength;
+
+				tDataLen += this.ArrangingInfo.RawLength;
+
+				foreach (IBdRawSerializable tObj in this.AngleList)
+				{
+					tDataLen += tObj.RawLength;
+				}
+
+				return tDataLen;
+			}
 		}
 
 		public PlSubPlayItem()
 		{
-			this.AngleList = new List<IPlClipInfo>();
+			this.AngleList = new List<PlAngleClipInfo>();
 		}
 	}
 }

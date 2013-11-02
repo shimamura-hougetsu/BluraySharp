@@ -1,26 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LibElfin.WinApi;
-using LibElfin.WinApi.MemoryBlock;
 using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
 	public class PlayList : IBdRawSerializable
 	{
-		public PlayList()
-		{
-			this.MplsMark = "MPLS";
-			this.MplsVer = "0200";
-			this.PlayListInfo = new PlApplicationInfo();
-			
-			this.PlayItemList = new PlPlayItemList();
-			this.MarkList = new PlMarkList();
-			this.ExtensionData = new BdExtensionData();
-		}
-
 		public string MplsMark { get; private set; }
 		public string MplsVer { get; private set; }
 
@@ -39,7 +23,6 @@ namespace BluraySharp.PlayList
 		public long DeserializeFrom(BdRawSerializeContext context)
 		{
 			this.MplsMark = context.DeserializeString(4);
-
 			this.MplsVer = context.DeserializeString(4);
 
 			uint tOffsetPlayItemList = context.DeserializeUInt32();
@@ -75,14 +58,25 @@ namespace BluraySharp.PlayList
 		{
 			get {
 				return
-					8 + //MPLS Mark + Ver
-					12 + //Offsets of lists
+					MplsMark.Length + MplsVer.Length + //MPLS Mark + Ver
+					sizeof(uint) * 3 + //Offsets of lists
 					Reserved.Length + //Reserved
 					PlayListInfo.RawLength +
 					PlayItemList.RawLength +
 					MarkList.RawLength +
 					ExtensionData.RawLength;
 			}
+		}
+
+		public PlayList()
+		{
+			this.MplsMark = "MPLS";
+			this.MplsVer = "0200";
+			this.PlayListInfo = new PlApplicationInfo();
+
+			this.PlayItemList = new PlPlayItemList();
+			this.MarkList = new PlMarkList();
+			this.ExtensionData = new BdExtensionData();
 		}
 	}
 }

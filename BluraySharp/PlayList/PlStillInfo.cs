@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class PlStillInfo: IBdRawSerializable
+	public class PlStillInfo : IBdRawSerializable
 	{
 		private byte _ModeValue;
 		private ushort _TimeValue;
@@ -25,7 +22,10 @@ namespace BluraySharp.PlayList
 
 		public long RawLength
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				return sizeof(byte) + sizeof(ushort);
+			}
 		}
 	}
 }

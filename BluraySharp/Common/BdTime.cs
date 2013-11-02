@@ -2,13 +2,8 @@
 
 namespace BluraySharp.Common
 {
-	public class BdTime: IBdRawSerializable
+	public struct BdTime: IBdRawSerializable
 	{
-		public override string ToString()
-		{
-			return this.AsSpan.ToString();
-		}
-
 		public TimeSpan AsSpan
 		{
 			get
@@ -21,7 +16,7 @@ namespace BluraySharp.Common
 			}
 		}
 
-		private uint _Value = 0;
+		private uint _Value;
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
@@ -41,6 +36,11 @@ namespace BluraySharp.Common
 			{
 				return sizeof(uint);
 			}
+		}
+
+		public override string ToString()
+		{
+			return this.AsSpan.ToString();
 		}
 	}
 }

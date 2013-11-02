@@ -1,30 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp.PlayList
 {
 	public class PlPlayItemList : IBdRawSerializable
 	{
-		private ushort Reserved
-		{
-			get;
-			set;
-		}
+		private ushort Reserved { get; set; }
 
-		public IList<PlPlayItem> PlayItems
-		{
-			get;
-			private set;
-		}
+		public IList<PlPlayItem> PlayItems { get; private set; }
 
-		public IList<PlSubPath> SubPaths
-		{
-			get;
-			private set;
-		}
+		public IList<PlSubPath> SubPaths { get; private set; }
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
@@ -67,7 +52,23 @@ namespace BluraySharp.PlayList
 
 		public long RawLength
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				long tDataLen = sizeof(uint);
+				tDataLen += sizeof(ushort);
+
+				foreach (IBdRawSerializable tObj in this.PlayItems)
+				{
+					tDataLen += tObj.RawLength;
+				}
+
+				foreach (IBdRawSerializable tObj in this.SubPaths)
+				{
+					tDataLen += tObj.RawLength;
+				}
+
+				return tDataLen;
+			}
 		}
 
 		public PlPlayItemList()

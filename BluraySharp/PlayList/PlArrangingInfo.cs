@@ -1,26 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public class PlArrangingInfo : IBdRawSerializable, BluraySharp.PlayList.IPlArrangingInfo
+	public class PlArrangingInfo : IPlArrangingInfo
 	{
-		private uint _Value = 1;
+		private ushort _Value = 1;
 
-		public bool IsMultiAngle
-		{
-			get;
-			set;
-		}
+		public bool IsMultiAngle { get; set; }
 
-		public BdConnectionCondition ConjunctionType
-		{
-			get;
-			set;
-		}
+		public BdConnectionCondition ConnectionCondition { get; set; }
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{

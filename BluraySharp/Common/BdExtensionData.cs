@@ -14,22 +14,24 @@ namespace BluraySharp.Common
 		public long DeserializeFrom(BdRawSerializeContext context)
 		{
 			uint tDataLen;
-
 			tDataLen = context.DeserializeUInt32();
-			context.EnterScope(tDataLen);
 
-			try
+			if (tDataLen > 0)
 			{
-				_Value = context.DeserializeBytes((int) tDataLen);
-			}
-			finally
-			{
-				context.ExitScope();
+				context.EnterScope(tDataLen);
+
+				try
+				{
+					_Value = context.DeserializeBytes((int)tDataLen);
+				}
+				finally
+				{
+					context.ExitScope();
+				}
 			}
 
 			return context.Offset += tDataLen;
 		}
-
 
 		public long RawLength
 		{
@@ -37,7 +39,7 @@ namespace BluraySharp.Common
 			{
 				if (_Value != null && _Value.Length > 0)
 				{
-					return _Value.Length + 4;
+					return _Value.Length + sizeof(uint);
 				}
 				else
 				{

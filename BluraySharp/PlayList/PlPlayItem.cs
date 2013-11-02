@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public class PlPlayItem : IBdRawSerializable, IPlayItem
+	public class PlPlayItem : IPlPlayItem
 	{
 		public byte StcId { get; set; }
 		public BdTime InTime { get; set; }
@@ -14,25 +12,13 @@ namespace BluraySharp.PlayList
 
 		public BdUOMask UOMask { get; private set; }
 		public PlSeekingFlags SeekingFlags { get; private set; }
-
 		public PlStillInfo StillInfo { get; private set; }
-
 		public IPlArrangingInfo ArrangingInfo { get; private set; }
-
 		public PlMultiAngleInfo MultiAngleInfo { get; private set; }
 
-		public IList<IPlClipInfo> AngleList { get; private set; }
-		public void AddAngle(string codec, string id)
-		{
-			PlAngleClipInfo tAngle = new PlAngleClipInfo() { ClipCodec = codec, ClipId = id };
-			AngleList.Add(tAngle);
-		}
+		public IList<PlAngleClipInfo> AngleList { get; private set; }
 
-		public PlStnTable StnTable
-		{
-			get;
-			private set;
-		}
+		public PlStnTable StnTable { get; private set; }
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
@@ -48,9 +34,8 @@ namespace BluraySharp.PlayList
 
 			try
 			{
-				string tClipId = context.DeserializeString(5);
-				string tClipCodec = context.DeserializeString(4);
-				this.AddAngle(tClipCodec, tClipId);
+				PlAngleClipInfo tAngle = context.Deserialize<PlAngleClipInfo>();
+				this.AngleList.Add(tAngle);
 
 				ArrangingInfo = context.Deserialize<PlArrangingInfo>();
 				StcId = context.DeserializeByte();
@@ -91,12 +76,39 @@ namespace BluraySharp.PlayList
 
 		public long RawLength
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				long tDataLen = sizeof(ushort);
+
+				tDataLen += sizeof(byte);
+				tDataLen += this.InTime.RawLength;
+				tDataLen += this.OutTime.RawLength;
+
+				tDataLen += this.UOMask.RawLength;
+				tDataLen += this.SeekingFlags.RawLength;
+
+				tDataLen += this.StillInfo.RawLength;
+				tDataLen += this.ArrangingInfo.RawLength;
+
+				if (this.ArrangingInfo.IsMultiAngle && MultiAngleInfo != null)
+				{
+					tDataLen += this.MultiAngleInfo.RawLength;
+				}
+
+				foreach (IBdRawSerializable tObj in this.AngleList)
+				{
+					tDataLen += tObj.RawLength;
+				}
+
+				tDataLen += this.StnTable.RawLength;
+
+				return tDataLen;
+			}
 		}
 
 		public PlPlayItem()
 		{
-			AngleList = new List<IPlClipInfo>();
+			AngleList = new List<PlAngleClipInfo>();
 		}
 	}
 }

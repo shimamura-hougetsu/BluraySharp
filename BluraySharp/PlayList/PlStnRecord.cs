@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BluraySharp.PlayList
 {
@@ -25,7 +22,10 @@ namespace BluraySharp.PlayList
 
 		public long RawLength
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				return StreamInfo.RawLength + CodecInfo.RawLength;
+			}
 		}
 	}
 }

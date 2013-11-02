@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
@@ -55,24 +54,17 @@ namespace BluraySharp.PlayList
 
 		public long RawLength
 		{
-			get { throw new NotImplementedException(); }
-		}
-	}
+			get { 
+				long tDataLen = sizeof(ushort);
+				tDataLen += sizeof(ushort);
 
-	public enum StnRecordTypes: byte
-	{
-		Video = 0,
-		Audio = 1,
-		Pg = 2,
-		Ig = 3,
-		AudioAlt = 4,
-		VideoAlt = 5,
-		PipPg = 6,
-		Reserved1 = 7,
-		Reserved2 = 8,
-		Reserved3 = 9,
-		Reserved4 = 10,
-		Reserved5 = 11,
-		Count
+				foreach(IBdRawSerializable tObj in _RecordTables)
+				{
+					tDataLen += tObj.RawLength;
+				}
+
+				return tDataLen;
+			}
+		}
 	}
 }

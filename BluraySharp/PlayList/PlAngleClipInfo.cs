@@ -1,14 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class PlAngleClipInfo : IPlClipInfo, IBdRawSerializable
+	public class PlAngleClipInfo : IBdRawSerializable
 	{
-		public string ClipCodec { get; set; }
-		public string ClipId { get; set; }
+		private string _ClipCodec = "M2TS";
+
+		public string ClipCodec {
+			get
+			{
+				return _ClipCodec;
+			}
+			set
+			{
+				if (!value.ToUpper().Equals(_ClipCodec))
+				{
+					throw new ArgumentException("value");
+				}
+			}
+		}
+
+		private uint _ClipId = 0;
+		public string ClipId
+		{
+			get
+			{
+				return _ClipId.ToString("D5");
+			}
+			set
+			{
+				if(value == null)
+				{
+					throw new ArgumentNullException("value");
+				}
+
+				uint tId = uint.Parse(value);
+
+				if (tId < 0 || tId > 99999u)
+				{
+					throw new ArgumentException("value");
+				}
+
+				_ClipId = tId;
+			}
+		}
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
@@ -17,12 +52,18 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(BdRawSerializeContext context)
 		{
-			throw new NotImplementedException();
+			this.ClipId = context.DeserializeString(5);
+			this.ClipCodec = context.DeserializeString(4);
+
+			return context.Offset;
 		}
 
 		public long RawLength
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				return ClipId.Length + ClipCodec.Length;
+			}
 		}
 	}
 }

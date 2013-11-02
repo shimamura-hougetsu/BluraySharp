@@ -1,9 +1,10 @@
 ﻿using System;
+
 namespace BluraySharp.PlayList
 {
-	public interface IPlArrangingInfo
+	public interface IPlArrangingInfo : IBdRawSerializable
 	{
-		BluraySharp.Common.BdConnectionCondition ConjunctionType { get; set; }
+		BluraySharp.Common.BdConnectionCondition ConnectionCondition { get; set; }
 		bool IsMultiAngle { get; set; }
 	}
 }

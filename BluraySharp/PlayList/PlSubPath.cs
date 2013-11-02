@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BluraySharp.PlayList
 {
@@ -54,7 +52,19 @@ namespace BluraySharp.PlayList
 
 		public long RawLength
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				long tDataLen = sizeof(uint);
+				tDataLen += sizeof(byte) * 3;
+				tDataLen += RepeatInfo.RawLength;
+
+				foreach (IBdRawSerializable tObj in this.PlayItems)
+				{
+					tDataLen += tObj.RawLength;
+				}
+
+				return tDataLen;
+			}
 		}
 
 		public PlSubPath()

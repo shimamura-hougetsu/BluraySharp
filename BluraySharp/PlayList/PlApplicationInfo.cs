@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LibElfin.WinApi.MemoryBlock;
-using BluraySharp.Common;
+﻿using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
 	public class PlApplicationInfo : IBdRawSerializable
 	{
-		private readonly uint _DataLen = 14;
 		private byte Reserved { get; set; }
 		public byte PlayBackType { get; set; }
 		public ushort PlayBackCount { get; set; }
@@ -18,9 +12,10 @@ namespace BluraySharp.PlayList
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
-			context.Serialize(_DataLen);
+			uint tDataLen = (uint) this.RawLength;
+			context.Serialize(tDataLen);
 
-			context.EnterScope(_DataLen);
+			context.EnterScope(tDataLen);
 			try
 			{
 				context.Serialize(Reserved);
@@ -35,7 +30,7 @@ namespace BluraySharp.PlayList
 				context.ExitScope();
 			}
 
-			return context.Offset += _DataLen;
+			return context.Offset += tDataLen;
 		}
 
 		public long DeserializeFrom(BdRawSerializeContext context)
@@ -63,8 +58,13 @@ namespace BluraySharp.PlayList
 
 		public long RawLength
 		{
-			get {
-				return _DataLen + 4; 
+			get
+			{
+				return
+					sizeof(uint) +
+					sizeof(byte) * 2 +
+					sizeof(ushort) * 2 +
+					UOMask.RawLength;
 			}
 		}
 	}

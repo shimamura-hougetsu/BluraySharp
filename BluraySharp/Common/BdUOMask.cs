@@ -1,8 +1,8 @@
 ﻿namespace BluraySharp.Common
 {
-	public class BdUOMask : IBdRawSerializable
+	public struct BdUOMask : IBdRawSerializable
 	{
-		private ulong _Value = 0;
+		private ulong _Value;
 
 		public bool this[BdUOFlag index]
 		{
