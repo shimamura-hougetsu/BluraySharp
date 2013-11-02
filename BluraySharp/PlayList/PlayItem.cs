@@ -12,7 +12,7 @@ namespace BluraySharp.PlayList
 		public BdTime InTime { get; set; }
 		public BdTime OutTime { get; set; }
 
-		public UOMask UOMask { get; private set; }
+		public BdUOMask UOMask { get; private set; }
 		public PlaybackSeekingFlags SeekingFlags { get; private set; }
 
 		public PlaybackStillInfo StillInfo { get; private set; }
@@ -57,7 +57,7 @@ namespace BluraySharp.PlayList
 
 				InTime = context.Deserialize<BdTime>();
 				OutTime = context.Deserialize<BdTime>();
-				UOMask = context.Deserialize<UOMask>();
+				UOMask = context.Deserialize<BdUOMask>();
 
 				SeekingFlags = context.Deserialize<PlaybackSeekingFlags>();
 				StillInfo = context.Deserialize<PlaybackStillInfo>();

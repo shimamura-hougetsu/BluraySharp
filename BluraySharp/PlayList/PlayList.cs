@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using LibElfin.WinApi;
 using LibElfin.WinApi.MemoryBlock;
+using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
@@ -17,7 +18,7 @@ namespace BluraySharp.PlayList
 			
 			this.PlayItemList = new PlayItemList();
 			this.MarkList = new MarkList();
-			this.ExtDatList = new ExtDatList();
+			this.ExtensionData = new BdExtensionData();
 		}
 
 		public string MplsMark { get; private set; }
@@ -28,7 +29,7 @@ namespace BluraySharp.PlayList
 
 		public PlayItemList PlayItemList { get; private set; }
 		public MarkList MarkList { get; private set; }
-		public ExtDatList ExtDatList  { get; private set; }
+		public BdExtensionData ExtensionData { get; private set; }
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
@@ -64,7 +65,7 @@ namespace BluraySharp.PlayList
 			if (tOffsetExtDatList != 0)
 			{
 				context.Offset = tOffsetExtDatList;
-				this.ExtDatList = context.Deserialize<ExtDatList>();
+				this.ExtensionData = context.Deserialize<BdExtensionData>();
 			}
 
 			return context.Offset;
@@ -80,7 +81,7 @@ namespace BluraySharp.PlayList
 					PlayListInfo.RawLength +
 					PlayItemList.RawLength +
 					MarkList.RawLength +
-					ExtDatList.RawLength;
+					ExtensionData.RawLength;
 			}
 		}
 	}

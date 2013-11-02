@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BluraySharp.PlayList
+﻿
+namespace BluraySharp.Common
 {
-	public enum UOFlag : byte
+	public enum BdUOFlag : byte
 	{
 		 MenuCall = 0,
 		 TitleSearch,

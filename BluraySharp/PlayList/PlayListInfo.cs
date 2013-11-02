@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LibElfin.WinApi.MemoryBlock;
+using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
@@ -12,7 +13,7 @@ namespace BluraySharp.PlayList
 		private byte Reserved { get; set; }
 		public byte PlayBackType { get; set; }
 		public ushort PlayBackCount { get; set; }
-		public UOMask UOMask { get; private set; }
+		public BdUOMask UOMask { get; private set; }
 		public ushort PlayBackFlags { get; set; } //TODO: define a class
 
 		public long SerializeTo(BdRawSerializeContext context)
@@ -26,7 +27,7 @@ namespace BluraySharp.PlayList
 
 				context.Serialize(PlayBackType);
 				context.Serialize(PlayBackCount);
-				context.Serialize<UOMask>(UOMask);
+				context.Serialize<BdUOMask>(UOMask);
 				context.Serialize(PlayBackFlags);
 			}
 			finally
@@ -48,7 +49,7 @@ namespace BluraySharp.PlayList
 				PlayBackType = context.DeserializeByte();
 				PlayBackCount = context.DeserializeUInt16();
 
-				UOMask = context.Deserialize<UOMask>();
+				UOMask = context.Deserialize<BdUOMask>();
 
 				PlayBackFlags = context.DeserializeUInt16();
 			}

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LibElfin.WinApi.MemoryBlock;
-
-namespace BluraySharp.PlayList
+﻿namespace BluraySharp.Common
 {
-	public class UOMask : IBdRawSerializable
+	public class BdUOMask : IBdRawSerializable
 	{
 		private ulong _Value = 0;
 
-		public bool this[UOFlag index]
+		public bool this[BdUOFlag index]
 		{
 			get
 			{

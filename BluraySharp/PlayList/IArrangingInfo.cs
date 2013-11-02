@@ -3,7 +3,7 @@ namespace BluraySharp.PlayList
 {
 	interface IArrangingInfo
 	{
-		BluraySharp.Common.ConjunctionType ConjunctionType { get; set; }
+		BluraySharp.Common.BdConnectionCondition ConjunctionType { get; set; }
 		bool IsMultiAngle { get; set; }
 	}
 }

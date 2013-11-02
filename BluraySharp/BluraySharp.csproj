@@ -57,8 +57,8 @@
     <Compile Include="PlayList\MultiAngleInfo.cs" />
     <Compile Include="PlayList\PlaybackAngle.cs" />
     <Compile Include="Common\BdTime.cs" />
-    <Compile Include="Common\ConjunctionType.cs" />
-    <Compile Include="PlayList\ExtDatList.cs" />
+    <Compile Include="Common\BdConnectionCondition.cs" />
+    <Compile Include="Common\BdExtensionData.cs" />
     <Compile Include="PlayList\MarkList.cs" />
     <Compile Include="PlayList\PlayItem.cs" />
     <Compile Include="PlayList\ArrangingInfo.cs" />
@@ -75,8 +75,8 @@
     <Compile Include="PlayList\SubPathRepeatInfo.cs" />
     <Compile Include="PlayList\SubPathType.cs" />
     <Compile Include="PlayList\SubPlayItem.cs" />
-    <Compile Include="PlayList\UOMask.cs" />
-    <Compile Include="PlayList\UOFlag.cs" />
+    <Compile Include="Common\BdUOMask.cs" />
+    <Compile Include="Common\BdUOFlag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\VersionInfo.cs" />
     <Compile Include="Properties\~Revision.cs" />

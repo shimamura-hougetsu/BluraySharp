@@ -16,7 +16,7 @@ namespace BluraySharp.PlayList
 			set;
 		}
 
-		public ConjunctionType ConjunctionType
+		public BdConnectionCondition ConjunctionType
 		{
 			get;
 			set;
