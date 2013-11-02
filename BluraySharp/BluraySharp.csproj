@@ -60,6 +60,8 @@
     <Compile Include="Common\BdConnectionCondition.cs" />
     <Compile Include="Common\BdExtensionData.cs" />
     <Compile Include="PlayList\PlMarkList.cs" />
+    <Compile Include="PlayList\PlPlaybackInfo.cs" />
+    <Compile Include="PlayList\PlPlaybackType.cs" />
     <Compile Include="PlayList\PlPlayItem.cs" />
     <Compile Include="PlayList\PlArrangingInfo.cs" />
     <Compile Include="PlayList\PlSeekingFlags.cs" />
