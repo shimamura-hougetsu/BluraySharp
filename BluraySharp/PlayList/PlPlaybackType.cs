@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Playlist
 {
 	public enum PlPlaybackType : byte
 	{
-		Normal = 1,
-		Loop = 2,
-		LoopX = 3
+		Sequential = 1,
+		Random = 2,
+		Shuffle = 3,
 	}
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.Common
+namespace BluraySharp.Playlist
 {
-	public enum StnRecordTypes : byte
+	public enum PlStnRecordTypes : byte
 	{
 		Video = 0,
 		Audio = 1,

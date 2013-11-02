@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Playlist
 {
 	public class PlPlaybackInfo : IBdRawSerializable
 	{

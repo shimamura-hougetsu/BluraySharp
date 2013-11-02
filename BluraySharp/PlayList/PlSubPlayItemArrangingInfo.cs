@@ -1,9 +1,9 @@
 ﻿using System;
 using BluraySharp.Common;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Playlist
 {
-	public class PlSubPlayItemArrangingInfo : IBdRawSerializable, BluraySharp.PlayList.IPlArrangingInfo
+	public class PlSubPlayItemArrangingInfo : IBdRawSerializable, BluraySharp.Playlist.IPlArrangingInfo
 	{
 		private uint _Value = 1;
 

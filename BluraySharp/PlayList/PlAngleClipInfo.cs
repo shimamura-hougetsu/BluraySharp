@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Playlist
 {
 	public class PlAngleClipInfo : IBdRawSerializable
 	{
@@ -64,6 +64,11 @@ namespace BluraySharp.PlayList
 			{
 				return ClipId.Length + ClipCodec.Length;
 			}
+		}
+
+		public override string ToString()
+		{
+			return ClipId + ClipCodec;
 		}
 	}
 }

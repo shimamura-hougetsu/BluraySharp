@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Playlist
 {
 	public class PlPlayItemList : IBdRawSerializable
 	{

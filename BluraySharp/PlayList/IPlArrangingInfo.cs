@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Playlist
 {
 	public interface IPlArrangingInfo : IBdRawSerializable
 	{

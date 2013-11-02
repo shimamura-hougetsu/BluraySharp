@@ -1,7 +1,7 @@
 ﻿using System;
 using BluraySharp.Common;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Playlist
 {
 	public class PlayList : IBdRawSerializable
 	{

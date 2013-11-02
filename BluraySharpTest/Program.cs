@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using BluraySharp;
-using BluraySharp.PlayList;
+using BluraySharp.Playlist;
 using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharpTest

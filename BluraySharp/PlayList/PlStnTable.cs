@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using BluraySharp.Common;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Playlist
 {
 	public class PlStnTable: IBdRawSerializable
 	{
-		private List<PlStnRecord>[] _RecordTables = new List<PlStnRecord>[(int)StnRecordTypes.Count];
+		private List<PlStnRecord>[] _RecordTables = new List<PlStnRecord>[(int)PlStnRecordTypes.Count];
 		private ushort Reserved { get; set; }
 
-		public IList<PlStnRecord> this[StnRecordTypes index]
+		public IList<PlStnRecord> this[PlStnRecordTypes index]
 		{
 			get
 			{
@@ -33,9 +33,9 @@ namespace BluraySharp.PlayList
 			{
 				Reserved = context.DeserializeUInt16();
 
-				byte[] tRecordCount = context.DeserializeBytes((int)StnRecordTypes.Count);
+				byte[] tRecordCount = context.DeserializeBytes((int)PlStnRecordTypes.Count);
 
-				for (int iType = 0; iType < (int)StnRecordTypes.Count; iType++)
+				for (int iType = 0; iType < (int)PlStnRecordTypes.Count; iType++)
 				{
 					_RecordTables[iType] = new List<PlStnRecord>();
 					for (int iCount = 0; iCount < tRecordCount[iType]; iCount++)
