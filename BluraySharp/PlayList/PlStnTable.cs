@@ -4,7 +4,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.Playlist
 {
-	public class PlStnTable: IBdRawSerializable
+	public class PlStnTable: IBdRawSerializable, IPlStnTable
 	{
 		private List<PlStnRecord>[] _RecordTables = new List<PlStnRecord>[(int)PlStnRecordTypes.Count];
 		private ushort Reserved { get; set; }

@@ -3,8 +3,8 @@ namespace BluraySharp.Common
 {
 	public enum BdUOFlag : byte
 	{
-		PipPgChange = 0x1E,
-		Reserved2,
+		PipPgChange = 0x1E,	//0x1E = 30
+		Reserved1,
 		SecondaryAudioChange,
 		SecondaryAudioEnableDisable,
 		SecondaryVideoChange,
@@ -14,7 +14,7 @@ namespace BluraySharp.Common
 		PopupOff,
 		PopupOn,
 		AngleChange,
-		Reserved1,
+		Reserved2,
 		PrimaryAudioChange,
 		SelectAndActivate,
 		Activate,
@@ -36,6 +36,6 @@ namespace BluraySharp.Common
 		TimeSearch,
 		ChapterSearch,
 		TitleSearch,
-		MenuCall,
+		MenuCall,	//0x3F=63
 	}
 }

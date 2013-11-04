@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Playlist\IPlStnTable.cs" />
     <Compile Include="Playlist\PlStnRecordType.cs" />
     <Compile Include="IBdRawSerializable.cs" />
     <Compile Include="Playlist\IPlArrangingOption.cs" />

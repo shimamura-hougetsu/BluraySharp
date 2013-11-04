@@ -3,7 +3,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.Playlist
 {
-	public interface IPlArrangingOption : IBdRawSerializable
+	public interface IPlArrangingOption
 	{
 		BdConnectionCondition ConnectionCondition { get; set; }
 		bool IsMultiAngle { get; set; }

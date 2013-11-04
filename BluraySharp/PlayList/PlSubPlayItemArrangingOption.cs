@@ -3,7 +3,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.Playlist
 {
-	public class PlSubPlayItemArrangingOption : IBdRawSerializable, BluraySharp.Playlist.IPlArrangingOption
+	public class PlSubPlayItemArrangingOption : IBdRawSerializable, IPlArrangingOption
 	{
 		private uint _Value = 1;
 
