@@ -10,11 +10,11 @@ namespace BluraySharp.Common
 		{
 			get
 			{
-				return _Value.GetBit((byte)index);
+				return _Value.GetBits((byte)index, 1) == 1;
 			}
 			set
 			{
-				_Value = value ? _Value.SetBit((byte)index) : _Value.UnsetBit((byte) index);
+				_Value = _Value.SetBits((byte)index, 1, value ? 1u : 0u);
 			}
 		}
 

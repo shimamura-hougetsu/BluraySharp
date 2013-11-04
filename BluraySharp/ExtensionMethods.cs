@@ -12,56 +12,71 @@ namespace BluraySharp
 		public static string ToStringLocalized(this Enum obj)
 		{
 			List<string> tDescDict = new List<string>();
-			string tEnumDescName = string.Format("Enum_{0}_{1}", obj.GetType().Name, Enum.GetName(obj.GetType(), obj));
+			string tEnumName = Enum.GetName(obj.GetType(), obj);
+			string tEnumDesc = string.Format("Enum_{0}_{1}", obj.GetType().Name, tEnumName);
 
-			return Resources.ResourceManager.GetString(tEnumDescName);
+			tEnumDesc = Resources.ResourceManager.GetString(tEnumDesc);
+			if (string.IsNullOrEmpty(tEnumDesc))
+			{
+				tEnumDesc = tEnumName;
+			}
+
+			return tEnumDesc;
 		}
 
-		public static bool GetBit(this ulong obj, byte index)
+
+		private static NumberFormatInfo _Formatter = new NumberFormatInfo();
+
+		public static T GetBits<T>(this T obj, byte index, byte length) where T : struct, IConvertible
 		{
-			return ((obj >> index) & 0x01) == 1;
+			Converter<ulong, T> tConv = VerifyTemplateArg<T>(index, length);
+
+			ulong tValue = ~(0xFFFFFFFFFFFFFFFF << length);
+			tValue &= (obj.ToUInt64(_Formatter) >> index);
+
+			return tConv(tValue);
 		}
 
-		public static T SetBit<T>(this T obj, byte index)  where T: struct, IConvertible
+		public static T SetBits<T>(this T obj, byte index, byte length, T value) where T : struct, IConvertible
 		{
-			ulong tMask = GetMask<T>(index, 1);
+			Converter<ulong, T> tConv = VerifyTemplateArg<T>(index, length);
 
-			return (T)(object)(obj.ToUInt64(new NumberFormatInfo()) | tMask);
+			ulong tValue1 = ~(0xFFFFFFFFFFFFFFFF << length);
+			ulong tValue2 = ~(tValue1 << index);
+
+			tValue2 &= obj.ToUInt64(_Formatter);
+			tValue1 &= value.ToUInt64(_Formatter);
+
+			tValue2 |= (tValue1 << index);
+
+			return tConv(tValue2);
 		}
 
-		public static T UnsetBit<T>(this T obj, byte index) where T : struct, IConvertible
-		{
-			ulong tMask = GetMask<T>(index, 1);
-
-			return (T)(object)(obj.ToUInt64(new NumberFormatInfo()) & ~tMask);
-		}
-
-		public static ulong GetMask<T>(byte index, byte length) where T: struct
+		private static Converter<ulong, T> VerifyTemplateArg<T>(byte index, byte length) where T : struct
 		{
 			switch (typeof(T).FullName)
 			{
 				case "System.Byte":
 					VerifyIndexRange(sizeof(byte), index, length);
-					break;
+					return (x => (T)(object)(byte)x);
 				case "System.UInt16":
 					VerifyIndexRange(sizeof(ushort), index, length);
-					break;
+					return (x => (T)(object)(ushort)x);
 				case "System.UInt32":
 					VerifyIndexRange(sizeof(uint), index, length);
-					break;
+					return (x => (T)(object)(uint)x);
 				case "System.UInt64":
 					VerifyIndexRange(sizeof(ulong), index, length);
-					break;
+					return (x => (T)(object) x);
 				default:
 					throw new ArgumentException("uintType");
 			}
-
-			ulong tMask = 0xFFFFFFFFFFFFFFFF;
-			return ((~(tMask << length)) << index);
 		}
 
 		private static void VerifyIndexRange(int size, byte index, byte length)
 		{
+			size <<= 3;
+
 			if (index > size)
 			{
 				throw new ArgumentOutOfRangeException("index");

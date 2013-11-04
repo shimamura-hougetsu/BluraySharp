@@ -61,16 +61,16 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
-        ///   查找类似  的本地化字符串。
+        ///   查找类似 Not Seamless 的本地化字符串。
         /// </summary>
-        internal static string Enum_BdConnectionCondition_NoSeamless {
+        internal static string Enum_BdConnectionCondition_NotSeamless {
             get {
-                return ResourceManager.GetString("Enum_BdConnectionCondition_NoSeamless", resourceCulture);
+                return ResourceManager.GetString("Enum_BdConnectionCondition_NotSeamless", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似  的本地化字符串。
+        ///   查找类似 Seamless 的本地化字符串。
         /// </summary>
         internal static string Enum_BdConnectionCondition_Seamless {
             get {
@@ -79,7 +79,7 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
-        ///   查找类似  的本地化字符串。
+        ///   查找类似 Seamless Concatenated 的本地化字符串。
         /// </summary>
         internal static string Enum_BdConnectionCondition_SeamlessConcat {
             get {

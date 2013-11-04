@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Enum_BdConnectionCondition_NoSeamless" xml:space="preserve">
-    <value />
+  <data name="Enum_BdConnectionCondition_NotSeamless" xml:space="preserve">
+    <value>Not Seamless</value>
   </data>
   <data name="Enum_BdConnectionCondition_Seamless" xml:space="preserve">
-    <value />
+    <value>Seamless</value>
   </data>
   <data name="Enum_BdConnectionCondition_SeamlessConcat" xml:space="preserve">
-    <value />
+    <value>Seamless Concatenated</value>
   </data>
 </root>

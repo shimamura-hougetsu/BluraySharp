@@ -7,9 +7,29 @@ namespace BluraySharp.Playlist
 	{
 		private uint _Value = 1;
 
-		public bool IsMultiAngle { get; set; }
+		public bool IsMultiAngle
+		{
+			get
+			{
+				return _Value.GetBits(0, 1) == 1;
+			}
+			set
+			{
+				_Value = _Value.SetBits(0, 1, (uint)(value ? 1u : 0u));
+			}
+		}
 
-		public BdConnectionCondition ConnectionCondition { get; set; }
+		public BdConnectionCondition ConnectionCondition
+		{
+			get
+			{
+				return (BdConnectionCondition)_Value.GetBits(1, 4);
+			}
+			set
+			{
+				_Value = _Value.SetBits(1, 4, (uint)value);
+			}
+		}
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
