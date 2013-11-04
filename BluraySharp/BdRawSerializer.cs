@@ -109,54 +109,34 @@ namespace BluraySharp
 
 		#endregion Scope
 
-		public void Serialize<T>(T instance) where T : IBdRawSerializable, new()
+		public void Serialize<T>(T obj) where T : IBdRawSerializable
 		{
-			IBdRawSerializable tObjectSerializalbe = instance as IBdRawSerializable;
-			if (tObjectSerializalbe == null)
+			long tOffset = 0;
+			this.EnterScope(obj.RawLength);
+			try
 			{
-				_Scope.Buffer.WriteStructure(_Scope.Offset, instance);
-				_Scope.Offset += Marshal.SizeOf(instance);
+				tOffset = obj.SerializeTo(this);
 			}
-			else
+			finally
 			{
-				long tOffset;
-				this.EnterScope(tObjectSerializalbe.RawLength);
-				try
-				{
-					tOffset = tObjectSerializalbe.SerializeTo(this);
-				}
-				finally
-				{
-					this.ExitScope();
-				}
-
+				this.ExitScope();
 				_Scope.Offset += tOffset;
 			}
 		}
 
-		public T Deserialize<T>() where T : new()
+		public T Deserialize<T>() where T : IBdRawSerializable, new()
 		{
 			T tObject = new T();
 
-			IBdRawSerializable tObjectSerializalbe = tObject as IBdRawSerializable;
-			if (tObjectSerializalbe == null)
+			long tOffset = 0;
+			this.EnterScope();
+			try
 			{
-				_Scope.Buffer.CopyToStructure(_Scope.Offset, tObject);
-				_Scope.Offset += Marshal.SizeOf(tObject);
+				tOffset = tObject.DeserializeFrom(this);
 			}
-			else
+			finally
 			{
-				long tOffset;
-				this.EnterScope();
-				try
-				{
-					tOffset = tObjectSerializalbe.DeserializeFrom(this);
-				}
-				finally
-				{
-					this.ExitScope();
-				}
-
+				this.ExitScope();
 				_Scope.Offset += tOffset;
 			}
 
@@ -216,6 +196,13 @@ namespace BluraySharp
 			return Encoding.UTF8.GetString(this.DeserializeBytes(len));
 		}
 
+		public T DeserializeStruct<T>() where T : new()
+		{
+			T tObj = (T)_Scope.Buffer.GetStructure(_Scope.Offset, typeof(T));
+			_Scope.Offset += Marshal.SizeOf(tObj);
+			return tObj;
+		}
+
 		#endregion Deserialize
 
 		#region Serialize
@@ -256,6 +243,13 @@ namespace BluraySharp
 			_Scope.Buffer.CopyFrom(_Scope.Offset, value, 0, value.Length);
 			_Scope.Offset += value.Length;
 		}
+
+		public void SerializeStruct<T>(T obj)
+		{
+			_Scope.Buffer.WriteStructure(_Scope.Offset, obj);
+			_Scope.Offset += Marshal.SizeOf(obj);
+		}
+
 		#endregion
 	}
 }

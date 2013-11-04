@@ -5,9 +5,27 @@ using System.Text;
 
 namespace BluraySharp.Playlist
 {
-	public class PlPlaybackInfo : IBdRawSerializable
+	public class PlPlaybackOption : IBdRawSerializable
 	{
 		private ushort _Value = 0;
+
+		public bool RandomAccess
+		{
+			get;
+			set;
+		}
+
+		public bool AudioMix
+		{
+			get;
+			set;
+		}
+
+		public bool BypassMixer
+		{
+			get;
+			set;
+		}
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{

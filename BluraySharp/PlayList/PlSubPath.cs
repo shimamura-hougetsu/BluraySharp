@@ -10,7 +10,7 @@ namespace BluraySharp.Playlist
 
 		public PlSubPathType Type { get; set; }
 
-		public PlSubPathRepeatInfo RepeatInfo { get; set; }
+		public PlSubPathRepeatOption RepeatOption { get; set; }
 
 		public IList<PlSubPlayItem> PlayItems { get; private set; }
 
@@ -31,7 +31,7 @@ namespace BluraySharp.Playlist
 				Reserved1 = context.DeserializeByte();
 				Type = (PlSubPathType) context.DeserializeByte();
 
-				RepeatInfo = context.Deserialize<PlSubPathRepeatInfo>();
+				RepeatOption = context.Deserialize<PlSubPathRepeatOption>();
 				Reserved2 = context.DeserializeByte();
 
 				byte tSubPlayItemCount = context.DeserializeByte();
@@ -56,7 +56,7 @@ namespace BluraySharp.Playlist
 			{
 				long tDataLen = sizeof(uint);
 				tDataLen += sizeof(byte) * 3;
-				tDataLen += RepeatInfo.RawLength;
+				tDataLen += RepeatOption.RawLength;
 
 				foreach (IBdRawSerializable tObj in this.PlayItems)
 				{

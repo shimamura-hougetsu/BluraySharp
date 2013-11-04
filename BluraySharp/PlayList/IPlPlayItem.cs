@@ -9,7 +9,7 @@ namespace BluraySharp.Playlist
 		BdTime InTime { get; set; }
 		BdTime OutTime { get; set; }
 
-		IPlArrangingInfo ArrangingInfo { get; }
+		IPlArrangingOption ArrangingOption { get; }
 		IList<PlAngleClipInfo> AngleList { get; }
 	}
 }

@@ -59,5 +59,32 @@ namespace BluraySharp.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdConnectionCondition_NoSeamless {
+            get {
+                return ResourceManager.GetString("Enum_BdConnectionCondition_NoSeamless", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdConnectionCondition_Seamless {
+            get {
+                return ResourceManager.GetString("Enum_BdConnectionCondition_Seamless", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdConnectionCondition_SeamlessConcat {
+            get {
+                return ResourceManager.GetString("Enum_BdConnectionCondition_SeamlessConcat", resourceCulture);
+            }
+        }
     }
 }

@@ -1,15 +1,10 @@
 ﻿using System;
-using BluraySharp.Common;
 
 namespace BluraySharp.Playlist
 {
-	public class PlSubPlayItemArrangingInfo : IBdRawSerializable, BluraySharp.Playlist.IPlArrangingInfo
+	public class PlSubPathRepeatOption : IBdRawSerializable
 	{
-		private uint _Value = 1;
-
-		public bool IsMultiAngle { get; set; }
-
-		public BdConnectionCondition ConnectionCondition { get; set; }
+		private ushort _Value = 0;
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
@@ -18,7 +13,7 @@ namespace BluraySharp.Playlist
 
 		public long DeserializeFrom(BdRawSerializeContext context)
 		{
-			_Value = context.DeserializeUInt32();
+			_Value = context.DeserializeUInt16();
 
 			return context.Offset;
 		}
@@ -27,7 +22,7 @@ namespace BluraySharp.Playlist
 		{
 			get
 			{
-				return sizeof(uint);
+				return sizeof(ushort);
 			}
 		}
 	}

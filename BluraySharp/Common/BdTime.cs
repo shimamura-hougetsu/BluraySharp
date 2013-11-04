@@ -4,6 +4,8 @@ namespace BluraySharp.Common
 {
 	public struct BdTime: IBdRawSerializable
 	{
+		private uint _Value;
+
 		public TimeSpan AsSpan
 		{
 			get
@@ -15,8 +17,6 @@ namespace BluraySharp.Common
 				_Value = (uint) (value.Ticks * 9 / 200);
 			}
 		}
-
-		private uint _Value;
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{

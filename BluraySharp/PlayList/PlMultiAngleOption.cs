@@ -1,7 +1,7 @@
 ﻿
 namespace BluraySharp.Playlist
 {
-	public class PlMultiAngleInfo : IBdRawSerializable
+	public class PlMultiAngleOption : IBdRawSerializable
 	{
 		public long SerializeTo(BdRawSerializeContext context)
 		{

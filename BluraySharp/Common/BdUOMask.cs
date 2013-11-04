@@ -10,20 +10,11 @@ namespace BluraySharp.Common
 		{
 			get
 			{
-				return ((_Value >> (byte)index) & 0x01) == 1;
+				return _Value.GetBit((byte)index);
 			}
 			set
 			{
-				ulong tMask = ((value ? 1UL : 0UL) << (byte)index);
-
-				if (value)
-				{
-					_Value |= tMask;
-				}
-				else
-				{
-					_Value &= tMask;
-				}
+				_Value = value ? _Value.SetBit((byte)index) : _Value.UnsetBit((byte) index);
 			}
 		}
 
@@ -58,7 +49,7 @@ namespace BluraySharp.Common
 			
 			for (sbyte i = 63; i >= 0; --i)
 			{
-				tString.Append((tMask & 0x80000000u) == 0 ? '0' : '1');
+				tString.Append((tMask & 0x8000000000000000u) == 0 ? '0' : '1');
 				if ((i & 0x07) == 0)
 				{
 					tString.Append('-');
