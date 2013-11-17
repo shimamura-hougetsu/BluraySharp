@@ -8,4 +8,4 @@ echo internal static partial class VersionInfo
 echo {
 echo  	public const string R = "%REV%";
 echo }
-) >".\Properties\Revision.cs"
+) >".\Properties\~Revision.cs"

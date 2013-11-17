@@ -15,7 +15,7 @@ namespace BluraySharpTest
 		static void Main()
 		{
 			//string tFilePath = @"C:\StoreBase\_Temp\玉响\[BDMV][111221] たまゆら～hitotose～ 第1巻\TAMAYURA_HITOTOSE_1\BDMV\PLAYLIST\00000.mpls";
-			string tFilePath = @"C:\StoreBase\_Temp\玉响\!CMD.DIR\SUB\[BDMV][111221] たまゆら～hitotose～ 第1巻\TAMAYURA_HITOTOSE_1\BDMV\PLAYLIST\00002.mpls";
+			string tFilePath = @"T:\Archives\_BDRip\现视研.ZHO\GENSHIKEN_COMPLETE_BDBOX_04\BDMV\PLAYLIST\00000.mpls";
 			FileInfo tFileInfo = new FileInfo(tFilePath);
 			
 
@@ -31,7 +31,7 @@ namespace BluraySharpTest
 			}
 
 			tMpls.ToString();
-			tMpls.PlayItemList.PlayItems[0].ArrangingOption.ConnectionCondition.ToStringLocalized();
+			tMpls.PlayItemList.PlayItems[0].ConnectionCondition.ToStringLocalized();
 		}
 	}
 }

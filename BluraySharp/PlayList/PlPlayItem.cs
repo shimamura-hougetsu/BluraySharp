@@ -10,18 +10,35 @@ namespace BluraySharp.Playlist
 		public BdTime InTime { get; set; }
 		public BdTime OutTime { get; set; }
 
+		public BdConnectionCondition ConnectionCondition
+		{
+			get
+			{
+				return (BdConnectionCondition)_ArrangingOption[0, 4];
+			}
+			set
+			{
+				_ArrangingOption[0, 4] = (ushort)value;
+			}
+		}
+
+		public bool IsMultiAngle
+		{
+			get
+			{
+				return _ArrangingOption[4, 1] == 1;
+			}
+			set
+			{
+				_ArrangingOption[4, 1] = (ushort) (value ? 1u : 0u);
+			}
+		}
+
 		public BdUOMask UOMask { get; private set; }
 		public PlSeekingFlags SeekingFlags { get; private set; }
 		public PlStillInfo StillInfo { get; private set; }
 
-		private PlArrangingOption _ArrangingOption = new PlArrangingOption();
-		public IPlArrangingOption ArrangingOption
-		{
-			get
-			{
-				return _ArrangingOption;
-			}
-		}
+		private BdBitwise16 _ArrangingOption = new BdBitwise16();
 
 		public PlMultiAngleOption MultiAngleOption { get; private set; }
 
@@ -46,7 +63,7 @@ namespace BluraySharp.Playlist
 				PlAngleClipInfo tAngle = context.Deserialize<PlAngleClipInfo>();
 				this.AngleList.Add(tAngle);
 
-				_ArrangingOption = context.Deserialize<PlArrangingOption>();
+				_ArrangingOption = context.Deserialize<BdBitwise16>();
 				StcId = context.DeserializeByte();
 
 				InTime = context.Deserialize<BdTime>();
@@ -56,7 +73,7 @@ namespace BluraySharp.Playlist
 				SeekingFlags = context.Deserialize<PlSeekingFlags>();
 				StillInfo = context.Deserialize<PlStillInfo>();
 
-				if (ArrangingOption.IsMultiAngle)
+				if (this.IsMultiAngle)
 				{
 					byte tAngleCount = context.DeserializeByte();
 
@@ -99,7 +116,7 @@ namespace BluraySharp.Playlist
 				tDataLen += this.StillInfo.RawLength;
 				tDataLen += this._ArrangingOption.RawLength;
 
-				if (this.ArrangingOption.IsMultiAngle && MultiAngleOption != null)
+				if (this.IsMultiAngle && MultiAngleOption != null)
 				{
 					tDataLen += this.MultiAngleOption.RawLength;
 				}

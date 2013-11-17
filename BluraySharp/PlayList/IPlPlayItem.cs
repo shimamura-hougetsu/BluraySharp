@@ -9,7 +9,9 @@ namespace BluraySharp.Playlist
 		BdTime InTime { get; set; }
 		BdTime OutTime { get; set; }
 
-		IPlArrangingOption ArrangingOption { get; }
+		BdConnectionCondition ConnectionCondition { get; set; }
+		bool IsMultiAngle { get; set; }
+
 		IList<PlAngleClipInfo> AngleList { get; }
 	}
 }

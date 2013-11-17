@@ -8,7 +8,7 @@ namespace BluraySharp.Playlist
 		public PlPlaybackType PlaybackType { get; set; }
 		public ushort PlaybackCount { get; set; }
 		public BdUOMask UOMask { get; private set; }
-		public PlPlaybackOption PlaybackOption { get; set; }
+		private BdBitwise16 _PlaybackOption = new BdBitwise16(0);
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
@@ -23,7 +23,7 @@ namespace BluraySharp.Playlist
 				context.Serialize((byte)PlaybackType);
 				context.Serialize(PlaybackCount);
 				context.Serialize<BdUOMask>(UOMask);
-				context.Serialize<PlPlaybackOption>(PlaybackOption);
+				context.Serialize<BdBitwise16>(_PlaybackOption);
 			}
 			finally
 			{
@@ -46,7 +46,7 @@ namespace BluraySharp.Playlist
 
 				UOMask = context.Deserialize<BdUOMask>();
 
-				PlaybackOption = context.Deserialize<PlPlaybackOption>();
+				_PlaybackOption = context.Deserialize<BdBitwise16>();
 			}
 			finally
 			{

@@ -10,17 +10,19 @@ namespace BluraySharp.Common
 		{
 			get
 			{
-				return new TimeSpan(_Value * 200L / 9);
+				return new TimeSpan(_Value * 2000L / 9);
 			}
 			set
 			{
-				_Value = (uint) (value.Ticks * 9 / 200);
+				_Value = (uint) (value.Ticks * 9 / 2000);
 			}
 		}
 
 		public long SerializeTo(BdRawSerializeContext context)
 		{
-			throw new NotImplementedException();
+			context.Serialize(_Value);
+
+			return context.Offset;
 		}
 
 		public long DeserializeFrom(BdRawSerializeContext context)
