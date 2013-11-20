@@ -40,7 +40,7 @@ namespace BluraySharp.Playlist
 
 		private BdBitwise16 _ArrangingOption = new BdBitwise16();
 
-		public PlMultiAngleOption MultiAngleOption { get; private set; }
+		private BdBitwise8 _MultiAngleOption = new BdBitwise8();
 
 		public IList<PlAngleClipInfo> AngleList { get; private set; }
 
@@ -77,7 +77,7 @@ namespace BluraySharp.Playlist
 				{
 					byte tAngleCount = context.DeserializeByte();
 
-					MultiAngleOption = context.Deserialize<PlMultiAngleOption>();
+					_MultiAngleOption = context.Deserialize<BdBitwise8>();
 
 					if (tAngleCount < 1)
 					{
@@ -116,9 +116,9 @@ namespace BluraySharp.Playlist
 				tDataLen += this.StillInfo.RawLength;
 				tDataLen += this._ArrangingOption.RawLength;
 
-				if (this.IsMultiAngle && MultiAngleOption != null)
+				if (this.IsMultiAngle && _MultiAngleOption != null)
 				{
-					tDataLen += this.MultiAngleOption.RawLength;
+					tDataLen += this._MultiAngleOption.RawLength;
 				}
 
 				foreach (IBdRawSerializable tObj in this.AngleList)

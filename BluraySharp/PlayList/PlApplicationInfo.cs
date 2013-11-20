@@ -10,6 +10,24 @@ namespace BluraySharp.Playlist
 		public BdUOMask UOMask { get; private set; }
 		private BdBitwise16 _PlaybackOption = new BdBitwise16(0);
 
+		public bool RandomAccess
+		{
+			get;
+			set;
+		}
+
+		public bool AudioMix
+		{
+			get;
+			set;
+		}
+
+		public bool BypassMixer
+		{
+			get;
+			set;
+		}
+
 		public long SerializeTo(BdRawSerializeContext context)
 		{
 			uint tDataLen = (uint) this.RawLength;

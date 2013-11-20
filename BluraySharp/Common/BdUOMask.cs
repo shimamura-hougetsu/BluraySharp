@@ -2,9 +2,9 @@
 using System;
 namespace BluraySharp.Common
 {
-	public struct BdUOMask : IBdRawSerializable
+	public class BdUOMask : IBdRawSerializable
 	{
-		private BdBitwise64 _Value;
+		private BdBitwise64 _Value = new BdBitwise64();
 
 		public bool this[BdUOFlag index]
 		{

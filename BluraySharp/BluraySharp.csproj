@@ -56,13 +56,11 @@
     <Compile Include="Playlist\PlStnRecordType.cs" />
     <Compile Include="IBdRawSerializable.cs" />
     <Compile Include="Playlist\IPlPlayItem.cs" />
-    <Compile Include="Playlist\PlMultiAngleOption.cs" />
     <Compile Include="Playlist\PlAngleClipInfo.cs" />
     <Compile Include="Common\BdTime.cs" />
     <Compile Include="Common\BdConnectionCondition.cs" />
     <Compile Include="Common\BdExtensionData.cs" />
     <Compile Include="Playlist\PlMarkList.cs" />
-    <Compile Include="Playlist\PlPlaybackOption.cs" />
     <Compile Include="Playlist\PlPlaybackType.cs" />
     <Compile Include="Playlist\PlPlayItem.cs" />
     <Compile Include="Playlist\PlSeekingFlags.cs" />
