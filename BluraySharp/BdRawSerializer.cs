@@ -8,7 +8,7 @@ using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp
 {
-	public class BdRawSerializeContext
+	public class BdRawSerializeContext : BluraySharp.IBdRawSerializeContext
 	{
 		public BdRawSerializeContext(MemBlock memory)
 		{
