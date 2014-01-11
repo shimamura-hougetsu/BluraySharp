@@ -129,7 +129,7 @@ namespace BluraySharp.Playlist
 					tDataLen += this.multiAngleOption.RawLength;
 				}
 
-				foreach (IBdRawSerializable tObj in this.AngleListX)
+				foreach (IBdObject tObj in this.AngleListX)
 				{
 					tDataLen += tObj.RawLength;
 				}

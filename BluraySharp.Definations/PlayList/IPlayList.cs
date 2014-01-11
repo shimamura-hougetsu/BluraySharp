@@ -1,7 +1,7 @@
 ﻿using System;
 namespace BluraySharp.Playlist
 {
-	public interface IPlayList: IBdRawSerializable
+	public interface IPlayList: IBdObject
 	{
 		string MplsMarkX { get; }
 		string MplsVerX { get; set; }

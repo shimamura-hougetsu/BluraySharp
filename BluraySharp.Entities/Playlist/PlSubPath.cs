@@ -64,7 +64,7 @@ namespace BluraySharp.Playlist
 				tDataLen += sizeof(byte) * 3;
 				tDataLen += repeatOption.RawLength;
 
-				foreach (IBdRawSerializable tObj in this.PlayItemsX)
+				foreach (IBdObject tObj in this.PlayItemsX)
 				{
 					tDataLen += tObj.RawLength;
 				}

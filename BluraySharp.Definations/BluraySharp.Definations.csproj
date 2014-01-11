@@ -47,10 +47,11 @@
     <Compile Include="Common\BdUOFlag.cs" />
     <Compile Include="Common\BdUOMask.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="IBdRawSerializable.cs" />
     <Compile Include="PlayList\IPlAngleClipInfo.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
     <Compile Include="PlayList\IPlStnRecordCodecInfo.cs" />
-    <Compile Include="IBdRawSerializable.cs" />
+    <Compile Include="IBdObject.cs" />
     <Compile Include="IBdRawSerializeContext.cs" />
     <Compile Include="PlayList\IPlAppInfo.cs" />
     <Compile Include="PlayList\IPlayList.cs" />

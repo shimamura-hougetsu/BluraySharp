@@ -2,7 +2,7 @@
 
 namespace BluraySharp.Common
 {
-	public struct BdTime: IBdRawSerializable
+	public struct BdTime: IBdObject
 	{
 		private uint _Value;
 

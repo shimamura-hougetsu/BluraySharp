@@ -2,7 +2,7 @@
 using System;
 namespace BluraySharp.Common
 {
-	public class BdUOMask : IBdRawSerializable
+	public class BdUOMask : IBdObject
 	{
 		private BdBitwise64 _Value = new BdBitwise64();
 

@@ -123,7 +123,7 @@ namespace BluraySharp.Common
 		public BdBitwiseValueType ValueTypeDesc { get; private set; }
 	}
 
-	internal abstract class BdBitwiseValue<T> : BdBitwiseValue, IBdRawSerializable
+	internal abstract class BdBitwiseValue<T> : BdBitwiseValue, IBdObject
 	{
 		public BdBitwiseValue(T value) :
 			base(typeof(T).FullName)

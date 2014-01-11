@@ -37,7 +37,7 @@ namespace BluraySharp
 		/// </summary>
 		/// <param name="obj">BDAV object</param>
 		/// <returns>Bytes occupying by the object</returns>
-		public static long GetRawLength(this IBdRawSerializable obj)
+		public static long GetRawLength(this IBdObject obj)
 		{
 			if (obj == null)
 			{

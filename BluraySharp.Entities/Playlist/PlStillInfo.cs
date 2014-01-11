@@ -2,7 +2,7 @@
 
 namespace BluraySharp.Playlist
 {
-	public class PlStillInfo : IBdRawSerializable
+	public class PlStillInfo : IBdObject
 	{
 		private byte modeValue;
 		private ushort timeValue;

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BdRawSerializer.cs" />
     <Compile Include="Playlist\PlAngleClipInfo.cs" />
     <Compile Include="Playlist\PlAppInfo.cs" />
     <Compile Include="Playlist\PlayList.cs" />
@@ -61,6 +62,10 @@
     <ProjectReference Include="..\BluraySharp.Definations\BluraySharp.Definations.csproj">
       <Project>{14FF5AC6-E679-444D-B582-0B4AE067F595}</Project>
       <Name>BluraySharp.Definations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cs.LibElfin\LibElfin.WinApi\LibElfin.WinApi.csproj">
+      <Project>{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}</Project>
+      <Name>LibElfin.WinApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

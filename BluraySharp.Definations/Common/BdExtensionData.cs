@@ -2,7 +2,7 @@
 
 namespace BluraySharp.Common
 {
-	public class BdExtensionData : IBdRawSerializable
+	public class BdExtensionData : IBdObject
 	{
 		private byte[] _Value = new byte[0];
 
