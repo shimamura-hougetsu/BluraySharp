@@ -3,7 +3,6 @@
 [assembly: AssemblyVersion(VersionInfo.Value)]
 [assembly: AssemblyFileVersion(VersionInfo.Value)]
 
-
 internal static partial class VersionInfo
 {
 	private const string D = ".";
