@@ -109,7 +109,7 @@ namespace BluraySharp
 
 		#endregion Scope
 
-		public void Serialize<T>(T obj) where T : IBdObject
+		public void Serialize<T>(T obj) where T : IBdRawSerializable
 		{
 			long tOffset = 0;
 			this.EnterScope(obj.RawLength);
@@ -124,7 +124,7 @@ namespace BluraySharp
 			}
 		}
 
-		public T Deserialize<T>() where T : IBdObject, new()
+		public T Deserialize<T>() where T : IBdRawSerializable, new()
 		{
 			T tObject = new T();
 
@@ -143,7 +143,7 @@ namespace BluraySharp
 			return tObject;
 		}
 
-		public void Deserialize<T>(T obj) where T : IBdObject
+		public void Deserialize<T>(T obj) where T : IBdRawSerializable
 		{
 			long tOffset = 0;
 			this.EnterScope();

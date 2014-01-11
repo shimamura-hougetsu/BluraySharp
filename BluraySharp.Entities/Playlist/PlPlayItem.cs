@@ -49,6 +49,11 @@ namespace BluraySharp.Playlist
 		private BdBitwise8 multiAngleOption = new BdBitwise8();
 
 		public IList<PlAngleClipInfo> AngleListX { get; private set; }
+		
+		public IPlAngleClipInfo CreateAngleClipInfo()
+		{
+			return new PlAngleClipInfo();
+		}
 
 		public PlStnTable StnTable { get; private set; }
 
@@ -144,5 +149,6 @@ namespace BluraySharp.Playlist
 		{
 			AngleListX = new List<PlAngleClipInfo>();
 		}
+
 	}
 }

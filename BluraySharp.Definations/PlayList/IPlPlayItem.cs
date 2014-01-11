@@ -13,5 +13,7 @@ namespace BluraySharp.Playlist
 		bool IsMultiAngle { get; set; }
 
 		IList<IPlAngleClipInfo> AngleList { get; }
+
+		IPlAngleClipInfo CreateAngleClipInfo();
 	}
 }

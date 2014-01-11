@@ -5,5 +5,7 @@ namespace BluraySharp.Playlist
 	{
 		System.Collections.Generic.IList<BluraySharp.Playlist.IPlPlayItem> PlayItems { get; }
 		BluraySharp.Playlist.PlSubPathType Type { get; set; }
+
+		IPlPlayItem CreateSubPlayItem();
 	}
 }

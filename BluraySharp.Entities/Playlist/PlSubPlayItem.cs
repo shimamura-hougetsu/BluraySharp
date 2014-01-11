@@ -12,7 +12,10 @@ namespace BluraySharp.Playlist
 
 		public IList<IPlAngleClipInfo> AngleList
 		{
-			get { throw new NotImplementedException(); }
+			get 
+			{
+				return new List<IPlAngleClipInfo>(this.AngleListX); 
+			}
 		}
 
 		public BdConnectionCondition ConnectionCondition
@@ -44,6 +47,11 @@ namespace BluraySharp.Playlist
 		private BdBitwise32 arrangingOption = new BdBitwise32();
 
 		public IList<PlAngleClipInfo> AngleListX { get; private set; }
+
+		public IPlAngleClipInfo CreateAngleClipInfo()
+		{
+			return new PlAngleClipInfo();
+		}
 
 		public long SerializeTo(IBdRawSerializeContext context)
 		{

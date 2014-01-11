@@ -66,6 +66,21 @@ namespace BluraySharp.Playlist
 			set { ExtensionDataX = value; }
 		}
 
+		public IPlAppInfo CreateAppInfo()
+		{
+			return new PlAppInfo();
+		}
+
+		public IPlPlayItemList CreatePlayItemList()
+		{
+			return new PlPlayItemList();
+		}
+
+		public IPlMarkList CreateMarkList()
+		{
+			return new PlMarkList();
+		}
+
 		#endregion BluraySharp.Playlist.IPlayList
 
 		#region Properties for XmlSerializing
@@ -168,5 +183,6 @@ namespace BluraySharp.Playlist
 			ReservedForFutureUse = null;
 		}
 		#endregion IBdSerializable
+
 	}
 }

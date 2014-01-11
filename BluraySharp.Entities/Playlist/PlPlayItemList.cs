@@ -5,14 +5,31 @@ namespace BluraySharp.Playlist
 {
 	public class PlPlayItemList : BluraySharp.Playlist.IPlPlayItemList
 	{
+
+		public IPlPlayItem CreatePlayItem()
+		{
+			return new PlPlayItem();
+		}
+
+		public IPlSubPath CreateSubPath()
+		{
+			return new PlSubPath();
+		}
+
 		public IList<IPlPlayItem> PlayItems
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				return new List<IPlPlayItem>(this.PlayItemsX);
+			}
 		}
 
 		public IList<IPlSubPath> SubPaths
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				return new List<IPlSubPath>(this.SubPathsX);
+			}
 		}
 
 		private ushort ReservedForFutureUse { get; set; }

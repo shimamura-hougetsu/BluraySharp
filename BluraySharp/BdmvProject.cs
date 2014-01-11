@@ -8,14 +8,14 @@ using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp
 {
-	public class BdmvTree
+	public class BdmvProject
 	{
-		IPlayList OpenPlayList()
+		public IPlayList CreatePlayList()
 		{
 			return new PlayList();
 		}
 
-		IPlayList OpenPlayList(FileStream file)
+		public IPlayList OpenPlayList(FileStream file)
 		{
 			using (AutoFileMapMem tFileMem = new AutoFileMapMem(file, file.Length, System.IO.MemoryMappedFiles.MemoryMappedFileAccess.Read))
 			{
@@ -24,12 +24,12 @@ namespace BluraySharp
 			}
 		}
 		
-		public T Clone<T>(T obj) where T : IBdObject, new()
+		public void Copy<T>(T src, T dest) where T : IBdObject
 		{
-			AutoHeapMem tMem = new AutoHeapMem(obj.RawLength);
+			AutoHeapMem tMem = new AutoHeapMem(src.RawLength);
 			BdRawSerializeContext tRawIo = new BdRawSerializeContext(tMem);
 
-			return tRawIo.Deserialize<T>();
+			tRawIo.Deserialize<T>(dest);
 		}
 	}
 }

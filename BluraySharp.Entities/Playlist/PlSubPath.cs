@@ -20,6 +20,11 @@ namespace BluraySharp.Playlist
 
 		public IList<PlSubPlayItem> PlayItemsX { get; private set; }
 
+		public IPlPlayItem CreateSubPlayItem()
+		{
+			return new PlSubPlayItem();
+		}
+
 		public long SerializeTo(IBdRawSerializeContext context)
 		{
 			throw new NotImplementedException();

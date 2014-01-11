@@ -15,22 +15,16 @@ namespace BluraySharpTest
 		static void Main()
 		{
 			//string tFilePath = @"C:\StoreBase\_Temp\玉响\[BDMV][111221] たまゆら～hitotose～ 第1巻\TAMAYURA_HITOTOSE_1\BDMV\PLAYLIST\00000.mpls";
-			string tFilePath = @"T:\Archives\_BDRip\鬼父.ZHO\ONICHICHI\BDMV\PLAYLIST\00000.mpls";
-			FileInfo tFileInfo = new FileInfo(tFilePath);
+			string tFilePath = @"T:\Archives\_BDRip\鬼父.ZHO\!CMD.DIR\SUB\ONICHICHI\BDMV\PLAYLIST\00000.mpls";
 
-			IPlayList tMpls = null;
-
-			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
 			{
-				using (AutoFileMapMem tFileMem = new AutoFileMapMem(tFileStream, tFileStream.Length, System.IO.MemoryMappedFiles.MemoryMappedFileAccess.Read))
-				{
-					BdRawSerializeContext tRawIo = new BdRawSerializeContext(tFileMem);
-					//tMpls = tRawIo.Deserialize<PlayList>();
-				}
-			}
+				BdmvProject tProject = new BdmvProject();
+				IPlayList tMpls = tProject.OpenPlayList(tFileStream);
 
-			tMpls.ToString();
-			tMpls.PlayItemList.PlayItems[0].ConnectionCondition.ToStringLocalized();
+				tMpls.ToString();
+				tMpls.PlayItemList.PlayItems[0].ConnectionCondition.ToStringLocalized();
+			}
 		}
 	}
 }

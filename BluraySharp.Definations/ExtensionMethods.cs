@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BluraySharp.Properties;
+using BluraySharp.Definations;
 using System.Globalization;
 
 namespace BluraySharp
