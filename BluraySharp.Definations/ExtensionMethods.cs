@@ -23,7 +23,7 @@ namespace BluraySharp
 			string tEnumName = Enum.GetName(obj.GetType(), obj);
 			string tEnumDesc = string.Format("Enum_{0}_{1}", obj.GetType().Name, tEnumName);
 
-			tEnumDesc = Resources.ResourceManager.GetString(tEnumDesc);
+			tEnumDesc = Definations.Properties.Resources.ResourceManager.GetString(tEnumDesc);
 			if (string.IsNullOrEmpty(tEnumDesc))
 			{
 				tEnumDesc = tEnumName;
@@ -39,7 +39,7 @@ namespace BluraySharp
 		/// <returns>Bytes occupying by the object</returns>
 		public static long GetRawLength(this IBdObject obj)
 		{
-			if (obj == null)
+			if (object.ReferenceEquals(obj, null))
 			{
 				return 0;
 			}

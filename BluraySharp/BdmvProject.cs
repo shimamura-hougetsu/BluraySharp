@@ -17,19 +17,51 @@ namespace BluraySharp
 
 		public IPlayList OpenPlayList(FileStream file)
 		{
+			if (object.ReferenceEquals(file, null))
+			{
+				throw new ArgumentNullException("file");
+			}
+
 			using (AutoFileMapMem tFileMem = new AutoFileMapMem(file, file.Length, System.IO.MemoryMappedFiles.MemoryMappedFileAccess.Read))
 			{
 				BdRawSerializeContext tRawIo = new BdRawSerializeContext(tFileMem);
 				return tRawIo.Deserialize<PlayList>();
 			}
 		}
+
+		public void SavePlayList(FileStream file, IPlayList playList)
+		{
+			if (object.ReferenceEquals(file, null))
+			{
+				throw new ArgumentNullException("file");
+			}
+
+			if (object.ReferenceEquals(playList, null))
+			{
+				throw new ArgumentNullException("playList");
+			}
+
+			using (AutoFileMapMem tFileMem = new AutoFileMapMem(file, playList.RawLength, System.IO.MemoryMappedFiles.MemoryMappedFileAccess.ReadWrite))
+			{
+				BdRawSerializeContext tRawIo = new BdRawSerializeContext(tFileMem);
+				tRawIo.Serialize(playList);
+			}
+		}
 		
 		public void Copy<T>(T src, T dest) where T : IBdObject
 		{
-			AutoHeapMem tMem = new AutoHeapMem(src.RawLength);
-			BdRawSerializeContext tRawIo = new BdRawSerializeContext(tMem);
+			if (object.ReferenceEquals(dest, null))
+			{
+				throw new ArgumentNullException("playList");
+			}
 
-			tRawIo.Deserialize<T>(dest);
+			if (!object.ReferenceEquals(src, null))
+			{
+				AutoHeapMem tMem = new AutoHeapMem(src.RawLength);
+				BdRawSerializeContext tRawIo = new BdRawSerializeContext(tMem);
+
+				tRawIo.Deserialize<T>(dest);
+			}
 		}
 	}
 }

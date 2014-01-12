@@ -18,6 +18,11 @@ namespace BluraySharp.Common
 			}
 		}
 
+		public uint AsFrameCount(BdStreamInfo streamInfo)
+		{
+			throw new NotImplementedException();
+		}
+
 		public long SerializeTo(IBdRawSerializeContext context)
 		{
 			context.Serialize(_Value);

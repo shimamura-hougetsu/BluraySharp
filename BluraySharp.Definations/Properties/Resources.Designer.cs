@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BluraySharp.Definations {
+namespace BluraySharp.Definations.Properties {
     using System;
     
     
@@ -84,6 +84,312 @@ namespace BluraySharp.Definations {
         internal static string Enum_BdConnectionCondition_SeamlessConcat {
             get {
                 return ResourceManager.GetString("Enum_BdConnectionCondition_SeamlessConcat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ActivateButton 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_ActivateButton {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_ActivateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 AngleChange 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_AngleChange {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_AngleChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 BackwardPlay 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_BackwardPlay {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_BackwardPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ChapterSearch 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_ChapterSearch {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_ChapterSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ForwardPlay 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_ForwardPlay {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_ForwardPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MoveDownSelectedButton 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_MoveDownSelectedButton {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_MoveDownSelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MoveLeftSelectedButton 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_MoveLeftSelectedButton {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_MoveLeftSelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MoveRightSelectedButton 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_MoveRightSelectedButton {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_MoveRightSelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MoveUpSelectedButton 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_MoveUpSelectedButton {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_MoveUpSelectedButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PauseOn 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_PauseOn {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_PauseOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PgChange 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_PgChange {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_PgChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PgEnableDisable 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_PgEnableDisable {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_PgEnableDisable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PipPgChange 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_PipPgChange {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_PipPgChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PopupOff 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_PopupOff {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_PopupOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PopupOn 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_PopupOn {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_PopupOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PrimaryAudioChange 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_PrimaryAudioChange {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_PrimaryAudioChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ReservedForMenuCall 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_ReservedForMenuCall {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_ReservedForMenuCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ReservedForPauseOff 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_ReservedForPauseOff {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_ReservedForPauseOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ReservedForPgChange 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_ReservedForPgChange {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_ReservedForPgChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ReservedForPipPgEnableDisable 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_ReservedForPipPgEnableDisable {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_ReservedForPipPgEnableDisable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ReservedForPlayFirstplay 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_ReservedForPlayFirstplay {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_ReservedForPlayFirstplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ReservedForTitleSearch 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_ReservedForTitleSearch {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_ReservedForTitleSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Resume 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_Resume {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_Resume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SecondaryAudioChange 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_SecondaryAudioChange {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_SecondaryAudioChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SecondaryAudioEnableDisable 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_SecondaryAudioEnableDisable {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_SecondaryAudioEnableDisable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SecondaryVideoChange 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_SecondaryVideoChange {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_SecondaryVideoChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SecondaryVideoEnableDisable 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_SecondaryVideoEnableDisable {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_SecondaryVideoEnableDisable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SelectAndActivateButton 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_SelectAndActivateButton {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_SelectAndActivateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SelectButton 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_SelectButton {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_SelectButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SkipToNextPoint 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_SkipToNextPoint {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_SkipToNextPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SkipToPrevPoint 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_SkipToPrevPoint {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_SkipToPrevPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Still 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_Still {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_Still", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Stop 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_Stop {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 TimeSearch 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdUOFlag_TimeSearch {
+            get {
+                return ResourceManager.GetString("Enum_BdUOFlag_TimeSearch", resourceCulture);
             }
         }
     }

@@ -22,8 +22,11 @@ namespace BluraySharpTest
 				BdmvProject tProject = new BdmvProject();
 				IPlayList tMpls = tProject.OpenPlayList(tFileStream);
 
+				System.Diagnostics.Debug.WriteLine(
+						tMpls.PlayItemList.PlayItems[0].ConnectionCondition.ToStringLocalized()
+					);
+
 				tMpls.ToString();
-				tMpls.PlayItemList.PlayItems[0].ConnectionCondition.ToStringLocalized();
 			}
 		}
 	}
