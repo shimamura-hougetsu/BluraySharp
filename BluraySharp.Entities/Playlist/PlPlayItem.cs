@@ -57,12 +57,12 @@ namespace BluraySharp.Playlist
 
 		public PlStnTable StnTable { get; private set; }
 
-		public long SerializeTo(IBdRawSerializeContext context)
+		public long SerializeTo(IBdRawIoContext context)
 		{
 			throw new NotImplementedException();
 		}
 
-		public long DeserializeFrom(IBdRawSerializeContext context)
+		public long DeserializeFrom(IBdRawIoContext context)
 		{
 			ushort tDataLen;
 

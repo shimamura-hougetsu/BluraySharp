@@ -50,8 +50,8 @@ namespace BluraySharp.Common
 
 	internal abstract class BdBitwiseValue
 	{
-		public delegate object Reader(IBdRawSerializeContext context);
-		public delegate void Writer(IBdRawSerializeContext context, object value);
+		public delegate object Reader(IBdRawIoContext context);
+		public delegate void Writer(IBdRawIoContext context, object value);
 		public delegate ulong Importer(object value);
 		public delegate object Exporter(ulong value);
 
@@ -181,7 +181,7 @@ namespace BluraySharp.Common
 			}
 		}
 
-		public long SerializeTo(IBdRawSerializeContext context)
+		public long SerializeTo(IBdRawIoContext context)
 		{
 			object tValue = this.ValueTypeDesc.Exporter(_Value);
 			this.ValueTypeDesc.Writer(context, tValue);
@@ -189,7 +189,7 @@ namespace BluraySharp.Common
 			return context.Offset;
 		}
 
-		public long DeserializeFrom(IBdRawSerializeContext context)
+		public long DeserializeFrom(IBdRawIoContext context)
 		{
 			object tValue = this.ValueTypeDesc.Reader(context);
 			_Value = this.ValueTypeDesc.Importer(tValue);

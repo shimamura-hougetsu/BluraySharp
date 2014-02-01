@@ -55,7 +55,7 @@ namespace BluraySharp.Playlist
 		private BdUOMask uoMask = new BdUOMask();
 		private BdBitwise16 _PlaybackOption = new BdBitwise16(0);
 
-		public long SerializeTo(IBdRawSerializeContext context)
+		public long SerializeTo(IBdRawIoContext context)
 		{
 			uint tDataLen = (uint) this.RawLength;
 			context.Serialize(tDataLen);
@@ -76,7 +76,7 @@ namespace BluraySharp.Playlist
 			return context.Offset += tDataLen;
 		}
 
-		public long DeserializeFrom(IBdRawSerializeContext context)
+		public long DeserializeFrom(IBdRawIoContext context)
 		{
 			uint tDataLen = context.DeserializeUInt32();
 

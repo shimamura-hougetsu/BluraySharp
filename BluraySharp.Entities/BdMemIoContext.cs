@@ -8,22 +8,22 @@ using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp
 {
-	public class BdRawSerializeContext : BluraySharp.IBdRawSerializeContext
+	public class BdMemIoContext : IDisposable, IBdRawIoContext
 	{
-		public BdRawSerializeContext(MemBlock memory)
+		public BdMemIoContext(MemBlock memory)
 		{
-			_Scope = new BdRawSerializeScope(memory, 0);
+			scope = new BdMemIoScope(memory);
 		}
 
 		public long Offset
 		{
 			get
 			{
-				return _Scope.Offset.ToInt64();
+				return scope.Offset.ToInt64();
 			}
 			set
 			{
-				_Scope.Offset = value;
+				scope.Offset = value;
 			}
 		}
 
@@ -31,16 +31,14 @@ namespace BluraySharp
 		{
 			get
 			{
-				return _Scope.Buffer.Length.ToInt64();
+				return scope.Buffer.Length.ToInt64();
 			}
 		}
 
 		#region Scope
 
-		private BdRawSerializeScope _Scope;
-
-		private readonly Stack<BdRawSerializeScope> _ScopeStack = new Stack<BdRawSerializeScope>();
-
+		private BdMemIoScope scope;
+		
 		public void EnterScope()
 		{
 			this.EnterScope(this.Length);
@@ -48,63 +46,12 @@ namespace BluraySharp
 
 		public void EnterScope(long length)
 		{
-			MemOffset tLen = _Scope.Buffer.Length - _Scope.Offset;
-			if(length < tLen)
-			{
-				tLen = length;
-			}
-
-			_ScopeStack.Push(_Scope);
-			_Scope = new BdRawSerializeScope(
-					new MemBlockRef(_Scope.Buffer, _Scope.Offset, tLen),
-					0
-				);
+			this.scope.EnterScope(length);
 		}
 
 		public void ExitScope()
 		{
-			_Scope = _ScopeStack.Pop();
-		}
-
-		private class BdRawSerializeScope : BdRawSerializeScopeSnapshot
-		{
-			public BdRawSerializeScope(MemBlock buffer, MemOffset offset)
-				:base(buffer, offset){}
-
-			public BdRawSerializeScope(BdRawSerializeScopeSnapshot snapshot)
-				: base(snapshot)
-			{
-			}
-
-			public new MemOffset Offset
-			{
-				get
-				{
-					return base.Offset;
-				}
-				set
-				{
-					base.Offset = value;
-				}
-			}
-		}
-
-		private class BdRawSerializeScopeSnapshot
-		{
-			public BdRawSerializeScopeSnapshot(MemBlock buffer, MemOffset offset)
-			{
-				Buffer = buffer;
-				Offset = offset;
-			}
-
-			public BdRawSerializeScopeSnapshot(BdRawSerializeScopeSnapshot snapshot)
-			{
-				Buffer = snapshot.Buffer;
-				Offset = snapshot.Offset;
-			}
-
-			public MemBlock Buffer { get; private set; }
-			public MemOffset Offset { get; protected set; }
+			this.scope.ExitScope();
 		}
 
 		#endregion Scope
@@ -120,7 +67,7 @@ namespace BluraySharp
 			finally
 			{
 				this.ExitScope();
-				_Scope.Offset += tOffset;
+				scope.Offset += tOffset;
 			}
 		}
 
@@ -137,7 +84,7 @@ namespace BluraySharp
 			finally
 			{
 				this.ExitScope();
-				_Scope.Offset += tOffset;
+				scope.Offset += tOffset;
 			}
 
 			return tObject;
@@ -154,7 +101,7 @@ namespace BluraySharp
 			finally
 			{
 				this.ExitScope();
-				_Scope.Offset += tOffset;
+				scope.Offset += tOffset;
 			}
 		}
 
@@ -200,8 +147,8 @@ namespace BluraySharp
 		{
 			byte[] tBuffer = new byte[len];
 
-			_Scope.Buffer.CopyTo(_Scope.Offset, tBuffer, 0, len);
-			_Scope.Offset += len;
+			scope.Buffer.CopyTo(scope.Offset, tBuffer, 0, len);
+			scope.Offset += len;
 
 			return tBuffer;
 		}
@@ -213,8 +160,8 @@ namespace BluraySharp
 
 		public T DeserializeStruct<T>() where T : new()
 		{
-			T tObj = (T)_Scope.Buffer.GetStructure(_Scope.Offset, typeof(T));
-			_Scope.Offset += Marshal.SizeOf(tObj);
+			T tObj = (T)scope.Buffer.GetStructure(scope.Offset, typeof(T));
+			scope.Offset += Marshal.SizeOf(tObj);
 			return tObj;
 		}
 
@@ -255,16 +202,47 @@ namespace BluraySharp
 				throw new ArgumentNullException("value");
 			}
 
-			_Scope.Buffer.CopyFrom(_Scope.Offset, value, 0, value.Length);
-			_Scope.Offset += value.Length;
+			scope.Buffer.CopyFrom(scope.Offset, value, 0, value.Length);
+			scope.Offset += value.Length;
 		}
 
 		public void SerializeStruct<T>(T obj)
 		{
-			_Scope.Buffer.WriteStructure(_Scope.Offset, obj);
-			_Scope.Offset += Marshal.SizeOf(obj);
+			scope.Buffer.WriteStructure(scope.Offset, obj);
+			scope.Offset += Marshal.SizeOf(obj);
 		}
 
 		#endregion
+
+		public void Dispose()
+		{
+			this.Dispose(true);
+
+			GC.SuppressFinalize(this);
+		}
+
+		~BdMemIoContext()
+		{
+			this.Dispose(false);
+		}
+
+		private bool isDisposed = false;
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!this.isDisposed)
+			{
+				if (disposing)
+				{
+					if(this.scope != null)
+					{
+						this.scope.Dispose();
+						this.scope = null;
+					}
+				}
+
+				isDisposed = true;
+			}
+		}
 	}
 }

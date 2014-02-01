@@ -4,14 +4,14 @@ namespace BluraySharp.Common
 {
 	public class BdExtensionData : IBdObject
 	{
-		private byte[] _Value = new byte[0];
+		private byte[] value = new byte[0];
 
-		public long SerializeTo(IBdRawSerializeContext context)
+		public long SerializeTo(IBdRawIoContext context)
 		{
 			throw new NotImplementedException();
 		}
 
-		public long DeserializeFrom(IBdRawSerializeContext context)
+		public long DeserializeFrom(IBdRawIoContext context)
 		{
 			uint tDataLen;
 			tDataLen = context.DeserializeUInt32();
@@ -22,7 +22,7 @@ namespace BluraySharp.Common
 
 				try
 				{
-					_Value = context.DeserializeBytes((int)tDataLen);
+					this.value = context.DeserializeBytes((int)tDataLen);
 				}
 				finally
 				{
@@ -37,9 +37,9 @@ namespace BluraySharp.Common
 		{
 			get
 			{
-				if (_Value != null && _Value.Length > 0)
+				if (this.value != null && this.value.Length > 0)
 				{
-					return _Value.Length + sizeof(uint);
+					return this.value.Length + sizeof(uint);
 				}
 				else
 				{

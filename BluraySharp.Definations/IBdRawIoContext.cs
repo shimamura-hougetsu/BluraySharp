@@ -1,7 +1,7 @@
 ﻿using System;
 namespace BluraySharp
 {
-	public interface IBdRawSerializeContext
+	public interface IBdRawIoContext
 	{
 		T Deserialize<T>() where T : IBdRawSerializable, new();
 		byte DeserializeByte();

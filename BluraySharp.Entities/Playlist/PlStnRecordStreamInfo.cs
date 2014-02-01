@@ -4,12 +4,12 @@ namespace BluraySharp.Playlist
 {
 	public class PlStnRecordStreamInfo : IBdObject
 	{
-		public long SerializeTo(IBdRawSerializeContext context)
+		public long SerializeTo(IBdRawIoContext context)
 		{
 			throw new NotImplementedException();
 		}
 
-		public long DeserializeFrom(IBdRawSerializeContext context)
+		public long DeserializeFrom(IBdRawIoContext context)
 		{
 			byte tDataLen;
 			tDataLen = context.DeserializeByte();

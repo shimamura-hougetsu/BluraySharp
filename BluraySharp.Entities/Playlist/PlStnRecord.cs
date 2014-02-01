@@ -17,12 +17,12 @@ namespace BluraySharp.Playlist
 		private PlStnRecordStreamInfo streamInfo;
 		private PlStnRecordCodecInfo codecInfo;
 
-		public long SerializeTo(IBdRawSerializeContext context)
+		public long SerializeTo(IBdRawIoContext context)
 		{
 			throw new NotImplementedException();
 		}
 
-		public long DeserializeFrom(IBdRawSerializeContext context)
+		public long DeserializeFrom(IBdRawIoContext context)
 		{
 			streamInfo = context.Deserialize<PlStnRecordStreamInfo>();
 			codecInfo = context.Deserialize<PlStnRecordCodecInfo>();

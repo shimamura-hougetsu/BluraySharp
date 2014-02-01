@@ -108,12 +108,12 @@ namespace BluraySharp.Playlist
 		#endregion Properties for XmlSerializing
 
 		#region IBdSerializable
-		public long SerializeTo(IBdRawSerializeContext context)
+		public long SerializeTo(IBdRawIoContext context)
 		{
 			throw new NotImplementedException();
 		}
 
-		public long DeserializeFrom(IBdRawSerializeContext context)
+		public long DeserializeFrom(IBdRawIoContext context)
 		{
 			this.MplsMarkX = context.DeserializeString(4);
 			this.MplsVerX = context.DeserializeString(4);

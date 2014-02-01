@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BluraySharp.Definations;
 using System.Globalization;
 
 namespace BluraySharp
@@ -23,7 +22,7 @@ namespace BluraySharp
 			string tEnumName = Enum.GetName(obj.GetType(), obj);
 			string tEnumDesc = string.Format("Enum_{0}_{1}", obj.GetType().Name, tEnumName);
 
-			tEnumDesc = Definations.Properties.Resources.ResourceManager.GetString(tEnumDesc);
+			tEnumDesc = Properties.Resources.ResourceManager.GetString(tEnumDesc);
 			if (string.IsNullOrEmpty(tEnumDesc))
 			{
 				tEnumDesc = tEnumName;

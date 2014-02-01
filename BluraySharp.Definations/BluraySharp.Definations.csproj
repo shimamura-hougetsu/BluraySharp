@@ -8,7 +8,7 @@
     <ProjectGuid>{14FF5AC6-E679-444D-B582-0B4AE067F595}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BluraySharp.Definations</RootNamespace>
+    <RootNamespace>BluraySharp</RootNamespace>
     <AssemblyName>BluraySharp.Definations</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,6 +43,7 @@
     <Compile Include="Common\BdBitwiseValue.cs" />
     <Compile Include="Common\BdConnectionCondition.cs" />
     <Compile Include="Common\BdExtensionData.cs" />
+    <Compile Include="Common\BdStnRecordRef.cs" />
     <Compile Include="Common\BdStreamInfo.cs" />
     <Compile Include="Common\BdTime.cs" />
     <Compile Include="Common\BdUOFlag.cs" />
@@ -53,7 +54,7 @@
     <Compile Include="PlayList\IPlPlayItemList.cs" />
     <Compile Include="PlayList\IPlStnRecordCodecInfo.cs" />
     <Compile Include="IBdObject.cs" />
-    <Compile Include="IBdRawSerializeContext.cs" />
+    <Compile Include="IBdRawIoContext.cs" />
     <Compile Include="PlayList\IPlAppInfo.cs" />
     <Compile Include="PlayList\IPlayList.cs" />
     <Compile Include="PlayList\IPlMarkList.cs" />

@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.Common
 {
-	public class PlSeekingFlags : IBdObject
+	public class BdStnRecordRef : IBdObject
 	{
 		private byte value;
 
 		public long SerializeTo(IBdRawIoContext context)
 		{
-			throw new NotImplementedException();
+			context.Serialize(this.value);
+
+			return context.Offset;
 		}
 
 		public long DeserializeFrom(IBdRawIoContext context)
 		{
-			value = context.DeserializeByte();
+			this.value = context.DeserializeByte();
 
 			return context.Offset;
 		}

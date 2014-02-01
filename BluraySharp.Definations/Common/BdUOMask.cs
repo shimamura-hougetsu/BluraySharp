@@ -4,30 +4,30 @@ namespace BluraySharp.Common
 {
 	public class BdUOMask : IBdObject
 	{
-		private BdBitwise64 _Value = new BdBitwise64();
+		private BdBitwise64 value = new BdBitwise64();
 
 		public bool this[BdUOFlag index]
 		{
 			get
 			{
-				return _Value[(byte)index, 1] == 1;
+				return this.value[(byte)index, 1] == 1;
 			}
 			set
 			{
-				_Value[(byte)index, 1] = (value ? 1u : 0u);
+				this.value[(byte)index, 1] = (value ? 1u : 0u);
 			}
 		}
 
-		public long SerializeTo(IBdRawSerializeContext context)
+		public long SerializeTo(IBdRawIoContext context)
 		{
-			context.Serialize(_Value);
+			context.Serialize(this.value);
 
 			return context.Offset;
 		}
 
-		public long DeserializeFrom(IBdRawSerializeContext context)
+		public long DeserializeFrom(IBdRawIoContext context)
 		{
-			_Value = context.Deserialize<BdBitwise64>();
+			this.value = context.Deserialize<BdBitwise64>();
 
 			return context.Offset;
 		}
@@ -36,7 +36,7 @@ namespace BluraySharp.Common
 		{
 			get
 			{
-				return _Value.RawLength;
+				return this.value.RawLength;
 			}
 		}
 	}

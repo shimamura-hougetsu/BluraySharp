@@ -8,7 +8,7 @@
     <ProjectGuid>{DFC6212F-1896-4890-BB9B-4A2B34E8A85B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BluraySharp.Entities</RootNamespace>
+    <RootNamespace>BluraySharp</RootNamespace>
     <AssemblyName>BluraySharp.Entities</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BdRawSerializer.cs" />
+    <Compile Include="BdMemIoContext.cs" />
+    <Compile Include="BdMemIoScope.cs" />
     <Compile Include="Playlist\PlAngleClipInfo.cs" />
     <Compile Include="Playlist\PlAppInfo.cs" />
     <Compile Include="Playlist\PlayList.cs" />

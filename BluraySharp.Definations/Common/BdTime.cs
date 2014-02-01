@@ -4,17 +4,17 @@ namespace BluraySharp.Common
 {
 	public struct BdTime: IBdObject
 	{
-		private uint _Value;
+		private uint value;
 
 		public TimeSpan AsSpan
 		{
 			get
 			{
-				return new TimeSpan(_Value * 2000L / 9);
+				return new TimeSpan(value * 2000L / 9);
 			}
 			set
 			{
-				_Value = (uint) (value.Ticks * 9 / 2000);
+				this.value = (uint) (value.Ticks * 9 / 2000);
 			}
 		}
 
@@ -23,16 +23,16 @@ namespace BluraySharp.Common
 			throw new NotImplementedException();
 		}
 
-		public long SerializeTo(IBdRawSerializeContext context)
+		public long SerializeTo(IBdRawIoContext context)
 		{
-			context.Serialize(_Value);
+			context.Serialize(this.value);
 
 			return context.Offset;
 		}
 
-		public long DeserializeFrom(IBdRawSerializeContext context)
+		public long DeserializeFrom(IBdRawIoContext context)
 		{
-			_Value = context.DeserializeUInt32();
+			this.value = context.DeserializeUInt32();
 
 			return context.Offset;
 		}

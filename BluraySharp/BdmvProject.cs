@@ -24,8 +24,10 @@ namespace BluraySharp
 
 			using (AutoFileMapMem tFileMem = new AutoFileMapMem(file, file.Length, System.IO.MemoryMappedFiles.MemoryMappedFileAccess.Read))
 			{
-				BdRawSerializeContext tRawIo = new BdRawSerializeContext(tFileMem);
-				return tRawIo.Deserialize<PlayList>();
+				using (BdMemIoContext tRawIo = new BdMemIoContext(tFileMem))
+				{
+					return tRawIo.Deserialize<PlayList>();
+				}
 			}
 		}
 
@@ -43,8 +45,10 @@ namespace BluraySharp
 
 			using (AutoFileMapMem tFileMem = new AutoFileMapMem(file, playList.RawLength, System.IO.MemoryMappedFiles.MemoryMappedFileAccess.ReadWrite))
 			{
-				BdRawSerializeContext tRawIo = new BdRawSerializeContext(tFileMem);
-				tRawIo.Serialize(playList);
+				using (BdMemIoContext tRawIo = new BdMemIoContext(tFileMem))
+				{
+					tRawIo.Serialize(playList);
+				}
 			}
 		}
 		
@@ -57,10 +61,18 @@ namespace BluraySharp
 
 			if (!object.ReferenceEquals(src, null))
 			{
-				AutoHeapMem tMem = new AutoHeapMem(src.RawLength);
-				BdRawSerializeContext tRawIo = new BdRawSerializeContext(tMem);
+				using (AutoHeapMem tMem = new AutoHeapMem(src.RawLength))
+				{
+					using (BdMemIoContext tSerializer = new BdMemIoContext(tMem))
+					{
+						tSerializer.Serialize<T>(src);
+					}
 
-				tRawIo.Deserialize<T>(dest);
+					using (BdMemIoContext tDeserializer = new BdMemIoContext(tMem))
+					{
+						tDeserializer.Deserialize<T>(dest);
+					}
+				}
 			}
 		}
 	}
