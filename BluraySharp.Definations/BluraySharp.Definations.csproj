@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BdComponentAttribute.cs" />
     <Compile Include="Common\BdBitwiseValue.cs" />
     <Compile Include="Common\BdConnectionCondition.cs" />
     <Compile Include="Common\BdExtensionData.cs" />
@@ -48,12 +49,14 @@
     <Compile Include="Common\BdTime.cs" />
     <Compile Include="Common\BdUOFlag.cs" />
     <Compile Include="Common\BdUOMask.cs" />
+    <Compile Include="Common\BdLanguageCode.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="IBdComponent.cs" />
     <Compile Include="IBdRawSerializable.cs" />
     <Compile Include="PlayList\IPlAngleClipInfo.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
     <Compile Include="PlayList\IPlStnRecordCodecInfo.cs" />
-    <Compile Include="IBdObject.cs" />
+    <Compile Include="IBdPart.cs" />
     <Compile Include="IBdRawIoContext.cs" />
     <Compile Include="PlayList\IPlAppInfo.cs" />
     <Compile Include="PlayList\IPlayList.cs" />

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace BluraySharp.Playlist
 {
-	public interface IPlStnRecordCodecInfo : IBdObject
+	public interface IPlStnRecordCodecInfo : IBdPart
 	{
 	}
 }

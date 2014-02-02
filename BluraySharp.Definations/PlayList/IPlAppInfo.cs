@@ -2,7 +2,7 @@
 
 namespace BluraySharp.Playlist
 {
-	public interface IPlAppInfo : IBdObject
+	public interface IPlAppInfo : IBdPart
 	{
 		BluraySharp.Playlist.PlPlaybackType PlaybackType { get; set; }
 		ushort PlaybackCount { get; set; }

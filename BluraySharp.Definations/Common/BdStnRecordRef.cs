@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BluraySharp.Common
 {
-	public class BdStnRecordRef : IBdObject
+	public class BdStnRecordRef : IBdPart
 	{
 		private byte value;
 

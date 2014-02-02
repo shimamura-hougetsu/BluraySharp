@@ -11,7 +11,6 @@ namespace BluraySharp.Playlist
 			get { throw new NotImplementedException(); }
 		}
 
-
 		public byte StcId { get; set; }
 		public BdTime InTime { get; set; }
 		public BdTime OutTime { get; set; }
@@ -134,7 +133,7 @@ namespace BluraySharp.Playlist
 					tDataLen += this.multiAngleOption.RawLength;
 				}
 
-				foreach (IBdObject tObj in this.AngleListX)
+				foreach (IBdPart tObj in this.AngleListX)
 				{
 					tDataLen += tObj.RawLength;
 				}

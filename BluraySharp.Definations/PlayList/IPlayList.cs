@@ -1,7 +1,10 @@
 ﻿using System;
+using BluraySharp.Common;
+
 namespace BluraySharp.Playlist
 {
-	public interface IPlayList: IBdObject
+	[BdComponent("PLAYLIST", "$number.mpls", 2000, true)]
+	public interface IPlayList: IBdComponent
 	{
 		string MplsMarkX { get; }
 		string MplsVerX { get; set; }

@@ -2,7 +2,7 @@
 
 namespace BluraySharp.Playlist
 {
-	public class PlSeekingFlags : IBdObject
+	public class PlSeekingFlags : IBdPart
 	{
 		private byte value;
 

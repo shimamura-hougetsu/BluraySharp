@@ -2,7 +2,7 @@
 
 namespace BluraySharp.Playlist
 {
-	public interface IPlStnTable : IBdObject
+	public interface IPlStnTable : IBdPart
 	{
 		IList<IPlStnRecord> this[PlStnRecordTypes index] { get; }
 	}

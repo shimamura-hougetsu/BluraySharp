@@ -84,12 +84,12 @@ namespace BluraySharp.Playlist
 				long tDataLen = sizeof(uint);
 				tDataLen += sizeof(ushort);
 
-				foreach (IBdObject tObj in this.PlayItemsX)
+				foreach (IBdPart tObj in this.PlayItemsX)
 				{
 					tDataLen += tObj.RawLength;
 				}
 
-				foreach (IBdObject tObj in this.SubPathsX)
+				foreach (IBdPart tObj in this.SubPathsX)
 				{
 					tDataLen += tObj.RawLength;
 				}

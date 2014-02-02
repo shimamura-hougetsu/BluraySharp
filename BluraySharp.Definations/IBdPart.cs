@@ -2,7 +2,7 @@
 
 namespace BluraySharp
 {
-	public interface IBdObject: IBdRawSerializable
+	public interface IBdPart: IBdRawSerializable
 	{
 	}
 }

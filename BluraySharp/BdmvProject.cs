@@ -52,7 +52,7 @@ namespace BluraySharp
 			}
 		}
 		
-		public void Copy<T>(T src, T dest) where T : IBdObject
+		public void Copy<T>(T src, T dest) where T : IBdPart
 		{
 			if (object.ReferenceEquals(dest, null))
 			{

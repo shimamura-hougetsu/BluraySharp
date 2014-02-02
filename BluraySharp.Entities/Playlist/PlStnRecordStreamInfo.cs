@@ -2,7 +2,7 @@
 
 namespace BluraySharp.Playlist
 {
-	public class PlStnRecordStreamInfo : IBdObject
+	public class PlStnRecordStreamInfo : IBdPart
 	{
 		public long SerializeTo(IBdRawIoContext context)
 		{

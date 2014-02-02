@@ -3,7 +3,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.Playlist
 {
-	public interface IPlPlayItem : IBdObject
+	public interface IPlPlayItem : IBdPart
 	{
 		byte StcId { get; set; }
 		BdTime InTime { get; set; }

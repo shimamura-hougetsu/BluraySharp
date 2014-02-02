@@ -1,7 +1,7 @@
 ﻿using System;
 namespace BluraySharp.Playlist
 {
-	public interface IPlAngleClipInfo : IBdObject
+	public interface IPlAngleClipInfo : IBdPart
 	{
 		string ClipCodec { get; set; }
 		string ClipFilename { get; set; }
