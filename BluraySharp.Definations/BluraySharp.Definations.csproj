@@ -49,8 +49,15 @@
     <Compile Include="Common\BdTime.cs" />
     <Compile Include="Common\BdUOFlag.cs" />
     <Compile Include="Common\BdUOMask.cs" />
-    <Compile Include="Common\BdLanguageCode.cs" />
+    <Compile Include="Common\BdLangCode.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FileSystem\IBdfsAttribute.cs" />
+    <Compile Include="FileSystem\IBdfsBdmvRoot.cs" />
+    <Compile Include="FileSystem\IBdfsComponentFile.cs" />
+    <Compile Include="FileSystem\IBdfsItem.cs" />
+    <Compile Include="FileSystem\IBdfsComponentFolder.cs" />
+    <Compile Include="FileSystem\IBdfsFolder.cs" />
+    <Compile Include="FileSystem\IBdfsRootFolder.cs" />
     <Compile Include="IBdComponent.cs" />
     <Compile Include="IBdRawSerializable.cs" />
     <Compile Include="PlayList\IPlAngleClipInfo.cs" />
@@ -85,6 +92,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.zh-Hans.resx" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(ProjectDir)postbuild.cmd"</PostBuildEvent>

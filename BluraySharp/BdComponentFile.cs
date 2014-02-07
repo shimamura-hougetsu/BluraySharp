@@ -1,7 +1,10 @@
 ﻿
+using System.IO;
+using System;
+
 namespace BluraySharp
 {
-	public class BdmvComponentFile<T> where T : IBdComponent
+	public class BdmvComponentFile<T> where T : IBdComponent, new()
 	{
 		private int number;
 
@@ -11,13 +14,22 @@ namespace BluraySharp
 			set { number = value; }
 		}
 
-		private Language langCode;
+		private BdLang lang;
 
-		public Language LangCode
+		public BdLang Lang
 		{
-			get { return langCode; }
-			set { langCode = value; }
+			get { return lang; }
+			set { lang = value; }
 		}
-		
+
+		void Load()
+		{
+			throw new NotImplementedException();
+		}
+
+		void Save()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
