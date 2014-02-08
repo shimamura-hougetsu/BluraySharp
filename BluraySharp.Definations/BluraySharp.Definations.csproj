@@ -43,6 +43,7 @@
     <Compile Include="Architecture\IBdTopEntry.cs" />
     <Compile Include="Architecture\BdComponentAttribute.cs" />
     <Compile Include="Architecture\BdTopEntryAttribute.cs" />
+    <Compile Include="ClipInfo\IClipInfo.cs" />
     <Compile Include="Common\BdBitwiseValue.cs" />
     <Compile Include="Common\BdConnectionCondition.cs" />
     <Compile Include="Common\BdExtensionData.cs" />
@@ -63,6 +64,8 @@
     <Compile Include="Architecture\IBdComponent.cs" />
     <Compile Include="Architecture\IBdComponentFactory.cs" />
     <Compile Include="Architecture\IBdRawSerializable.cs" />
+    <Compile Include="FileSystem\IBdfsTopEntryFile.cs" />
+    <Compile Include="JavaObject\IBdJavaObject.cs" />
     <Compile Include="PlayList\IPlAngleClipInfo.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
     <Compile Include="PlayList\IPlStnRecordCodecInfo.cs" />
@@ -87,6 +90,10 @@
     </Compile>
     <Compile Include="Properties\VersionInfo.cs" />
     <Compile Include="Properties\~Revision.cs" />
+    <Compile Include="TopEntry\IBdButtonClickSound.cs" />
+    <Compile Include="TopEntry\IBdIdentifier.cs" />
+    <Compile Include="TopEntry\IBdIndex.cs" />
+    <Compile Include="TopEntry\IBdMovieObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

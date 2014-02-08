@@ -47,6 +47,11 @@ namespace BluraySharp.FileSystem
 
 		public void SaveBackup(T component)
 		{
+			if (!this.compAttrib.IsBackupRequired)
+			{
+				throw new NotSupportedException();
+			}
+
 			string tPath = this.GetBackupPath();
 
 			Save(component, tPath);
@@ -54,6 +59,11 @@ namespace BluraySharp.FileSystem
 
 		public T LoadBackup()
 		{
+			if (!this.compAttrib.IsBackupRequired)
+			{
+				throw new NotSupportedException();
+			}
+
 			string tPath = this.GetBackupPath();
 
 			return Load(tPath);

@@ -43,9 +43,12 @@
     <Compile Include="Architecture\BdEntitiesRegistry.cs" />
     <Compile Include="Architecture\BdMemIoContext.cs" />
     <Compile Include="Architecture\BdMemIoScope.cs" />
+    <Compile Include="FileSystem\BdfsBdmvRoot.cs" />
     <Compile Include="FileSystem\BdfsComponentFile.cs" />
+    <Compile Include="FileSystem\BdfsComponentFolder.cs" />
     <Compile Include="FileSystem\BdfsItem.cs" />
     <Compile Include="FileSystem\BdfsFolder.cs" />
+    <Compile Include="FileSystem\BdfsRootFolder.cs" />
     <Compile Include="Playlist\PlAngleClipInfo.cs" />
     <Compile Include="Playlist\PlAppInfo.cs" />
     <Compile Include="Playlist\PlayList.cs" />

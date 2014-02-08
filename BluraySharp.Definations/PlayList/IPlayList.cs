@@ -4,7 +4,7 @@ using BluraySharp.Architecture;
 
 namespace BluraySharp.Playlist
 {
-	[BdComponent("PLAYLIST", "$number.mpls", 2000, true)]
+	[BdComponent("PLAYLIST", "mpls", 2000, true)]
 	public interface IPlayList: IBdComponent
 	{
 		string MplsMarkX { get; }

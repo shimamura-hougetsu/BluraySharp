@@ -8,7 +8,8 @@ namespace BluraySharp.FileSystem
 {
 	public interface IBdfsItem : IEnumerable<IBdfsItem>
 	{
-		string Name { get; }
+		string Name { get; set; }
+
 		FileSystemInfo DetailedInfo { get; }
 		IBdfsAttribute Attribute { get; }
 

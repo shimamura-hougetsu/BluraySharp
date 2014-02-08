@@ -6,8 +6,20 @@ using System.Text;
 namespace BluraySharp.FileSystem
 {
 	public class BdfsFolder<T> : BdfsItem, IBdfsFolder<T> 
-		where T : BdfsItem
+		where T : IBdfsItem
 	{
+		public override string Name
+		{
+			get
+			{
+				return base.Name;
+			}
+			set
+			{
+				base.Name = value;
+			}
+		}
+
 		public override System.IO.FileSystemInfo DetailedInfo
 		{
 			get
@@ -18,9 +30,17 @@ namespace BluraySharp.FileSystem
 
 		public void Detach(T fsObject)
 		{
-			if (object.ReferenceEquals(fsObject.Parent, this))
+			BdfsItem tFsObj = fsObject as BdfsItem;
+
+			if (object.ReferenceEquals(tFsObj, null))
 			{
-				fsObject.Parent = null;
+				//Invalid argument
+				throw new ArgumentException("fsObject");
+			}
+
+			if (object.ReferenceEquals(tFsObj.Parent, this))
+			{
+				tFsObj.Parent = null;
 			}
 
 			this.children.Remove(fsObject);
@@ -28,14 +48,22 @@ namespace BluraySharp.FileSystem
 
 		public void Attach(T fsObject)
 		{
-			if(object.ReferenceEquals(fsObject, null))
+			BdfsItem tFsObj = fsObject as BdfsItem;
+
+			if (object.ReferenceEquals(tFsObj, null))
 			{
-				throw new ArgumentNullException("fsObject");
+				throw new ArgumentException("fsObject");
 			}
 
-			if(!object.ReferenceEquals(fsObject.Parent, null))
+			if (object.ReferenceEquals(tFsObj.Parent, this))
 			{
-				BdfsFolder<T> tOldParent = this.Parent as BdfsFolder<T>;
+				//Already attached to this.
+				return;
+			}
+			else if (! object.ReferenceEquals(tFsObj.Parent, null))
+			{
+				//tFsObj Attached to other folder, detach it first.
+				BdfsFolder<T> tOldParent = tFsObj.Parent as BdfsFolder<T>;
 
 				if (object.ReferenceEquals(tOldParent, null))
 				{
@@ -46,23 +74,23 @@ namespace BluraySharp.FileSystem
 				tOldParent.Detach(fsObject);
 			}
 
-			fsObject.Parent = this;
+			tFsObj.Parent = this;
 			this.children.Add(fsObject);
 		}
 
-		private List<T> children = new List<T>();
+		protected List<T> children = new List<T>();
 
 		public override IEnumerable<IBdfsItem> Children
 		{
 			get
 			{
-				return base.Children;
+				return (from iChild in this.children select iChild as IBdfsItem);
 			}
 		}
-
+		
 		public override IEnumerator<IBdfsItem> GetEnumerator()
 		{
-			foreach(T tChild in this.children)
+			foreach (T tChild in this.children)
 			{
 				foreach (T tLeafChild in tChild)
 				{

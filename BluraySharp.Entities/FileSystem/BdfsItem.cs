@@ -7,10 +7,10 @@ namespace BluraySharp.FileSystem
 {
 	public abstract class BdfsItem : IBdfsItem
 	{
-		public string Name
+		public virtual string Name
 		{
 			get;
-			protected set;
+			set;
 		}
 
 		public virtual System.IO.FileSystemInfo DetailedInfo
