@@ -1,7 +1,7 @@
 ﻿
 namespace BluraySharp.Architecture
 {
-	public interface IBdComponent : IBdPart
+	public interface IBdArrayEntry : IBdComponentEntry
 	{
 	}
 }

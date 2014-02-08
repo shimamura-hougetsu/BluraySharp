@@ -40,10 +40,16 @@ namespace BluraySharp.FileSystem
 
 			if (object.ReferenceEquals(tFsObj.Parent, this))
 			{
-				tFsObj.Parent = null;
+				if (this.children.Remove(fsObject))
+				{
+					tFsObj.Parent = null;
+				}
+				else
+				{
+					//TODO: Failed; Cannot detach special child.
+					throw new Exception();
+				}
 			}
-
-			this.children.Remove(fsObject);
 		}
 
 		public void Attach(T fsObject)

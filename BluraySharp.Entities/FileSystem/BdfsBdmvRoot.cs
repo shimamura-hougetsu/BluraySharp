@@ -8,19 +8,19 @@ namespace BluraySharp.FileSystem
 			throw new System.NotImplementedException();
 		}
 
-		public IBdfsComponentFolder<Playlist.IPlayList> PlayList
+		public IBdfsArrayEntryFolder<Playlist.IPlayList> PlayList
 		{
 			get;
 			private set;
 		}
 
-		public IBdfsComponentFolder<ClipInfo.IClipInfo> ClipInfo
+		public IBdfsArrayEntryFolder<ClipInfo.IClipInfo> ClipInfo
 		{
 			get;
 			private set;
 		}
 
-		public IBdfsComponentFolder<JavaObject.IBdJavaObject> JavaObject
+		public IBdfsArrayEntryFolder<JavaObject.IBdJavaObject> JavaObject
 		{
 			get;
 			private set;
@@ -53,6 +53,16 @@ namespace BluraySharp.FileSystem
 				yield return this.Index;
 				yield return this.MovieObject;
 			}
+		}
+
+		public BdfsBdmvRoot()
+		{
+			this.ClipInfo = new BdfsArrayEntryFolder<ClipInfo.IClipInfo>(this);
+			this.PlayList = new BdfsArrayEntryFolder<Playlist.IPlayList>(this);
+			this.JavaObject = new BdfsArrayEntryFolder<JavaObject.IBdJavaObject>(this);
+
+			this.Index = new BdfsTopEntryFile<TopEntry.IBdIndex>(this);
+			this.MovieObject = new BdfsTopEntryFile<TopEntry.IBdMovieObject>(this); ;
 		}
 	}
 }

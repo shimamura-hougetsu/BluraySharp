@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Architecture\BdComponentEntryAttribute.cs" />
+    <Compile Include="Architecture\IBdComponentEntry.cs" />
     <Compile Include="Architecture\IBdTopEntry.cs" />
-    <Compile Include="Architecture\BdComponentAttribute.cs" />
+    <Compile Include="Architecture\BdArrayEntryAttribute.cs" />
     <Compile Include="Architecture\BdTopEntryAttribute.cs" />
     <Compile Include="ClipInfo\IClipInfo.cs" />
     <Compile Include="Common\BdBitwiseValue.cs" />
@@ -56,13 +58,14 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FileSystem\IBdfsAttribute.cs" />
     <Compile Include="FileSystem\IBdfsBdmvRoot.cs" />
-    <Compile Include="FileSystem\IBdfsComponentFile.cs" />
+    <Compile Include="FileSystem\IBdfsArrayEntryFile.cs" />
+    <Compile Include="FileSystem\IBdfsComponentEntryFile.cs" />
     <Compile Include="FileSystem\IBdfsItem.cs" />
-    <Compile Include="FileSystem\IBdfsComponentFolder.cs" />
+    <Compile Include="FileSystem\IBdfsArrayEntryFolder.cs" />
     <Compile Include="FileSystem\IBdfsFolder.cs" />
     <Compile Include="FileSystem\IBdfsRootFolder.cs" />
-    <Compile Include="Architecture\IBdComponent.cs" />
-    <Compile Include="Architecture\IBdComponentFactory.cs" />
+    <Compile Include="Architecture\IBdArrayEntry.cs" />
+    <Compile Include="Architecture\IBdEntitiesRegistry.cs" />
     <Compile Include="Architecture\IBdRawSerializable.cs" />
     <Compile Include="FileSystem\IBdfsTopEntryFile.cs" />
     <Compile Include="JavaObject\IBdJavaObject.cs" />

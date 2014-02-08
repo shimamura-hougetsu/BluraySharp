@@ -6,15 +6,9 @@ using BluraySharp.Architecture;
 
 namespace BluraySharp.FileSystem
 {
-	public interface IBdfsComponentFile<T> : IBdfsItem
-		where T : IBdComponent
+	public interface IBdfsArrayEntryFile<T> : IBdfsComponentEntryFile<T>
+		where T : IBdArrayEntry
 	{
 		uint FileId { get; set; }
-
-		void Save(T component);
-		T Load();
-
-		void SaveBackup(T component);
-		T LoadBackup();
 	}
 }

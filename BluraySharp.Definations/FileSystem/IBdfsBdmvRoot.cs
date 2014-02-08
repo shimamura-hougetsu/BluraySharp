@@ -8,9 +8,9 @@ namespace BluraySharp.FileSystem
 {
 	public interface IBdfsBdmvRoot : IBdfsRootFolder
 	{
-		IBdfsComponentFolder<Playlist.IPlayList> PlayList { get; }
-		IBdfsComponentFolder<ClipInfo.IClipInfo> ClipInfo { get; }
-		IBdfsComponentFolder<JavaObject.IBdJavaObject> JavaObject { get; }
+		IBdfsArrayEntryFolder<Playlist.IPlayList> PlayList { get; }
+		IBdfsArrayEntryFolder<ClipInfo.IClipInfo> ClipInfo { get; }
+		IBdfsArrayEntryFolder<JavaObject.IBdJavaObject> JavaObject { get; }
 
 		IBdfsTopEntryFile<IBdIndex> Index { get; }
 		IBdfsTopEntryFile<IBdMovieObject> MovieObject { get; }

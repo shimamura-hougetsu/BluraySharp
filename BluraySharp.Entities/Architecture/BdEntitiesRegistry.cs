@@ -8,43 +8,30 @@ namespace BluraySharp.Architecture
 	//Singleton
 	public class BdEntitiesRegistry : IBdEntitiesRegistry
 	{
-		private delegate IBdComponent ComponentCreator();
-		private readonly Dictionary<string, ComponentCreator> comCtorTable = new Dictionary<string, ComponentCreator>();
-		private readonly Dictionary<string, BdComponentAttribute> comAttrTable = new Dictionary<string, BdComponentAttribute>();
+		private delegate IBdComponentEntry ComponentCreator();
+		private readonly Dictionary<string, ComponentCreator> ctorTable = new Dictionary<string, ComponentCreator>();
 
-		private delegate IBdTopEntry TopEntryCreator();
-		private readonly Dictionary<string, TopEntryCreator> teCtorTable = new Dictionary<string, TopEntryCreator>();
-		private readonly Dictionary<string, BdTopEntryAttribute> teAttrTable = new Dictionary<string, BdTopEntryAttribute>();
+		private readonly Dictionary<string, BdComponentEntryAttribute> attrTable = new Dictionary<string, BdComponentEntryAttribute>();
 
-		public T CreateComponent<T>() where T : IBdComponent
+		public T CreateEntry<T>() where T : IBdComponentEntry
 		{
-			return (T)comCtorTable[typeof(T).FullName]();
+			return (T) ctorTable[typeof(T).FullName]();
 		}
 
-		public T CreateTopEntry<T>() where T : IBdTopEntry
+		public BdComponentEntryAttribute GetEntryAttribute<T>() where T : IBdComponentEntry
 		{
-			return (T)teCtorTable[typeof(T).FullName]();
+			return attrTable[typeof(T).FullName];
 		}
 
-		public BdComponentAttribute GetComponentAttribute<T>() where T : IBdComponent
-		{
-			return comAttrTable[typeof(T).FullName];
-		}
-
-		public BdTopEntryAttribute GetTopEntryAttribute<T>() where T : IBdTopEntry
-		{
-			return teAttrTable[typeof(T).FullName];
-		}
-
-		private void RegisterComponent<T, I>() 
+		private void RegisterArrayEntry<T, I>() 
 			where T : I, new()
-			where I : IBdComponent
+			where I : IBdArrayEntry
 		{
-			comAttrTable.Add(
+			attrTable.Add(
 					typeof(I).FullName, 
-					typeof(T).GetCustomAttributes(typeof(BdComponentAttribute), true)[0] as BdComponentAttribute
+					typeof(T).GetCustomAttributes(typeof(BdArrayEntryAttribute), true)[0] as BdArrayEntryAttribute
 				);
-			comCtorTable.Add(
+			ctorTable.Add(
 					typeof(I).FullName,
 					() => new T()
 				);
@@ -54,11 +41,11 @@ namespace BluraySharp.Architecture
 			where T : I, new()
 			where I : IBdTopEntry
 		{
-			teAttrTable.Add(
+			attrTable.Add(
 					typeof(I).FullName,
 					typeof(T).GetCustomAttributes(typeof(BdTopEntryAttribute), true)[0] as BdTopEntryAttribute
 				);
-			teCtorTable.Add(
+			ctorTable.Add(
 					typeof(I).FullName,
 					() => new T()
 				);
@@ -75,7 +62,7 @@ namespace BluraySharp.Architecture
 
 		private BdEntitiesRegistry()
 		{
-			this.RegisterComponent<Playlist.PlayList, Playlist.IPlayList>();
+			this.RegisterArrayEntry<Playlist.PlayList, Playlist.IPlayList>();
 		}
 	}
 }

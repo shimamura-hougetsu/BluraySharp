@@ -5,15 +5,8 @@ using System.Text;
 
 namespace BluraySharp.Architecture
 {
-	public class BdTopEntryAttribute : Attribute
+	public class BdTopEntryAttribute : BdComponentEntryAttribute
 	{
-		private bool isBackupRequired;
-		public bool IsBackupRequired
-		{
-			get { return isBackupRequired; }
-			set { isBackupRequired = value; }
-		}
-
 		private string filename;
 		public string FileName
 		{
@@ -22,9 +15,9 @@ namespace BluraySharp.Architecture
 		}
 
 		public BdTopEntryAttribute(string filename, bool isBackupRequired)
+			: base("bdmv", isBackupRequired)
 		{
 			this.filename = filename;
-			this.isBackupRequired = isBackupRequired;
 		}
 	}
 }

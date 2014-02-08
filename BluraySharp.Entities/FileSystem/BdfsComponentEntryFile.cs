@@ -1,41 +1,20 @@
 ﻿using System;
 using BluraySharp.Architecture;
-using BluraySharp.Common;
 using System.IO;
 using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp.FileSystem
 {
-	public class BdfsComponentFile<T> : BdfsItem, IBdfsComponentFile<T>
-		where T : IBdComponent
+	public class BdfsComponentEntryFile<T> : BdfsItem, IBdfsComponentEntryFile<T>
+		where T : IBdComponentEntry
 	{
-		private BdComponentAttribute compAttrib = BdEntitiesRegistry.Instance.GetComponentAttribute<T>();
+		private BdComponentEntryAttribute compAttrib = BdEntitiesRegistry.Instance.GetEntryAttribute<T>();
 
-		private uint fileId;
-		public uint FileId
-		{
-			get
-			{
-				return fileId;
-			}
-			set
-			{
-				if (value > this.compAttrib.MaxSerialNumber)
-				{
-					//TODO: invalid file id;
-					throw new Exception();
-				}
-
-				this.Name = string.Format("{0:5}.{1}", value, this.compAttrib.Extension);
-				fileId = value;
-			}
-		}
-
-		public void Save(T component)
+		public void Save(T entry)
 		{
 			string tPath = this.GetFullPath();
 
-			Save(component, tPath);
+			Save(entry, tPath);
 		}
 
 		public T Load()
@@ -45,7 +24,7 @@ namespace BluraySharp.FileSystem
 			return Load(tPath);
 		}
 
-		public void SaveBackup(T component)
+		public void SaveBackup(T entry)
 		{
 			if (!this.compAttrib.IsBackupRequired)
 			{
@@ -54,7 +33,7 @@ namespace BluraySharp.FileSystem
 
 			string tPath = this.GetBackupPath();
 
-			Save(component, tPath);
+			Save(entry, tPath);
 		}
 
 		public T LoadBackup()
@@ -69,7 +48,7 @@ namespace BluraySharp.FileSystem
 			return Load(tPath);
 		}
 
-		private static void Save(T component, string tPath)
+		private static void Save(T entry, string tPath)
 		{
 			using (FileStream tFile = new FileStream(tPath, FileMode.Create, FileAccess.ReadWrite))
 			{
@@ -77,7 +56,7 @@ namespace BluraySharp.FileSystem
 				{
 					using (BdMemIoContext tRawIo = new BdMemIoContext(tFileMem))
 					{
-						tRawIo.Serialize(component);
+						tRawIo.Serialize(entry);
 					}
 				}
 			}
@@ -91,7 +70,7 @@ namespace BluraySharp.FileSystem
 				{
 					using (BdMemIoContext tRawIo = new BdMemIoContext(tFileMem))
 					{
-						T tRet = BdEntitiesRegistry.Instance.CreateComponent<T>();
+						T tRet = BdEntitiesRegistry.Instance.CreateEntry<T>();
 						tRawIo.Deserialize(tRet);
 
 						return tRet;
