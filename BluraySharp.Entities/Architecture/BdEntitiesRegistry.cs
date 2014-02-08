@@ -5,7 +5,8 @@ using System.Text;
 
 namespace BluraySharp.Architecture
 {
-	public class BdComponentFactory : IBdEntitiesRegistry
+	//Singleton
+	public class BdEntitiesRegistry : IBdEntitiesRegistry
 	{
 		private delegate IBdComponent ComponentCreator();
 		private readonly Dictionary<string, ComponentCreator> comCtorTable = new Dictionary<string, ComponentCreator>();
@@ -63,7 +64,16 @@ namespace BluraySharp.Architecture
 				);
 		}
 
-		public BdComponentFactory()
+		private static BdEntitiesRegistry instance = new BdEntitiesRegistry();
+		public static BdEntitiesRegistry Instance
+		{
+			get
+			{
+				return instance;
+			}
+		}
+
+		private BdEntitiesRegistry()
 		{
 			this.RegisterComponent<Playlist.PlayList, Playlist.IPlayList>();
 		}

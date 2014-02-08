@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace BluraySharp.FileSystem
 {
-	public interface IBdfsItem
+	public interface IBdfsItem : IEnumerable<IBdfsItem>
 	{
 		string Name { get; }
+		FileSystemInfo DetailedInfo { get; }
 		IBdfsAttribute Attribute { get; }
 
 		IBdfsItem Parent { get; }
 		IEnumerable<IBdfsItem> Children { get; }
-
-		string ToString();
+		
+		string GetFullPath();
+		string GetBackupPath();
 	}
 }

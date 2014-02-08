@@ -73,18 +73,7 @@ namespace BluraySharp.Architecture
 		{
 			T tObject = new T();
 
-			long tOffset = 0;
-			this.EnterScope();
-			try
-			{
-				tOffset = tObject.DeserializeFrom(this);
-			}
-			finally
-			{
-				this.ExitScope();
-				scope.Offset += tOffset;
-			}
-
+			this.Deserialize<T>(tObject);
 			return tObject;
 		}
 

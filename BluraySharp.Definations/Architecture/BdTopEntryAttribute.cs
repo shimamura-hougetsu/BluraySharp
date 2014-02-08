@@ -7,44 +7,24 @@ namespace BluraySharp.Architecture
 {
 	public class BdTopEntryAttribute : Attribute
 	{
-		private bool requireBackup;
-
-		private string folderName;
-
-		public string FolderName
+		private bool isBackupRequired;
+		public bool IsBackupRequired
 		{
-			get { return folderName; }
-			set { folderName = value; }
-		}
-		
-		private int maxSerialNumber;
-
-		public int MaxSerialNumber
-		{
-			get { return maxSerialNumber; }
-			set { maxSerialNumber = value; }
+			get { return isBackupRequired; }
+			set { isBackupRequired = value; }
 		}
 
-		private string extension;
-
-		public string Extension
+		private string filename;
+		public string FileName
 		{
-			get { return extension; }
-			set { extension = value; }
+			get { return filename; }
+			set { filename = value; }
 		}
 
-		public bool RequireBackup
+		public BdTopEntryAttribute(string filename, bool isBackupRequired)
 		{
-			get { return requireBackup; }
-			set { requireBackup = value; }
-		}
-
-		public BdTopEntryAttribute(string folderName, string extension, int maxSerialNumber, bool requireBackup)
-		{
-			this.folderName = folderName;
-			this.extension = extension;
-			this.maxSerialNumber = maxSerialNumber;
-			this.requireBackup = requireBackup;
+			this.filename = filename;
+			this.isBackupRequired = isBackupRequired;
 		}
 	}
 }

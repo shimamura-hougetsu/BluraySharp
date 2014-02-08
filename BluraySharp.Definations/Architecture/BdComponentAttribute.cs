@@ -7,7 +7,13 @@ namespace BluraySharp.Architecture
 {
 	public class BdComponentAttribute : Attribute
 	{
-		private bool requireBackup;
+		private bool isBackupRequired;
+
+		public bool IsBackupRequired
+		{
+			get { return isBackupRequired; }
+			set { isBackupRequired = value; }
+		}
 
 		private string folderName;
 
@@ -33,18 +39,12 @@ namespace BluraySharp.Architecture
 			set { extension = value; }
 		}
 
-		public bool RequireBackup
-		{
-			get { return requireBackup; }
-			set { requireBackup = value; }
-		}
-
-		public BdComponentAttribute(string folderName, string extension, int maxSerialNumber, bool requireBackup)
+		public BdComponentAttribute(string folderName, string extension, int maxSerialNumber, bool isBackupRequired)
 		{
 			this.folderName = folderName;
 			this.extension = extension;
 			this.maxSerialNumber = maxSerialNumber;
-			this.requireBackup = requireBackup;
+			this.isBackupRequired = isBackupRequired;
 		}
 	}
 }
