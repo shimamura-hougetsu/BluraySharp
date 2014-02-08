@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp
+namespace BluraySharp.Architecture
 {
 	public interface IBdRawSerializable
 	{

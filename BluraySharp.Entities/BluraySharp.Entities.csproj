@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BdMemIoContext.cs" />
-    <Compile Include="BdMemIoScope.cs" />
+    <Compile Include="Architecture\BdComponentFactory.cs" />
+    <Compile Include="Architecture\BdMemIoContext.cs" />
+    <Compile Include="Architecture\BdMemIoScope.cs" />
+    <Compile Include="FileSystem\BdfsComponentFile.cs" />
+    <Compile Include="FileSystem\BdfsFile.cs" />
     <Compile Include="Playlist\PlAngleClipInfo.cs" />
     <Compile Include="Playlist\PlAppInfo.cs" />
     <Compile Include="Playlist\PlayList.cs" />

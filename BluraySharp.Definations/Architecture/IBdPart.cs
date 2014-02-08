@@ -1,6 +1,6 @@
 ﻿using BluraySharp;
 
-namespace BluraySharp
+namespace BluraySharp.Architecture
 {
 	public interface IBdPart: IBdRawSerializable
 	{

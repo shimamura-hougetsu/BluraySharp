@@ -1,5 +1,5 @@
 ﻿
-namespace BluraySharp
+namespace BluraySharp.Architecture
 {
 	public interface IBdComponent : IBdPart
 	{

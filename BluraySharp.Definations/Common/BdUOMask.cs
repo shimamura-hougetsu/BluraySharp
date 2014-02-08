@@ -1,5 +1,7 @@
 ﻿using System.Text;
 using System;
+using BluraySharp.Architecture;
+
 namespace BluraySharp.Common
 {
 	public class BdUOMask : IBdPart

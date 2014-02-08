@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BdComponentAttribute.cs" />
+    <Compile Include="Architecture\IBdTopEntry.cs" />
+    <Compile Include="Architecture\BdComponentAttribute.cs" />
+    <Compile Include="Architecture\BdTopEntryAttribute.cs" />
     <Compile Include="Common\BdBitwiseValue.cs" />
     <Compile Include="Common\BdConnectionCondition.cs" />
     <Compile Include="Common\BdExtensionData.cs" />
@@ -58,13 +60,14 @@
     <Compile Include="FileSystem\IBdfsComponentFolder.cs" />
     <Compile Include="FileSystem\IBdfsFolder.cs" />
     <Compile Include="FileSystem\IBdfsRootFolder.cs" />
-    <Compile Include="IBdComponent.cs" />
-    <Compile Include="IBdRawSerializable.cs" />
+    <Compile Include="Architecture\IBdComponent.cs" />
+    <Compile Include="Architecture\IBdComponentFactory.cs" />
+    <Compile Include="Architecture\IBdRawSerializable.cs" />
     <Compile Include="PlayList\IPlAngleClipInfo.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
     <Compile Include="PlayList\IPlStnRecordCodecInfo.cs" />
-    <Compile Include="IBdPart.cs" />
-    <Compile Include="IBdRawIoContext.cs" />
+    <Compile Include="Architecture\IBdPart.cs" />
+    <Compile Include="Architecture\IBdRawIoContext.cs" />
     <Compile Include="PlayList\IPlAppInfo.cs" />
     <Compile Include="PlayList\IPlayList.cs" />
     <Compile Include="PlayList\IPlMarkList.cs" />

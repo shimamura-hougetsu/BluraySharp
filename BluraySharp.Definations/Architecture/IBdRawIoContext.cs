@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BluraySharp
+namespace BluraySharp.Architecture
 {
 	public interface IBdRawIoContext
 	{

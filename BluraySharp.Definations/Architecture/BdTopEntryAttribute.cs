@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.Common
+namespace BluraySharp.Architecture
 {
-	public class BdComponentAttribute : Attribute
+	public class BdTopEntryAttribute : Attribute
 	{
 		private bool requireBackup;
 
-		private string pathPattern;
+		private string folderName;
 
-		public string PathPattern
+		public string FolderName
 		{
-			get { return pathPattern; }
-			set { pathPattern = value; }
+			get { return folderName; }
+			set { folderName = value; }
 		}
 		
 		private int maxSerialNumber;
@@ -25,12 +25,12 @@ namespace BluraySharp.Common
 			set { maxSerialNumber = value; }
 		}
 
-		private string namePattern;
+		private string extension;
 
-		public string NamePattern
+		public string Extension
 		{
-			get { return namePattern; }
-			set { namePattern = value; }
+			get { return extension; }
+			set { extension = value; }
 		}
 
 		public bool RequireBackup
@@ -39,10 +39,10 @@ namespace BluraySharp.Common
 			set { requireBackup = value; }
 		}
 
-		public BdComponentAttribute(string pathPattern, string namePattern, int maxSerialNumber, bool requireBackup)
+		public BdTopEntryAttribute(string folderName, string extension, int maxSerialNumber, bool requireBackup)
 		{
-			this.pathPattern = pathPattern;
-			this.namePattern = namePattern;
+			this.folderName = folderName;
+			this.extension = extension;
 			this.maxSerialNumber = maxSerialNumber;
 			this.requireBackup = requireBackup;
 		}

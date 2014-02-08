@@ -1,6 +1,7 @@
 ﻿using System;
-using BluraySharp.Common;
 using System.Xml.Serialization;
+using BluraySharp.Architecture;
+using BluraySharp.Common;
 
 namespace BluraySharp.Playlist
 {

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Globalization;
+using BluraySharp.Architecture;
 
 namespace BluraySharp
 {
@@ -35,7 +33,7 @@ namespace BluraySharp
 		/// Get raw-size of a BDAV object
 		/// </summary>
 		/// <param name="obj">BDAV object</param>
-		/// <returns>Bytes occupying by the object</returns>
+		/// <returns>Bytes occupied by the object</returns>
 		public static long GetRawLength(this IBdPart obj)
 		{
 			if (object.ReferenceEquals(obj, null))

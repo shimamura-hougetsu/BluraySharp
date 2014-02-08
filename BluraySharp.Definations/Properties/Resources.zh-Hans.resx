@@ -133,13 +133,13 @@
     <value>切换视角</value>
   </data>
   <data name="Enum_BdUOFlag_BackwardPlay" xml:space="preserve">
-    <value>逆向播放</value>
+    <value>后跳</value>
   </data>
   <data name="Enum_BdUOFlag_ChapterSearch" xml:space="preserve">
-    <value>Chapter跳转</value>
+    <value>章节跳转</value>
   </data>
   <data name="Enum_BdUOFlag_ForwardPlay" xml:space="preserve">
-    <value>正向播放</value>
+    <value>前跳</value>
   </data>
   <data name="Enum_BdUOFlag_MoveDownSelectedButton" xml:space="preserve">
     <value>选择下方按钮</value>
@@ -187,10 +187,10 @@
     <value>禁用/启用画中画轨(保留)</value>
   </data>
   <data name="Enum_BdUOFlag_ReservedForPlayFirstplay" xml:space="preserve">
-    <value>播放Firstplay(保留)</value>
+    <value>播放起始画面(保留)</value>
   </data>
   <data name="Enum_BdUOFlag_ReservedForTitleSearch" xml:space="preserve">
-    <value>Title跳转(保留)</value>
+    <value>主标题跳转(保留)</value>
   </data>
   <data name="Enum_BdUOFlag_Resume" xml:space="preserve">
     <value>继续</value>
@@ -214,10 +214,10 @@
     <value>选择按钮</value>
   </data>
   <data name="Enum_BdUOFlag_SkipToNextPoint" xml:space="preserve">
-    <value>前跳</value>
+    <value>章节前跳</value>
   </data>
   <data name="Enum_BdUOFlag_SkipToPrevPoint" xml:space="preserve">
-    <value>回跳</value>
+    <value>章节回跳</value>
   </data>
   <data name="Enum_BdUOFlag_Still" xml:space="preserve">
     <value>画面静止</value>

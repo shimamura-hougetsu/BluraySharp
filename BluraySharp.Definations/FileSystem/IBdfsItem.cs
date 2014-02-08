@@ -13,9 +13,6 @@ namespace BluraySharp.FileSystem
 		IBdfsItem Parent { get; }
 		IEnumerable<IBdfsItem> Children { get; }
 
-		IBdfsItem FindObjectByPath(string pathString, string splitter=@"\");
-		string GetFullPath();
-
 		string ToString();
 	}
 }

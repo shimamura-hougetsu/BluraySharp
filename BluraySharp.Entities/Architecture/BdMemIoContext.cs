@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using LibElfin.WinApi;
 using LibElfin.WinApi.MemoryBlock;
 
-namespace BluraySharp
+namespace BluraySharp.Architecture
 {
 	public class BdMemIoContext : IDisposable, IBdRawIoContext
 	{
