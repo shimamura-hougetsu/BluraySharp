@@ -8,7 +8,7 @@ namespace BluraySharp.FileSystem
 	public class BdfsComponentEntryFile<T> : BdfsItem, IBdfsComponentEntryFile<T>
 		where T : IBdComponentEntry
 	{
-		private BdComponentEntryAttribute compAttrib = BdEntitiesRegistry.Instance.GetEntryAttribute<T>();
+		protected BdComponentEntryAttribute compAttrib = BdEntitiesRegistry.Instance.GetEntryAttribute<T>();
 
 		public void Save(T entry)
 		{

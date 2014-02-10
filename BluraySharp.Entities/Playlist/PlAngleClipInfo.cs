@@ -7,7 +7,8 @@ namespace BluraySharp.Playlist
 	{
 		private string clipCodec = "M2TS";
 
-		public string ClipCodec {
+		public string ClipCodec
+		{
 			get
 			{
 				return clipCodec;
@@ -21,28 +22,16 @@ namespace BluraySharp.Playlist
 			}
 		}
 
-		private uint clipFilename = 0;
-		public string ClipFilename
+		private uint clipId = 0;
+		public uint ClipId
 		{
 			get
 			{
-				return clipFilename.ToString("D5");
+				return this.clipId;
 			}
 			set
 			{
-				if(value == null)
-				{
-					throw new ArgumentNullException("value");
-				}
-
-				uint tId = uint.Parse(value);
-
-				if (tId < 0 || tId > 99999u)
-				{
-					throw new ArgumentException("value");
-				}
-
-				clipFilename = tId;
+				this.clipId = value;
 			}
 		}
 
@@ -53,7 +42,16 @@ namespace BluraySharp.Playlist
 
 		public long DeserializeFrom(IBdRawIoContext context)
 		{
-			this.ClipFilename = context.DeserializeString(5);
+			string tIdString = context.DeserializeString(5);
+			uint tId = uint.Parse(tIdString);
+
+			if (tId < 0 || tId > 99999u)
+			{
+				//Invalid ClipId
+				throw new ArgumentException("value");
+			}
+
+			this.ClipId = tId;
 			this.ClipCodec = context.DeserializeString(4);
 
 			return context.Offset;
@@ -63,13 +61,13 @@ namespace BluraySharp.Playlist
 		{
 			get
 			{
-				return ClipFilename.Length + ClipCodec.Length;
+				return sizeof(uint) + ClipCodec.Length;
 			}
 		}
 
 		public override string ToString()
 		{
-			return ClipFilename + ClipCodec;
+			return ClipId + ClipCodec;
 		}
 	}
 }

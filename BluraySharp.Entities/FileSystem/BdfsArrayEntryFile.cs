@@ -9,9 +9,6 @@ namespace BluraySharp.FileSystem
 	public class BdfsArrayEntryFile<T> : BdfsComponentEntryFile<T>, IBdfsArrayEntryFile<T>
 		where T : IBdArrayEntry
 	{
-		private BdArrayEntryAttribute compAttrib =
-			BdEntitiesRegistry.Instance.GetEntryAttribute<T>() as BdArrayEntryAttribute;
-
 		private uint fileId;
 		public uint FileId
 		{
@@ -21,13 +18,15 @@ namespace BluraySharp.FileSystem
 			}
 			set
 			{
-				if (value > this.compAttrib.MaxSerialNumber)
+				BdArrayEntryAttribute tCompAttrib = compAttrib as BdArrayEntryAttribute;
+
+				if (value > tCompAttrib.MaxSerialNumber)
 				{
 					//TODO: invalid file id;
 					throw new Exception();
 				}
 
-				this.Name = string.Format("{0:5}.{1}", value, this.compAttrib.Extension);
+				this.Name = string.Format("{0:5}.{1}", value, tCompAttrib.Extension);
 				fileId = value;
 			}
 		}

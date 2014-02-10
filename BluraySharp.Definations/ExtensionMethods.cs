@@ -5,7 +5,7 @@ using BluraySharp.Architecture;
 namespace BluraySharp
 {
 	/// <summary>
-	/// Extension methods for all BDAV basic classes.
+	/// Extension methods for all BDMV basic classes.
 	/// </summary>
 	public static class ExtensionMethods
 	{
@@ -30,9 +30,9 @@ namespace BluraySharp
 		}
 
 		/// <summary>
-		/// Get raw-size of a BDAV object
+		/// Get raw-size of a BDMV object
 		/// </summary>
-		/// <param name="obj">BDAV object</param>
+		/// <param name="obj">BDMV object</param>
 		/// <returns>Bytes occupied by the object</returns>
 		public static long GetRawLength(this IBdPart obj)
 		{

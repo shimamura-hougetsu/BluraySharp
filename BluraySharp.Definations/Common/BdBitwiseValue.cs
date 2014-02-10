@@ -16,7 +16,7 @@ namespace BluraySharp.Common
 		/// </summary>
 		public BdBitwise8(): this(0) { }
 		/// <summary>
-		/// Ctor will initial value
+		/// Ctor with initial value
 		/// </summary>
 		/// <param name="value">Initial value</param>
 		public BdBitwise8(System.Byte value) : base(value) { }
@@ -56,7 +56,7 @@ namespace BluraySharp.Common
 		public delegate ulong Importer(object value);
 		public delegate object Exporter(ulong value);
 
-		public struct BdBitwiseValueType
+		protected class BdBitwiseValueType
 		{
 			public byte Size;
 			public Reader Reader;
@@ -65,10 +65,10 @@ namespace BluraySharp.Common
 			public Exporter Exporter;
 		}
 
-		private static Dictionary<string, BdBitwiseValueType> _ValueTypes = new Dictionary<string, BdBitwiseValueType>()
+		private static readonly Dictionary<string, BdBitwiseValueType> _ValueTypes = new Dictionary<string, BdBitwiseValueType>()
 		{
 			{
-				"System.Byte", 
+				typeof(Byte).FullName, 
 				new BdBitwiseValueType()
 				{
 					Size = 1,
@@ -80,7 +80,7 @@ namespace BluraySharp.Common
 			},
 
 			{
-				"System.UInt16",
+				typeof(UInt16).FullName, 
 				new BdBitwiseValueType()
 				{
 					Size = 2,
@@ -92,7 +92,7 @@ namespace BluraySharp.Common
 			},
 
 			{
-				"System.UInt32",
+				typeof(UInt32).FullName, 
 				new BdBitwiseValueType()
 				{
 					Size = 4,
@@ -104,7 +104,7 @@ namespace BluraySharp.Common
 			},
 
 			{
-				"System.UInt64",
+				typeof(UInt64).FullName, 
 				new BdBitwiseValueType()
 				{
 					Size = 8,
@@ -121,7 +121,7 @@ namespace BluraySharp.Common
 			ValueTypeDesc = _ValueTypes[baseType];
 		}
 
-		public BdBitwiseValueType ValueTypeDesc { get; private set; }
+		protected BdBitwiseValueType ValueTypeDesc { get; private set; }
 	}
 
 	internal abstract class BdBitwiseValue<T> : BdBitwiseValue, IBdPart
