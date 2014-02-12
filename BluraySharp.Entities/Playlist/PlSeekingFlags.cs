@@ -1,7 +1,7 @@
 ﻿using System;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	public class PlSeekingFlags : IBdPart
 	{

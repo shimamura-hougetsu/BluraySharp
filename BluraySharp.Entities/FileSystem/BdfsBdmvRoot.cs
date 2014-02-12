@@ -8,7 +8,7 @@ namespace BluraySharp.FileSystem
 			throw new System.NotImplementedException();
 		}
 
-		public IBdfsArrayEntryFolder<Playlist.IPlayList> PlayList
+		public IBdfsArrayEntryFolder<PlayList.IPlayList> PlayList
 		{
 			get;
 			private set;
@@ -58,7 +58,7 @@ namespace BluraySharp.FileSystem
 		public BdfsBdmvRoot()
 		{
 			this.ClipInfo = new BdfsArrayEntryFolder<ClipInfo.IClipInfo>(this);
-			this.PlayList = new BdfsArrayEntryFolder<Playlist.IPlayList>(this);
+			this.PlayList = new BdfsArrayEntryFolder<PlayList.IPlayList>(this);
 			this.JavaObject = new BdfsArrayEntryFolder<JavaObject.IBdJavaObject>(this);
 
 			this.Index = new BdfsTopEntryFile<TopEntry.IBdIndex>(this);

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using BluraySharp.Common;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
-	public class PlSubPath : BluraySharp.Playlist.IPlSubPath
+	public class PlSubPath : BluraySharp.PlayList.IPlSubPath
 	{
 		public IList<IPlPlayItem> PlayItems
 		{

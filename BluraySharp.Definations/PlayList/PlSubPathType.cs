@@ -1,5 +1,5 @@
 ﻿
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	public enum PlSubPathType : byte
 	{
@@ -11,26 +11,26 @@ namespace BluraySharp.Playlist
 		/// <summary>
 		/// Interactive Graphic Menu
 		/// </summary>
-		IgMenu,
+		IgMenu = 0x03,
 
 		/// <summary>
 		/// Text Subtitle
 		/// </summary>
-		TextSub,
+		TextSub = 0x04,
 
 		/// <summary>
 		/// (Out of Mux) Synchronous Type of one or more Streams and PiP
 		/// </summary>
-		OoMSync,
+		OoMSync = 0x05,
 
 		/// <summary>
 		/// (Out of Mux) Asynchronous Type of Pip
 		/// </summary>
-		OoMAsync,
+		OoMAsync = 0x06,
 
 		/// <summary>
 		/// (In Mux) Synchronous Type of PiP
 		/// </summary>
-		IMSync,
+		IMSync = 0x07,
 	}
 }

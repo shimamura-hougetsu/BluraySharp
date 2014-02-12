@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
-	public class PlPlayItemList : BluraySharp.Playlist.IPlPlayItemList
+	public class PlPlayItemList : BluraySharp.PlayList.IPlPlayItemList
 	{
 
 		public IPlPlayItem CreatePlayItem()

@@ -64,7 +64,7 @@ namespace BluraySharp.Architecture
 
 		private BdEntitiesRegistry()
 		{
-			this.RegisterArrayEntry<Playlist.PlayList, Playlist.IPlayList>();
+			this.RegisterArrayEntry<PlayList.PlayList, PlayList.IPlayList>();
 		}
 	}
 }

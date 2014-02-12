@@ -5,10 +5,8 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public enum PlPlaybackType : byte
+	public interface IPlStnInMuxPipStreamEntryProperties : IPlStnStreamEntry
 	{
-		Sequential = 1,
-		Random = 2,
-		Shuffle = 3,
+		byte SubPathId { get; set; }
 	}
 }

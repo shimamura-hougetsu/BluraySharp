@@ -2,7 +2,7 @@
 using BluraySharp.Common;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	[BdArrayEntry("PLAYLIST", "mpls", 2000, true)]
 	public interface IPlayList: IBdArrayEntry
@@ -10,9 +10,9 @@ namespace BluraySharp.Playlist
 		string MplsMarkX { get; }
 		string MplsVerX { get; set; }
 
-		BluraySharp.Playlist.IPlAppInfo ApplicationInfo { get; }
-		BluraySharp.Playlist.IPlPlayItemList PlayItemList { get; }
-		BluraySharp.Playlist.IPlMarkList MarkList { get; }
+		BluraySharp.PlayList.IPlAppInfo ApplicationInfo { get; }
+		BluraySharp.PlayList.IPlPlayItemList PlayItemList { get; }
+		BluraySharp.PlayList.IPlMarkList MarkList { get; }
 		BluraySharp.Common.BdExtensionData ExtensionDataX { get; set; }
 
 		IPlAppInfo CreateAppInfo();

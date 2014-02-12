@@ -1,9 +1,9 @@
 ﻿using System;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
-	public class PlMarkList : BluraySharp.Playlist.IPlMarkList
+	public class PlMarkList : BluraySharp.PlayList.IPlMarkList
 	{
 		private byte[] value = new byte[0];
 

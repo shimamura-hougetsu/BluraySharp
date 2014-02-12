@@ -1,9 +1,9 @@
 ﻿using System;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
-	public class PlAngleClipInfo : BluraySharp.Playlist.IPlAngleClipInfo
+	public class PlAngleClipInfo : IPlAngleClipInfo
 	{
 		private string clipCodec = "M2TS";
 

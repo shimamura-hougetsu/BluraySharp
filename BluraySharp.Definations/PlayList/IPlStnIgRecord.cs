@@ -5,10 +5,7 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public enum PlPlaybackType : byte
+	public interface IPlStnIgRecord
 	{
-		Sequential = 1,
-		Random = 2,
-		Shuffle = 3,
 	}
 }

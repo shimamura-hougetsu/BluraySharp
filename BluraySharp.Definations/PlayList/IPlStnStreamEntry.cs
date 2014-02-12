@@ -3,7 +3,8 @@ using BluraySharp.Architecture;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlMarkList : IBdPart
+	public interface IPlStnStreamEntry : IBdPart
 	{
+		ushort StreamProgId { get; set; }
 	}
 }

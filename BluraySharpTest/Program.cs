@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using BluraySharp;
-using BluraySharp.Playlist;
+using BluraySharp.PlayList;
 
 namespace BluraySharpTest
 {
@@ -19,7 +19,7 @@ namespace BluraySharpTest
 			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
 			{
 				BdmvContext tContext = new BdmvContext();
-				IPlayList tMpls = tContext.OpenComponent<IPlayList>(tFileStream);
+				IPlayList tMpls = tContext.OpenComponentFile<IPlayList>(tFileStream);
 
 				System.Diagnostics.Debug.WriteLine(
 				        tMpls.PlayItemList.PlayItems[0].ConnectionCondition.ToStringLocalized()

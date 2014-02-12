@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using BluraySharp.Architecture;
-using BluraySharp.Playlist;
+using BluraySharp.PlayList;
 
 namespace BluraySharp
 {
@@ -11,10 +11,10 @@ namespace BluraySharp
 
 		public IPlayList CreatePlayList()
 		{
-			return new PlayList();
+			return new PlayList.PlayList();
 		}
 
-		public T OpenComponent<T>(FileStream file) where T: IBdComponentEntry
+		public T OpenComponentFile<T>(FileStream file) where T: IBdComponentEntry
 		{
 			if (object.ReferenceEquals(file, null))
 			{
@@ -28,7 +28,7 @@ namespace BluraySharp
 			return tRet;
 		}
 
-		public void SaveComponent<T>(FileStream file, T component) where T: IBdComponentEntry
+		public void SaveComponentFile<T>(FileStream file, T component) where T: IBdComponentEntry
 		{
 			if (object.ReferenceEquals(file, null))
 			{

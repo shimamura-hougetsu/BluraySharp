@@ -3,7 +3,7 @@ using BluraySharp.Architecture;
 using BluraySharp.Common;
 
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	public interface IPlPlayItem : IBdPart
 	{

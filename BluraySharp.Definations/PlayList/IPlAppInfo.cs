@@ -2,11 +2,11 @@
 using BluraySharp.Architecture;
 
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	public interface IPlAppInfo : IBdPart
 	{
-		BluraySharp.Playlist.PlPlaybackType PlaybackType { get; set; }
+		BluraySharp.PlayList.PlPlaybackType PlaybackType { get; set; }
 		ushort PlaybackCount { get; set; }
 
 		BluraySharp.Common.BdUOMask UoMask { get; }

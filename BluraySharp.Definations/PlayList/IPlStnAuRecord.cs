@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BluraySharp.Common;
 using BluraySharp.Architecture;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnRecord : IBdPart
+	public interface IPlStnAuRecord : IPlStnRecord
 	{
-		PlStnStreamEntryType EntryType { get; set; }
-		IPlStnStreamEntry Entry { get; }
+		BdAuCodingType CodingType { get; set; }
+		IPlStnStreamAttribute Attributes { get; }
 	}
 }

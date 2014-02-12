@@ -1,12 +1,12 @@
 ﻿using System;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	public interface IPlSubPath : IBdPart
 	{
-		System.Collections.Generic.IList<BluraySharp.Playlist.IPlPlayItem> PlayItems { get; }
-		BluraySharp.Playlist.PlSubPathType Type { get; set; }
+		System.Collections.Generic.IList<BluraySharp.PlayList.IPlPlayItem> PlayItems { get; }
+		BluraySharp.PlayList.PlSubPathType Type { get; set; }
 
 		IPlPlayItem CreateSubPlayItem();
 	}

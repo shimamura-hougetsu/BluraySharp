@@ -3,10 +3,10 @@ using System.Xml.Serialization;
 using BluraySharp.Architecture;
 using BluraySharp.Common;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	[XmlRoot("MPLS")]
-	public class PlayList : BluraySharp.Playlist.IPlayList
+	public class PlayList : BluraySharp.PlayList.IPlayList
 	{
 		#region BluraySharp.Playlist.IPlayList
 

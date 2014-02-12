@@ -3,10 +3,10 @@ using System;
 using System.Xml.Serialization;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	[XmlRoot("AppInfoPlayList")]
-	public class PlAppInfo : BluraySharp.Playlist.IPlAppInfo
+	public class PlAppInfo : BluraySharp.PlayList.IPlAppInfo
 	{
 		[XmlElement(ElementName="PlayList_playback_type", Type=typeof(byte))]
 		public PlPlaybackType PlaybackType

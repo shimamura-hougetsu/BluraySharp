@@ -20,7 +20,7 @@ namespace BluraySharp.Common
 			}
 		}
 
-		public uint AsFrameCount(BdStreamInfo streamInfo)
+		public uint AsFrameCount(BdViFrameRate frameRate)
 		{
 			throw new NotImplementedException();
 		}

@@ -3,26 +3,10 @@ using System.Collections.Generic;
 using BluraySharp.Common;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	public class PlStnTable: IBdPart, IPlStnTable
 	{
-		private List<PlStnRecord>[] recordTables = new List<PlStnRecord>[(int)PlStnRecordTypes.Count];
-		private ushort ReservedForFutureUse { get; set; }
-
-		IList<IPlStnRecord> IPlStnTable.this[PlStnRecordTypes index]
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public IList<PlStnRecord> this[PlStnRecordTypes index]
-		{
-			get
-			{
-				return recordTables[(int) index];
-			}
-		}
-
 		public long SerializeTo(IBdRawWriteContext context)
 		{
 			throw new NotImplementedException();
@@ -37,18 +21,18 @@ namespace BluraySharp.Playlist
 
 			try
 			{
-				this.ReservedForFutureUse = context.DeserializeUInt16();
+				//this.ReservedForFutureUse = context.DeserializeUInt16();
 
-				byte[] tRecordCount = context.DeserializeBytes((int)PlStnRecordTypes.Count);
+				//byte[] tRecordCount = context.DeserializeBytes((int)PlStnRecordTypes.Count);
 
-				for (int iType = 0; iType < (int)PlStnRecordTypes.Count; iType++)
-				{
-					recordTables[iType] = new List<PlStnRecord>();
-					for (int iCount = 0; iCount < tRecordCount[iType]; iCount++)
-					{
-						recordTables[iType].Add(context.Deserialize<PlStnRecord>());
-					}
-				}
+				//for (int iType = 0; iType < (int)PlStnRecordTypes.Count; iType++)
+				//{
+				//    recordTables[iType] = new List<PlStnRecord>();
+				//    for (int iCount = 0; iCount < tRecordCount[iType]; iCount++)
+				//    {
+				//        recordTables[iType].Add(context.Deserialize<PlStnRecord>());
+				//    }
+				//}
 			}
 			finally
 			{
@@ -65,13 +49,41 @@ namespace BluraySharp.Playlist
 				long tDataLen = sizeof(ushort);
 				tDataLen += sizeof(ushort);
 
-				foreach (IBdPart tObj in recordTables)
-				{
-					tDataLen += tObj.RawLength;
-				}
 
 				return tDataLen;
 			}
+		}
+
+		public IList<IPlStnViRecord> VStream
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public IList<IPlStnAudioRecord> AStreams
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public IList<IPlStnPgTsRecord> PgTsStreams
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public IList<IPlStnSecVideoRecord> SvStreams
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public IList<IPlStnSecAuRecord> SaStreams
+		{
+			get { throw new NotImplementedException(); }
 		}
 	}
 }

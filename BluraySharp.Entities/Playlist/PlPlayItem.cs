@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BluraySharp.Common;
 using BluraySharp.Architecture;
 
-namespace BluraySharp.Playlist
+namespace BluraySharp.PlayList
 {
 	public class PlPlayItem : IPlPlayItem
 	{
