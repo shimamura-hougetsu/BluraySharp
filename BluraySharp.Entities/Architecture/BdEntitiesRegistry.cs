@@ -27,9 +27,11 @@ namespace BluraySharp.Architecture
 			where T : I, new()
 			where I : IBdArrayEntry
 		{
+			object[] tObj = typeof(T).GetCustomAttributes(typeof(BdArrayEntryAttribute), true);
+
 			attrTable.Add(
 					typeof(I).FullName, 
-					typeof(T).GetCustomAttributes(typeof(BdArrayEntryAttribute), true)[0] as BdArrayEntryAttribute
+					typeof(I).GetCustomAttributes(typeof(BdArrayEntryAttribute), true)[0] as BdArrayEntryAttribute
 				);
 			ctorTable.Add(
 					typeof(I).FullName,

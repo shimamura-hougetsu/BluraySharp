@@ -18,14 +18,14 @@ namespace BluraySharpTest
 
 			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
 			{
-				//BdmvProject tProject = new BdmvProject();
-				//IPlayList tMpls = tProject.OpenPlayList(tFileStream);
+				BdmvContext tContext = new BdmvContext();
+				IPlayList tMpls = tContext.OpenComponent<IPlayList>(tFileStream);
 
-				//System.Diagnostics.Debug.WriteLine(
-				//        tMpls.PlayItemList.PlayItems[0].ConnectionCondition.ToStringLocalized()
-				//    );
+				System.Diagnostics.Debug.WriteLine(
+				        tMpls.PlayItemList.PlayItems[0].ConnectionCondition.ToStringLocalized()
+				    );
 
-				//tMpls.ToString();
+				tMpls.ToString();
 			}
 		}
 	}

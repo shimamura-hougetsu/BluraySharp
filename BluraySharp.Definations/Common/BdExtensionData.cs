@@ -31,7 +31,7 @@ namespace BluraySharp.Common
 				}
 			}
 
-			return context.Position += tDataLen;
+			return context.Position;
 		}
 
 		public long RawLength

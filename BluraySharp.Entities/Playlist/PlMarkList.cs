@@ -32,7 +32,7 @@ namespace BluraySharp.Playlist
 				}
 			}
 
-			return context.Position += tDataLen;
+			return context.Position;
 		}
 
 

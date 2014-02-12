@@ -74,7 +74,7 @@ namespace BluraySharp.Playlist
 				context.ExitScope();
 			}
 
-			return context.Position += tDataLen;
+			return context.Position;
 		}
 
 		public long DeserializeFrom(IBdRawReadContext context)
@@ -98,7 +98,7 @@ namespace BluraySharp.Playlist
 				context.ExitScope();
 			}
 
-			return context.Position += tDataLen;
+			return context.Position;
 		}
 
 		public long RawLength

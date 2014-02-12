@@ -110,7 +110,7 @@ namespace BluraySharp.Playlist
 				context.ExitScope();
 			}
 
-			return context.Position += tDataLen;
+			return context.Position;
 		}
 
 		public long RawLength
@@ -148,6 +148,8 @@ namespace BluraySharp.Playlist
 		public PlPlayItem()
 		{
 			AngleListX = new List<PlAngleClipInfo>();
+			InTime = new BdTime();
+			OutTime = new BdTime();
 		}
 
 	}

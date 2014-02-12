@@ -206,8 +206,8 @@ namespace BluraySharp.Architecture
 				}
 				else
 				{
-					//Exit with length specified on entering.
-					this.ExitScopeInternal(this.Length);
+					//Exit from current position
+					this.ExitScopeInternal(this.Position);
 				}
 			}
 		}

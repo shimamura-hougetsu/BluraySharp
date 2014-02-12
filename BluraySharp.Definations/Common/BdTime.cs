@@ -4,7 +4,7 @@ using BluraySharp.Architecture;
 
 namespace BluraySharp.Common
 {
-	public struct BdTime: IBdPart
+	public class BdTime: IBdPart
 	{
 		private uint value;
 
