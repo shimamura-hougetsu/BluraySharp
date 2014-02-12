@@ -42,10 +42,10 @@
   <ItemGroup>
     <Compile Include="Architecture\BdEntitiesRegistry.cs" />
     <None Include="Architecture\BdMemIoContext.cs" />
-    <None Include="Architecture\BdMemIoScope.cs" />
     <Compile Include="Architecture\BdStreamIoContext.cs" />
     <Compile Include="Architecture\BdStreamReadContext.cs" />
     <Compile Include="Architecture\BdStreamWriteContext.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FileSystem\BdfsBdmvRoot.cs" />
     <Compile Include="FileSystem\BdfsArrayEntryFile.cs" />
     <Compile Include="FileSystem\BdfsArrayEntryFolder.cs" />

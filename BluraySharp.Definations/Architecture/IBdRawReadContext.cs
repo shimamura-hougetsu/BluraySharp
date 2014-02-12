@@ -7,14 +7,12 @@ namespace BluraySharp.Architecture
 {
 	public interface IBdRawReadContext : IBdRawIoContext
 	{
-		T Deserialize<T>() where T : IBdRawSerializable, new();
 		void Deserialize<T>(T obj) where T : IBdRawSerializable;
 
-		T DeserializeStruct<T>(out T obj) where T : struct;
+		int Deserialize(byte[] value, int offset, int length);
 
-		byte[] DeserializeBytes(int len);
-
-		string DeserializeString(int len);
+		string DeserializeString(int length);
+		byte[] DeserializeBytes(int length);
 
 		byte DeserializeByte();
 		ushort DeserializeUInt16();

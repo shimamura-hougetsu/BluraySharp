@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace BluraySharp.Architecture
 {
@@ -9,54 +11,83 @@ namespace BluraySharp.Architecture
 			:base(stream)
 		{}
 
-		public T Deserialize<T>() where T : IBdRawSerializable, new()
+		public int Deserialize(byte[] buffer, int offset, int length)
 		{
-			throw new NotImplementedException();
+			return base.Read(buffer, offset, length);
 		}
 
 		public void Deserialize<T>(T obj) where T : IBdRawSerializable
 		{
-			throw new NotImplementedException();
+			this.EnterScope();
+			try
+			{
+				this.Position = obj.DeserializeFrom(this);
+			}
+			finally
+			{
+				this.ExitScope();
+			}
 		}
 
-		public T DeserializeStruct<T>(out T obj) where T : struct
+		public byte[] DeserializeBytes(int length)
 		{
-			throw new NotImplementedException();
-		}
+			byte[] tBuffer = new byte[length];
+			int tLastReadLen = -1, tReadLen = 0;
+			while (tReadLen < length && tLastReadLen != 0)
+			{
+				tLastReadLen = this.Deserialize(tBuffer, tReadLen, length - tReadLen);
+				tReadLen += tLastReadLen;
+			}
 
-		public byte[] DeserializeBytes(int len)
-		{
-			byte[] tBuffer = new byte[len];
-
-			base.Read(tBuffer, 0, len);
-			this.Position += len;
+			if (tReadLen != length)
+			{
+				//TODO: not expected stream end.
+				throw new Exception();
+			}
 
 			return tBuffer;
 		}
 
 		public string DeserializeString(int len)
 		{
-			throw new NotImplementedException();
+			return Encoding.UTF8.GetString(this.DeserializeBytes(len));
 		}
+
+		private byte[] DeserializeBytesReversed(int length)
+		{
+			byte[] tBuffer = DeserializeBytes(length);
+
+			tBuffer = tBuffer.Reverse().ToArray();
+			return tBuffer;
+		}
+
 
 		public byte DeserializeByte()
 		{
-			throw new NotImplementedException();
+			byte tRet = this.DeserializeBytes(1)[0];
+
+			return tRet;
 		}
 
 		public ushort DeserializeUInt16()
 		{
-			throw new NotImplementedException();
+			byte[] tBuffer = this.DeserializeBytesReversed(2);
+
+			return BitConverter.ToUInt16(tBuffer, 0);
 		}
 
 		public uint DeserializeUInt32()
 		{
-			throw new NotImplementedException();
+			byte[] tBuffer = this.DeserializeBytesReversed(4);
+
+			return BitConverter.ToUInt32(tBuffer, 0);
 		}
 
 		public ulong DeserializeUInt64()
 		{
-			throw new NotImplementedException();
+			byte[] tBuffer = this.DeserializeBytesReversed(8);
+
+			return BitConverter.ToUInt64(tBuffer, 0);
 		}
 	}
 }

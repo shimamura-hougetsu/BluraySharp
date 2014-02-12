@@ -29,7 +29,8 @@ namespace BluraySharp.Common
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			this.value = context.Deserialize<BdBitwise64>();
+			this.value = new BdBitwise64();
+			context.Deserialize<BdBitwise64>(this.value);
 
 			return context.Position;
 		}

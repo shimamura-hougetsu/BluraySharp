@@ -8,9 +8,8 @@ namespace BluraySharp.Architecture
 	public interface IBdRawWriteContext : IBdRawIoContext
 	{
 		void Serialize<T>(T obj) where T : IBdRawSerializable;
-		void SerializeStruct<T>(ref T obj) where T : struct;
 
-		void Serialize(byte[] value);
+		void Serialize(byte[] value, int offset, int length);
 
 		void Serialize(string value);
 

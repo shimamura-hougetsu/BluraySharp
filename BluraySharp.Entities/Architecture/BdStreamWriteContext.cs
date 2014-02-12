@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.IO;
+using System.Text;
 
 namespace BluraySharp.Architecture
 {
@@ -9,44 +11,70 @@ namespace BluraySharp.Architecture
 			:base(stream)
 		{}
 
+		public void Serialize(byte[] buffer, int offset, int length)
+		{
+			if (buffer == null)
+			{
+				throw new ArgumentNullException("value");
+			}
+
+			this.Write(buffer, 0, length);
+		}
+
 		public void Serialize<T>(T obj) where T : IBdRawSerializable
 		{
-			throw new NotImplementedException();
+			this.EnterScope();
+			try
+			{
+				this.Position = obj.SerializeTo(this);
+			}
+			finally
+			{
+				this.ExitScope();
+			}
 		}
 
-		public void SerializeStruct<T>(ref T obj) where T : struct
+		public void Serialize(byte[] buffer)
 		{
-			
-		}
+			if (buffer == null)
+			{
+				throw new ArgumentNullException("value");
+			}
 
-		public void Serialize(byte[] value)
-		{
-			throw new NotImplementedException();
+			this.Write(buffer, 0, buffer.Length);
 		}
 
 		public void Serialize(string value)
 		{
-			throw new NotImplementedException();
+			this.Serialize(Encoding.UTF8.GetBytes(value));
+		}
+
+		private void SerializeBytesReversed(byte[] bytes)
+		{
+			byte[] tBuffer = bytes.Reverse().ToArray();
+			this.Serialize(tBuffer, 0, bytes.Length);
 		}
 
 		public void Serialize(byte value)
 		{
-			throw new NotImplementedException();
+			SerializeBytesReversed(new byte[1] { value });
 		}
 
 		public void Serialize(ushort value)
 		{
-			throw new NotImplementedException();
+			SerializeBytesReversed(BitConverter.GetBytes(value));
 		}
 
 		public void Serialize(uint value)
 		{
-			throw new NotImplementedException();
+			this.SerializeBytesReversed(BitConverter.GetBytes(value));
 		}
 
 		public void Serialize(ulong value)
 		{
-			throw new NotImplementedException();
+			this.SerializeBytesReversed(BitConverter.GetBytes(value));
 		}
+
+
 	}
 }
