@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp", "BluraySharp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharpTest", "BluraySharpTest\BluraySharpTest.csproj", "{6EC868E5-3587-49E7-A9AB-128E66E45765}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibElfin.WinApi", "cs.LibElfin\LibElfin.WinApi\LibElfin.WinApi.csproj", "{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Entities", "BluraySharp.Entities\BluraySharp.Entities.csproj", "{DFC6212F-1896-4890-BB9B-4A2B34E8A85B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Definations", "BluraySharp.Definations\BluraySharp.Definations.csproj", "{14FF5AC6-E679-444D-B582-0B4AE067F595}"
@@ -41,16 +39,6 @@ Global
 		{6EC868E5-3587-49E7-A9AB-128E66E45765}.Release|Mixed Platforms.Build.0 = Release|x86
 		{6EC868E5-3587-49E7-A9AB-128E66E45765}.Release|x86.ActiveCfg = Release|x86
 		{6EC868E5-3587-49E7-A9AB-128E66E45765}.Release|x86.Build.0 = Release|x86
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}.Release|x86.ActiveCfg = Release|Any CPU
 		{DFC6212F-1896-4890-BB9B-4A2B34E8A85B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DFC6212F-1896-4890-BB9B-4A2B34E8A85B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFC6212F-1896-4890-BB9B-4A2B34E8A85B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

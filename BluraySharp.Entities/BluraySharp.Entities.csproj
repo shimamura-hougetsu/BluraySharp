@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Architecture\BdEntitiesRegistry.cs" />
-    <Compile Include="Architecture\BdMemIoContext.cs" />
-    <Compile Include="Architecture\BdMemIoScope.cs" />
+    <None Include="Architecture\BdMemIoContext.cs" />
+    <None Include="Architecture\BdMemIoScope.cs" />
+    <Compile Include="Architecture\BdStreamIoContext.cs" />
+    <Compile Include="Architecture\BdStreamReadContext.cs" />
+    <Compile Include="Architecture\BdStreamWriteContext.cs" />
     <Compile Include="FileSystem\BdfsBdmvRoot.cs" />
     <Compile Include="FileSystem\BdfsArrayEntryFile.cs" />
     <Compile Include="FileSystem\BdfsArrayEntryFolder.cs" />
@@ -72,10 +75,6 @@
     <ProjectReference Include="..\BluraySharp.Definations\BluraySharp.Definations.csproj">
       <Project>{14FF5AC6-E679-444D-B582-0B4AE067F595}</Project>
       <Name>BluraySharp.Definations</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\cs.LibElfin\LibElfin.WinApi\LibElfin.WinApi.csproj">
-      <Project>{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}</Project>
-      <Name>LibElfin.WinApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

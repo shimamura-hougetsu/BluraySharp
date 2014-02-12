@@ -109,12 +109,12 @@ namespace BluraySharp.Playlist
 		#endregion Properties for XmlSerializing
 
 		#region IBdSerializable
-		public long SerializeTo(IBdRawIoContext context)
+		public long SerializeTo(IBdRawWriteContext context)
 		{
 			throw new NotImplementedException();
 		}
 
-		public long DeserializeFrom(IBdRawIoContext context)
+		public long DeserializeFrom(IBdRawReadContext context)
 		{
 			this.MplsMarkX = context.DeserializeString(4);
 			this.MplsVerX = context.DeserializeString(4);
@@ -131,7 +131,7 @@ namespace BluraySharp.Playlist
 
 			if (tOffsetPlayItemList != 0)
 			{
-				context.Offset = tOffsetPlayItemList;
+				context.Position = tOffsetPlayItemList;
 				this.PlayItemListX = context.Deserialize<PlPlayItemList>();
 			}
 
@@ -139,7 +139,7 @@ namespace BluraySharp.Playlist
 
 			if (tOffsetMarkList != 0)
 			{
-				context.Offset = tOffsetMarkList;
+				context.Position = tOffsetMarkList;
 				this.MarkListX = context.Deserialize<PlMarkList>();
 			}
 
@@ -147,14 +147,14 @@ namespace BluraySharp.Playlist
 
 			if (tOffsetExtDatList != 0)
 			{
-				context.Offset = tOffsetExtDatList;
+				context.Position = tOffsetExtDatList;
 				this.ExtensionDataX = context.Deserialize<BdExtensionData>();
 			}
 
 			//Padding words here, 2*N totally
 
 
-			return context.Offset;
+			return context.Position;
 		}
 
 		public long RawLength

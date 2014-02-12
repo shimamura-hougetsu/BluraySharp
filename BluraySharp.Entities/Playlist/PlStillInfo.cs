@@ -8,17 +8,17 @@ namespace BluraySharp.Playlist
 		private byte modeValue;
 		private ushort timeValue;
 
-		public long SerializeTo(IBdRawIoContext context)
+		public long SerializeTo(IBdRawWriteContext context)
 		{
 			throw new NotImplementedException();
 		}
 
-		public long DeserializeFrom(IBdRawIoContext context)
+		public long DeserializeFrom(IBdRawReadContext context)
 		{
 			modeValue = context.DeserializeByte();
 			timeValue = context.DeserializeUInt16();
 
-			return context.Offset;
+			return context.Position;
 		}
 
 		public long RawLength

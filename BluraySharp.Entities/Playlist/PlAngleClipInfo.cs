@@ -35,12 +35,12 @@ namespace BluraySharp.Playlist
 			}
 		}
 
-		public long SerializeTo(IBdRawIoContext context)
+		public long SerializeTo(IBdRawWriteContext context)
 		{
 			throw new NotImplementedException();
 		}
 
-		public long DeserializeFrom(IBdRawIoContext context)
+		public long DeserializeFrom(IBdRawReadContext context)
 		{
 			string tIdString = context.DeserializeString(5);
 			uint tId = uint.Parse(tIdString);
@@ -54,7 +54,7 @@ namespace BluraySharp.Playlist
 			this.ClipId = tId;
 			this.ClipCodec = context.DeserializeString(4);
 
-			return context.Offset;
+			return context.Position;
 		}
 
 		public long RawLength

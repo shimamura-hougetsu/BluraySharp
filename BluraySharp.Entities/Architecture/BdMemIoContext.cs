@@ -13,7 +13,7 @@ namespace BluraySharp.Architecture
 			scope = new BdMemIoScope(memory);
 		}
 
-		public long Offset
+		public long Position
 		{
 			get
 			{

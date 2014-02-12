@@ -2,7 +2,6 @@
 using BluraySharp.Architecture;
 using BluraySharp.Common;
 using System.IO;
-using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp.FileSystem
 {

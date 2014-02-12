@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BdmvProject.cs" />
+    <None Include="BdmvProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\VersionInfo.cs">
       <SubType>Code</SubType>
@@ -67,10 +67,6 @@
     <ProjectReference Include="..\BluraySharp.Entities\BluraySharp.Entities.csproj">
       <Project>{DFC6212F-1896-4890-BB9B-4A2B34E8A85B}</Project>
       <Name>BluraySharp.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\cs.LibElfin\LibElfin.WinApi\LibElfin.WinApi.csproj">
-      <Project>{757CF6C1-F03B-4EEE-B43D-A93FD5ED7E07}</Project>
-      <Name>LibElfin.WinApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

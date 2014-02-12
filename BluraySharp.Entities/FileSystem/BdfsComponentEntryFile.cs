@@ -1,7 +1,6 @@
 ﻿using System;
 using BluraySharp.Architecture;
 using System.IO;
-using LibElfin.WinApi.MemoryBlock;
 
 namespace BluraySharp.FileSystem
 {
@@ -52,13 +51,8 @@ namespace BluraySharp.FileSystem
 		{
 			using (FileStream tFile = new FileStream(tPath, FileMode.Create, FileAccess.ReadWrite))
 			{
-				using (AutoFileMapMem tFileMem = new AutoFileMapMem(tFile, tFile.Length, System.IO.MemoryMappedFiles.MemoryMappedFileAccess.Read))
-				{
-					using (BdMemIoContext tRawIo = new BdMemIoContext(tFileMem))
-					{
-						tRawIo.Serialize(entry);
-					}
-				}
+				BdStreamWriteContext tRawIo = new BdStreamWriteContext(tFile);
+					tRawIo.Serialize(entry);
 			}
 		}
 
@@ -66,16 +60,12 @@ namespace BluraySharp.FileSystem
 		{
 			using (FileStream tFile = new FileStream(tPath, FileMode.Open, FileAccess.Read))
 			{
-				using (AutoFileMapMem tFileMem = new AutoFileMapMem(tFile, tFile.Length, System.IO.MemoryMappedFiles.MemoryMappedFileAccess.Read))
-				{
-					using (BdMemIoContext tRawIo = new BdMemIoContext(tFileMem))
-					{
-						T tRet = BdEntitiesRegistry.Instance.CreateEntry<T>();
-						tRawIo.Deserialize(tRet);
+				T tRet = BdEntitiesRegistry.Instance.CreateEntry<T>();
 
-						return tRet;
-					}
-				}
+				BdStreamReadContext tRawIo = new BdStreamReadContext(tFile);
+				tRawIo.Deserialize(tRet);
+
+				return tRet;
 			}
 		}
 	}

@@ -20,18 +20,18 @@ namespace BluraySharp.Common
 			}
 		}
 
-		public long SerializeTo(IBdRawIoContext context)
+		public long SerializeTo(IBdRawWriteContext context)
 		{
 			context.Serialize(this.value);
 
-			return context.Offset;
+			return context.Position;
 		}
 
-		public long DeserializeFrom(IBdRawIoContext context)
+		public long DeserializeFrom(IBdRawReadContext context)
 		{
 			this.value = context.Deserialize<BdBitwise64>();
 
-			return context.Offset;
+			return context.Position;
 		}
 
 		public long RawLength

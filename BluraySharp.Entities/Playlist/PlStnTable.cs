@@ -23,12 +23,12 @@ namespace BluraySharp.Playlist
 			}
 		}
 
-		public long SerializeTo(IBdRawIoContext context)
+		public long SerializeTo(IBdRawWriteContext context)
 		{
 			throw new NotImplementedException();
 		}
 
-		public long DeserializeFrom(IBdRawIoContext context)
+		public long DeserializeFrom(IBdRawReadContext context)
 		{
 			ushort tDataLen;
 
@@ -55,7 +55,7 @@ namespace BluraySharp.Playlist
 				context.ExitScope();
 			}
 
-			return context.Offset += tDataLen;
+			return context.Position += tDataLen;
 		}
 
 		public long RawLength

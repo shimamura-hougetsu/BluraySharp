@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="Architecture\BdComponentEntryAttribute.cs" />
     <Compile Include="Architecture\IBdComponentEntry.cs" />
+    <Compile Include="Architecture\IBdRawWriteContext.cs" />
     <Compile Include="Architecture\IBdTopEntry.cs" />
     <Compile Include="Architecture\BdArrayEntryAttribute.cs" />
     <Compile Include="Architecture\BdTopEntryAttribute.cs" />
+    <Compile Include="Architecture\IBdRawReadContext.cs" />
     <Compile Include="ClipInfo\IClipInfo.cs" />
     <Compile Include="Common\BdBitwiseValue.cs" />
     <Compile Include="Common\BdConnectionCondition.cs" />
