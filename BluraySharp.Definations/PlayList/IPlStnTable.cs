@@ -22,7 +22,7 @@ namespace BluraySharp.PlayList
 
 		IList<IPlStnViRecord> VStream { get; set; }
 		IList<IPlStnAudioRecord> AStreams { get; }
-		IList<IPlStnPgTsRecord> PgTsStreams { get; }
+		IList<IPlStnOlRecord> PgTsStreams { get; }
 		IList<IPlStnSecVideoRecord> SvStreams { get; }
 		IList<IPlStnSecAuRecord> SaStreams { get; }
 	}

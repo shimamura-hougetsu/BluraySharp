@@ -10,6 +10,8 @@ namespace BluraySharp.PlayList
 	public interface IPlStnAuRecord : IPlStnRecord
 	{
 		BdAuCodingType CodingType { get; set; }
-		IPlStnStreamAttribute Attributes { get; }
+		BdAuPresentationType PresentationType { get; set; }
+		BdAuSampleRate SampleRate { get; set; }
+		BdLang Language { get; set; }
 	}
 }

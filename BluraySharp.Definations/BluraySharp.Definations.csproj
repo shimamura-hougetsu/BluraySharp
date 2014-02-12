@@ -49,7 +49,7 @@
     <Compile Include="Architecture\BdTopEntryAttribute.cs" />
     <Compile Include="Architecture\IBdRawReadContext.cs" />
     <Compile Include="ClipInfo\IClipInfo.cs" />
-    <Compile Include="Common\BdStreamRenderType.cs" />
+    <Compile Include="Common\BdStreamFormat.cs" />
     <Compile Include="Common\BdStreamSampleRate.cs" />
     <Compile Include="Common\BdBitwiseValue.cs" />
     <Compile Include="Common\BdConnectionCondition.cs" />
@@ -76,11 +76,14 @@
     <Compile Include="JavaObject\IBdJavaObject.cs" />
     <Compile Include="PlayList\IPlAngleClipInfo.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
+    <Compile Include="PlayList\IPlStnAltStreamAttribute.cs" />
     <Compile Include="PlayList\IPlStnAudioRecord.cs" />
     <Compile Include="PlayList\IPlStnAuRecord.cs" />
     <Compile Include="PlayList\IPlStnIgRecord.cs" />
+    <Compile Include="PlayList\IPlStnIgStreamAttribute.cs" />
     <Compile Include="PlayList\IPlStnInMuxPipStreamEntryProperties.cs" />
-    <Compile Include="PlayList\IPlStnPgTsRecord.cs" />
+    <Compile Include="PlayList\IPlStnPgStreamAttribute.cs" />
+    <Compile Include="PlayList\IPlStnOlRecord.cs" />
     <Compile Include="PlayList\IPlStnPlayItemStreamEntryProperties.cs" />
     <Compile Include="PlayList\IPlStnCodecEntry.cs" />
     <Compile Include="Architecture\IBdPart.cs" />
@@ -92,8 +95,8 @@
     <Compile Include="PlayList\IPlStnRecord.cs" />
     <Compile Include="PlayList\IPlStnSecAuRecord.cs" />
     <Compile Include="PlayList\IPlStnSecViRecord.cs" />
-    <Compile Include="PlayList\IPlStnStreamAttribute.cs" />
     <Compile Include="PlayList\IPlStnSubPlayItemStreamEntryProperties.cs" />
+    <Compile Include="PlayList\IPlStnTsStreamAttribute.cs" />
     <Compile Include="PlayList\IPlStnViRecord.cs" />
     <Compile Include="PlayList\IPlStnTable.cs" />
     <Compile Include="PlayList\IPlSubPath.cs" />

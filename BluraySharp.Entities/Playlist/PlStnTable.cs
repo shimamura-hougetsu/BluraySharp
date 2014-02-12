@@ -71,7 +71,7 @@ namespace BluraySharp.PlayList
 			get { throw new NotImplementedException(); }
 		}
 
-		public IList<IPlStnPgTsRecord> PgTsStreams
+		public IList<IPlStnOlRecord> PgTsStreams
 		{
 			get { throw new NotImplementedException(); }
 		}

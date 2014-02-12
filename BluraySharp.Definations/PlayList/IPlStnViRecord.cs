@@ -7,6 +7,7 @@ namespace BluraySharp.PlayList
 	public interface IPlStnViRecord : IPlStnRecord
 	{
 		BdViCodingType CodingType { get; set; }
-		IPlStnStreamAttribute Attributes { get; }
+		BdViFormat VideoFormat { get; set; }
+		BdViFrameRate FrameRate { get; set; }
 	}
 }

@@ -3,9 +3,9 @@ using BluraySharp.Architecture;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnPgTsRecord : IPlStnRecord
+	public interface IPlStnOlRecord : IPlStnRecord
 	{
 		BdPgTsCodingType CodingType { get; set; }
-		IPlStnStreamAttribute Attributes { get; }
+		IPlStnAltStreamAttribute Attributes { get; }
 	}
 }
