@@ -1,19 +1,18 @@
-﻿using System.Collections.Generic;
-using BluraySharp.Architecture;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using BluraySharp.Common;
-
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlPlayItem : IBdPart
+	public interface IPlPlayItem : IPlPlayItemInfo
 	{
-		byte StcId { get; set; }
-		BdTime InTime { get; set; }
-		BdTime OutTime { get; set; }
+		BdUOMask UoMask { get; }
 
-		BdConnectionCondition ConnectionCondition { get; set; }
-		bool IsMultiAngle { get; set; }
+		bool RandomAccessProhibited { get; set; }
+		IPlStillInfo StillInfo { get; }
 
-		IBdList<IPlAngleClipInfo> AngleList { get; }
+		IPlStnTable StnTable { get; }
 	}
 }

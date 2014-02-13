@@ -3,10 +3,10 @@ using BluraySharp.Architecture;
 
 namespace BluraySharp.PlayList
 {
-	public class PlStillInfo : IBdPart
+	public class PlStillInfo : IPlStillInfo
 	{
-		private byte modeValue;
-		private ushort timeValue;
+		public PlStillMode StillMode { get; set; }
+		public ushort StillDuration { get; set; }
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
@@ -15,8 +15,8 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			modeValue = context.DeserializeByte();
-			timeValue = context.DeserializeUInt16();
+			this.StillMode = (PlStillMode) context.DeserializeByte();
+			this.StillDuration = context.DeserializeUInt16();
 
 			return context.Position;
 		}
@@ -28,5 +28,6 @@ namespace BluraySharp.PlayList
 				return sizeof(byte) + sizeof(ushort);
 			}
 		}
+
 	}
 }

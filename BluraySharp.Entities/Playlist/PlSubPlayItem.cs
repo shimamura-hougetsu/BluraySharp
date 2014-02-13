@@ -5,7 +5,7 @@ using BluraySharp.Architecture;
 
 namespace BluraySharp.PlayList
 {
-	public class PlSubPlayItem : IPlPlayItem
+	public class PlSubPlayItem : IPlPlayItemInfo
 	{
 		public byte StcId { get; set; }
 		public BdTime InTime { get; set; }

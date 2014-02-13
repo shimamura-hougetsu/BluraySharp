@@ -60,7 +60,6 @@
     <Compile Include="PlayList\PlMarkList.cs" />
     <Compile Include="PlayList\PlPlayItem.cs" />
     <Compile Include="PlayList\PlPlayItemList.cs" />
-    <Compile Include="PlayList\PlSeekingFlags.cs" />
     <Compile Include="PlayList\PlStillInfo.cs" />
     <Compile Include="PlayList\PlStnAuRecord.cs" />
     <Compile Include="PlayList\PlStnIgRecord.cs" />

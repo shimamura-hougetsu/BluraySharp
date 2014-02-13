@@ -74,7 +74,9 @@
     <Compile Include="FileSystem\IBdfsTopEntryFile.cs" />
     <Compile Include="JavaObject\IBdJavaObject.cs" />
     <Compile Include="PlayList\IPlAngleClipInfo.cs" />
+    <Compile Include="PlayList\IPlPlayItem.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
+    <Compile Include="PlayList\IPlStillInfo.cs" />
     <Compile Include="PlayList\IPlStnStStreamAttribute.cs" />
     <Compile Include="PlayList\IPlStnAuRecord.cs" />
     <Compile Include="PlayList\IPlStnInMuxPipStreamEntryFields.cs" />
@@ -87,7 +89,7 @@
     <Compile Include="PlayList\IPlAppInfo.cs" />
     <Compile Include="PlayList\IPlayList.cs" />
     <Compile Include="PlayList\IPlMarkList.cs" />
-    <Compile Include="PlayList\IPlPlayItem.cs" />
+    <Compile Include="PlayList\IPlPlayItemInfo.cs" />
     <Compile Include="PlayList\IPlStnRecord.cs" />
     <Compile Include="PlayList\IPlStnSaRecord.cs" />
     <Compile Include="PlayList\IPlStnSvRecord.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="PlayList\IPlSubPath.cs" />
     <Compile Include="PlayList\PlPlaybackType.cs" />
     <Compile Include="PlayList\IPlStnStreamEntry.cs" />
+    <Compile Include="PlayList\PlStillMode.cs" />
     <Compile Include="PlayList\PlSubPathType.cs" />
     <Compile Include="PlayList\PlStnStreamEntryType.cs" />
     <Compile Include="PlayList\IPlStnIgRecord.cs" />

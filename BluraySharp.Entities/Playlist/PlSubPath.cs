@@ -7,7 +7,7 @@ namespace BluraySharp.PlayList
 {
 	public class PlSubPath : BluraySharp.PlayList.IPlSubPath
 	{
-		public IBdList<IPlPlayItem> PlayItems { get; internal set; }
+		public IBdList<IPlPlayItemInfo> PlayItems { get; internal set; }
 
 		internal Byte Reserved1 { get; set; }
 		internal Byte Reserved2 { get; set; }
@@ -72,7 +72,7 @@ namespace BluraySharp.PlayList
 
 		public PlSubPath()
 		{
-			PlayItems = new BdPartList<PlSubPlayItem, IPlPlayItem>(255);
+			PlayItems = new BdPartList<PlSubPlayItem, IPlPlayItemInfo>(255);
 		}
 	}
 }

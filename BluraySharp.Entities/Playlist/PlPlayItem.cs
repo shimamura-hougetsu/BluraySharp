@@ -38,14 +38,27 @@ namespace BluraySharp.PlayList
 		}
 
 		public BdUOMask UoMask { get; internal set; }
-		public PlSeekingFlags SeekingFlags { get; internal set; }
-		public PlStillInfo StillInfo { get; internal set; }
+
+		public bool RandomAccessProhibited
+		{
+			get
+			{
+				return this.seekingFlagValue[7, 1] == 1u;
+			}
+			set
+			{
+				this.seekingFlagValue[7, 1] = (byte) (value ? 1 : 0);
+			}
+		}
+
+		internal BdBitwise8 seekingFlagValue = new BdBitwise8();
+
+		public IPlStillInfo StillInfo { get; internal set; }
 
 		internal BdBitwise16 arrangingOption = new BdBitwise16();
-
 		internal BdBitwise8 multiAngleOption = new BdBitwise8();
 		
-		public PlStnTable StnTable { get; internal set; }
+		public IPlStnTable StnTable { get; internal set; }
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
@@ -73,8 +86,7 @@ namespace BluraySharp.PlayList
 				OutTime = context.Deserialize<BdTime>();
 				UoMask = context.Deserialize<BdUOMask>();
 
-				//TODO: random_access_flag
-				SeekingFlags = context.Deserialize<PlSeekingFlags>();
+				seekingFlagValue = context.Deserialize<BdBitwise8>();
 				StillInfo = context.Deserialize<PlStillInfo>();
 
 				if (this.IsMultiAngle)
@@ -115,7 +127,7 @@ namespace BluraySharp.PlayList
 				tDataLen += this.OutTime.RawLength;
 
 				tDataLen += this.UoMask.RawLength;
-				tDataLen += this.SeekingFlags.RawLength;
+				tDataLen += this.seekingFlagValue.RawLength;
 
 				tDataLen += this.StillInfo.RawLength;
 				tDataLen += this.arrangingOption.RawLength;
