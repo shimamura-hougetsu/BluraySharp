@@ -72,14 +72,11 @@
     <Compile Include="Architecture\IBdEntitiesRegistry.cs" />
     <Compile Include="Architecture\IBdRawSerializable.cs" />
     <Compile Include="FileSystem\IBdfsTopEntryFile.cs" />
-    <Compile Include="IPlStnSecVideoRecord.cs" />
     <Compile Include="JavaObject\IBdJavaObject.cs" />
     <Compile Include="PlayList\IPlAngleClipInfo.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
-    <Compile Include="PlayList\IPlStnAltStreamAttribute.cs" />
-    <Compile Include="PlayList\IPlStnAudioRecord.cs" />
+    <Compile Include="PlayList\IPlStnOlStreamAttribute.cs" />
     <Compile Include="PlayList\IPlStnAuRecord.cs" />
-    <Compile Include="PlayList\IPlStnIgRecord.cs" />
     <Compile Include="PlayList\IPlStnIgStreamAttribute.cs" />
     <Compile Include="PlayList\IPlStnInMuxPipStreamEntryProperties.cs" />
     <Compile Include="PlayList\IPlStnPgStreamAttribute.cs" />

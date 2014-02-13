@@ -5,7 +5,7 @@ namespace BluraySharp.PlayList
 {
 	public interface IPlStnOlRecord : IPlStnRecord
 	{
-		BdPgTsCodingType CodingType { get; set; }
-		IPlStnAltStreamAttribute Attributes { get; }
+		BdOlCodingType CodingType { get; set; }
+		IPlStnOlStreamAttribute Attributes { get; }
 	}
 }

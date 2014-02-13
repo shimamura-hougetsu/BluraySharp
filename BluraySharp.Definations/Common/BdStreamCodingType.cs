@@ -28,17 +28,12 @@ namespace BluraySharp.Common
 		AuDtsHDMA = 0x86,
 	}
 
-	public enum BdPgTsCodingType
+	public enum BdOlCodingType	//Overlays
 	{
 		Unknown,
 		Pg = 0x90,
-		Ts = 0x92,
-	}
-
-	public enum BdIgCodingType
-	{
-		Unknown,
 		Ig = 0x91,
+		Ts = 0x92,
 	}
 
 	public enum BdSaCodingType
