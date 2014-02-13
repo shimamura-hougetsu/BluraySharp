@@ -9,7 +9,12 @@ namespace BluraySharp.Architecture
 		where T : I, new()
 		where I : IBdPart
 	{
-		private List<T> innerList = new List<T>();
+		private List<T> innerList;
+		public BdPartList(int capacity)
+		{
+			this.Capacity = capacity;
+			this.innerList = new List<T>(capacity);
+		}
 
 		public int Count
 		{
@@ -19,7 +24,7 @@ namespace BluraySharp.Architecture
 			}
 		}
 
-		public int MaxCount
+		public int Capacity
 		{
 			get;
 			private set;
@@ -133,17 +138,17 @@ namespace BluraySharp.Architecture
 			return new T();
 		}
 
-		public IEnumerator<I> GetEnumerator()
-		{
-			foreach (I iItem in this.innerList)
-			{
-				yield return iItem;
-			}
-		}
-
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
 		{
 			return this.GetEnumerator();
+		}
+
+		public IEnumerator<I> GetEnumerator()
+		{
+			foreach (T iItem in this.innerList)
+			{
+				yield return iItem;
+			}
 		}
 	}
 }

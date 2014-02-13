@@ -6,7 +6,7 @@ namespace BluraySharp.Architecture
 	public interface IBdList<T> : IEnumerable<T>, IEnumerable
 	{
 		int Count { get; }
-		int MaxCount { get; }
+		int Capacity { get; }
 
 		void Clear();
 		void CopyTo(T[] array, int arrayIndex);

@@ -100,8 +100,8 @@ namespace BluraySharp.PlayList
 
 		public PlPlayItemList()
 		{
-			PlayItemsX = new BdPartList<PlPlayItem, IPlPlayItem>();
-			SubPathsX = new BdPartList<PlSubPath, IPlSubPath>();
+			PlayItemsX = new BdPartList<PlPlayItem, IPlPlayItem>(0);
+			SubPathsX = new BdPartList<PlSubPath, IPlSubPath>(0);
 		}
 	}
 }

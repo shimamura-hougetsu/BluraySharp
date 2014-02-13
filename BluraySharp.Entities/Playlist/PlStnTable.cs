@@ -7,10 +7,54 @@ namespace BluraySharp.PlayList
 {
 	public class PlStnTable: IBdPart, IPlStnTable
 	{
+		public IBdList<IPlStnViRecord> ViStream
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public IBdList<IPlStnAuRecord> AuStreams
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public IBdList<IPlStnOlRecord> SubStreams
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public IBdList<IPlStnSecViRecord> SvStreams
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public IBdList<IPlStnSecAuRecord> SaStreams
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public IBdList<IPlStnOlRecord> IgStreams
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public IBdList<IPlStnOlRecord> PipPgTsStreams
+		{
+			get { throw new NotImplementedException(); }
+		}
+
 		public long SerializeTo(IBdRawWriteContext context)
 		{
 			throw new NotImplementedException();
 		}
+		
+		public ushort ReservedForFutureUse { get; private set; }
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
@@ -21,9 +65,9 @@ namespace BluraySharp.PlayList
 
 			try
 			{
-				//this.ReservedForFutureUse = context.DeserializeUInt16();
+				this.ReservedForFutureUse = context.DeserializeUInt16();
 
-				//byte[] tRecordCount = context.DeserializeBytes((int)PlStnRecordTypes.Count);
+				byte[] tRecordCount = context.DeserializeBytes(12);
 
 				//for (int iType = 0; iType < (int)PlStnRecordTypes.Count; iType++)
 				//{
@@ -52,49 +96,6 @@ namespace BluraySharp.PlayList
 
 				return tDataLen;
 			}
-		}
-
-		public IBdList<IPlStnViRecord> VStream
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
-		}
-
-		public IBdList<IPlStnAuRecord> AStreams
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public IBdList<IPlStnOlRecord> PgTsStreams
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public IBdList<IPlStnSecViRecord> SvStreams
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public IBdList<IPlStnSecAuRecord> SaStreams
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-
-		public IBdList<IPlStnOlRecord> IgStreams
-		{
-			get { throw new NotImplementedException(); }
-		}
-
-		public IBdList<IPlStnOlRecord> PipPgTsStreams
-		{
-			get { throw new NotImplementedException(); }
 		}
 	}
 }

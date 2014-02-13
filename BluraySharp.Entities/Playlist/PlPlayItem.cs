@@ -151,7 +151,7 @@ namespace BluraySharp.PlayList
 
 		public PlPlayItem()
 		{
-			AngleListX = new BdPartList<PlAngleClipInfo, IPlAngleClipInfo>();
+			AngleListX = new BdPartList<PlAngleClipInfo, IPlAngleClipInfo>(0);
 			InTime = new BdTime();
 			OutTime = new BdTime();
 		}
