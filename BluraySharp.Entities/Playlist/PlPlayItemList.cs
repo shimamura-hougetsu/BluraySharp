@@ -6,37 +6,11 @@ namespace BluraySharp.PlayList
 {
 	public class PlPlayItemList : BluraySharp.PlayList.IPlPlayItemList
 	{
-		public IPlPlayItem CreatePlayItem()
-		{
-			return new PlPlayItem();
-		}
+		public IBdList<IPlPlayItem> PlayItems { get; internal set; }
 
-		public IPlSubPath CreateSubPath()
-		{
-			return new PlSubPath();
-		}
+		public IBdList<IPlSubPath> SubPaths { get; internal set; }
 
-		public IBdList<IPlPlayItem> PlayItems
-		{
-			get
-			{
-				return this.PlayItemsX;
-			}
-		}
-
-		public IBdList<IPlSubPath> SubPaths
-		{
-			get
-			{
-				return this.SubPathsX;
-			}
-		}
-
-		private ushort ReservedForFutureUse { get; set; }
-
-		public BdPartList<PlPlayItem, IPlPlayItem> PlayItemsX { get; private set; }
-
-		public BdPartList<PlSubPath, IPlSubPath> SubPathsX { get; private set; }
+		internal ushort ReservedForFutureUse { get; set; }
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
@@ -57,16 +31,16 @@ namespace BluraySharp.PlayList
 				uint tPlayItemCount = context.DeserializeUInt16();
 				uint tSubPathCount = context.DeserializeUInt16();
 
-				PlayItemsX.Clear();
+				PlayItems.Clear();
 				for (uint i = 0; i < tPlayItemCount; ++i)
 				{
-					PlayItemsX.Insert(context.Deserialize<PlPlayItem>());
+					PlayItems.Insert(context.Deserialize<PlPlayItem>());
 				}
 
-				SubPathsX.Clear();
+				SubPaths.Clear();
 				for (uint i = 0; i < tSubPathCount; ++i)
 				{
-					SubPathsX.Insert(context.Deserialize<PlSubPath>());
+					SubPaths.Insert(context.Deserialize<PlSubPath>());
 				}
 			}
 			finally
@@ -84,12 +58,12 @@ namespace BluraySharp.PlayList
 				long tDataLen = sizeof(uint);
 				tDataLen += sizeof(ushort);
 
-				foreach (IBdPart tObj in this.PlayItemsX)
+				foreach (IBdPart tObj in this.PlayItems)
 				{
 					tDataLen += tObj.RawLength;
 				}
 
-				foreach (IBdPart tObj in this.SubPathsX)
+				foreach (IBdPart tObj in this.SubPaths)
 				{
 					tDataLen += tObj.RawLength;
 				}
@@ -100,8 +74,8 @@ namespace BluraySharp.PlayList
 
 		public PlPlayItemList()
 		{
-			PlayItemsX = new BdPartList<PlPlayItem, IPlPlayItem>(0);
-			SubPathsX = new BdPartList<PlSubPath, IPlSubPath>(0);
+			PlayItems = new BdPartList<PlPlayItem, IPlPlayItem>(999);
+			SubPaths = new BdPartList<PlSubPath, IPlSubPath>(255);
 		}
 	}
 }

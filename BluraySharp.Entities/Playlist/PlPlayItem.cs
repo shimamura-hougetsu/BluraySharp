@@ -7,13 +7,7 @@ namespace BluraySharp.PlayList
 {
 	public class PlPlayItem : IPlPlayItem
 	{
-		public IBdList<IPlAngleClipInfo> AngleList
-		{
-			get 
-			{
-				return this.AngleListX;
-			}
-		}
+		public IBdList<IPlAngleClipInfo> AngleList { get; internal set; }
 
 		public byte StcId { get; set; }
 		public BdTime InTime { get; set; }
@@ -43,22 +37,15 @@ namespace BluraySharp.PlayList
 			}
 		}
 
-		public BdUOMask UoMask { get; private set; }
-		public PlSeekingFlags SeekingFlags { get; private set; }
-		public PlStillInfo StillInfo { get; private set; }
+		public BdUOMask UoMask { get; internal set; }
+		public PlSeekingFlags SeekingFlags { get; internal set; }
+		public PlStillInfo StillInfo { get; internal set; }
 
-		private BdBitwise16 arrangingOption = new BdBitwise16();
+		internal BdBitwise16 arrangingOption = new BdBitwise16();
 
-		private BdBitwise8 multiAngleOption = new BdBitwise8();
-
-		public BdPartList<PlAngleClipInfo, IPlAngleClipInfo> AngleListX { get; private set; }
+		internal BdBitwise8 multiAngleOption = new BdBitwise8();
 		
-		public IPlAngleClipInfo CreateAngleClipInfo()
-		{
-			return new PlAngleClipInfo();
-		}
-
-		public PlStnTable StnTable { get; private set; }
+		public PlStnTable StnTable { get; internal set; }
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
@@ -74,10 +61,10 @@ namespace BluraySharp.PlayList
 
 			try
 			{
-				this.AngleListX.Clear();
+				this.AngleList.Clear();
 
 				PlAngleClipInfo tAngle = context.Deserialize<PlAngleClipInfo>();
-				this.AngleListX.Insert(tAngle);
+				this.AngleList.Insert(tAngle);
 
 				arrangingOption = context.Deserialize<BdBitwise16>();
 				StcId = context.DeserializeByte();
@@ -103,7 +90,7 @@ namespace BluraySharp.PlayList
 
 					for(byte i = 0; i< tAngleCount; ++i)
 					{
-						AngleListX.Insert(context.Deserialize<PlAngleClipInfo>());
+						AngleList.Insert(context.Deserialize<PlAngleClipInfo>());
 					}
 				}
 
@@ -138,7 +125,7 @@ namespace BluraySharp.PlayList
 					tDataLen += this.multiAngleOption.RawLength;
 				}
 
-				foreach (IBdPart tObj in this.AngleListX)
+				foreach (IBdPart tObj in this.AngleList)
 				{
 					tDataLen += tObj.RawLength;
 				}
@@ -151,9 +138,9 @@ namespace BluraySharp.PlayList
 
 		public PlPlayItem()
 		{
-			AngleListX = new BdPartList<PlAngleClipInfo, IPlAngleClipInfo>(0);
-			InTime = new BdTime();
-			OutTime = new BdTime();
+			this.AngleList = new BdPartList<PlAngleClipInfo, IPlAngleClipInfo>(9);
+			this.InTime = new BdTime();
+			this.OutTime = new BdTime();
 		}
 	}
 }

@@ -6,8 +6,9 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnTsStreamAttribute : IPlStnOlStreamAttribute
+	public interface IPlStnTsStreamAttribute : IPlStnStStreamAttribute
 	{
+		BdLang Language { get; set; }
 		BdCharacterCodingType CharCode { get; set; }
 	}
 }

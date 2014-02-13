@@ -5,109 +5,22 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	[XmlRoot("MPLS")]
 	public class PlayList : BluraySharp.PlayList.IPlayList
 	{
-		#region BluraySharp.Playlist.IPlayList
+		public string MplsMark { get; internal set; }
 
-		[XmlIgnore]
-		public string MplsMark
-		{
-			get
-			{
-				return MplsMarkX;
-			}
-		}
+		public string MplsVer { get; set; }
 
-		[XmlIgnore]
-		public string MplsVer
-		{
-			get
-			{
-				return MplsVerX;
-			}
-			set
-			{
-				if (value == null)
-				{
-					throw new ArgumentNullException("value");
-				}
+		public IPlAppInfo ApplicationInfo { get; internal set; }
 
-				if (value.Length != 4)
-				{
-					throw new ArgumentException("value");
-				}
+		public IPlPlayItemList PlayItemList { get; internal set; }
 
-				MplsVer = value;
-			}
-		}
+		public IPlMarkList MarkList { get; internal set; }
 
-		[XmlIgnore]
-		public IPlAppInfo ApplicationInfo
-		{
-			get { return ApplicationInfoX; }
-		}
+		public BdExtensionData ExtensionData { get; set; }
 
-		[XmlIgnore]
-		public IPlPlayItemList PlayItemList
-		{
-			get { return PlayItemListX; }
-		}
-
-		[XmlIgnore]
-		public IPlMarkList MarkList
-		{
-			get { return MarkListX; }
-		}
-
-		[XmlIgnore]
-		public BdExtensionData ExtensionData
-		{
-			get { return ExtensionDataX; }
-			set { ExtensionDataX = value; }
-		}
-
-		public IPlAppInfo CreateAppInfo()
-		{
-			return new PlAppInfo();
-		}
-
-		public IPlPlayItemList CreatePlayItemList()
-		{
-			return new PlPlayItemList();
-		}
-
-		public IPlMarkList CreateMarkList()
-		{
-			return new PlMarkList();
-		}
-
-		#endregion BluraySharp.Playlist.IPlayList
-
-		#region Properties for XmlSerializing
-
-		[XmlElement("type_indicator")]
-		public string MplsMarkX { get; set; }
-
-		[XmlElement("version_number")]
-		public string MplsVerX { get; set; }
-
-		[XmlElement("AppInfoPlayList")]
-		public PlAppInfo ApplicationInfoX { get; set; }
-
-		[XmlElement("PlayList")]
-		public PlPlayItemList PlayItemListX { get; set; }
-
-		[XmlElement("PlayListMark")]
-		public PlMarkList MarkListX { get; set; }
-
-		[XmlElement("ExtensionData")]
-		public BdExtensionData ExtensionDataX { get; set; }
-
-		private byte[] ReservedForFutureUse { get; set; }
-
-		#endregion Properties for XmlSerializing
-
+		internal byte[] ReservedForFutureUse { get; set; }
+		
 		#region IBdSerializable
 		public long SerializeTo(IBdRawWriteContext context)
 		{
@@ -116,8 +29,8 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			this.MplsMarkX = context.DeserializeString(4);
-			this.MplsVerX = context.DeserializeString(4);
+			this.MplsMark = context.DeserializeString(4);
+			this.MplsVer = context.DeserializeString(4);
 
 			uint tOffsetPlayItemList = context.DeserializeUInt32();
 			uint tOffsetMarkList = context.DeserializeUInt32();
@@ -125,14 +38,14 @@ namespace BluraySharp.PlayList
 
 			this.ReservedForFutureUse = context.DeserializeBytes(20);
 
-			this.ApplicationInfoX = context.Deserialize<PlAppInfo>();
+			this.ApplicationInfo = context.Deserialize<PlAppInfo>();
 
 			//Padding words here, 2*N totally
 
 			if (tOffsetPlayItemList != 0)
 			{
 				context.Position = tOffsetPlayItemList;
-				this.PlayItemListX = context.Deserialize<PlPlayItemList>();
+				this.PlayItemList = context.Deserialize<PlPlayItemList>();
 			}
 
 			//Padding words here, 2*N totally
@@ -140,7 +53,7 @@ namespace BluraySharp.PlayList
 			if (tOffsetMarkList != 0)
 			{
 				context.Position = tOffsetMarkList;
-				this.MarkListX = context.Deserialize<PlMarkList>();
+				this.MarkList = context.Deserialize<PlMarkList>();
 			}
 
 			//Padding words here, 2*N totally
@@ -148,11 +61,10 @@ namespace BluraySharp.PlayList
 			if (tOffsetExtDatList != 0)
 			{
 				context.Position = tOffsetExtDatList;
-				this.ExtensionDataX = context.Deserialize<BdExtensionData>();
+				this.ExtensionData = context.Deserialize<BdExtensionData>();
 			}
 
 			//Padding words here, 2*N totally
-
 
 			return context.Position;
 		}
@@ -162,24 +74,24 @@ namespace BluraySharp.PlayList
 			get
 			{
 				return
-					MplsMarkX.Length + MplsVerX.Length + //MPLS Mark + Ver
+					MplsMark.Length + MplsVer.Length + //MPLS Mark + Ver
 					sizeof(uint) * 3 + //Offsets of lists
 					ReservedForFutureUse.Length + //Reserved
-					ApplicationInfoX.GetRawLength() +
-					PlayItemListX.GetRawLength() +
-					MarkListX.GetRawLength() +
-					ExtensionDataX.GetRawLength();
+					ApplicationInfo.GetRawLength() +
+					PlayItemList.GetRawLength() +
+					MarkList.GetRawLength() +
+					ExtensionData.GetRawLength();
 			}
 		}
 
 		public PlayList()
 		{
-			MplsMarkX = "MPLS";
-			MplsVerX = "0200";
-			ApplicationInfoX = new PlAppInfo();
-			PlayItemListX = new PlPlayItemList();
-			MarkListX = new PlMarkList();
-			ExtensionDataX = null;
+			MplsMark = "MPLS";
+			MplsVer = "0200";
+			ApplicationInfo = new PlAppInfo();
+			PlayItemList = new PlPlayItemList();
+			MarkList = new PlMarkList();
+			ExtensionData = null;
 
 			ReservedForFutureUse = null;
 		}

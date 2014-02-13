@@ -517,12 +517,12 @@ namespace BluraySharp.Common
 
 	public static class BdLangCode
 	{
-		private static string CodeOf(BdLang enumValue)
+		public static string CodeOf(BdLang enumValue)
 		{
 			return BdLangCode.codeTable[enumValue];
 		}
 
-		private static BdLang ValueOf(string code)
+		public static BdLang ValueOf(string code)
 		{
 			string tCode = code.ToLower(System.Globalization.CultureInfo.InvariantCulture);
 			return BdLangCode.codeTable.First(x => x.Value.Equals(tCode)).Key;

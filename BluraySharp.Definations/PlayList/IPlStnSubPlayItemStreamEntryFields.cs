@@ -5,9 +5,11 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnSubPlayItemStreamEntryProperties : IPlStnStreamEntry
+	public interface IPlStnSubPlayItemStreamEntryFields : IPlStnStreamEntry
 	{
 		byte SubPathId { get; set; }
 		byte SubClipEntryId { get; set; }
+
+		ushort StreamProgId { get; set; }
 	}
 }

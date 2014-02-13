@@ -6,7 +6,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnSecViRecord : IPlStnRecord
+	public interface IPlStnSvRecord : IPlStnRecord
 	{
 		BdViCodingType CodingType { get; set; }
 		BdViFormat VideoFormat { get; set; }
