@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BluraySharp.Architecture;
 
 namespace BluraySharp.FileSystem
 {
@@ -32,7 +33,7 @@ namespace BluraySharp.FileSystem
 			set;
 		}
 
-		public virtual IEnumerable<IBdfsItem> Children
+		public virtual IBdList<IBdfsItem> Children
 		{
 			get { return null; }
 		}

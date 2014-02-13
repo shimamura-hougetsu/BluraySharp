@@ -21,13 +21,13 @@ namespace BluraySharp.FileSystem
 			}
 		}
 
-		public IEnumerable<IBdfsArrayEntryFile<T>> Files
-		{
-			get
-			{
-				return base.children;
-			}
-		}
+		//public IEnumerable<IBdfsArrayEntryFile<T>> Files
+		//{
+		//    get
+		//    {
+		//        return base.children;
+		//    }
+		//}
 
 		public IBdfsArrayEntryFile<T> CreateNewFile(uint fileId)
 		{
@@ -46,6 +46,16 @@ namespace BluraySharp.FileSystem
 				BdEntitiesRegistry.Instance.GetEntryAttribute<T>() as BdArrayEntryAttribute;
 
 			base.Name = tEntryAttrib.FolderName;
+		}
+
+		public IBdList<IBdfsArrayEntryFile<T>> Files
+		{
+			get { return base.children; }
+		}
+
+		public new System.Collections.IEnumerator GetEnumerator()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

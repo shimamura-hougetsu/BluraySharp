@@ -6,7 +6,6 @@ namespace BluraySharp.PlayList
 {
 	public class PlPlayItemList : BluraySharp.PlayList.IPlPlayItemList
 	{
-
 		public IPlPlayItem CreatePlayItem()
 		{
 			return new PlPlayItem();
@@ -17,27 +16,27 @@ namespace BluraySharp.PlayList
 			return new PlSubPath();
 		}
 
-		public IList<IPlPlayItem> PlayItems
+		public IBdList<IPlPlayItem> PlayItems
 		{
 			get
 			{
-				return new List<IPlPlayItem>(this.PlayItemsX);
+				return this.PlayItemsX;
 			}
 		}
 
-		public IList<IPlSubPath> SubPaths
+		public IBdList<IPlSubPath> SubPaths
 		{
 			get
 			{
-				return new List<IPlSubPath>(this.SubPathsX);
+				return this.SubPathsX;
 			}
 		}
 
 		private ushort ReservedForFutureUse { get; set; }
 
-		public IList<PlPlayItem> PlayItemsX { get; private set; }
+		public BdPartList<PlPlayItem, IPlPlayItem> PlayItemsX { get; private set; }
 
-		public IList<PlSubPath> SubPathsX { get; private set; }
+		public BdPartList<PlSubPath, IPlSubPath> SubPathsX { get; private set; }
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
@@ -61,13 +60,13 @@ namespace BluraySharp.PlayList
 				PlayItemsX.Clear();
 				for (uint i = 0; i < tPlayItemCount; ++i)
 				{
-					PlayItemsX.Add(context.Deserialize<PlPlayItem>());
+					PlayItemsX.Insert(context.Deserialize<PlPlayItem>());
 				}
 
 				SubPathsX.Clear();
 				for (uint i = 0; i < tSubPathCount; ++i)
 				{
-					SubPathsX.Add(context.Deserialize<PlSubPath>());
+					SubPathsX.Insert(context.Deserialize<PlSubPath>());
 				}
 			}
 			finally
@@ -101,8 +100,8 @@ namespace BluraySharp.PlayList
 
 		public PlPlayItemList()
 		{
-			PlayItemsX = new List<PlPlayItem>();
-			SubPathsX = new List<PlSubPath>();
+			PlayItemsX = new BdPartList<PlPlayItem, IPlPlayItem>();
+			SubPathsX = new BdPartList<PlSubPath, IPlSubPath>();
 		}
 	}
 }

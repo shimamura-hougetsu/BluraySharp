@@ -7,7 +7,7 @@ namespace BluraySharp.PlayList
 {
 	public class PlSubPath : BluraySharp.PlayList.IPlSubPath
 	{
-		public IList<IPlPlayItem> PlayItems
+		public IBdList<IPlPlayItem> PlayItems
 		{
 			get { throw new NotImplementedException(); }
 		}
@@ -19,12 +19,7 @@ namespace BluraySharp.PlayList
 
 		private BdBitwise16 repeatOption = new BdBitwise16();
 
-		public IList<PlSubPlayItem> PlayItemsX { get; private set; }
-
-		public IPlPlayItem CreateSubPlayItem()
-		{
-			return new PlSubPlayItem();
-		}
+		public BdPartList<PlSubPlayItem, IPlPlayItem> PlayItemsX { get; private set; }
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
@@ -51,7 +46,7 @@ namespace BluraySharp.PlayList
 
 				for (byte i = 0; i < tSubPlayItemCount; ++i)
 				{
-					PlayItemsX.Add(context.Deserialize<PlSubPlayItem>());
+					PlayItemsX.Insert(context.Deserialize<PlSubPlayItem>());
 				}
 			}
 			finally
@@ -81,7 +76,7 @@ namespace BluraySharp.PlayList
 
 		public PlSubPath()
 		{
-			PlayItemsX = new List<PlSubPlayItem>();
+			PlayItemsX = new BdPartList<PlSubPlayItem, IPlPlayItem>();
 		}
 	}
 }

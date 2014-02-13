@@ -20,12 +20,12 @@ namespace BluraySharp.PlayList
 		//Reserved5, // = 11,
 		//Count
 
-		IList<IPlStnViRecord> VStream { get; set; }
-		IList<IPlStnAuRecord> AStreams { get; }
-		IList<IPlStnOlRecord> PgTsStreams { get; }
-		IList<IPlStnOlRecord> IgStreams { get; }
-		IList<IPlStnSecAuRecord> SaStreams { get; }
-		IList<IPlStnSecViRecord> SvStreams { get; }
-		IList<IPlStnOlRecord> PipPgTsStreams { get; }
+		IBdList<IPlStnViRecord> VStream { get; set; }
+		IBdList<IPlStnAuRecord> AStreams { get; }
+		IBdList<IPlStnOlRecord> PgTsStreams { get; }
+		IBdList<IPlStnOlRecord> IgStreams { get; }
+		IBdList<IPlStnSecAuRecord> SaStreams { get; }
+		IBdList<IPlStnSecViRecord> SvStreams { get; }
+		IBdList<IPlStnOlRecord> PipPgTsStreams { get; }
 	}
 }

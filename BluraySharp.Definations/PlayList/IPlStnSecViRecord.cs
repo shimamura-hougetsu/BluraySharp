@@ -12,7 +12,7 @@ namespace BluraySharp.PlayList
 		BdViFormat VideoFormat { get; set; }
 		BdViFrameRate FrameRate { get; set; }
 
-		IList<Byte> SecondaryAudioRef { get; }
-		IList<Byte> PipSubtitleRef { get; }
+		IList<byte> SecondaryAudioRef { get; }
+		IList<byte> PipSubtitleRef { get; }
 	}
 }

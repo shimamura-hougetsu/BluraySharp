@@ -5,10 +5,7 @@ namespace BluraySharp.PlayList
 {
 	public interface IPlPlayItemList : IBdPart
 	{
-		System.Collections.Generic.IList<BluraySharp.PlayList.IPlPlayItem> PlayItems { get; }
-		System.Collections.Generic.IList<BluraySharp.PlayList.IPlSubPath> SubPaths { get; }
-
-		IPlPlayItem CreatePlayItem();
-		IPlSubPath CreateSubPath();
+		IBdList<IPlPlayItem> PlayItems { get; }
+		IBdList<IPlSubPath> SubPaths { get; }
 	}
 }

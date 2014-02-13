@@ -41,18 +41,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Architecture\BdEntitiesRegistry.cs" />
+    <Compile Include="Architecture\BdPartList.cs" />
     <Compile Include="Architecture\BdStreamIoContext.cs" />
     <Compile Include="Architecture\BdStreamReadContext.cs" />
     <Compile Include="Architecture\BdStreamWriteContext.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="FileSystem\BdfsBdmvRoot.cs" />
-    <Compile Include="FileSystem\BdfsArrayEntryFile.cs" />
-    <Compile Include="FileSystem\BdfsArrayEntryFolder.cs" />
-    <Compile Include="FileSystem\BdfsComponentEntryFile.cs" />
-    <Compile Include="FileSystem\BdfsItem.cs" />
-    <Compile Include="FileSystem\BdfsFolder.cs" />
-    <Compile Include="FileSystem\BdfsRootFolder.cs" />
-    <Compile Include="FileSystem\BdfsTopEntryFile.cs" />
+    <None Include="FileSystem\BdfsBdmvRoot.cs" />
+    <None Include="FileSystem\BdfsArrayEntryFile.cs" />
+    <None Include="FileSystem\BdfsArrayEntryFolder.cs" />
+    <None Include="FileSystem\BdfsComponentEntryFile.cs" />
+    <None Include="FileSystem\BdfsItem.cs" />
+    <None Include="FileSystem\BdfsFolder.cs" />
+    <None Include="FileSystem\BdfsRootFolder.cs" />
+    <None Include="FileSystem\BdfsTopEntryFile.cs" />
     <Compile Include="PlayList\PlAngleClipInfo.cs" />
     <Compile Include="PlayList\PlAppInfo.cs" />
     <Compile Include="PlayList\PlayList.cs" />

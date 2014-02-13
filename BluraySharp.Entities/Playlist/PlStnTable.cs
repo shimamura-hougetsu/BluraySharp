@@ -54,7 +54,7 @@ namespace BluraySharp.PlayList
 			}
 		}
 
-		public IList<IPlStnViRecord> VStream
+		public IBdList<IPlStnViRecord> VStream
 		{
 			get
 			{
@@ -66,33 +66,33 @@ namespace BluraySharp.PlayList
 			}
 		}
 
-		public IList<IPlStnAuRecord> AStreams
+		public IBdList<IPlStnAuRecord> AStreams
 		{
 			get { throw new NotImplementedException(); }
 		}
 
-		public IList<IPlStnOlRecord> PgTsStreams
+		public IBdList<IPlStnOlRecord> PgTsStreams
 		{
 			get { throw new NotImplementedException(); }
 		}
 
-		public IList<IPlStnSecViRecord> SvStreams
+		public IBdList<IPlStnSecViRecord> SvStreams
 		{
 			get { throw new NotImplementedException(); }
 		}
 
-		public IList<IPlStnSecAuRecord> SaStreams
+		public IBdList<IPlStnSecAuRecord> SaStreams
 		{
 			get { throw new NotImplementedException(); }
 		}
 
 
-		public IList<IPlStnOlRecord> IgStreams
+		public IBdList<IPlStnOlRecord> IgStreams
 		{
 			get { throw new NotImplementedException(); }
 		}
 
-		public IList<IPlStnOlRecord> PipPgTsStreams
+		public IBdList<IPlStnOlRecord> PipPgTsStreams
 		{
 			get { throw new NotImplementedException(); }
 		}

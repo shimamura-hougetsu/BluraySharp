@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using BluraySharp.Architecture;
 
 namespace BluraySharp.FileSystem
 {
@@ -14,7 +15,7 @@ namespace BluraySharp.FileSystem
 		IBdfsAttribute Attribute { get; }
 
 		IBdfsItem Parent { get; }
-		IEnumerable<IBdfsItem> Children { get; }
+		IBdList<IBdfsItem> Children { get; }
 		
 		string GetFullPath();
 		string GetBackupPath();
