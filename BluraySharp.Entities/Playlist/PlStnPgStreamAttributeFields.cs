@@ -25,7 +25,7 @@ namespace BluraySharp.PlayList
 
 		public override long DeserializeFrom(IBdRawReadContext context)
 		{
-			string tLangCode = context.DeserializeString(3);
+			string tLangCode = context.DeserializeString(3, Encoding.UTF8);
 			this.Language = BdLangCode.ValueOf(tLangCode);
 
 			this.ReservedForFutureUse = context.DeserializeBytes(1);

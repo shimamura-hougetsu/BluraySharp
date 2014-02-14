@@ -16,7 +16,7 @@ namespace BluraySharp.Architecture
 			return base.Read(buffer, offset, length);
 		}
 
-		public void Deserialize<T>(T obj) where T : IBdRawSerializable
+		public void Deserialize(IBdRawSerializable obj)
 		{
 			this.EnterScope();
 			try
@@ -48,9 +48,9 @@ namespace BluraySharp.Architecture
 			return tBuffer;
 		}
 
-		public string DeserializeString(int len)
+		public string DeserializeString(int len, Encoding encoding)
 		{
-			return Encoding.UTF8.GetString(this.DeserializeBytes(len));
+			return encoding.GetString(this.DeserializeBytes(len));
 		}
 
 		private byte[] DeserializeBytesReversed(int length)
@@ -88,6 +88,16 @@ namespace BluraySharp.Architecture
 			byte[] tBuffer = this.DeserializeBytesReversed(8);
 
 			return BitConverter.ToUInt64(tBuffer, 0);
+		}
+
+		public override void Skip(long delta)
+		{
+			const int tBufferSize = 4096 * 16;
+			byte[] tBuffer = new byte[tBufferSize];
+			while (delta > 0)
+			{
+				delta -= base.Read(tBuffer, 0, (int)Math.Min(tBufferSize, delta));
+			}
 		}
 	}
 }

@@ -21,7 +21,7 @@ namespace BluraySharp.Architecture
 			this.Write(buffer, 0, length);
 		}
 
-		public void Serialize<T>(T obj) where T : IBdRawSerializable
+		public void Serialize(IBdRawSerializable obj)
 		{
 			this.EnterScope();
 			try
@@ -44,9 +44,9 @@ namespace BluraySharp.Architecture
 			this.Write(buffer, 0, buffer.Length);
 		}
 
-		public void Serialize(string value)
+		public void Serialize(string value, Encoding encoding)
 		{
-			this.Serialize(Encoding.UTF8.GetBytes(value));
+			this.Serialize(encoding.GetBytes(value));
 		}
 
 		private void SerializeBytesReversed(byte[] bytes)
@@ -75,6 +75,16 @@ namespace BluraySharp.Architecture
 			this.SerializeBytesReversed(BitConverter.GetBytes(value));
 		}
 
-
+		public override void Skip(long delta)
+		{
+			const int tBufferSize = 4096 * 16;
+			byte[] tBuffer = new byte[tBufferSize];
+			while (delta > 0)
+			{
+				int tLen = (int) Math.Min(tBufferSize, delta);
+				base.Write(tBuffer, 0, tLen);
+				delta -= tLen;
+			}
+		}
 	}
 }

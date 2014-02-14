@@ -23,7 +23,7 @@ namespace BluraySharp
 
 			IBdRawReadContext tRawIo = new BdStreamReadContext(file);
 			T tRet = this.registry.CreateEntry<T>();
-			tRawIo.Deserialize<T>(tRet);
+			tRawIo.Deserialize(tRet);
 
 			return tRet;
 		}
@@ -41,7 +41,7 @@ namespace BluraySharp
 			}
 
 			IBdRawWriteContext tRawIo = new BdStreamWriteContext(file);
-			tRawIo.Serialize<T>(component);
+			tRawIo.Serialize(component);
 		}
 		
 		public void Copy<T>(T src, T dest) where T : IBdPart
@@ -56,12 +56,12 @@ namespace BluraySharp
 				using (MemoryStream tMem = new MemoryStream())
 				{
 					IBdRawWriteContext tSerializer = new BdStreamWriteContext(tMem);
-					tSerializer.Serialize<T>(src);
+					tSerializer.Serialize(src);
 
 					tMem.Position = 0;
 
 					IBdRawReadContext tDeserializer = new BdStreamReadContext(tMem);
-					tDeserializer.Deserialize<T>(dest);
+					tDeserializer.Deserialize(dest);
 				}
 			}
 		}

@@ -28,7 +28,7 @@ namespace BluraySharp.PlayList
 		{
 			this.CharCode = (BdCharacterCodingType)context.DeserializeByte();
 
-			string tLangCode = context.DeserializeString(3);
+			string tLangCode = context.DeserializeString(3, Encoding.UTF8);
 			this.Language = BdLangCode.ValueOf(tLangCode);
 				
 			return context.Position;

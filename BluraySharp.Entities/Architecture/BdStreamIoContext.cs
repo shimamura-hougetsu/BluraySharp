@@ -50,12 +50,7 @@ namespace BluraySharp.Architecture
 					}
 					else if (tDelta > 0)
 					{
-						const int tBufferSize = 4096 * 16;
-						byte[] tBuffer = new byte[tBufferSize];
-						while(tDelta > 0)
-						{
-							tDelta -= bdStream.Read(tBuffer, 0, (int) Math.Min(tBufferSize, tDelta));
-						}
+						this.Skip(tDelta);
 					}
 					else
 					{
@@ -65,6 +60,8 @@ namespace BluraySharp.Architecture
 				}
 			}
 		}
+
+		public abstract void Skip(long delta);
 
 		private long baseAddress = 0;
 		private long ioCount = 0;

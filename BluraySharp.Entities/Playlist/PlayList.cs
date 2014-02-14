@@ -2,6 +2,7 @@
 using System.Xml.Serialization;
 using BluraySharp.Architecture;
 using BluraySharp.Common;
+using System.Text;
 
 namespace BluraySharp.PlayList
 {
@@ -29,8 +30,8 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			this.MplsMark = context.DeserializeString(4);
-			this.MplsVer = context.DeserializeString(4);
+			this.MplsMark = context.DeserializeString(4, Encoding.UTF8);
+			this.MplsVer = context.DeserializeString(4, Encoding.UTF8);
 
 			uint tOffsetPlayItemList = context.DeserializeUInt32();
 			uint tOffsetMarkList = context.DeserializeUInt32();

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace BluraySharp.Architecture
 {
-	public interface IBdList<T> : IEnumerable<T>, IEnumerable
+	public interface IBdList<T> //: IList<T>, IList, 
+		:IEnumerable<T>, IEnumerable
 	{
 		int Count { get; }
 		int Capacity { get; }

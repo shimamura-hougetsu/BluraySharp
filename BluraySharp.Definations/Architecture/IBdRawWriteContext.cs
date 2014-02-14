@@ -7,11 +7,11 @@ namespace BluraySharp.Architecture
 {
 	public interface IBdRawWriteContext : IBdRawIoContext
 	{
-		void Serialize<T>(T obj) where T : IBdRawSerializable;
+		void Serialize(IBdRawSerializable obj);
 
 		void Serialize(byte[] value, int offset, int length);
 
-		void Serialize(string value);
+		void Serialize(string value, Encoding encoding);
 
 		void Serialize(byte value);
 		void Serialize(ushort value);

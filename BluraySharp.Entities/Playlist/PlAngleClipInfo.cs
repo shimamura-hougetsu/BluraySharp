@@ -1,5 +1,6 @@
 ﻿using System;
 using BluraySharp.Architecture;
+using System.Text;
 
 namespace BluraySharp.PlayList
 {
@@ -44,7 +45,7 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			string tIdString = context.DeserializeString(clipIdStringLen);
+			string tIdString = context.DeserializeString(clipIdStringLen, Encoding.UTF8);
 			uint tId = uint.Parse(tIdString);
 
 			if (tId < 0 || tId > 99999u)
@@ -54,7 +55,7 @@ namespace BluraySharp.PlayList
 			}
 
 			this.ClipId = tId;
-			this.ClipCodec = context.DeserializeString(clipCodecStringLen);
+			this.ClipCodec = context.DeserializeString(clipCodecStringLen, Encoding.UTF8);
 
 			return context.Position;
 		}

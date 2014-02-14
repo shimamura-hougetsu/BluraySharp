@@ -12,7 +12,7 @@ namespace BluraySharp
 		{
 			T tObject = new T();
 
-			reader.Deserialize<T>(tObject);
+			reader.Deserialize(tObject);
 			return tObject;
 		}
 	}

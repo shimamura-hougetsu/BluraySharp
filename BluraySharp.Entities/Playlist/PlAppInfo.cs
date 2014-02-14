@@ -52,7 +52,7 @@ namespace BluraySharp.PlayList
 		private PlPlaybackType playbackType = PlPlaybackType.Sequential;
 		private ushort playbackCount = 0;
 		private BdUOMask uoMask = new BdUOMask();
-		private BdBitwise16 _PlaybackOption = new BdBitwise16(0);
+		private BdBitwise16 playbackOption = new BdBitwise16(0);
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
@@ -64,8 +64,8 @@ namespace BluraySharp.PlayList
 			{
 				context.Serialize((byte)this.playbackType);
 				context.Serialize(this.playbackCount);
-				context.Serialize<BdUOMask>(this.uoMask);
-				context.Serialize<BdBitwise16>(this._PlaybackOption);
+				context.Serialize(this.uoMask);
+				context.Serialize(this.playbackOption);
 			}
 			finally
 			{
@@ -89,7 +89,7 @@ namespace BluraySharp.PlayList
 
 				this.uoMask = context.Deserialize<BdUOMask>();
 
-				this._PlaybackOption = context.Deserialize<BdBitwise16>();
+				this.playbackOption = context.Deserialize<BdBitwise16>();
 			}
 			finally
 			{
