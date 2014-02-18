@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class PlAngleClipInfo : IPlAngleClipInfo
+	public class PlClipInfo : IPClipInfo
 	{
 		private string clipCodec = "M2TS";
 
@@ -45,17 +45,17 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			string tIdString = context.DeserializeString(clipIdStringLen, Encoding.UTF8);
-			uint tId = uint.Parse(tIdString);
+			//-string tIdString = context.DeserializeString(clipIdStringLen, Encoding.UTF8);
+			//-uint tId = uint.Parse(tIdString);
 
-			if (tId < 0 || tId > 99999u)
+			//-if (tId < 0 || tId > 99999u)
 			{
 				//Invalid ClipId
 				throw new ArgumentException("value");
 			}
 
-			this.ClipId = tId;
-			this.ClipCodec = context.DeserializeString(clipCodecStringLen, Encoding.UTF8);
+			//-this.ClipId = tId;
+			//-this.ClipCodec = context.DeserializeString(clipCodecStringLen, Encoding.UTF8);
 
 			return context.Position;
 		}

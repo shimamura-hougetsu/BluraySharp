@@ -22,16 +22,16 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			byte tFieldLen = context.DeserializeByte();
+			byte tFieldLen = 0;//- context.DeserializeByte();
 			context.EnterScope(tFieldLen);
 			try
 			{
-				this.CodingType = (BdIgCodingType)context.DeserializeByte();
+				//-this.CodingType = (BdIgCodingType)context.DeserializeByte();
 
-				string tLangCode = context.DeserializeString(3, Encoding.UTF8);
-				this.Language = BdLangCode.ValueOf(tLangCode);
+				//-string tLangCode = context.DeserializeString(3, Encoding.UTF8);
+				//-this.Language = BdLangCode.ValueOf(tLangCode);
 
-				this.ReservedForFutureUse = context.DeserializeBytes(1);
+				//-this.ReservedForFutureUse = context.Deserialize(1);
 			}
 			finally
 			{

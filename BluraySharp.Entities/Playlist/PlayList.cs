@@ -30,38 +30,38 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			this.MplsMark = context.DeserializeString(4, Encoding.UTF8);
-			this.MplsVer = context.DeserializeString(4, Encoding.UTF8);
+			//-this.MplsMark = context.DeserializeString(4, Encoding.UTF8);
+			//-this.MplsVer = context.DeserializeString(4, Encoding.UTF8);
 
-			uint tOffsetPlayItemList = context.DeserializeUInt32();
-			uint tOffsetMarkList = context.DeserializeUInt32();
-			uint tOffsetExtDatList = context.DeserializeUInt32();
+			//-uint tOffsetPlayItemList = context.DeserializeUInt32();
+			//-uint tOffsetMarkList = context.DeserializeUInt32();
+			//-uint tOffsetExtDatList = context.DeserializeUInt32();
 
-			this.ReservedForFutureUse = context.DeserializeBytes(20);
+			//-this.ReservedForFutureUse = context.Deserialize(20);
 
-			this.ApplicationInfo = context.Deserialize<PlAppInfo>();
+			//-this.ApplicationInfo = context.Deserialize<PlAppInfo>();
 
 			//Padding words here, 2*N totally
 
-			if (tOffsetPlayItemList != 0)
+			//-if (tOffsetPlayItemList != 0)
 			{
-				context.Position = tOffsetPlayItemList;
+				//-	context.Position = tOffsetPlayItemList;
 				this.PlayItemList = context.Deserialize<PlPlayItemList>();
 			}
 
 			//Padding words here, 2*N totally
 
-			if (tOffsetMarkList != 0)
+			//-if (tOffsetMarkList != 0)
 			{
-				context.Position = tOffsetMarkList;
+				//-	context.Position = tOffsetMarkList;
 				this.MarkList = context.Deserialize<PlMarkList>();
 			}
 
 			//Padding words here, 2*N totally
 
-			if (tOffsetExtDatList != 0)
+			//-if (tOffsetExtDatList != 0)
 			{
-				context.Position = tOffsetExtDatList;
+				//-	context.Position = tOffsetExtDatList;
 				this.ExtensionData = context.Deserialize<BdExtensionData>();
 			}
 

@@ -26,10 +26,10 @@ namespace BluraySharp.PlayList
 
 		public override long DeserializeFrom(IBdRawReadContext context)
 		{
-			this.CharCode = (BdCharacterCodingType)context.DeserializeByte();
+			//-this.CharCode = (BdCharacterCodingType)context.DeserializeByte();
 
-			string tLangCode = context.DeserializeString(3, Encoding.UTF8);
-			this.Language = BdLangCode.ValueOf(tLangCode);
+			//-string tLangCode = context.DeserializeString(3, Encoding.UTF8);
+			//-this.Language = BdLangCode.ValueOf(tLangCode);
 				
 			return context.Position;
 		}

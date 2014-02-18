@@ -12,8 +12,6 @@ namespace BluraySharp.PlayList
 		BdTime OutTime { get; set; }
 
 		BdConnectionCondition ConnectionCondition { get; set; }
-		bool IsMultiAngle { get; set; }
-
-		IBdList<IPlAngleClipInfo> AngleList { get; }
+		IBdList<IPClipInfo> ClipList { get; }
 	}
 }

@@ -42,11 +42,11 @@ namespace BluraySharp.PlayList
 
 		public virtual long DeserializeFrom(IBdRawReadContext context)
 		{
-			byte tFieldLen = context.DeserializeByte();
-			context.EnterScope(tFieldLen);
+			//-byte tFieldLen = context.DeserializeByte();
+			//-context.EnterScope(tFieldLen);
 			try
 			{
-				this.CodingType = (BdStCodingType)context.DeserializeByte();
+				//-	this.CodingType = (BdStCodingType)context.DeserializeByte();
 				if (this.Fields != null)
 				{
 					context.Deserialize(this.Fields);

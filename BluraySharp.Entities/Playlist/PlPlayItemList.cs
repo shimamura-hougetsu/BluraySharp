@@ -21,24 +21,24 @@ namespace BluraySharp.PlayList
 		{
 			uint tDataLen;
 
-			tDataLen = context.DeserializeUInt32();
-			context.EnterScope(tDataLen);
+			//-tDataLen = context.DeserializeUInt32();
+			//-context.EnterScope(tDataLen);
 
 			try
 			{
-				this.ReservedForFutureUse = context.DeserializeUInt16();
+				//-this.ReservedForFutureUse = context.DeserializeUInt16();
 
-				uint tPlayItemCount = context.DeserializeUInt16();
-				uint tSubPathCount = context.DeserializeUInt16();
+				//-uint tPlayItemCount = context.DeserializeUInt16();
+				//-uint tSubPathCount = context.DeserializeUInt16();
 
 				PlayItems.Clear();
-				for (uint i = 0; i < tPlayItemCount; ++i)
+				//-for (uint i = 0; i < tPlayItemCount; ++i)
 				{
 					PlayItems.Insert(context.Deserialize<PlPlayItem>());
 				}
 
 				SubPaths.Clear();
-				for (uint i = 0; i < tSubPathCount; ++i)
+				//-for (uint i = 0; i < tSubPathCount; ++i)
 				{
 					SubPaths.Insert(context.Deserialize<PlSubPath>());
 				}

@@ -7,14 +7,13 @@ namespace BluraySharp.Architecture
 {
 	public enum BdPartFieldType
 	{
-		Auto,
+		Unknown,
 		UInt,
 		ByteArray,
-		String,
 		BdPart,
 	}
 
-	public enum BdIntSize
+	public enum BdIntSize : int
 	{
 		Auto = 0,
 

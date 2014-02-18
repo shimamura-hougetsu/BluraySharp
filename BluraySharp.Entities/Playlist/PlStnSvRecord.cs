@@ -68,15 +68,15 @@ namespace BluraySharp.PlayList
 			base.DeserializeFrom(context);
 			this.Attribute = context.Deserialize<PlStnViStreamAttribute>();
 
-			byte tFieldLen; 
-			
-			tFieldLen = context.DeserializeByte();
-			this.ReservedForWordAlign1 = context.DeserializeByte();
-			this.SecondaryAudioRef = context.DeserializeBytes(tFieldLen).ToList();
+			byte tFieldLen;
 
-			tFieldLen = context.DeserializeByte();
-			this.ReservedForWordAlign2 = context.DeserializeByte();
-			this.PipSubtitleRef = context.DeserializeBytes(tFieldLen).ToList();
+			//-tFieldLen = context.DeserializeByte();
+			//-this.ReservedForWordAlign1 = context.DeserializeByte();
+			//-this.SecondaryAudioRef = context.Deserialize(tFieldLen).ToList();
+
+			//-tFieldLen = context.DeserializeByte();
+			//-this.ReservedForWordAlign2 = context.DeserializeByte();
+			//-this.PipSubtitleRef = context.Deserialize(tFieldLen).ToList();
 
 			return context.Position;
 		}

@@ -27,9 +27,5 @@ namespace BluraySharp.Architecture
 				this.fieldSet[index].Info.SetValue(this.thisObj, value);
 			}
 		}
-
-		public long GetLength(int index)
-		{
-		}
 	}
 }

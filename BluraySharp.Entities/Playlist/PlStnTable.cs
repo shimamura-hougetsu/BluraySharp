@@ -43,55 +43,55 @@ namespace BluraySharp.PlayList
 		{
 			ushort tDataLen;
 
-			tDataLen = context.DeserializeUInt16();
-			context.EnterScope(tDataLen);
+			//-tDataLen = context.DeserializeUInt16();
+			//-context.EnterScope(tDataLen);
 
 			try
 			{
-				this.ReservedForFutureUse = context.DeserializeUInt16();
+				//-this.ReservedForFutureUse = context.DeserializeUInt16();
 
-				byte[] tRecordCount = context.DeserializeBytes(12);
+				//-byte[] tRecordCount = context.Deserialize(12);
 
-				this.ViStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[0]; ++iRec)
-				{
-					this.ViStreams.Insert(context.Deserialize<PlStnViRecord>());
-				}
+				//this.ViStreams.Clear();
+				//for (int iRec = 0; iRec < tRecordCount[0]; ++iRec)
+				//{
+				//    this.ViStreams.Insert(context.Deserialize<PlStnViRecord>());
+				//}
 
-				this.AuStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[1]; ++iRec)
-				{
-					this.AuStreams.Insert(context.Deserialize<PlStnAuRecord>());
-				}
+				//this.AuStreams.Clear();
+				//for (int iRec = 0; iRec < tRecordCount[1]; ++iRec)
+				//{
+				//    this.AuStreams.Insert(context.Deserialize<PlStnAuRecord>());
+				//}
 
-				this.StStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[2]; ++iRec)
-				{
-					this.StStreams.Insert(context.Deserialize<PlStnStRecord>());
-				}
-				this.PipStStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[6]; ++iRec)
-				{
-					this.PipStStreams.Insert(context.Deserialize<PlStnStRecord>());
-				}
+				//this.StStreams.Clear();
+				//for (int iRec = 0; iRec < tRecordCount[2]; ++iRec)
+				//{
+				//    this.StStreams.Insert(context.Deserialize<PlStnStRecord>());
+				//}
+				//this.PipStStreams.Clear();
+				//for (int iRec = 0; iRec < tRecordCount[6]; ++iRec)
+				//{
+				//    this.PipStStreams.Insert(context.Deserialize<PlStnStRecord>());
+				//}
 
-				this.IgStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[3]; ++iRec)
-				{
-					this.IgStreams.Insert(context.Deserialize<PlStnIgRecord>());
-				}
+				//this.IgStreams.Clear();
+				//for (int iRec = 0; iRec < tRecordCount[3]; ++iRec)
+				//{
+				//    this.IgStreams.Insert(context.Deserialize<PlStnIgRecord>());
+				//}
 
-				this.SaStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[4]; ++iRec)
-				{
-					this.SaStreams.Insert(context.Deserialize<PlStnSaRecord>());
-				}
+				//this.SaStreams.Clear();
+				//for (int iRec = 0; iRec < tRecordCount[4]; ++iRec)
+				//{
+				//    this.SaStreams.Insert(context.Deserialize<PlStnSaRecord>());
+				//}
 
-				this.SvStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[5]; ++iRec)
-				{
-					this.SvStreams.Insert(context.Deserialize<PlStnSvRecord>());
-				}
+				//this.SvStreams.Clear();
+				//for (int iRec = 0; iRec < tRecordCount[5]; ++iRec)
+				//{
+				//    this.SvStreams.Insert(context.Deserialize<PlStnSvRecord>());
+				//}
 
 				//for (int iType = 0; iType < (int)PlStnRecordTypes.Count; iType++)
 				//{

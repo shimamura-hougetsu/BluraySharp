@@ -44,35 +44,18 @@ namespace BluraySharp.Architecture
 			this.Write(buffer, 0, buffer.Length);
 		}
 
-		public void Serialize(string value, Encoding encoding)
+		public void SerializeBytes(byte[] value)
 		{
-			this.Serialize(encoding.GetBytes(value));
+			throw new NotImplementedException();
 		}
 
-		private void SerializeBytesReversed(byte[] bytes)
+		public void SerializeUInt(ulong value, BdIntSize size)
 		{
-			byte[] tBuffer = bytes.Reverse().ToArray();
-			this.Serialize(tBuffer, 0, bytes.Length);
-		}
+			const int tBufferSize = sizeof(ulong);
+			int tSize = (int)size;
 
-		public void Serialize(byte value)
-		{
-			SerializeBytesReversed(new byte[1] { value });
-		}
-
-		public void Serialize(ushort value)
-		{
-			SerializeBytesReversed(BitConverter.GetBytes(value));
-		}
-
-		public void Serialize(uint value)
-		{
-			this.SerializeBytesReversed(BitConverter.GetBytes(value));
-		}
-
-		public void Serialize(ulong value)
-		{
-			this.SerializeBytesReversed(BitConverter.GetBytes(value));
+			byte[] tBuffer = BitConverter.GetBytes(value).Reverse().ToArray();
+			this.Write(tBuffer, tBufferSize - tSize, tSize);
 		}
 
 		public override void Skip(long delta)

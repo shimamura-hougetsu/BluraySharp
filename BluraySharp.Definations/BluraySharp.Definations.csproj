@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Architecture\BdComponentEntryAttribute.cs" />
     <Compile Include="Architecture\BdPart.cs" />
+    <Compile Include="Architecture\BdPartFieldAccessor.cs" />
     <Compile Include="Architecture\BdPartFieldAttribute.cs" />
     <Compile Include="Architecture\BdPartFieldDescriptor.cs" />
     <Compile Include="Architecture\BdPartFieldDescriptorSet.cs" />
@@ -79,7 +80,7 @@
     <Compile Include="Architecture\IBdRawSerializable.cs" />
     <Compile Include="FileSystem\IBdfsTopEntryFile.cs" />
     <Compile Include="JavaObject\IBdJavaObject.cs" />
-    <Compile Include="PlayList\IPlAngleClipInfo.cs" />
+    <Compile Include="PlayList\IPClipInfo.cs" />
     <Compile Include="PlayList\IPlPlayItem.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
     <Compile Include="PlayList\IPlStillInfo.cs" />

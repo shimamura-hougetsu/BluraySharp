@@ -45,5 +45,28 @@ namespace BluraySharp
 				return obj.RawLength;
 			}
 		}
+
+		/// <summary>
+		/// Convert a ulong value to byte, ushort or uint, by specifying outputSize.
+		/// </summary>
+		/// <param name="value">Source ulong value</param>
+		/// <param name="outputSize">Expected size of output value</param>
+		/// <returns>Output value</returns>
+		public static object ToUInt(this ulong value, BdIntSize outputSize)
+		{
+			switch (outputSize)
+			{
+				case BdIntSize.U8:
+					return Convert.ToByte(value);
+				case BdIntSize.U16:
+					return Convert.ToUInt16(value);
+				case BdIntSize.U32:
+					return Convert.ToUInt32(value);
+				case BdIntSize.U64:
+					return value;
+				default:
+					throw new ArgumentException("outputSize");
+			}
+		}
 	}
 }

@@ -14,9 +14,6 @@ namespace BluraySharp.Architecture
 		public int ByteCount { get; private set; }
 		public string ByteCountIndicator { get; private set; }
 
-		public Encoding Encoding { get; private set; }
-		public BdIntSize IntSize { get; private set; }
-
 		public long Offset { get; set; }
 		public string OffsetIndicator { get; set; }
 
@@ -38,35 +35,7 @@ namespace BluraySharp.Architecture
 			}
 
 			this.FieldType = type;
-			this.IntSize = intSize;
-		}
-
-		public BdPartFieldAttribute(BdPartFieldType type, int byteCount, Encoding encoding)
-			: this()
-		{
-			if (type != BdPartFieldType.String)
-			{
-				//field type must be String.
-				throw new ArgumentException("type");
-			}
-
-			this.FieldType = type;
-			this.Encoding = encoding;
-			this.ByteCount = byteCount;
-		}
-
-		public BdPartFieldAttribute(BdPartFieldType type, string byteCountIndicator, Encoding encoding)
-			: this()
-		{
-			if (type != BdPartFieldType.String)
-			{
-				//field type must be String.
-				throw new ArgumentException("type");
-			}
-
-			this.FieldType = type;
-			this.Encoding = encoding;
-			this.ByteCountIndicator = byteCountIndicator;
+			this.ByteCount = (int) intSize;
 		}
 
 		public BdPartFieldAttribute(BdPartFieldType type, int byteCount)
@@ -111,10 +80,6 @@ namespace BluraySharp.Architecture
 		{
 			ByteCount = -1;
 			ByteCountIndicator = null;
-
-			Encoding = null;
-
-			IntSize = BdIntSize.Auto;
 
 			Offset = -1;
 			OffsetIndicator = null;

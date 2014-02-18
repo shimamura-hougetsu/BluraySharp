@@ -57,13 +57,13 @@ namespace BluraySharp.PlayList
 		public long SerializeTo(IBdRawWriteContext context)
 		{
 			uint tDataLen = (uint) this.RawLength;
-			context.Serialize(tDataLen);
+			//-context.Serialize(tDataLen);
 
 			context.EnterScope(tDataLen);
 			try
 			{
-				context.Serialize((byte)this.playbackType);
-				context.Serialize(this.playbackCount);
+				//-context.Serialize((byte)this.playbackType);
+				//-context.Serialize(this.playbackCount);
 				context.Serialize(this.uoMask);
 				context.Serialize(this.playbackOption);
 			}
@@ -77,15 +77,15 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			uint tDataLen = context.DeserializeUInt32();
+			//-uint tDataLen = context.DeserializeUInt32();
 
 			context.EnterScope();
 			try
 			{
-				this.reservedForFutureUse1 = context.DeserializeByte();
+				//-	this.reservedForFutureUse1 = context.DeserializeByte();
 
-				this.playbackType = (PlPlaybackType)context.DeserializeByte();
-				this.playbackCount = context.DeserializeUInt16();
+				//-	this.playbackType = (PlPlaybackType)context.DeserializeByte();
+				//-	this.playbackCount = context.DeserializeUInt16();
 
 				this.uoMask = context.Deserialize<BdUOMask>();
 

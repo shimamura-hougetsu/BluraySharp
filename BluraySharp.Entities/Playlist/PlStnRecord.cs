@@ -50,11 +50,11 @@ namespace BluraySharp.PlayList
 		public virtual long DeserializeFrom(Architecture.IBdRawReadContext context)
 		{
 			//Stream Entry
-			byte tFieldLen = context.DeserializeByte();
-			context.EnterScope(tFieldLen);
+			//-byte tFieldLen = context.DeserializeByte();
+			//-	context.EnterScope(tFieldLen);
 			try
 			{
-				this.EntryType = (PlStnStreamEntryType)context.DeserializeByte();
+				//-	this.EntryType = (PlStnStreamEntryType)context.DeserializeByte();
 				if (this.Entry != null)
 				{
 					context.Deserialize(this.Entry);

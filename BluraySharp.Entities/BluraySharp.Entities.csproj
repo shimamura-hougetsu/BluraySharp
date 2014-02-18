@@ -54,7 +54,7 @@
     <None Include="FileSystem\BdfsFolder.cs" />
     <None Include="FileSystem\BdfsRootFolder.cs" />
     <None Include="FileSystem\BdfsTopEntryFile.cs" />
-    <Compile Include="PlayList\PlAngleClipInfo.cs" />
+    <Compile Include="PlayList\PlClipInfo.cs" />
     <Compile Include="PlayList\PlAppInfo.cs" />
     <Compile Include="PlayList\PlayList.cs" />
     <Compile Include="PlayList\PlMarkList.cs" />

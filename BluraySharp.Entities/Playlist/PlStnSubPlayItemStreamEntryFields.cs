@@ -39,11 +39,11 @@ namespace BluraySharp.PlayList
 
 		public override long DeserializeFrom(Architecture.IBdRawReadContext context)
 		{
-			this.SubPathId = context.DeserializeByte();
-			this.SubClipEntryId = context.DeserializeByte();
-			this.StreamProgId = context.DeserializeUInt16();
+			//-this.SubPathId = context.DeserializeByte();
+			//-this.SubClipEntryId = context.DeserializeByte();
+			//-this.StreamProgId = context.DeserializeUInt16();
 
-			this.reservedForFutureUse = context.DeserializeBytes(4);
+			//-this.reservedForFutureUse = context.Deserialize(4);
 
 			return context.Position;
 		}

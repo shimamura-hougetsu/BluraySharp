@@ -14,8 +14,8 @@ namespace BluraySharp.Common
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			uint tDataLen;
-			tDataLen = context.DeserializeUInt32();
+			uint tDataLen = 0;
+			//-tDataLen = context.DeserializeUInt32();
 
 			if (tDataLen > 0)
 			{
@@ -23,7 +23,8 @@ namespace BluraySharp.Common
 
 				try
 				{
-					this.value = context.DeserializeBytes((int)tDataLen);
+					//this.value = context.Deserialize((int)tDataLen);
+					context.Deserialize(value);
 				}
 				finally
 				{

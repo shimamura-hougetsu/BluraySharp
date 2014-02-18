@@ -15,8 +15,8 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			this.StillMode = (PlStillMode) context.DeserializeByte();
-			this.StillDuration = context.DeserializeUInt16();
+			//-this.StillMode = (PlStillMode) context.DeserializeByte();
+			//-this.StillDuration = context.DeserializeUInt16();
 
 			return context.Position;
 		}

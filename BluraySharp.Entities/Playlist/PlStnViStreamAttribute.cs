@@ -45,18 +45,18 @@ namespace BluraySharp.PlayList
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			byte tFieldLen = context.DeserializeByte();
-			context.EnterScope(tFieldLen);
+			//-byte tFieldLen = context.DeserializeByte();
+			//-context.EnterScope(tFieldLen);
 			try
 			{
-				this.CodingType = (BdViCodingType) context.DeserializeByte();
-				this.FormatValue = context.Deserialize<BdBitwise8>();
-				
-				this.ReservedForFutureUse = context.DeserializeBytes(3);
+				//-	this.CodingType = (BdViCodingType) context.DeserializeByte();
+				//-	this.FormatValue = context.Deserialize<BdBitwise8>();
+
+				//-	this.ReservedForFutureUse = context.Deserialize(3);
 			}
 			finally
 			{
-				context.ExitScope();
+				//-	context.ExitScope();
 			}
 
 			return context.Position;

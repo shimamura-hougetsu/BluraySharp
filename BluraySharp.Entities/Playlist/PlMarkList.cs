@@ -16,15 +16,15 @@ namespace BluraySharp.PlayList
 		{
 			uint tDataLen;
 
-			tDataLen = context.DeserializeUInt32();
+			//-tDataLen = context.DeserializeUInt32();
 
-			if (tDataLen > 0)
+			//-if (tDataLen > 0)
 			{
-				context.EnterScope(tDataLen);
+				//-context.EnterScope(tDataLen);
 
 				try
 				{
-					value = context.DeserializeBytes((int)tDataLen);
+					//-	value = context.Deserialize((int)tDataLen);
 				}
 				finally
 				{

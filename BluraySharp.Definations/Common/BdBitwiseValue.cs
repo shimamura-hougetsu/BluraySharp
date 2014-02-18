@@ -49,90 +49,23 @@ namespace BluraySharp.Common
 		public BdBitwise64(System.UInt64 value) : base(value) { }
 	}
 
-	internal abstract class BdBitwiseValue
+	internal abstract class BdBitwiseValue<T> : IBdPart
+		where T : IConvertible
 	{
-		public delegate object Reader(IBdRawReadContext context);
-		public delegate void Writer(IBdRawWriteContext context, object value);
-		public delegate ulong Importer(object value);
-		public delegate object Exporter(ulong value);
-
-		protected class BdBitwiseValueType
+		public BdBitwiseValue(T value)
 		{
-			public byte Size;
-			public Reader Reader;
-			public Writer Writer;
-			public Importer Importer;
-			public Exporter Exporter;
-		}
-
-		private static readonly Dictionary<string, BdBitwiseValueType> _ValueTypes = new Dictionary<string, BdBitwiseValueType>()
-		{
-			{
-				typeof(Byte).FullName, 
-				new BdBitwiseValueType()
-				{
-					Size = 1,
-					Reader = (c => c.DeserializeByte()),
-					Writer = ((c, v)=> c.Serialize((byte) v)),
-					Importer = (v => (ulong) ((byte)v)),
-					Exporter = (v => (byte) v)
-				}
-			},
-
-			{
-				typeof(UInt16).FullName, 
-				new BdBitwiseValueType()
-				{
-					Size = 2,
-					Reader = (c => c.DeserializeUInt16()),
-					Writer = ((c, v)=> c.Serialize((ushort) v)),
-					Importer = (v => (ulong) ((ushort)v)),
-					Exporter = (v => (ushort) v)
-				}
-			},
-
-			{
-				typeof(UInt32).FullName, 
-				new BdBitwiseValueType()
-				{
-					Size = 4,
-					Reader = (c => c.DeserializeUInt32()),
-					Writer = ((c, v)=> c.Serialize((uint) v)),
-					Importer = (v => (ulong) ((uint)v)),
-					Exporter = (v => (uint) v)
-				}
-			},
-
-			{
-				typeof(UInt64).FullName, 
-				new BdBitwiseValueType()
-				{
-					Size = 8,
-					Reader = (c => c.DeserializeUInt64()),
-					Writer = ((c, v)=> c.Serialize((ulong) v)),
-					Importer = (v => (ulong) v),
-					Exporter = (v => v)
-				}
-			},
-		};
-
-		public BdBitwiseValue(string baseType)
-		{
-			ValueTypeDesc = _ValueTypes[baseType];
-		}
-
-		protected BdBitwiseValueType ValueTypeDesc { get; private set; }
-	}
-
-	internal abstract class BdBitwiseValue<T> : BdBitwiseValue, IBdPart
-	{
-		public BdBitwiseValue(T value) :
-			base(typeof(T).FullName)
-		{
-			_Value = this.ValueTypeDesc.Importer(value);
+			_Value = Convert.ToUInt64(value);
 		}
 
 		private ulong _Value;
+
+		protected byte ValueSize
+		{
+			get
+			{
+				return (byte) System.Runtime.InteropServices.Marshal.SizeOf(typeof(T));
+			}
+		}
 
 		public T this[byte index, byte length]
 		{
@@ -143,7 +76,7 @@ namespace BluraySharp.Common
 				ulong tValue = ~(0xFFFFFFFFFFFFFFFF << length);
 				tValue &= (_Value >> index);
 
-				return (T)this.ValueTypeDesc.Exporter(tValue);
+				return (T) tValue.ToUInt((BdIntSize) this.ValueSize);
 			}
 			set
 			{
@@ -153,7 +86,7 @@ namespace BluraySharp.Common
 				ulong tValue2 = ~(tValue1 << index);
 
 				tValue2 &= _Value;
-				tValue1 &= this.ValueTypeDesc.Importer(value);
+				tValue1 &= Convert.ToUInt64(value);
 
 				_Value = tValue2 | (tValue1 << index);
 			}
@@ -161,7 +94,7 @@ namespace BluraySharp.Common
 
 		private void VerifyIndexRange(byte index, byte length)
 		{
-			BdBitwiseValue<T>.VerifyIndexRange(this.ValueTypeDesc.Size, index, length);
+			BdBitwiseValue<T>.VerifyIndexRange(this.ValueSize, index, length);
 		}
 
 		private static void VerifyIndexRange(byte size, byte index, byte length)
@@ -184,16 +117,14 @@ namespace BluraySharp.Common
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
-			object tValue = this.ValueTypeDesc.Exporter(_Value);
-			this.ValueTypeDesc.Writer(context, tValue);
+			context.SerializeUInt(_Value, (BdIntSize)this.ValueSize);
 
 			return context.Position;
 		}
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			object tValue = this.ValueTypeDesc.Reader(context);
-			_Value = this.ValueTypeDesc.Importer(tValue);
+			_Value = context.Deserialize((BdIntSize) this.ValueSize);
 
 			return context.Position;
 		}
@@ -202,13 +133,13 @@ namespace BluraySharp.Common
 		{
 			get
 			{
-				return this.ValueTypeDesc.Size;
+				return this.ValueSize;
 			}
 		}
 
 		public override string ToString()
 		{
-			int tStrLen = this.ValueTypeDesc.Size;	//count of splitters
+			int tStrLen = this.ValueSize;	//count of splitters
 			int tLen = (tStrLen <<3);	//count of bits
 			tStrLen += tLen; //length of total
 

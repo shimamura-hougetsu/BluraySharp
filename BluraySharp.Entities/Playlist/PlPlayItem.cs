@@ -7,7 +7,7 @@ namespace BluraySharp.PlayList
 {
 	public class PlPlayItem : IPlPlayItem
 	{
-		public IBdList<IPlAngleClipInfo> AngleList { get; internal set; }
+		public IBdList<IPClipInfo> ClipList { get; internal set; }
 
 		public byte StcId { get; set; }
 		public BdTime InTime { get; set; }
@@ -69,18 +69,18 @@ namespace BluraySharp.PlayList
 		{
 			ushort tDataLen;
 
-			tDataLen = context.DeserializeUInt16();
-			context.EnterScope(tDataLen);
+			//-tDataLen = context.DeserializeUInt16();
+			//-context.EnterScope(tDataLen);
 
 			try
 			{
-				this.AngleList.Clear();
+				this.ClipList.Clear();
 
-				PlAngleClipInfo tAngle = context.Deserialize<PlAngleClipInfo>();
-				this.AngleList.Insert(tAngle);
+				PlClipInfo tAngle = context.Deserialize<PlClipInfo>();
+				this.ClipList.Insert(tAngle);
 
 				arrangingOption = context.Deserialize<BdBitwise16>();
-				StcId = context.DeserializeByte();
+				//-StcId = context.DeserializeByte();
 
 				InTime = context.Deserialize<BdTime>();
 				OutTime = context.Deserialize<BdTime>();
@@ -91,18 +91,18 @@ namespace BluraySharp.PlayList
 
 				if (this.IsMultiAngle)
 				{
-					byte tAngleCount = context.DeserializeByte();
+					//-byte tAngleCount = context.DeserializeByte();
 
 					multiAngleOption = context.Deserialize<BdBitwise8>();
 
-					if (tAngleCount < 1)
+					//-if (tAngleCount < 1)
 					{
-						tAngleCount = 1;
+						//-	tAngleCount = 1;
 					}
 
-					for(byte i = 0; i< tAngleCount; ++i)
+					//-for(byte i = 0; i< tAngleCount; ++i)
 					{
-						AngleList.Insert(context.Deserialize<PlAngleClipInfo>());
+						ClipList.Insert(context.Deserialize<PlClipInfo>());
 					}
 				}
 
@@ -137,7 +137,7 @@ namespace BluraySharp.PlayList
 					tDataLen += this.multiAngleOption.RawLength;
 				}
 
-				foreach (IBdPart tObj in this.AngleList)
+				foreach (IBdPart tObj in this.ClipList)
 				{
 					tDataLen += tObj.RawLength;
 				}
@@ -150,7 +150,7 @@ namespace BluraySharp.PlayList
 
 		public PlPlayItem()
 		{
-			this.AngleList = new BdPartList<PlAngleClipInfo, IPlAngleClipInfo>(9);
+			this.ClipList = new BdPartList<PlClipInfo, IPClipInfo>(9);
 			this.InTime = new BdTime();
 			this.OutTime = new BdTime();
 		}

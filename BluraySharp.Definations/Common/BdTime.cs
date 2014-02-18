@@ -27,14 +27,14 @@ namespace BluraySharp.Common
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
-			context.Serialize(this.value);
+			//-context.Serialize(this.value);
 
 			return context.Position;
 		}
 
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
-			this.value = context.DeserializeUInt32();
+			//-this.value = context.DeserializeUInt32();
 
 			return context.Position;
 		}

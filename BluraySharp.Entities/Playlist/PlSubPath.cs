@@ -26,21 +26,21 @@ namespace BluraySharp.PlayList
 		{
 			uint tDataLen;
 
-			tDataLen = context.DeserializeUInt32();
-			context.EnterScope(tDataLen);
+			//-tDataLen = context.DeserializeUInt32();
+			//-context.EnterScope(tDataLen);
 
 			try
 			{
-				Reserved1 = context.DeserializeByte();
-				Type = (PlSubPathType) context.DeserializeByte();
+				//-Reserved1 = context.DeserializeByte();
+				//-Type = (PlSubPathType) context.DeserializeByte();
 
 				repeatOption = context.Deserialize<BdBitwise16>();
-				Reserved2 = context.DeserializeByte();
+				//-Reserved2 = context.DeserializeByte();
 
-				byte tSubPlayItemCount = context.DeserializeByte();
+				//-byte tSubPlayItemCount = context.DeserializeByte();
 				PlayItems.Clear();
 
-				for (byte i = 0; i < tSubPlayItemCount; ++i)
+				//-for (byte i = 0; i < tSubPlayItemCount; ++i)
 				{
 					PlayItems.Insert(context.Deserialize<PlSubPlayItem>());
 				}

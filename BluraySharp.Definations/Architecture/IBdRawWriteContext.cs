@@ -10,12 +10,8 @@ namespace BluraySharp.Architecture
 		void Serialize(IBdRawSerializable obj);
 
 		void Serialize(byte[] value, int offset, int length);
+		void Serialize(byte[] value);
 
-		void Serialize(string value, Encoding encoding);
-
-		void Serialize(byte value);
-		void Serialize(ushort value);
-		void Serialize(uint value);
-		void Serialize(ulong value);
+		void SerializeUInt(ulong value, BdIntSize size);
 	}
 }
