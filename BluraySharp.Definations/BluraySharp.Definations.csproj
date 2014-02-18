@@ -43,8 +43,9 @@
     <Compile Include="Architecture\BdComponentEntryAttribute.cs" />
     <Compile Include="Architecture\BdPart.cs" />
     <Compile Include="Architecture\BdPartFieldAttribute.cs" />
+    <Compile Include="Architecture\BdPartFieldDescriptor.cs" />
+    <Compile Include="Architecture\BdPartFieldDescriptorSet.cs" />
     <Compile Include="Architecture\BdPartFieldType.cs" />
-    <Compile Include="Architecture\BdPartFieldWrapper.cs" />
     <Compile Include="Architecture\IBdComponentEntry.cs" />
     <Compile Include="Architecture\IBdList.cs" />
     <Compile Include="Architecture\IBdRawWriteContext.cs" />
@@ -52,7 +53,7 @@
     <Compile Include="Architecture\BdArrayEntryAttribute.cs" />
     <Compile Include="Architecture\BdTopEntryAttribute.cs" />
     <Compile Include="Architecture\IBdRawReadContext.cs" />
-    <Compile Include="Architecture\BdPartAttribute.cs" />
+    <Compile Include="Architecture\BdPartScopeIndicatorSizeAttribute.cs" />
     <Compile Include="ClipInfo\IClipInfo.cs" />
     <Compile Include="Common\BdStreamFormat.cs" />
     <Compile Include="Common\BdStreamSampleRate.cs" />
