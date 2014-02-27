@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.Architecture
+namespace BluraySharp.FileSystem
 {
-	public class BdArrayEntryAttribute : BdComponentEntryAttribute
+	public class BdArrayEntryAttribute : BdfsComponentEntryAttribute
 	{
 		private string folderName;
 

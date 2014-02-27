@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.Architecture
+namespace BluraySharp.FileSystem
 {
-	public class BdComponentEntryAttribute : Attribute
+	public class BdfsComponentEntryAttribute : Attribute
 	{
 		private bool isBackupRequired;
 
@@ -23,7 +23,7 @@ namespace BluraySharp.Architecture
 			set { extension = value; }
 		}
 
-		public BdComponentEntryAttribute(string extension, bool isBackupRequired)
+		public BdfsComponentEntryAttribute(string extension, bool isBackupRequired)
 		{
 			this.extension = extension;
 			this.isBackupRequired = isBackupRequired;

@@ -1,5 +1,5 @@
 ﻿using BluraySharp.Common;
-using BluraySharp.Architecture;
+using BluraySharp.Serializing;
 
 namespace BluraySharp.PlayList
 {

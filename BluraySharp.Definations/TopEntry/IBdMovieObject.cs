@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BluraySharp.Architecture;
+using BluraySharp.FileSystem;
 
 namespace BluraySharp.TopEntry
 {
-	[BdTopEntry("MovieObject", true)]
-	public interface IBdMovieObject : IBdTopEntry
+	[BdfsTopEntry("MovieObject", true)]
+	public interface IBdMovieObject : IBdfsTopEntry
 	{
 	}
 }

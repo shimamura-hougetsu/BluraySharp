@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BluraySharp.Architecture;
+using BluraySharp.Serializing;
 
 
 namespace BluraySharp.Common

@@ -1,5 +1,5 @@
 ﻿using System;
-using BluraySharp.Architecture;
+using BluraySharp.Serializing;
 
 
 namespace BluraySharp.Common

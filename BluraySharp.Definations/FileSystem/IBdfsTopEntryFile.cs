@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BluraySharp.Architecture;
+using BluraySharp.Serializing;
 
 namespace BluraySharp.FileSystem
 {
 	public interface IBdfsTopEntryFile<T> : IBdfsComponentEntryFile<T>
-		where T : IBdTopEntry
+		where T : IBdfsTopEntry
 	{
 	}
 }

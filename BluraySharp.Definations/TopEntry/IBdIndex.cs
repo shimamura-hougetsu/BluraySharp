@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BluraySharp.Architecture;
+using BluraySharp.FileSystem;
 
 namespace BluraySharp.TopEntry
 {
-	[BdTopEntry("index", true)]
-	public interface IBdIndex : IBdTopEntry
+	[BdfsTopEntry("index", true)]
+	public interface IBdIndex : IBdfsTopEntry
 	{
 	}
 }

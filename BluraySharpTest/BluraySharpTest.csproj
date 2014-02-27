@@ -72,10 +72,6 @@
       <Project>{14FF5AC6-E679-444D-B582-0B4AE067F595}</Project>
       <Name>BluraySharp.Definations</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BluraySharp\BluraySharp.csproj">
-      <Project>{4FF5CF31-DB94-4962-A92D-17A149135012}</Project>
-      <Name>BluraySharp</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

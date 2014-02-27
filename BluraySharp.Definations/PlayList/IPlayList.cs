@@ -1,11 +1,11 @@
 ﻿using System;
 using BluraySharp.Common;
-using BluraySharp.Architecture;
+using BluraySharp.FileSystem;
 
 namespace BluraySharp.PlayList
 {
 	[BdArrayEntry("PLAYLIST", "mpls", 2000, true)]
-	public interface IPlayList: IBdArrayEntry
+	public interface IPlayList: IBdfsArrayEntry
 	{
 		string MplsMark { get; }
 		string MplsVer { get; set; }

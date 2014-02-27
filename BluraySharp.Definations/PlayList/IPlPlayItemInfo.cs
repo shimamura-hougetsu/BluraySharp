@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BluraySharp.Architecture;
+using BluraySharp.Serializing;
 using BluraySharp.Common;
 
 
