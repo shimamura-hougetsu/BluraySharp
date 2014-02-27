@@ -40,12 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BdPartDescribing\BdByteArrayFieldAttribute.cs" />
+    <Compile Include="Common\BdPartDescribing\BdFieldDescriptor.cs" />
+    <Compile Include="Common\BdPartDescribing\BdFieldSeeker.cs" />
+    <Compile Include="Common\BdPartDescribing\BdListSeeker.cs" />
+    <Compile Include="Common\BdPartDescribing\BdSubPartFieldAttribute.cs" />
+    <Compile Include="Common\BdPartDescribing\BdUIntFieldFieldAttribute.cs" />
+    <Compile Include="Common\BdPartDescribing\BdFieldOffsetAttribute.cs" />
+    <Compile Include="Common\BdPartDescribing\BdStringFieldAttribute.cs" />
+    <Compile Include="Common\BdPartDescribing\BdFieldType.cs" />
     <Compile Include="FileSystem\BdfsArrayEntryAttribute.cs" />
     <Compile Include="FileSystem\BdfsComponentEntryAttribute.cs" />
     <Compile Include="Common\BdIntSize.cs" />
     <Compile Include="FileSystem\IBdfsComponentEntry.cs" />
     <Compile Include="Common\IBdList.cs" />
     <Compile Include="Common\IBdListT.cs" />
+    <Compile Include="Common\BdPartDescribing\BdPart.cs" />
+    <Compile Include="Common\BdPartDescribing\BdFieldAttribute.cs" />
     <Compile Include="Serializing\IBdRawWriteContext.cs" />
     <Compile Include="FileSystem\IBdfsTopEntry.cs" />
     <Compile Include="FileSystem\BdfsTopEntryAttribute.cs" />

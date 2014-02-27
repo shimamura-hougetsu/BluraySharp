@@ -7,7 +7,7 @@ namespace BluraySharp.Common
 	{
 		T CreateNew();
 
-		T this[int index] { get; set; }
+		new T this[int index] { get; set; }
 
 		void Insert(T item, int index);
 
