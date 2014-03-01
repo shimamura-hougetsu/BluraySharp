@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BluraySharp.Serializing;
+using BluraySharp.Common.Serializing;
 
 
 namespace BluraySharp.Common
@@ -117,7 +117,7 @@ namespace BluraySharp.Common
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
-			context.SerializeUInt(_Value, (BdIntSize)this.ValueSize);
+			context.Serialize(_Value, (BdIntSize)this.ValueSize);
 
 			return context.Position;
 		}

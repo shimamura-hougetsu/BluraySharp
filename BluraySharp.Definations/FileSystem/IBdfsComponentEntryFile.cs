@@ -1,5 +1,5 @@
 ﻿
-using BluraySharp.Serializing;
+using BluraySharp.Common.Serializing;
 
 namespace BluraySharp.FileSystem
 {

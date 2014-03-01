@@ -1,6 +1,7 @@
 ﻿
 using BluraySharp.Common;
-namespace BluraySharp.Serializing
+using System.Text;
+namespace BluraySharp.Common.Serializing
 {
 	public interface IBdRawWriteContext : IBdRawIoContext
 	{
@@ -9,6 +10,8 @@ namespace BluraySharp.Serializing
 		void Serialize(byte[] value, int offset, int length);
 		void Serialize(byte[] value);
 
-		void SerializeUInt(ulong value, BdIntSize size);
+		void Serialize(ulong value, BdIntSize size);
+
+		void Serialize(string value, int byteCount, Encoding encoding);
 	}
 }

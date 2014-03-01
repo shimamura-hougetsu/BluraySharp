@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.Common.BdPartDescribing
+namespace BluraySharp.Common.BdPartRawIoHelper
 {
-	internal class BdUIntFieldFieldAttribute : BdFieldAttribute
+	internal class BdUIntFieldAttribute : BdFieldAttribute
 	{
 		public BdIntSize Size { get; private set; }
-		public BdUIntFieldFieldAttribute(BdIntSize size)
+		public BdUIntFieldAttribute(BdIntSize size)
 			:base(BdFieldType.UInt)
 		{
 			this.Size = size;

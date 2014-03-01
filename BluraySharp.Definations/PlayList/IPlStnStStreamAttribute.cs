@@ -1,4 +1,4 @@
-﻿using BluraySharp.Serializing;
+﻿using BluraySharp.Common.Serializing;
 using BluraySharp.Common;
 
 namespace BluraySharp.PlayList

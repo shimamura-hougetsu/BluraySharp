@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace BluraySharp.Common.BdPartDescribing
+﻿
+namespace BluraySharp.Common.BdPartRawIoHelper
 {
 	internal class BdByteArrayFieldAttribute : BdFieldAttribute
 	{

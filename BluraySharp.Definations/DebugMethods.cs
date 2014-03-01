@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.Common.BdPartDescribing
+namespace BluraySharp
 {
-	public class BdListSeeker
+	internal static class DebugMethods
 	{
 	}
 }

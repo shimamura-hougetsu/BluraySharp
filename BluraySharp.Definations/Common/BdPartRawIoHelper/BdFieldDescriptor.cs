@@ -5,15 +5,15 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace BluraySharp.Common.BdPartDescribing
+namespace BluraySharp.Common.BdPartRawIoHelper
 {
-	internal class BdFieldDescriptor
+	internal class BdFieldDescriptor : IBdFieldDescription
 	{
 		private MemberInfo MemberInfo { get; set; }
 
-		public BdFieldAttribute FieldAttribute { get; private set; }
+		public BdFieldAttribute Attribute { get; private set; }
 
-		public BdFieldOffsetAttribute FieldOffset { get; private set; }
+		public BdFieldOffsetAttribute OffsetAttribute { get; private set; }
 
 		public string Name
 		{
@@ -79,12 +79,12 @@ namespace BluraySharp.Common.BdPartDescribing
 		public BdFieldDescriptor(MemberInfo info, BdFieldAttribute attribute)
 		{
 			this.MemberInfo = info;
-			this.FieldAttribute = attribute;
+			this.Attribute = attribute;
 
 			object[] tOfsAtrributes = info.GetCustomAttributes(typeof(BdFieldOffsetAttribute), true);
 			if(tOfsAtrributes.Length == 1)
 			{
-				this.FieldOffset = tOfsAtrributes[0] as BdFieldOffsetAttribute;
+				this.OffsetAttribute = tOfsAtrributes[0] as BdFieldOffsetAttribute;
 			}
 		}
 	}

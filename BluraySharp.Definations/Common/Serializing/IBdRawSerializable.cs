@@ -1,5 +1,5 @@
 ﻿
-namespace BluraySharp.Serializing
+namespace BluraySharp.Common.Serializing
 {
 	public interface IBdRawSerializable
 	{
