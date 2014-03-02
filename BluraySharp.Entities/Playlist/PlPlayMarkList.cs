@@ -3,7 +3,7 @@ using BluraySharp.Architecture;
 
 namespace BluraySharp.PlayList
 {
-	public class PlMarkList : BluraySharp.PlayList.IPlMarkList
+	public class PlPlayMarkList : BluraySharp.PlayList.IPlPlayMarkList
 	{
 		private byte[] value = new byte[0];
 

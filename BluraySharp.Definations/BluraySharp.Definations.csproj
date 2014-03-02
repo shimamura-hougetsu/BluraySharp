@@ -114,7 +114,7 @@
     <Compile Include="Common\Serializing\IBdRawIoContext.cs" />
     <Compile Include="PlayList\IPlAppInfo.cs" />
     <Compile Include="PlayList\IPlayList.cs" />
-    <Compile Include="PlayList\IPlMarkList.cs" />
+    <Compile Include="PlayList\IPlPlayMarkList.cs" />
     <Compile Include="PlayList\IPlPlayItemInfo.cs" />
     <Compile Include="PlayList\IPlStnRecord.cs" />
     <Compile Include="PlayList\IPlStnSaRecord.cs" />

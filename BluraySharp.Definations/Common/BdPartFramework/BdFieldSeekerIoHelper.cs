@@ -49,9 +49,9 @@ namespace BluraySharp.Common.BdPartFramework
 
 			RawOperation tOpr = delegate(long xOfs, IBdFieldSeeker xSubObj)
 			{
-				if (xSubObj.IsOffsetSpecified)
+				if (xSubObj.IsOffsetSpecified && !xSubObj.Value.RefEquals(null))
 				{
-					xSubObj.Offset = object.ReferenceEquals(xSubObj.Value, null) ? 0UL : (ulong) xOfs;
+					xSubObj.Offset = (ulong)xOfs;
 				}
 			
 				return xOfs + this.ioHelper.GetRawLength(xSubObj);
@@ -71,7 +71,7 @@ namespace BluraySharp.Common.BdPartFramework
 			{
 				RawOperation tOpr = delegate(long xOfs, IBdFieldSeeker xSubObj)
 				{
-					if (!object.ReferenceEquals(xSubObj.Value, null))
+					if (!xSubObj.Value.RefEquals(null))
 					{
 						if (xSubObj.IsOffsetSpecified)
 						{
@@ -97,22 +97,22 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			this.Validate(obj);
 
-			//long tLen = this.GetRawLength(obj);
-
 			context.EnterScope();
 			try
 			{
 				RawOperation tOpr = delegate(long xOfs, IBdFieldSeeker xSubObj)
 				{
-					if (xSubObj.IsOffsetSpecified)
+					if (!xSubObj.Value.RefEquals(null))
 					{
-						context.Position = xOfs = (long)xSubObj.Offset;
+						if (xSubObj.IsOffsetSpecified)
+						{
+							context.Position = xOfs = (long)xSubObj.Offset;
+						}
+
+						this.ioHelper.DeserializeFrom(xSubObj, context);
 					}
 
-					IBdRawIoHelper<IBdField> tHelper = this.ioHelper;
-					tHelper.DeserializeFrom(xSubObj, context);
-
-					return xOfs + tHelper.GetRawLength(xSubObj);
+					return xOfs + this.ioHelper.GetRawLength(xSubObj);
 				};
 
 				return this.ForEachIn(obj, tOpr);

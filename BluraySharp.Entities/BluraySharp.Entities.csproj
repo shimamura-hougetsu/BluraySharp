@@ -57,7 +57,7 @@
     <Compile Include="PlayList\PlClipInfo.cs" />
     <Compile Include="PlayList\PlAppInfo.cs" />
     <Compile Include="PlayList\PlayList.cs" />
-    <Compile Include="PlayList\PlMarkList.cs" />
+    <Compile Include="PlayList\PlPlayMarkList.cs" />
     <Compile Include="PlayList\PlPlayItem.cs" />
     <Compile Include="PlayList\PlPlayItemList.cs" />
     <Compile Include="PlayList\PlStillInfo.cs" />

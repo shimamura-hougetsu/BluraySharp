@@ -99,5 +99,10 @@ namespace BluraySharp
 		{
 			return ExtensionMethods.bdAuSampleRateToDoubleTable[value];
 		}
+
+		public static bool RefEquals(this object obj1, object obj2)
+		{
+			return object.ReferenceEquals(obj1, obj2);
+		}
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlMarkList : IBdPart
+	public interface IPlPlayMarkList : IBdPart
 	{
 	}
 }

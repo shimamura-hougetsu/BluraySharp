@@ -1,102 +1,118 @@
-﻿using System;
-using System.Xml.Serialization;
-using BluraySharp.Architecture;
+﻿using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
+using System;
+using System.Linq;
+using System.Diagnostics;
 using BluraySharp.Common;
-using System.Text;
 
 namespace BluraySharp.PlayList
 {
-	public class PlayList : BluraySharp.PlayList.IPlayList
+	public class PlayList : BdPart, IPlayList
 	{
-		public string MplsMark { get; internal set; }
+		#region Private Data Fields
 
-		public string MplsVer { get; set; }
+		private const string MplsMarkConst = "MPLS";
+		private string mplsMark = PlayList.MplsMarkConst;
 
-		public IPlAppInfo ApplicationInfo { get; internal set; }
+		private static readonly string[] MplsVers = new string[] {"0100", "0200"};
+		private string mplsVer = PlayList.MplsVers[1];
 
-		public IPlPlayItemList PlayItemList { get; internal set; }
+		private uint playItemListOfs = 0;
+		private uint playMarkListOfs = 0;
+		private uint extensionDataOfs = 0;
+		private byte[] reserevedForFutureUse = new byte[20];
 
-		public IPlMarkList MarkList { get; internal set; }
+		private PlAppInfo appInfo = new PlAppInfo();
 
-		public BdExtensionData ExtensionData { get; set; }
+		private PlPlayItemList playItemList = new PlPlayItemList();
+		private PlPlayMarkList playMarkList = new PlPlayMarkList();
+		private BdExtensionData extensionData = null;
 
-		internal byte[] ReservedForFutureUse { get; set; }
-		
-		#region IBdSerializable
-		public long SerializeTo(IBdRawWriteContext context)
+		#endregion Private Data Fields
+
+		#region BdPart
+
+		[BdStringField(4, Common.BdCharacterCodingType.UTF8)]
+		public string MplsMark
 		{
-			throw new NotImplementedException();
-		}
-
-		public long DeserializeFrom(IBdRawReadContext context)
-		{
-			//-this.MplsMark = context.DeserializeString(4, Encoding.UTF8);
-			//-this.MplsVer = context.DeserializeString(4, Encoding.UTF8);
-
-			//-uint tOffsetPlayItemList = context.DeserializeUInt32();
-			//-uint tOffsetMarkList = context.DeserializeUInt32();
-			//-uint tOffsetExtDatList = context.DeserializeUInt32();
-
-			//-this.ReservedForFutureUse = context.Deserialize(20);
-
-			//-this.ApplicationInfo = context.Deserialize<PlAppInfo>();
-
-			//Padding words here, 2*N totally
-
-			//-if (tOffsetPlayItemList != 0)
+			get { return this.mplsMark; }
+			set
 			{
-				//-	context.Position = tOffsetPlayItemList;
-				this.PlayItemList = context.Deserialize<PlPlayItemList>();
-			}
-
-			//Padding words here, 2*N totally
-
-			//-if (tOffsetMarkList != 0)
-			{
-				//-	context.Position = tOffsetMarkList;
-				this.MarkList = context.Deserialize<PlMarkList>();
-			}
-
-			//Padding words here, 2*N totally
-
-			//-if (tOffsetExtDatList != 0)
-			{
-				//-	context.Position = tOffsetExtDatList;
-				this.ExtensionData = context.Deserialize<BdExtensionData>();
-			}
-
-			//Padding words here, 2*N totally
-
-			return context.Position;
-		}
-
-		public long RawLength
-		{
-			get
-			{
-				return
-					MplsMark.Length + MplsVer.Length + //MPLS Mark + Ver
-					sizeof(uint) * 3 + //Offsets of lists
-					ReservedForFutureUse.Length + //Reserved
-					ApplicationInfo.GetRawLength() +
-					PlayItemList.GetRawLength() +
-					MarkList.GetRawLength() +
-					ExtensionData.GetRawLength();
+				Debug.Assert(value == PlayList.MplsMarkConst);
+				this.mplsMark = value;
 			}
 		}
 
-		public PlayList()
+		[BdStringField(4, Common.BdCharacterCodingType.UTF8)]
+		public string MplsVer
 		{
-			MplsMark = "MPLS";
-			MplsVer = "0200";
-			ApplicationInfo = new PlAppInfo();
-			PlayItemList = new PlPlayItemList();
-			MarkList = new PlMarkList();
-			ExtensionData = null;
-
-			ReservedForFutureUse = null;
+			get { return this.mplsVer; }
+			set
+			{
+				Debug.Assert(PlayList.MplsVers.Contains(value));
+				this.mplsVer = value;
+			}
 		}
-		#endregion IBdSerializable
 
+		[BdUIntField(BdIntSize.U32)]
+		public uint PlayItemListOfs
+		{
+			get { return (this.playItemList == null ? 0 : this.playItemListOfs); }
+			set
+			{
+				this.playItemList = 
+					(this.playItemListOfs = value) > 0 ? new PlPlayItemList() : null;
+			}
+		}
+		[BdUIntField(BdIntSize.U32)]
+		public uint PlayMarkListOfs
+		{
+			get { return (this.playMarkList == null ? 0 : this.playMarkListOfs); }
+			set
+			{
+				this.playMarkList =
+					(this.playMarkListOfs = value) > 0 ? new PlPlayMarkList() : null;
+			}
+		}
+		[BdUIntField(BdIntSize.U32)]
+		public uint ExtensionDataOfs
+		{
+			get { return (this.extensionData == null ? 0 : this.playItemListOfs); }
+			set
+			{
+				this.extensionData =
+					(this.extensionDataOfs = value) > 0 ? new BdExtensionData() : null;
+			}
+		}
+
+		[BdSubPartField]
+		public IPlAppInfo AppInfo
+		{
+			get { return this.appInfo; }
+		}
+
+		[BdFieldOffset("PlayItemListOfs")]
+		[BdSubPartField]
+		public IPlPlayItemList PlayItemList
+		{
+			get { return this.playItemList; }
+		}
+
+		[BdFieldOffset("PlayMarkListOfs")]
+		[BdSubPartField]
+		public IPlPlayMarkList PlayMarkList
+		{
+			get { return this.playMarkList; }
+		}
+
+		[BdFieldOffset("ExtensionDataOfs")]
+		[BdSubPartField]
+		public BdExtensionData ExtensionData
+		{
+			get { return this.extensionData; }
+			set { this.extensionData = value; }
+		}
+
+		#endregion BdPart
 	}
 }
