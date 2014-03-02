@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace BluraySharp.Common.BdPartRawIoHelper
+namespace BluraySharp.Common.BdPartFramework
 {
 	internal class BdFieldDescriptor : IBdFieldDescription
 	{

@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.Common.BdPartRawIoHelper
+namespace BluraySharp.Common.BdPartFramework
 {
 	internal class BdFieldSeekerIoHelper : IBdRawIoHelper<IBdFieldSeeker>
 	{
@@ -43,8 +43,8 @@ namespace BluraySharp.Common.BdPartRawIoHelper
 			}
 		}
 
-		private IBdRawIoHelper<IBdField> ioHelper = 
-			BdFieldIoHelperFactory.GenericFieldIoHelper;
+		private IBdRawIoHelper<IBdField> ioHelper =
+			BdIoHelperFactory.GetHelper<IBdField>();
 
 		public long GetRawLength(IBdFieldSeeker obj)
 		{

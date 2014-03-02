@@ -1,6 +1,6 @@
 ﻿using BluraySharp.Common.Serializing;
 
-namespace BluraySharp.Common.BdPartRawIoHelper
+namespace BluraySharp.Common.BdPartFramework
 {
 	internal interface IBdRawIoHelper<T>
 	{

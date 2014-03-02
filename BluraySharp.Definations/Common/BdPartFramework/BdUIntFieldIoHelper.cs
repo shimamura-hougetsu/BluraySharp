@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace BluraySharp.Common.BdPartRawIoHelper
+namespace BluraySharp.Common.BdPartFramework
 {
 	internal class BdUIntFieldIoHelper : IBdRawIoHelper<IBdField>
 	{

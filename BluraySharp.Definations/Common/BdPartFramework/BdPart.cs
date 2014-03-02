@@ -2,14 +2,22 @@
 using System;
 using System.Reflection;
 
-namespace BluraySharp.Common.BdPartRawIoHelper
+namespace BluraySharp.Common.BdPartFramework
 {
 	public abstract class BdPart : IBdPart
 	{
-		private static IBdRawIoHelper<IBdFieldSeeker> ioHelp =
-			BdFieldIoHelperFactory.FieldSetIoHelper;
+		private static IBdRawIoHelper<IBdFieldSeeker> ioHelp = BdPart.InitializeIoHelpers();
 
 		private IBdFieldSeeker fieldSeeker;
+
+		private static IBdRawIoHelper<IBdFieldSeeker> InitializeIoHelpers()
+		{
+			BdIoHelperFactory.RegisterHelper(BdFieldIoHelper.Instance);
+			BdIoHelperFactory.RegisterHelper(BdFieldSeekerIoHelper.Instance);
+
+			return BdIoHelperFactory.GetHelper<IBdFieldSeeker>();
+		}
+
 		public BdPart()
 		{
 			Type tSeekerType = typeof(BdFieldSeeker<>).MakeGenericType(this.GetType());

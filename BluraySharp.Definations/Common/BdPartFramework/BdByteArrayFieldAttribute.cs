@@ -1,5 +1,5 @@
 ﻿
-namespace BluraySharp.Common.BdPartRawIoHelper
+namespace BluraySharp.Common.BdPartFramework
 {
 	internal class BdByteArrayFieldAttribute : BdFieldAttribute
 	{

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.Common.BdPartRawIoHelper
+namespace BluraySharp.Common.BdPartFramework
 {
 	internal class BdLoopFieldIoHelper : IBdRawIoHelper<IBdField>
 	{
@@ -39,8 +39,8 @@ namespace BluraySharp.Common.BdPartRawIoHelper
 			}
 		}
 
-		private IBdRawIoHelper<IBdFieldSeeker> ioHelper = 
-			BdFieldIoHelperFactory.FieldSetIoHelper;
+		private IBdRawIoHelper<IBdFieldSeeker> ioHelper =
+			BdIoHelperFactory.GetHelper<IBdFieldSeeker>();
 
 		public long GetRawLength(IBdField obj)
 		{

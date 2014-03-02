@@ -1,7 +1,7 @@
 ﻿using BluraySharp.Common.Serializing;
 using System;
 
-namespace BluraySharp.Common.BdPartRawIoHelper
+namespace BluraySharp.Common.BdPartFramework
 {
 	internal class BdStringFieldIoHelper : IBdRawIoHelper<IBdField>
 	{
