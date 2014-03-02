@@ -1,8 +1,6 @@
-﻿using System.Text;
-using System;
-using BluraySharp.Common.Serializing;
+﻿using BluraySharp.Common.Serializing;
 
-namespace BluraySharp.Common
+namespace BluraySharp.Common.BdStandardPart
 {
 	public class BdUOMask : IBdPart
 	{

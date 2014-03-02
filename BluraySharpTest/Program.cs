@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Diagnostics;
+using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharpTest
 {
@@ -32,6 +33,12 @@ namespace BluraySharpTest
 
 			//    tMpls.ToString();
 			//}
+
+			BdTime tTime = new BdTime();
+			tTime.AsSpan = TimeSpan.Parse("3:42:13.400");
+			uint t1 = tTime.AsFrameCount(BluraySharp.Common.BdViFrameRate.Vi29);
+			string t2 = tTime.AsNdfTimeCode(BluraySharp.Common.BdViFrameRate.Vi29);
+			t2 = tTime.ToString();
 		}
 
 		[DebuggerTypeProxy(typeof(FF<>.FfUserFriendView))]

@@ -1,9 +1,6 @@
 ﻿using BluraySharp.Common.Serializing;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace BluraySharp.Common.BdPartFramework
 {

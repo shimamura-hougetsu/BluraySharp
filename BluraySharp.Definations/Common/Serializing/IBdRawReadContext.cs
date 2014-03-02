@@ -1,6 +1,5 @@
-﻿
-using BluraySharp.Common;
-using System.Text;
+﻿using System.Text;
+
 namespace BluraySharp.Common.Serializing
 {
 	public interface IBdRawReadContext : IBdRawIoContext

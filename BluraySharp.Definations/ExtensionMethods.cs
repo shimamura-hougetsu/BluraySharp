@@ -69,5 +69,35 @@ namespace BluraySharp
 					throw new ArgumentException("outputSize");
 			}
 		}
+
+		private static Dictionary<BdViFrameRate, double> bdViFrameRateToDoubleTable =
+			new Dictionary<BdViFrameRate, double>()
+			{
+				{BdViFrameRate.Vi23, 24000/1001.0 },
+				{BdViFrameRate.Vi24, 24000/1000.0 },
+				{BdViFrameRate.Vi25, 25000/1000.0 },
+				{BdViFrameRate.Vi29, 30000/1001.0 },
+				{BdViFrameRate.Vi50, 50000/1000.0 },
+				{BdViFrameRate.Vi59, 60000/1001.0 }
+			};
+		public static double ToDouble(this BdViFrameRate value)
+		{
+			return ExtensionMethods.bdViFrameRateToDoubleTable[value];
+		}
+
+
+		private static Dictionary<BdAuSampleRate, double> bdAuSampleRateToDoubleTable =
+			new Dictionary<BdAuSampleRate, double>()
+			{
+				{BdAuSampleRate.Au48, 48000.0 },
+				{BdAuSampleRate.Au96, 96000.0 },
+				{BdAuSampleRate.Au192, 192000.0 },
+				{BdAuSampleRate.Au48_96, 48000.0 },
+				{BdAuSampleRate.Au48_192, 48000.0 },
+			};
+		public static double ToDouble(this BdAuSampleRate value)
+		{
+			return ExtensionMethods.bdAuSampleRateToDoubleTable[value];
+		}
 	}
 }

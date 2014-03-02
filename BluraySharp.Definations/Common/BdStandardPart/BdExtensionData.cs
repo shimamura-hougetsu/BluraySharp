@@ -1,8 +1,7 @@
-﻿using System;
-using BluraySharp.Common.Serializing;
-using BluraySharp.Common.BdPartFramework;
+﻿using BluraySharp.Common.BdPartFramework;
+using System;
 
-namespace BluraySharp.Common
+namespace BluraySharp.Common.BdStandardPart
 {
 	public class BdExtensionData : BdPart
 	{

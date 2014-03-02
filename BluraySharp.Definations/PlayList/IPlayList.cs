@@ -13,6 +13,6 @@ namespace BluraySharp.PlayList
 		BluraySharp.PlayList.IPlAppInfo ApplicationInfo { get; }
 		BluraySharp.PlayList.IPlPlayItemList PlayItemList { get; }
 		BluraySharp.PlayList.IPlMarkList MarkList { get; }
-		BluraySharp.Common.BdExtensionData ExtensionData { get; set; }
+		BluraySharp.Common.BdStandardPart.BdExtensionData ExtensionData { get; set; }
 	}
 }
