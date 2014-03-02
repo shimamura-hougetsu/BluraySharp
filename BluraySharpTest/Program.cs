@@ -17,21 +17,9 @@ namespace BluraySharpTest
 		[STAThread]
 		static void Main()
 		{
-			Dictionary<string, string> p = new Dictionary<string, string>();
-			p["A"] = "123a";
-			p["B"] = "123b";
-			p["C"] = "12c3";
-
-			List<int> t = new List<int>();
-			t.Add(3);
-
-			FF<int> f = new FF<int>();
-			f.Add(1);
-
-			f.Add(2);
-			f.Add(3);
-			//string tFilePath = @"C:\StoreBase\_Temp\玉响\[BDMV][111221] たまゆら～hitotose～ 第1巻\TAMAYURA_HITOTOSE_1\BDMV\PLAYLIST\00000.mpls";
+			string tFilePath = @"C:\StoreBase\_Temp\[BDMV][120926] 超訳百人一首 うた恋い。1\[ANZX6141] UTAKOI_1\BDMV\PLAYLIST\00000.mpls";
 			//string tFilePath = @"C:\Users\Subelf.J\Documents\stillinf-norand.mpls";
+
 
 			//using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
 			//{

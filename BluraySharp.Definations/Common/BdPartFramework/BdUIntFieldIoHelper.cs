@@ -44,8 +44,8 @@ namespace BluraySharp.Common.BdPartFramework
 				throw new ArgumentException("obj");
 			}
 
-			Type tBaseType = obj.Type.BaseType;
-			if (!tBaseType.IsValueType || tBaseType.GetInterface(typeof(IConvertible).FullName) == null) 
+			Type tType = obj.Type;
+			if (!tType.IsValueType || tType.GetInterface(typeof(IConvertible).FullName) == null) 
 			{
 				//TODO: cannot convert between ulong and Field:obj.Name
 				throw new ArgumentException("obj");

@@ -54,7 +54,7 @@ namespace BluraySharp.Common.BdPartFramework
 			{
 				if (xSubObj.IsOffsetSpecified)
 				{
-					xSubObj.Offset = (ulong) xOfs;
+					xSubObj.Offset = object.ReferenceEquals(xSubObj.Value, null) ? 0UL : (ulong) xOfs;
 				}
 			
 				return xOfs + this.ioHelper.GetRawLength(xSubObj);
@@ -74,16 +74,18 @@ namespace BluraySharp.Common.BdPartFramework
 			{
 				RawOperation tOpr = delegate(long xOfs, IBdFieldSeeker xSubObj)
 				{
-					if (xSubObj.IsOffsetSpecified)
+					if (!object.ReferenceEquals(xSubObj.Value, null))
 					{
-						Debug.Assert(context.Position == (long)xSubObj.Offset);
-						Debug.Assert(xOfs == context.Position);
+						if (xSubObj.IsOffsetSpecified)
+						{
+							Debug.Assert(context.Position == (long)xSubObj.Offset);
+							Debug.Assert(xOfs == context.Position);
+						}
+
+						this.ioHelper.SerializeTo(xSubObj, context);
 					}
 
-					IBdRawIoHelper<IBdField> tHelper = this.ioHelper;
-					tHelper.SerializeTo(xSubObj, context);
-
-					return xOfs + tHelper.GetRawLength(xSubObj);
+					return xOfs + this.ioHelper.GetRawLength(xSubObj);
 				};
 
 				return this.ForEachIn(obj, tOpr);
@@ -98,9 +100,9 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			this.Validate(obj);
 
-			long tLen = this.GetRawLength(obj);
+			//long tLen = this.GetRawLength(obj);
 
-			context.EnterScope(tLen);
+			context.EnterScope();
 			try
 			{
 				RawOperation tOpr = delegate(long xOfs, IBdFieldSeeker xSubObj)

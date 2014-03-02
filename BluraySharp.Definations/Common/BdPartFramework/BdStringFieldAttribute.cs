@@ -10,11 +10,19 @@ namespace BluraySharp.Common.BdPartFramework
 		public int ByteCount { get; private set; }
 		public Encoding Encoding { get; private set; }
 
-		public BdStringFieldAttribute(int byteCount, Encoding encoding)
+		public BdStringFieldAttribute(int byteCount, BdCharacterCodingType encoding)
 			: base(BdFieldType.String)
 		{
 			this.ByteCount = byteCount;
-			this.Encoding = encoding;
+			this.Encoding = BdStringFieldAttribute.encodings[encoding];
 		}
+
+		public static Dictionary<BdCharacterCodingType, Encoding> encodings =
+			new Dictionary<BdCharacterCodingType, Encoding>()
+			{
+				{BdCharacterCodingType.UTF8, Encoding.UTF8},
+				{BdCharacterCodingType.UTF16BE, Encoding.BigEndianUnicode},
+				{BdCharacterCodingType.Unknown, Encoding.UTF8}
+			};
 	}
 }

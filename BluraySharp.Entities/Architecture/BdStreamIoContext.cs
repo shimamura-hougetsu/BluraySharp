@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using BluraySharp.Common.Serializing;
 
 namespace BluraySharp.Architecture
 {
@@ -136,7 +137,7 @@ namespace BluraySharp.Architecture
 				}
 
 				//required scope is beyond the left area.
-				if (this.length != -1 && this.Position + length > this.length)
+				if (!this.bdStream.CanWrite && this.length != -1 && this.Position + length > this.length)
 				{
 					throw new ArgumentOutOfRangeException("length");
 				}

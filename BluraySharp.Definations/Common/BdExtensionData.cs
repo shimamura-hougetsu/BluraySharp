@@ -1,53 +1,42 @@
 ﻿using System;
 using BluraySharp.Common.Serializing;
+using BluraySharp.Common.BdPartFramework;
 
 namespace BluraySharp.Common
 {
-	public class BdExtensionData : IBdPart
+	public class BdExtensionData : BdPart
 	{
 		private byte[] value = new byte[0];
 
-		public long SerializeTo(IBdRawWriteContext context)
-		{
-			throw new NotImplementedException();
-		}
-
-		public long DeserializeFrom(IBdRawReadContext context)
-		{
-			uint tDataLen = 0;
-			//-tDataLen = context.DeserializeUInt32();
-
-			if (tDataLen > 0)
-			{
-				context.EnterScope(tDataLen);
-
-				try
-				{
-					//this.value = context.Deserialize((int)tDataLen);
-					context.Deserialize(value);
-				}
-				finally
-				{
-					context.ExitScope();
-				}
-			}
-
-			return context.Position;
-		}
-
-		public long RawLength
+		[BdUIntField(BdIntSize.U32)]
+		public uint DataLen
 		{
 			get
 			{
-				if (this.value != null && this.value.Length > 0)
-				{
-					return this.value.Length + sizeof(uint);
-				}
-				else
-				{
-					return 0;
-				}
+				return (uint) this.value.Length;
 			}
+			set
+			{
+				Array.Resize(ref this.value, (int) value);
+			}
+		}
+
+		[BdByteArrayField()]
+		public byte[] Value
+		{
+			get
+			{
+				return this.value;
+			}
+			set
+			{
+				this.value = value;
+			}
+		}
+
+		public override string ToString()
+		{
+			return "BdExtensionData";
 		}
 	}
 }

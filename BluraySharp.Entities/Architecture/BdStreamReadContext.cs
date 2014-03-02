@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BluraySharp.Common;
+using BluraySharp.Common.Serializing;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,15 +28,15 @@ namespace BluraySharp.Architecture
 
 		public void Deserialize(byte[] buffer, int offset, int length)
 		{
-			int tLastReadLen = -1, tOffset = offset;
+			int tLastReadLen = -1, tReadLen = 0;
 
-			while (tOffset < length && tLastReadLen != 0)
+			while (tReadLen < length && tLastReadLen != 0)
 			{
-				tLastReadLen = this.Read(buffer, tOffset, length - tOffset);
-				tOffset += tLastReadLen;
+				tLastReadLen = this.Read(buffer, offset + tReadLen, length - tReadLen);
+				tReadLen += tLastReadLen;
 			}
 
-			if (tOffset != length)
+			if (tReadLen != length)
 			{
 				//TODO: not expected stream end.
 				throw new Exception();
@@ -57,6 +59,13 @@ namespace BluraySharp.Architecture
 			tBuffer = tBuffer.Reverse().ToArray();
 
 			return BitConverter.ToUInt64(tBuffer, 0);
+		}
+
+		public string Deserialize(int byteCount, Encoding encoding)
+		{
+			byte[] tBuffer = new byte[byteCount];
+			this.Deserialize(tBuffer);
+			return encoding.GetString(tBuffer);
 		}
 
 		public override void Skip(long delta)

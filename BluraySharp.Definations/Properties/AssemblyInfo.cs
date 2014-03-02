@@ -34,3 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 
 [assembly: InternalsVisibleTo("BluraySharp.Entities")]
+[assembly: InternalsVisibleTo("BluraySharpTest")]

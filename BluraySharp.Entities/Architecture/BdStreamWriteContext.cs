@@ -2,6 +2,9 @@
 using System.Linq;
 using System.IO;
 using System.Text;
+using BluraySharp.Common.Serializing;
+using BluraySharp.Common;
+using System.Diagnostics;
 
 namespace BluraySharp.Architecture
 {
@@ -44,12 +47,7 @@ namespace BluraySharp.Architecture
 			this.Write(buffer, 0, buffer.Length);
 		}
 
-		public void SerializeBytes(byte[] value)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void SerializeUInt(ulong value, BdIntSize size)
+		public void Serialize(ulong value, BdIntSize size)
 		{
 			const int tBufferSize = sizeof(ulong);
 			int tSize = (int)size;
@@ -68,6 +66,14 @@ namespace BluraySharp.Architecture
 				base.Write(tBuffer, 0, tLen);
 				delta -= tLen;
 			}
+		}
+
+		public void Serialize(string value, int byteCount, Encoding encoding)
+		{
+			byte[] tBuffer = encoding.GetBytes(value);
+			Debug.Assert(tBuffer.Length == byteCount);
+
+			this.Serialize(tBuffer);
 		}
 	}
 }

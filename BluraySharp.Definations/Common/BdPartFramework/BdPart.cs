@@ -21,8 +21,8 @@ namespace BluraySharp.Common.BdPartFramework
 		public BdPart()
 		{
 			Type tSeekerType = typeof(BdFieldSeeker<>).MakeGenericType(this.GetType());
-			ConstructorInfo tCtor = tSeekerType.GetConstructor(Type.EmptyTypes);
-			this.fieldSeeker = (IBdFieldSeeker) tCtor.Invoke(new object[0]);
+			ConstructorInfo tCtor = tSeekerType.GetConstructor(new Type[] { this.GetType() });
+			this.fieldSeeker = (IBdFieldSeeker)tCtor.Invoke(new object[] { this });
 		}
 
 		public long SerializeTo(IBdRawWriteContext context)

@@ -133,7 +133,7 @@ namespace BluraySharp.Common.BdPartFramework
 				string tOfsIndicator = this.OffsetAttribute.OffsetIndicator;
 				if (!string.IsNullOrEmpty(tOfsIndicator))
 				{
-					MemberInfo[] tOfsMembers = typeof(T).GetMember(tOfsIndicator, MemberTypes.Property | MemberTypes.Field, BindingFlags.Default);
+					MemberInfo[] tOfsMembers = typeof(T).GetMember(tOfsIndicator, MemberTypes.Property | MemberTypes.Field, BindingFlags.Instance | BindingFlags.Public);
 					if (tOfsMembers.Length == 1)
 					{
 						BdFieldDescriptor tOfsField = new BdFieldDescriptor(tOfsMembers[0], null);
@@ -162,7 +162,7 @@ namespace BluraySharp.Common.BdPartFramework
 				string tOfsIndicator = this.OffsetAttribute.OffsetIndicator;
 				if (!string.IsNullOrEmpty(tOfsIndicator))
 				{
-					MemberInfo[] tOfsMembers = typeof(T).GetMember(tOfsIndicator, MemberTypes.Property | MemberTypes.Field, BindingFlags.Default);
+					MemberInfo[] tOfsMembers = typeof(T).GetMember(tOfsIndicator, MemberTypes.Property | MemberTypes.Field, BindingFlags.Instance | BindingFlags.Public);
 					if (tOfsMembers.Length == 1)
 					{
 						BdFieldDescriptor tOfsField = new BdFieldDescriptor(tOfsMembers[0], null);
