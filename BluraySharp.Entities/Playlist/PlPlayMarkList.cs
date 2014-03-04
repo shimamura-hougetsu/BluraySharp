@@ -1,5 +1,9 @@
-﻿using System;
-using BluraySharp.Architecture;
+﻿using BluraySharp.Common;
+using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
+using System;
+using System.Diagnostics;
+using System.Linq;
 
 namespace BluraySharp.PlayList
 {
@@ -7,48 +11,23 @@ namespace BluraySharp.PlayList
 	{
 		private byte[] value = new byte[0];
 
-		public long SerializeTo(IBdRawWriteContext context)
+		[BdUIntField(BdIntSize.U32)]
+		public uint DataLen
 		{
-			throw new NotImplementedException();
+			get { return (uint)this.value.Length; }
+			set { Array.Resize(ref this.value, (int)value); }
 		}
 
-		public long DeserializeFrom(IBdRawReadContext context)
+		[BdByteArrayField]
+		public byte[] Value
 		{
-			uint tDataLen;
-
-			//-tDataLen = context.DeserializeUInt32();
-
-			//-if (tDataLen > 0)
-			{
-				//-context.EnterScope(tDataLen);
-
-				try
-				{
-					//-	value = context.Deserialize((int)tDataLen);
-				}
-				finally
-				{
-					context.ExitScope();
-				}
-			}
-
-			return context.Position;
+			get { return this.value; }
+			set { this.value = value; }
 		}
 
-
-		public long RawLength
+		public override string ToString()
 		{
-			get
-			{
-				if (value != null && value.Length > 0)
-				{
-					return value.Length + sizeof(uint);
-				}
-				else
-				{
-					return 0;
-				}
-			}
+			return "PlayMarkList";
 		}
 	}
 }

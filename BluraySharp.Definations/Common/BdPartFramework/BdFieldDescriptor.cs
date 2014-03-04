@@ -3,13 +3,11 @@ using System.Reflection;
 
 namespace BluraySharp.Common.BdPartFramework
 {
-	internal class BdFieldDescriptor : IBdFieldDescription
+	internal class BdFieldDescriptor : IBdFieldDescriptor
 	{
 		private MemberInfo MemberInfo { get; set; }
 
 		public BdFieldAttribute Attribute { get; private set; }
-
-		public BdFieldOffsetAttribute OffsetAttribute { get; private set; }
 
 		public string Name
 		{
@@ -76,12 +74,6 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			this.MemberInfo = info;
 			this.Attribute = attribute;
-
-			object[] tOfsAtrributes = info.GetCustomAttributes(typeof(BdFieldOffsetAttribute), true);
-			if(tOfsAtrributes.Length == 1)
-			{
-				this.OffsetAttribute = tOfsAtrributes[0] as BdFieldOffsetAttribute;
-			}
 		}
 	}
 }

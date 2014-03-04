@@ -1,9 +1,9 @@
-﻿using BluraySharp.Common.BdPartFramework;
+﻿using BluraySharp.Common;
+using BluraySharp.Common.BdPartFramework;
 using BluraySharp.Common.BdStandardPart;
 using System;
-using System.Linq;
 using System.Diagnostics;
-using BluraySharp.Common;
+using System.Linq;
 
 namespace BluraySharp.PlayList
 {
@@ -114,5 +114,10 @@ namespace BluraySharp.PlayList
 		}
 
 		#endregion BdPart
+
+		public override string ToString()
+		{
+			return "PlayList";
+		}
 	}
 }

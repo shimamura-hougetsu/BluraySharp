@@ -1,8 +1,7 @@
 ﻿using System;
-
 namespace BluraySharp.Common.BdPartFramework
 {
-	internal interface IBdFieldDescription
+	internal interface IBdFieldInfo
 	{
 		BdFieldAttribute Attribute { get; }
 		string Name { get; }

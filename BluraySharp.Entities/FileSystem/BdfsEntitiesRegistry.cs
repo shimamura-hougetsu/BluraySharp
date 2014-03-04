@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.Architecture
+namespace BluraySharp.FileSystem
 {
 	//Singleton
-	public class BdEntitiesRegistry : IBdEntitiesRegistry
+	public class BdfsEntitiesRegistry : IBdfsEntitiesRegistry
 	{
 		private delegate IBdComponentEntry ComponentCreator();
 		private readonly Dictionary<string, ComponentCreator> ctorTable = new Dictionary<string, ComponentCreator>();
@@ -18,7 +18,7 @@ namespace BluraySharp.Architecture
 			return (T) ctorTable[typeof(T).FullName]();
 		}
 
-		public BdComponentEntryAttribute GetEntryAttribute<T>() where T : IBdComponentEntry
+		public BdfsComponentEntryAttribute GetEntryAttribute<T>() where T : IBdComponentEntry
 		{
 			return attrTable[typeof(T).FullName];
 		}
@@ -62,7 +62,7 @@ namespace BluraySharp.Architecture
 			}
 		}
 
-		private BdEntitiesRegistry()
+		private BdfsEntitiesRegistry()
 		{
 			this.RegisterArrayEntry<PlayList.PlayList, PlayList.IPlayList>();
 		}

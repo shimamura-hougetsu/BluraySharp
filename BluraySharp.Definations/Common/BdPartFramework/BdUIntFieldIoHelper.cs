@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BluraySharp.Common.BdPartFramework
 {
-	internal class BdUIntFieldIoHelper : IBdRawIoHelper<IBdField>
+	internal class BdUIntFieldIoHelper : IBdRawIoHelper<IBdFieldVisitor>
 	{
 		private static BdUIntFieldIoHelper instance = new BdUIntFieldIoHelper();
 		public static BdUIntFieldIoHelper Instance
@@ -16,22 +16,22 @@ namespace BluraySharp.Common.BdPartFramework
 		}
 		private BdUIntFieldIoHelper() { }
 
-		private ulong GetValue(IBdField obj)
+		private ulong GetValue(IBdFieldVisitor obj)
 		{
 			return Convert.ToUInt64(obj.Value);
 		}
 
-		private void SetValue(IBdField obj, ulong value)
+		private void SetValue(IBdFieldVisitor obj, ulong value)
 		{
 			obj.Value = Convert.ChangeType(value, obj.Type);
 		}
 
-		private BdUIntFieldAttribute GetAttribute(IBdField obj)
+		private BdUIntFieldAttribute GetAttribute(IBdFieldVisitor obj)
 		{
 			return obj.Attribute as BdUIntFieldAttribute;
 		}
 
-		private void Validate(IBdField obj)
+		private void Validate(IBdFieldVisitor obj)
 		{
 			if (object.ReferenceEquals(obj, null))
 			{
@@ -51,13 +51,13 @@ namespace BluraySharp.Common.BdPartFramework
 				throw new ArgumentException("obj");
 			}
 		}
-		private BdIntSize GetSize(IBdField obj)
+		private BdIntSize GetSize(IBdFieldVisitor obj)
 		{
 			BdUIntFieldAttribute tAttrib = this.GetAttribute(obj);
 			return tAttrib.Size;
 		}
 
-		public long GetRawLength(IBdField obj)
+		public long GetRawLength(IBdFieldVisitor obj)
 		{
 			this.Validate(obj);
 
@@ -65,7 +65,7 @@ namespace BluraySharp.Common.BdPartFramework
 		}
 
 
-		public long SerializeTo(IBdField obj, IBdRawWriteContext context)
+		public long SerializeTo(IBdFieldVisitor obj, IBdRawWriteContext context)
 		{
 			this.Validate(obj);
 
@@ -75,7 +75,7 @@ namespace BluraySharp.Common.BdPartFramework
 			return (long)tSize;
 		}
 
-		public long DeserializeFrom(IBdField obj, IBdRawReadContext context)
+		public long DeserializeFrom(IBdFieldVisitor obj, IBdRawReadContext context)
 		{
 			this.Validate(obj);
 

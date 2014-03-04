@@ -40,27 +40,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BdPartFramework\BdFieldRandomVisitor.cs" />
+    <Compile Include="Common\BdPartFramework\IBdFieldInfo.cs" />
     <Compile Include="Common\BdStandardPart\BdLangCode.cs" />
     <Compile Include="Common\BdPartFramework\BdByteArrayFieldAttribute.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldIoHelper.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldIoHelperFactory.cs" />
-    <Compile Include="Common\BdPartFramework\BdFieldSeekerIoHelper.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldTraverserIoHelper.cs" />
     <Compile Include="Common\BdPartFramework\BdLoopFieldIoHelper.cs" />
     <Compile Include="Common\BdPartFramework\BdUIntFieldIoHelper.cs" />
     <Compile Include="Common\BdPartFramework\BdSubPartFieldIoHelper.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldDescriptor.cs" />
-    <Compile Include="Common\BdPartFramework\BdFieldSeekerT.cs" />
-    <Compile Include="Common\BdPartFramework\BdLoopFieldSeeker.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldTraverserT.cs" />
+    <Compile Include="Common\BdPartFramework\BdLoopFieldTraverser.cs" />
     <Compile Include="Common\BdPartFramework\BdByteArrayFieldIoHelper.cs" />
     <Compile Include="Common\BdPartFramework\BdStringFieldIoHelper.cs" />
     <Compile Include="Common\BdPartFramework\BdSubPartFieldAttribute.cs" />
     <Compile Include="Common\BdPartFramework\BdUIntFieldAttribute.cs" />
-    <Compile Include="Common\BdPartFramework\BdFieldOffsetAttribute.cs" />
     <Compile Include="Common\BdPartFramework\BdStringFieldAttribute.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldType.cs" />
-    <Compile Include="Common\BdPartFramework\IBdField.cs" />
-    <Compile Include="Common\BdPartFramework\IBdFieldDescription.cs" />
-    <Compile Include="Common\BdPartFramework\IBdFieldSeeker.cs" />
+    <Compile Include="Common\BdPartFramework\IBdFieldVisitor.cs" />
+    <Compile Include="Common\BdPartFramework\IBdFieldDescriptor.cs" />
+    <Compile Include="Common\BdPartFramework\IBdFieldTraverser.cs" />
     <Compile Include="Common\BdPartFramework\IBdRawIoHelperT.cs" />
     <Compile Include="FileSystem\BdfsArrayEntryAttribute.cs" />
     <Compile Include="FileSystem\BdfsComponentEntryAttribute.cs" />

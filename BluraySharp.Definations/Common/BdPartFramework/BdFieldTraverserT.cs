@@ -5,15 +5,26 @@ using System.Reflection;
 
 namespace BluraySharp.Common.BdPartFramework
 {
-	internal class BdFieldSeeker<T> : IBdFieldSeeker
+	internal class BdFieldTraverser<T> : IBdFieldTraverser
 		where T : BdPart
 	{
 		private T thisObj;
 		private int fieldIndex = 0;
 
-		public BdFieldSeeker(T thisObj)
+		public BdFieldTraverser(T thisObj)
 		{
 			this.thisObj = thisObj;
+		}
+
+		#region Seeker
+
+
+		private IBdFieldDescriptor Current
+		{
+			get
+			{
+				return BdFieldTraverser<T>.fields[this.fieldIndex];
+			}
 		}
 
 		public int Index
@@ -24,19 +35,11 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 			set
 			{
-				if (value < 0 && value < BdFieldSeeker<T>.fields.Count)
+				if (value < 0 && value < BdFieldTraverser<T>.fields.Count)
 				{
 					throw new ArgumentOutOfRangeException("value");
 				}
 				this.fieldIndex = value;
-			}
-		}
-
-		public BdFieldDescriptor Current
-		{
-			get
-			{
-				return BdFieldSeeker<T>.fields[this.fieldIndex];
 			}
 		}
 
@@ -52,18 +55,21 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			get
 			{
-				return BdFieldSeeker<T>.fields.Count;
+				return BdFieldTraverser<T>.fields.Count;
 			}
 		}
 
-		public string Name
+		#endregion 
+
+		string IBdFieldInfo.Name
 		{
 			get
 			{
 				return this.Current.Name;
 			}
 		}
-		public Type Type
+
+		Type IBdFieldInfo.Type
 		{
 			get
 			{
@@ -71,14 +77,15 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-		public BdFieldAttribute Attribute
+		BdFieldAttribute IBdFieldInfo.Attribute
 		{
 			get
 			{
 				return this.Current.Attribute;
 			}
 		}
-		public object Value
+
+		object IBdFieldVisitor.Value
 		{
 			get
 			{
@@ -90,15 +97,52 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-		public BdFieldOffsetAttribute OffsetAttribute
+		private IBdFieldDescriptor GetFieldDescriptor(string memberName)
+		{
+			if (string.IsNullOrEmpty(memberName))
+			{
+				//TODO: member name not specified.
+				return null;
+			}
+
+			MemberInfo[] tOfsMembers = typeof(T).GetMember(memberName, MemberTypes.Property | MemberTypes.Field, BindingFlags.Instance | BindingFlags.Public);
+			if (tOfsMembers.Length != 1)
+			{
+				//TODO: cannot find offset indicator member for the field
+				return null;
+			}
+
+			return new BdFieldDescriptor(tOfsMembers[0], null);
+		}
+
+		IBdFieldVisitor IBdFieldVisitor.OffsetIndicator
 		{
 			get
 			{
-				return this.Current.OffsetAttribute;
+				if (this.Current.Attribute.RefEquals(null))
+				{
+					return null;
+				}
+				IBdFieldDescriptor tOffsetField = this.GetFieldDescriptor( this.Current.Attribute.OffsetIndicator);
+				return new BdFieldRandomVisitor(this.thisObj, tOffsetField);
 			}
 		}
 
-		private static List<BdFieldDescriptor> fields = new List<BdFieldDescriptor>(BdFieldSeeker<T>.InitializeFields());
+		IBdFieldVisitor IBdFieldVisitor.LengthIndicator
+		{
+			get
+			{
+				if (this.Current.Attribute.RefEquals(null))
+				{
+					return null;
+				}
+				IBdFieldDescriptor tLengthField = this.GetFieldDescriptor(this.Current.Attribute.LengthIndicator);
+				return new BdFieldRandomVisitor(this.thisObj, tLengthField);
+			}
+		}
+
+		
+		private static List<BdFieldDescriptor> fields = new List<BdFieldDescriptor>(BdFieldTraverser<T>.InitializeFields());
 
 		private static IEnumerable<BdFieldDescriptor> InitializeFields()
 		{
@@ -116,7 +160,7 @@ namespace BluraySharp.Common.BdPartFramework
 				}
 			}
 		}
-
+		/*
 		public ulong Offset
 		{
 			get
@@ -124,24 +168,13 @@ namespace BluraySharp.Common.BdPartFramework
 				if (! this.IsOffsetSpecified)
 				{
 					//TODO: the field has no offset specified
-					throw new ApplicationException();
+					throw new NotSupportedException();
 				}
 				
 				string tOfsIndicator = this.OffsetAttribute.OffsetIndicator;
 				if (!string.IsNullOrEmpty(tOfsIndicator))
 				{
-					MemberInfo[] tOfsMembers = typeof(T).GetMember(tOfsIndicator, MemberTypes.Property | MemberTypes.Field, BindingFlags.Instance | BindingFlags.Public);
-					if (tOfsMembers.Length == 1)
-					{
-						BdFieldDescriptor tOfsField = new BdFieldDescriptor(tOfsMembers[0], null);
-
-						return Convert.ToUInt64(tOfsField.GetValue(this.thisObj));
-					}
-					else
-					{
-						//TODO: cannot find offset indicator member for the field
-						throw new ApplicationException();
-					}
+					return this.GetUIntMember(tOfsIndicator);
 				}
 				else
 				{
@@ -153,24 +186,13 @@ namespace BluraySharp.Common.BdPartFramework
 				if (!this.IsOffsetSpecified)
 				{
 					//TODO: the field accepts no offset
-					throw new ApplicationException();
+					throw new NotSupportedException();
 				}
 
 				string tOfsIndicator = this.OffsetAttribute.OffsetIndicator;
 				if (!string.IsNullOrEmpty(tOfsIndicator))
 				{
-					MemberInfo[] tOfsMembers = typeof(T).GetMember(tOfsIndicator, MemberTypes.Property | MemberTypes.Field, BindingFlags.Instance | BindingFlags.Public);
-					if (tOfsMembers.Length == 1)
-					{
-						BdFieldDescriptor tOfsField = new BdFieldDescriptor(tOfsMembers[0], null);
-
-						tOfsField.SetValue(this.thisObj, Convert.ChangeType(value, tOfsField.Type));
-					}
-					else
-					{
-						//TODO: cannot find offset indicator member for the field
-						throw new ApplicationException();
-					}
+					this.SetUIntMember(tOfsIndicator, value);
 				}
 			}
 		}
@@ -182,5 +204,6 @@ namespace BluraySharp.Common.BdPartFramework
 				return !object.ReferenceEquals(this.OffsetAttribute, null);
 			}
 		}
+		*/
 	}
 }

@@ -2,12 +2,10 @@
 
 namespace BluraySharp.Common.BdPartFramework
 {
-	internal interface IBdFieldSeeker : IBdField
+	internal interface IBdFieldTraverser : IBdFieldVisitor
 	{
 		int Index { get; set; }
 		int LowerBound { get; }
 		int UpperBound { get; }
-		ulong Offset { get; set; }
-		bool IsOffsetSpecified { get; }
 	}
 }

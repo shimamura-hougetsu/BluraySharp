@@ -2,7 +2,7 @@
 
 namespace BluraySharp.Common.BdPartFramework
 {
-	internal class BdFieldIoHelper : IBdRawIoHelper<IBdField>
+	internal class BdFieldIoHelper : IBdRawIoHelper<IBdFieldVisitor>
 	{
 		private static BdFieldIoHelper instance = new BdFieldIoHelper();
 		public static BdFieldIoHelper Instance
@@ -21,7 +21,7 @@ namespace BluraySharp.Common.BdPartFramework
 			return BdFieldType.Unknown;
 		}
 
-		private IBdRawIoHelper<IBdField> CreateHelper(IBdField fieldInfo)
+		private IBdRawIoHelper<IBdFieldVisitor> CreateHelper(IBdFieldVisitor fieldInfo)
 		{
 			BdFieldType tFtype = fieldInfo.Attribute.FieldType;
 			if (tFtype == BdFieldType.Unknown)
@@ -57,21 +57,21 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-		public long GetRawLength(IBdField obj)
+		public long GetRawLength(IBdFieldVisitor obj)
 		{
-			IBdRawIoHelper<IBdField> tIoHelper = this.CreateHelper(obj);
+			IBdRawIoHelper<IBdFieldVisitor> tIoHelper = this.CreateHelper(obj);
 			return tIoHelper.GetRawLength(obj);
 		}
 
-		public long SerializeTo(IBdField obj, Serializing.IBdRawWriteContext context)
+		public long SerializeTo(IBdFieldVisitor obj, Serializing.IBdRawWriteContext context)
 		{
-			IBdRawIoHelper<IBdField> tIoHelper = this.CreateHelper(obj);
+			IBdRawIoHelper<IBdFieldVisitor> tIoHelper = this.CreateHelper(obj);
 			return tIoHelper.SerializeTo(obj, context);
 		}
 
-		public long DeserializeFrom(IBdField obj, Serializing.IBdRawReadContext context)
+		public long DeserializeFrom(IBdFieldVisitor obj, Serializing.IBdRawReadContext context)
 		{
-			IBdRawIoHelper<IBdField> tIoHelper = this.CreateHelper(obj);
+			IBdRawIoHelper<IBdFieldVisitor> tIoHelper = this.CreateHelper(obj);
 			return tIoHelper.DeserializeFrom(obj, context);
 		}
 	}

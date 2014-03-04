@@ -3,7 +3,7 @@ using System;
 
 namespace BluraySharp.Common.BdPartFramework
 {
-	internal class BdStringFieldIoHelper : IBdRawIoHelper<IBdField>
+	internal class BdStringFieldIoHelper : IBdRawIoHelper<IBdFieldVisitor>
 	{
 		private static BdStringFieldIoHelper instance = new BdStringFieldIoHelper();
 		public static BdStringFieldIoHelper Instance
@@ -15,17 +15,17 @@ namespace BluraySharp.Common.BdPartFramework
 		}
 		private BdStringFieldIoHelper() { }
 
-		private string GetValue(IBdField obj)
+		private string GetValue(IBdFieldVisitor obj)
 		{
 			return (string) obj.Value;
 		}
 
-		private BdStringFieldAttribute GetAttribute(IBdField obj)
+		private BdStringFieldAttribute GetAttribute(IBdFieldVisitor obj)
 		{
 			return obj.Attribute as BdStringFieldAttribute;
 		}
 
-		private void Validate(IBdField obj)
+		private void Validate(IBdFieldVisitor obj)
 		{
 			if (object.ReferenceEquals(obj, null))
 			{
@@ -45,14 +45,14 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-		public long GetRawLength(IBdField obj)
+		public long GetRawLength(IBdFieldVisitor obj)
 		{
 			this.Validate(obj);
 
 			return this.GetAttribute(obj).ByteCount;
 		}
 
-		public long SerializeTo(IBdField obj, IBdRawWriteContext context)
+		public long SerializeTo(IBdFieldVisitor obj, IBdRawWriteContext context)
 		{
 			this.Validate(obj);
 
@@ -62,7 +62,7 @@ namespace BluraySharp.Common.BdPartFramework
 			return tAttrib.ByteCount;
 		}
 
-		public long DeserializeFrom(IBdField obj, IBdRawReadContext context)
+		public long DeserializeFrom(IBdFieldVisitor obj, IBdRawReadContext context)
 		{
 			this.Validate(obj);
 

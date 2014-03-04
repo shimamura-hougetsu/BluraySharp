@@ -112,31 +112,27 @@ namespace BluraySharpTest
 			set { this.appInfoSeg = value; }
 		}
 
-		[BdFieldOffset("PlayListOfs")]
-		[BdSubPartField]
+		[BdSubPartField(OffsetIndicator="PlayListOfs")]
 		public BdExtensionData PlayListSeg
 		{
 			get { return this.playListSeg; }
 			set { this.playListSeg = value; }
 		}
 
-		[BdFieldOffset("PlayMarkOfs")]
-		[BdSubPartField]
+		[BdSubPartField(OffsetIndicator = "PlayListOfs")]
 		public BdExtensionData PlayMarkSeg
 		{
 			get { return this.playMarkSeg; }
 			set { this.playMarkSeg = value; }
 		}
 
-		[BdFieldOffset("ExtDataOfs")]
-		[BdSubPartField]
+		[BdSubPartField(OffsetIndicator = "PlayListOfs")]
 		public BdExtensionData ExtDataSeg
 		{
 			get { return this.extDataSeg; }
 			set { this.extDataSeg = value; }
 		}
 		
-
 		public override string ToString()
 		{
 			return "测试文件结构：mpls";

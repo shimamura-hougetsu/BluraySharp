@@ -10,27 +10,15 @@ namespace BluraySharp.Common.BdStandardPart
 		[BdUIntField(BdIntSize.U32)]
 		public uint DataLen
 		{
-			get
-			{
-				return (uint) this.value.Length;
-			}
-			set
-			{
-				Array.Resize(ref this.value, (int) value);
-			}
+			get { return (uint)this.value.Length; }
+			set { Array.Resize(ref this.value, (int) value); }
 		}
 
-		[BdByteArrayField()]
+		[BdByteArrayField]
 		public byte[] Value
 		{
-			get
-			{
-				return this.value;
-			}
-			set
-			{
-				this.value = value;
-			}
+			get { return this.value; }
+			set { this.value = value; }
 		}
 
 		public override string ToString()

@@ -1,12 +1,32 @@
 ﻿using BluraySharp.Common;
+using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 using System;
-using System.Xml.Serialization;
-using BluraySharp.Architecture;
+using System.Diagnostics;
+using System.Linq;
 
 namespace BluraySharp.PlayList
 {
 	public class PlAppInfo : BluraySharp.PlayList.IPlAppInfo
 	{
+		#region Private Data Fields
+		
+		uint tDataLen = 0;
+
+			context.EnterScope();
+			try
+			{
+				//-	this.reservedForFutureUse1 = context.DeserializeByte();
+
+				//-	this.playbackType = (PlPlaybackType)context.DeserializeByte();
+				//-	this.playbackCount = context.DeserializeUInt16();
+
+				this.uoMask = context.Deserialize<BdUOMask>();
+
+				this.playbackOption = context.Deserialize<BdBitwise16>();
+
+		#endregion Private Data Fields
+
 		public PlPlaybackType PlaybackType
 		{
 			get { return playbackType; }
@@ -53,28 +73,7 @@ namespace BluraySharp.PlayList
 		private ushort playbackCount = 0;
 		private BdUOMask uoMask = new BdUOMask();
 		private BdBitwise16 playbackOption = new BdBitwise16(0);
-
-		public long SerializeTo(IBdRawWriteContext context)
-		{
-			uint tDataLen = (uint) this.RawLength;
-			//-context.Serialize(tDataLen);
-
-			context.EnterScope(tDataLen);
-			try
-			{
-				//-context.Serialize((byte)this.playbackType);
-				//-context.Serialize(this.playbackCount);
-				context.Serialize(this.uoMask);
-				context.Serialize(this.playbackOption);
-			}
-			finally
-			{
-				context.ExitScope();
-			}
-
-			return context.Position;
-		}
-
+		
 		public long DeserializeFrom(IBdRawReadContext context)
 		{
 			//-uint tDataLen = context.DeserializeUInt32();

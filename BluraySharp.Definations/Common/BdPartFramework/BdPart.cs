@@ -6,27 +6,67 @@ namespace BluraySharp.Common.BdPartFramework
 {
 	public abstract class BdPart : IBdPart
 	{
-		private static IBdRawIoHelper<IBdFieldSeeker> ioHelp = BdPart.InitializeIoHelpers();
+		private static IBdRawIoHelper<IBdFieldTraverser> ioHelp = BdPart.InitializeIoHelpers();
 
-		private IBdFieldSeeker fieldSeeker;
+		private IBdFieldTraverser fieldSeeker;
+		private BdFieldDescriptor lengthIndicator;
 
-		private static IBdRawIoHelper<IBdFieldSeeker> InitializeIoHelpers()
+		private static IBdRawIoHelper<IBdFieldTraverser> InitializeIoHelpers()
 		{
 			BdIoHelperFactory.RegisterHelper(BdFieldIoHelper.Instance);
-			BdIoHelperFactory.RegisterHelper(BdFieldSeekerIoHelper.Instance);
+			BdIoHelperFactory.RegisterHelper(BdFieldTraverserIoHelper.Instance);
 
-			return BdIoHelperFactory.GetHelper<IBdFieldSeeker>();
+			return BdIoHelperFactory.GetHelper<IBdFieldTraverser>();
 		}
 
 		public BdPart()
 		{
-			Type tSeekerType = typeof(BdFieldSeeker<>).MakeGenericType(this.GetType());
-			ConstructorInfo tCtor = tSeekerType.GetConstructor(new Type[] { this.GetType() });
-			this.fieldSeeker = (IBdFieldSeeker)tCtor.Invoke(new object[] { this });
+			Type tThisType = this.GetType();
+			Type tSeekerType = typeof(BdFieldTraverser<>).MakeGenericType(tThisType);
+			ConstructorInfo tCtor = tSeekerType.GetConstructor(new Type[] { tThisType });
+			this.fieldSeeker = (IBdFieldTraverser)tCtor.Invoke(new object[] { this });
 		}
+
+		private bool HasLengthIndicator
+		{
+			get
+			{
+				return !this.lengthIndicator.RefEquals(null);
+			}
+		}
+
+		private long LengthIndicator
+		{
+			get
+			{
+				if(! this.HasLengthIndicator)
+				{
+					//TODO: this BdPart has no length indicator attribute
+					throw new NotSupportedException();
+				}
+
+				return Convert.ToInt64(this.lengthIndicator.GetValue(this));
+			}
+
+			set
+			{
+				if(! this.HasLengthIndicator)
+				{
+					//TODO: this BdPart has no length indicator attribute
+					throw new NotSupportedException();
+				}
+
+				IBdRawIoHelper<IBdFieldVisitor> tIoHelper = BdIoHelperFactory.GetHelper<IBdFieldVisitor>();
+				//this.lengthIndicator.SetValue()
+				//tIoHelper.
+			}
+		}
+
+		//private BdFieldDescriptor
 
 		public long SerializeTo(IBdRawWriteContext context)
 		{
+			//BdFieldDescriptor tLengthField = new BdFieldDescriptor()
 			return BdPart.ioHelp.SerializeTo(this.fieldSeeker, context);
 		}
 

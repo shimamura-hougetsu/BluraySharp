@@ -2,13 +2,13 @@
 
 namespace BluraySharp.Common.BdPartFramework
 {
-	internal class BdLoopFieldSeeker : IBdFieldSeeker
+	internal class BdLoopFieldTraverser : IBdFieldTraverser
 	{
 		private IBdList fieldList;
 		private int fieldIndex;
-		private IBdField rootField;
+		private IBdFieldVisitor rootField;
 
-		public BdLoopFieldSeeker(IBdField rootField)
+		public BdLoopFieldTraverser(IBdFieldVisitor rootField)
 		{
 			this.rootField = rootField;
 			this.fieldList = this.rootField.Value as IBdList;
@@ -18,8 +18,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public int Index
 		{
-			get
-			{ return this.fieldIndex; }
+			get { return this.fieldIndex; }
 			set
 			{
 				if (value < this.fieldList.LowerBound || value >= this.fieldList.UpperBound)
@@ -46,31 +45,17 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-		public string Name
+		IBdFieldVisitor IBdFieldVisitor.OffsetIndicator
 		{
-			get
-			{
-				return string.Format("{0}[{1}]", this.rootField.Name, this.fieldIndex);
-			}
+			get { return null; }
 		}
 
-		public Type Type
+		IBdFieldVisitor IBdFieldVisitor.LengthIndicator
 		{
-			get
-			{
-				return this.rootField.Type;
-			}
+			get { return null; }
 		}
 
-		public BdFieldAttribute Attribute
-		{
-			get
-			{
-				return this.rootField.Attribute;
-			}
-		}
-
-		public object Value
+		object IBdFieldVisitor.Value
 		{
 			get
 			{
@@ -82,25 +67,21 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-
-		public ulong Offset
+		string IBdFieldInfo.Name
 		{
 			get
 			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
+				return string.Format("{0}[{1}]", this.rootField.Name, this.fieldIndex);
 			}
 		}
 
-		public bool IsOffsetSpecified
+		Type IBdFieldInfo.Type
 		{
-			get
-			{
-				return false;
-			}
+			get { return this.rootField.Type; }
+		}
+		BdFieldAttribute IBdFieldInfo.Attribute
+		{
+			get { return this.rootField.Attribute; }
 		}
 	}
 }

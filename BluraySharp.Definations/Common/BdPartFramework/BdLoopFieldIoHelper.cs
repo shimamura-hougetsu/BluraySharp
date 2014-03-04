@@ -3,7 +3,7 @@ using System;
 
 namespace BluraySharp.Common.BdPartFramework
 {
-	internal class BdLoopFieldIoHelper : IBdRawIoHelper<IBdField>
+	internal class BdLoopFieldIoHelper : IBdRawIoHelper<IBdFieldVisitor>
 	{
 		private static BdLoopFieldIoHelper instance = new BdLoopFieldIoHelper();
 		public static BdLoopFieldIoHelper Instance
@@ -16,7 +16,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private BdLoopFieldIoHelper() { }
 
-		private void Validate(IBdField obj)
+		private void Validate(IBdFieldVisitor obj)
 		{
 			if(object.ReferenceEquals(obj, null))
 			{
@@ -36,30 +36,30 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-		private IBdRawIoHelper<IBdFieldSeeker> ioHelper =
-			BdIoHelperFactory.GetHelper<IBdFieldSeeker>();
+		private IBdRawIoHelper<IBdFieldTraverser> ioHelper =
+			BdIoHelperFactory.GetHelper<IBdFieldTraverser>();
 
-		public long GetRawLength(IBdField obj)
+		public long GetRawLength(IBdFieldVisitor obj)
 		{
 			this.Validate(obj);
 
-			BdLoopFieldSeeker tSeeker = new BdLoopFieldSeeker(obj);
+			BdLoopFieldTraverser tSeeker = new BdLoopFieldTraverser(obj);
 			return this.ioHelper.GetRawLength(tSeeker);
 		}
 
-		public long SerializeTo(IBdField obj, IBdRawWriteContext context)
+		public long SerializeTo(IBdFieldVisitor obj, IBdRawWriteContext context)
 		{
 			this.Validate(obj);
 
-			BdLoopFieldSeeker tSeeker = new BdLoopFieldSeeker(obj);
+			BdLoopFieldTraverser tSeeker = new BdLoopFieldTraverser(obj);
 			return this.ioHelper.SerializeTo(tSeeker, context);
 		}
 
-		public long DeserializeFrom(IBdField obj, IBdRawReadContext context)
+		public long DeserializeFrom(IBdFieldVisitor obj, IBdRawReadContext context)
 		{
 			this.Validate(obj);
 			
-			BdLoopFieldSeeker tSeeker = new BdLoopFieldSeeker(obj);
+			BdLoopFieldTraverser tSeeker = new BdLoopFieldTraverser(obj);
 			return this.ioHelper.DeserializeFrom(tSeeker, context);
 		}
 	}
