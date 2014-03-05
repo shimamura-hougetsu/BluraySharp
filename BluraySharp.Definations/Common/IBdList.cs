@@ -8,5 +8,7 @@ namespace BluraySharp.Common
 		object this[int index] { get; set; }
 		int LowerBound { get; }
 		int UpperBound { get; }
+
+		int Capacity { get; }
 	}
 }
