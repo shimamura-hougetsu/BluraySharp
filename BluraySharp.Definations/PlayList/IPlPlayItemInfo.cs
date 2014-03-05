@@ -10,7 +10,7 @@ namespace BluraySharp.PlayList
 		BdTime InTime { get; set; }
 		BdTime OutTime { get; set; }
 
-		BdConnectionCondition ConnectionCondition { get; set; }
+		BdavConnectionCondition ConnectionCondition { get; set; }
 		IBdList<IPClipInfo> ClipList { get; }
 	}
 }

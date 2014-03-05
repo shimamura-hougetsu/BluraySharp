@@ -6,9 +6,7 @@ namespace BluraySharp.Common.BdStandardPart
 	public class BdExtensionData : BdPart
 	{
 		private byte[] value = new byte[0];
-
-		[BdUIntField(BdIntSize.U32)]
-		public uint DataLen
+		public uint Length
 		{
 			get { return (uint)this.value.Length; }
 			set { Array.Resize(ref this.value, (int) value); }

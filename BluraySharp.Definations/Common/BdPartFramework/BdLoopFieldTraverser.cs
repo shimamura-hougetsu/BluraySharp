@@ -55,6 +55,11 @@ namespace BluraySharp.Common.BdPartFramework
 			get { return null; }
 		}
 
+		IBdFieldVisitor IBdFieldVisitor.SkipIndicator
+		{
+			get { return null; }
+		}
+
 		object IBdFieldVisitor.Value
 		{
 			get

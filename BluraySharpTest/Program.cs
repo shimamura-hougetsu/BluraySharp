@@ -7,6 +7,7 @@ using System.Collections;
 using System.Linq;
 using System.Diagnostics;
 using BluraySharp.Common.BdStandardPart;
+using BluraySharp.Architecture;
 
 namespace BluraySharpTest
 {
@@ -20,6 +21,19 @@ namespace BluraySharpTest
 		{
 			string tFilePath = @"C:\StoreBase\_Temp\[BDMV][120926] 超訳百人一首 うた恋い。1\[ANZX6141] UTAKOI_1\BDMV\PLAYLIST\00000.mpls";
 			//string tFilePath = @"C:\Users\Subelf.J\Documents\stillinf-norand.mpls";
+			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
+			{
+				BdStreamReadContext tReader = new BdStreamReadContext(tFileStream);
+				TestClass tMpls = new TestClass();
+				tReader.Deserialize(tMpls);
+
+				using (FileStream tBakStream = new FileStream(tFilePath + ".bak", FileMode.Open))
+				{
+					BdStreamWriteContext tWriter = new BdStreamWriteContext(tBakStream);
+					tWriter.Serialize(tMpls);
+				}
+				tMpls.ToString();
+			}
 
 
 			//using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
@@ -33,12 +47,6 @@ namespace BluraySharpTest
 
 			//    tMpls.ToString();
 			//}
-
-			BdTime tTime = new BdTime();
-			tTime.AsSpan = TimeSpan.Parse("3:42:13.400");
-			uint t1 = tTime.AsFrameCount(BluraySharp.Common.BdViFrameRate.Vi29);
-			string t2 = tTime.AsNdfTimeCode(BluraySharp.Common.BdViFrameRate.Vi29);
-			t2 = tTime.ToString();
 		}
 
 		[DebuggerTypeProxy(typeof(FF<>.FfUserFriendView))]

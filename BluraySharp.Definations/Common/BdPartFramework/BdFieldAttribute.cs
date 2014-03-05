@@ -8,6 +8,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public string OffsetIndicator { get; set; }
 		public string LengthIndicator { get; set; }
+		public string SkipIndicator { get; set; }
 
 		public BdFieldAttribute(BdFieldType type)
 		{

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Common\BdPartFramework\BdFieldRandomVisitor.cs" />
     <Compile Include="Common\BdPartFramework\IBdFieldInfo.cs" />
+    <Compile Include="Common\BdStandardPart\BdPartList.cs" />
     <Compile Include="Common\BdStandardPart\BdLangCode.cs" />
     <Compile Include="Common\BdPartFramework\BdByteArrayFieldAttribute.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldIoHelper.cs" />
@@ -63,6 +64,9 @@
     <Compile Include="Common\BdPartFramework\IBdFieldDescriptor.cs" />
     <Compile Include="Common\BdPartFramework\IBdFieldTraverser.cs" />
     <Compile Include="Common\BdPartFramework\IBdRawIoHelperT.cs" />
+    <Compile Include="Common\Serializing\BdStreamIoContext.cs" />
+    <Compile Include="Common\Serializing\BdStreamReadContext.cs" />
+    <Compile Include="Common\Serializing\BdStreamWriteContext.cs" />
     <Compile Include="FileSystem\BdfsArrayEntryAttribute.cs" />
     <Compile Include="FileSystem\BdfsComponentEntryAttribute.cs" />
     <Compile Include="Common\BdIntSize.cs" />
@@ -76,12 +80,12 @@
     <Compile Include="FileSystem\BdfsTopEntryAttribute.cs" />
     <Compile Include="Common\Serializing\IBdRawReadContext.cs" />
     <Compile Include="ClipInfo\IClipInfo.cs" />
-    <Compile Include="Common\BdStreamFormat.cs" />
-    <Compile Include="Common\BdStreamSampleRate.cs" />
+    <Compile Include="Common\BdavStreamFormat.cs" />
+    <Compile Include="Common\BdavStreamSampleRate.cs" />
     <Compile Include="Common\BdStandardPart\BdBitwiseValue.cs" />
-    <Compile Include="Common\BdConnectionCondition.cs" />
+    <Compile Include="Common\BdavConnectionCondition.cs" />
     <Compile Include="Common\BdStandardPart\BdExtensionData.cs" />
-    <Compile Include="Common\BdStreamCodingType.cs" />
+    <Compile Include="Common\BdavStreamCodingType.cs" />
     <Compile Include="Common\BdStandardPart\BdTime.cs" />
     <Compile Include="Common\BdUOFlag.cs" />
     <Compile Include="Common\BdStandardPart\BdUOMask.cs" />

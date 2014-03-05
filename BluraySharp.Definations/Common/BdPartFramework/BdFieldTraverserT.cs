@@ -119,12 +119,14 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			get
 			{
-				if (this.Current.Attribute.RefEquals(null))
+				BdFieldAttribute tAttrib = this.Current.Attribute;
+				if (tAttrib.RefEquals(null) || tAttrib.OffsetIndicator.RefEquals(null))
 				{
 					return null;
 				}
-				IBdFieldDescriptor tOffsetField = this.GetFieldDescriptor( this.Current.Attribute.OffsetIndicator);
-				return new BdFieldRandomVisitor(this.thisObj, tOffsetField);
+
+				IBdFieldDescriptor tSkipField = this.GetFieldDescriptor(tAttrib.OffsetIndicator);
+				return new BdFieldRandomVisitor(this.thisObj, tSkipField);
 			}
 		}
 
@@ -132,15 +134,32 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			get
 			{
-				if (this.Current.Attribute.RefEquals(null))
+				BdFieldAttribute tAttrib = this.Current.Attribute;
+				if (tAttrib.RefEquals(null) || tAttrib.LengthIndicator.RefEquals(null))
 				{
 					return null;
 				}
-				IBdFieldDescriptor tLengthField = this.GetFieldDescriptor(this.Current.Attribute.LengthIndicator);
-				return new BdFieldRandomVisitor(this.thisObj, tLengthField);
+
+				IBdFieldDescriptor tSkipField = this.GetFieldDescriptor(tAttrib.LengthIndicator);
+				return new BdFieldRandomVisitor(this.thisObj, tSkipField);
 			}
 		}
 
+
+		IBdFieldVisitor IBdFieldVisitor.SkipIndicator
+		{
+			get
+			{
+				BdFieldAttribute tAttrib = this.Current.Attribute;
+				if (tAttrib.RefEquals(null) || tAttrib.SkipIndicator.RefEquals(null))
+				{
+					return null;
+				}
+
+				IBdFieldDescriptor tSkipField = this.GetFieldDescriptor(tAttrib.SkipIndicator);
+				return new BdFieldRandomVisitor(this.thisObj, tSkipField);
+			}
+		}
 		
 		private static List<BdFieldDescriptor> fields = new List<BdFieldDescriptor>(BdFieldTraverser<T>.InitializeFields());
 

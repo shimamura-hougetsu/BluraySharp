@@ -6,6 +6,7 @@ namespace BluraySharp.Common.BdPartFramework
 	{
 		IBdFieldVisitor OffsetIndicator { get; }
 		IBdFieldVisitor LengthIndicator { get; }
+		IBdFieldVisitor SkipIndicator { get; }
 		object Value { get; set; }
 	}
 }

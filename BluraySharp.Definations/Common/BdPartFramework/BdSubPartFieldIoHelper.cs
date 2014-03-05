@@ -58,7 +58,7 @@ namespace BluraySharp.Common.BdPartFramework
 			this.Validate(obj);
 
 			IBdPart tField = this.GetValue(obj);
-			if (tField != null)
+			if (!tField.RefEquals(null))
 			{
 				return tField.SerializeTo(context);
 			}
@@ -73,7 +73,7 @@ namespace BluraySharp.Common.BdPartFramework
 			this.Validate(obj);
 
 			IBdPart tField = this.GetValue(obj);
-			if (tField != null)
+			if (! tField.RefEquals(null))
 			{
 				return tField.DeserializeFrom(context);
 			}
