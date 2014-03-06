@@ -125,8 +125,13 @@ namespace BluraySharp.Common.BdPartFramework
 					return null;
 				}
 
-				IBdFieldDescriptor tSkipField = this.GetFieldDescriptor(tAttrib.OffsetIndicator);
-				return new BdFieldRandomVisitor(this.thisObj, tSkipField);
+				IBdFieldDescriptor tOffsetField = this.GetFieldDescriptor(tAttrib.OffsetIndicator);
+				if (tOffsetField.RefEquals(null))
+				{
+					//TODO: FieldNotFound
+					throw new ApplicationException();
+				}
+				return new BdFieldRandomVisitor(this.thisObj, tOffsetField);
 			}
 		}
 
@@ -140,8 +145,13 @@ namespace BluraySharp.Common.BdPartFramework
 					return null;
 				}
 
-				IBdFieldDescriptor tSkipField = this.GetFieldDescriptor(tAttrib.LengthIndicator);
-				return new BdFieldRandomVisitor(this.thisObj, tSkipField);
+				IBdFieldDescriptor tLengthField = this.GetFieldDescriptor(tAttrib.LengthIndicator);
+				if (tLengthField.RefEquals(null))
+				{
+					//FieldNotFound
+					throw new ApplicationException();
+				}
+				return new BdFieldRandomVisitor(this.thisObj, tLengthField);
 			}
 		}
 
@@ -157,6 +167,11 @@ namespace BluraySharp.Common.BdPartFramework
 				}
 
 				IBdFieldDescriptor tSkipField = this.GetFieldDescriptor(tAttrib.SkipIndicator);
+				if (tSkipField.RefEquals(null))
+				{
+					//FieldNotFound
+					throw new ApplicationException();
+				}
 				return new BdFieldRandomVisitor(this.thisObj, tSkipField);
 			}
 		}

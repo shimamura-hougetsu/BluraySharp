@@ -22,11 +22,21 @@ namespace BluraySharp.PlayList
 		private uint extensionDataOfs = 0;
 		private byte[] reserevedForFutureUse = new byte[20];
 
+		private uint appInfoLen = 0;
 		private PlAppInfo appInfo = new PlAppInfo();
 
+		private uint playListLen = 0;
 		private PlPlayItemList playItemList = new PlPlayItemList();
+
+		private uint playMarkLen = 0;
 		private PlPlayMarkList playMarkList = new PlPlayMarkList();
+
+		private uint extDataLen = 0;
 		private BdExtensionData extensionData = null;
+
+		public bool playItemListSkip = false;
+		public bool playMarkListSkip = false;
+		public bool extensionDataSkip = true;
 
 		#endregion Private Data Fields
 

@@ -20,11 +20,7 @@ namespace BluraySharpTest
 		private BdExtensionData playMarkSeg = new BdExtensionData();
 		private uint extDataLen = 0;
 		private BdExtensionData extDataSeg = null;
-
-		public bool playListSkip = false;
-		public bool playMarkSkip = false;
-		public bool extDataSkip = true;
-
+		
 		[BdStringField(4, BdCharacterCodingType.UTF8)]
 		public string MplsMark
 		{
@@ -45,7 +41,7 @@ namespace BluraySharpTest
 			get { return this.playListOfs; }
 			set
 			{
-				this.playListOfs = value;
+				this.PlayListSkip = ((this.playListOfs = value) == 0);
 			}
 		}
 
@@ -55,7 +51,7 @@ namespace BluraySharpTest
 			get { return this.playMarkOfs; }
 			set
 			{
-				this.playMarkOfs = value;
+				this.playMarkSkip = ((this.playMarkOfs = value) == 0);
 			}
 		}
 
@@ -65,7 +61,7 @@ namespace BluraySharpTest
 			get { return this.extDataOfs; }
 			set
 			{
-				this.extDataOfs = value;
+				this.extDataSkip = ((this.extDataOfs = value) == 0);
 			}
 		}
 
@@ -93,10 +89,9 @@ namespace BluraySharpTest
 		public BdExtensionData AppInfoSeg
 		{
 			get { return this.appInfoSeg; }
-			set { this.appInfoSeg = value; }
 		}
 
-		[BdUIntField(BdIntSize.U32, OffsetIndicator = "PlayListOfs", SkipIndicator = "playListSkip")]
+		[BdUIntField(BdIntSize.U32, OffsetIndicator = "PlayListOfs", SkipIndicator = "PlayListSkip")]
 		public uint PlayListLen
 		{
 			get { return this.playListSkip? 0 :this.playListLen; }
@@ -108,13 +103,13 @@ namespace BluraySharpTest
 				}
 			}
 		}
-		[BdSubPartField(LengthIndicator = "PlayListLen", SkipIndicator = "playListSkip")]
+		[BdSubPartField(LengthIndicator = "PlayListLen", SkipIndicator = "PlayListSkip")]
 		public BdExtensionData PlayListSeg
 		{
 			get { return this.playListSkip? null :this.playListSeg; }
 		}
 
-		[BdUIntField(BdIntSize.U32, OffsetIndicator = "PlayMarkOfs", SkipIndicator = "playMarkSkip")]
+		[BdUIntField(BdIntSize.U32, OffsetIndicator = "PlayMarkOfs", SkipIndicator = "PlayMarkSkip")]
 		public uint PlayMarkLen
 		{
 			get { return this.playMarkSkip ? 0 : this.playMarkLen; }
@@ -127,13 +122,13 @@ namespace BluraySharpTest
 				}
 			}
 		}
-		[BdSubPartField(LengthIndicator = "PlayMarkLen", SkipIndicator = "playMarkSkip")]
+		[BdSubPartField(LengthIndicator = "PlayMarkLen", SkipIndicator = "PlayMarkSkip")]
 		public BdExtensionData PlayMarkSeg
 		{
 			get { return this.playMarkSkip ? null : this.playMarkSeg; }
 		}
 
-		[BdUIntField(BdIntSize.U32, OffsetIndicator = "ExtDataOfs", SkipIndicator = "extDataSkip")]
+		[BdUIntField(BdIntSize.U32, OffsetIndicator = "ExtDataOfs", SkipIndicator = "ExtDataSkip")]
 		public uint ExtDataLen
 		{
 			get { return this.extDataSkip ? 0: this.extDataLen; }
@@ -146,16 +141,77 @@ namespace BluraySharpTest
 				}
 			}
 		}
-		[BdSubPartField(LengthIndicator = "extDataLen", SkipIndicator = "extDataSkip")]
+		[BdSubPartField(LengthIndicator = "ExtDataLen", SkipIndicator = "ExtDataSkip")]
 		public BdExtensionData ExtDataSeg
 		{
 			get { return this.extDataSkip ? null : this.extDataSeg; }
 			set
 			{
 				this.extDataSeg = value;
-				if (!object.ReferenceEquals(value, null))
+				this.ExtDataSkip = object.ReferenceEquals(this.extDataSeg, null);
+			}
+		}
+
+		private bool playListSkip = false;
+		private bool playMarkSkip = false;
+		private bool extDataSkip = true;
+
+		public bool PlayListSkip
+		{
+			get { return this.playListSkip; }
+			set {
+				if (this.playListSkip != value)
 				{
-					this.extDataSkip = true;
+					if (this.playListSkip = value)
+					{
+						this.playListOfs = 0;
+						this.playListLen = 0;
+						this.playListSeg = null;
+					}
+					else
+					{
+						this.playListSeg = new BdExtensionData();
+					}
+				}
+			}
+		}
+		public bool PlayMarkSkip
+		{
+			get { return this.playMarkSkip; }
+			set
+			{
+				if (this.playMarkSkip != value)
+				{
+					if (this.playMarkSkip = value)
+					{
+						this.playMarkOfs = 0;
+						this.playMarkLen = 0;
+						this.playMarkSeg = null;
+					}
+					else
+					{
+						this.playMarkSeg = new BdExtensionData();
+					}
+				}
+			}
+		}
+		public bool ExtDataSkip
+		{
+			get { return this.extDataSkip; }
+			set
+			{
+				if (this.extDataSkip != value)
+				{
+					if (this.extDataSkip = value)
+					{
+						this.extDataOfs = 0;
+						this.extDataLen = 0;
+						this.extDataSeg = null;
+					}
+					else
+					{
+						this.extDataSeg = new BdExtensionData();
+					}
 				}
 			}
 		}

@@ -18,7 +18,7 @@ namespace BluraySharp.Common.BdPartFramework
 		private BdFieldTraverserIoHelper() { }
 
 		private delegate long RawOperation(IBdFieldVisitor obj);
-		private long ForEachIn(IBdFieldTraverser obj, IBdRawIoContext context, RawOperation operation)
+		private long ForEachIn(IBdFieldTraverser obj, IBdRawIoContext context, RawOperation operation, bool isUpdatingIndicators)
 		{
 			long tLenTotal = 0;
 
@@ -33,42 +33,57 @@ namespace BluraySharp.Common.BdPartFramework
 					tIsSkip = (this.GetIndicatorValue(tIndVistor) != 0);
 				}
 
-				long tLen = 0, tScopeLen = 0;
+				long tLen = 0;
 				if(! tIsSkip)
 				{
 					tIndVistor = obj.OffsetIndicator;
 					if (!tIndVistor.RefEquals(null))
 					{
+						if (isUpdatingIndicators)
+						{
+							this.SetIndicatorValue(tIndVistor, (ulong)tLenTotal);
+						}
+
 						tLenTotal = (long)this.GetIndicatorValue(tIndVistor);
+
 						if (!context.RefEquals(null))
 						{
 							context.Position = tLenTotal;
 						}
 					}
 
+					tLen = this.ioHelper.GetRawLength(obj);
+					long tScopeLen = 0;
+					bool tScopeEngaged = false;
+
 					tIndVistor = obj.LengthIndicator;
 					if(! tIndVistor.RefEquals(null))
 					{
+						if (isUpdatingIndicators)
+						{
+							tScopeLen = tLen;
+							this.SetIndicatorValue(tIndVistor, (ulong) tScopeLen);
+						}
+
 						tScopeLen = (long)this.GetIndicatorValue(tIndVistor);
+						tScopeEngaged = true;
+
 						if (!context.RefEquals(null))
 						{
 							context.EnterScope(tScopeLen);
 						}
 					}
+
 					try
 					{
 						if (!operation.RefEquals(null))
 						{
 							tLen = operation(obj);
 						}
-						else
-						{
-							tLen = this.ioHelper.GetRawLength(obj);
-						}
 					}
 					finally
 					{
-						if (!tIndVistor.RefEquals(null))
+						if (tScopeEngaged)
 						{
 							if (!context.RefEquals(null))
 							{
@@ -100,6 +115,8 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			this.Validate(obj);
 
+			this.ForEachIn(obj, null, null, true);
+
 			RawOperation tOpr = delegate(IBdFieldVisitor xSubObj)
 			{				
 				long tRet = 0;
@@ -112,14 +129,14 @@ namespace BluraySharp.Common.BdPartFramework
 				return tRet;
 			};
 
-			return this.ForEachIn(obj, null, tOpr);
+			return this.ForEachIn(obj, null, tOpr, true);
 		}
 
 		public long SerializeTo(IBdFieldTraverser obj, IBdRawWriteContext context)
 		{
 			this.Validate(obj);
 
-			this.ForEachIn(obj, null, null);
+			this.ForEachIn(obj, null, null, true);
 
 			RawOperation tOpr = delegate(IBdFieldVisitor xSubObj)
 			{
@@ -133,13 +150,12 @@ namespace BluraySharp.Common.BdPartFramework
 				return tRet;
 			};
 
-			return this.ForEachIn(obj, context, tOpr);
+			return this.ForEachIn(obj, context, tOpr, false);
 		}
 
 		public long DeserializeFrom(IBdFieldTraverser obj, IBdRawReadContext context)
 		{
-
-			this.ForEachIn(obj, null, null);
+			this.Validate(obj);
 
 			RawOperation tOpr = delegate(IBdFieldVisitor xSubObj)
 			{
@@ -153,7 +169,7 @@ namespace BluraySharp.Common.BdPartFramework
 				return tRet;
 			};
 
-			return this.ForEachIn(obj, context, tOpr);
+			return this.ForEachIn(obj, context, tOpr, false);
 		}
 
 		private ulong GetIndicatorValue(IBdFieldVisitor indicator)

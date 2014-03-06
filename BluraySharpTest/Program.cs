@@ -29,6 +29,8 @@ namespace BluraySharpTest
 
 				using (FileStream tBakStream = new FileStream(tFilePath + ".bak", FileMode.Open))
 				{
+					tMpls.ExtDataSeg = new BdExtensionData();
+					tMpls.ExtDataLen = 10;
 					BdStreamWriteContext tWriter = new BdStreamWriteContext(tBakStream);
 					tWriter.Serialize(tMpls);
 				}
