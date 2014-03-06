@@ -28,7 +28,6 @@ namespace BluraySharp.Common.BdPartFramework
 		
 		public long SerializeTo(IBdRawWriteContext context)
 		{
-			//BdFieldDescriptor tLengthField = new BdFieldDescriptor()
 			return BdPart.ioHelp.SerializeTo(this.fieldSeeker, context);
 		}
 

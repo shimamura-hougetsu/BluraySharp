@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using BluraySharp.Common;
 using BluraySharp.Architecture;
+using BluraySharp.Common.BdPartFramework;
 
 namespace BluraySharp.PlayList
 {
-	public class PlPlayItem : IPlPlayItem
+	public class PlPlayItem : BdPart, IPlPlayItem
 	{
+		/*
 		public IBdList<IPClipInfo> ClipList { get; internal set; }
 
 		public byte StcId { get; set; }
@@ -153,6 +155,92 @@ namespace BluraySharp.PlayList
 			this.ClipList = new BdPartList<PlClipInfo, IPClipInfo>(9);
 			this.InTime = new BdTime();
 			this.OutTime = new BdTime();
+		}
+	}
+	*/
+		public Common.BdStandardPart.BdUOMask UoMask
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public bool RandomAccessProhibited
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public IPlStillInfo StillInfo
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public IPlStnTable StnTable
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public byte StcId
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public Common.BdStandardPart.BdTime InTime
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public Common.BdStandardPart.BdTime OutTime
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public BdavConnectionCondition ConnectionCondition
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public IBdList<IPClipInfo> ClipList
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override string ToString()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

@@ -2,42 +2,32 @@
 using BluraySharp.Common.BdPartFramework;
 using BluraySharp.Common.BdStandardPart;
 using System;
-using System.Diagnostics;
-using System.Linq;
 namespace BluraySharp.PlayList
 {
-	public class PlPlayItemList : BluraySharp.PlayList.IPlPlayItemList
+	public class PlPlayItemList : BdPart, IPlPlayItemList
 	{
-		private byte[] value = new byte[0];
+		#region Private Data Fields
 
-		[BdUIntField(BdIntSize.U32)]
-		public uint DataLen
+		private ushort reservedForFutureUse = 0;
+		private ushort playItemCount = 0;
+		private ushort subPathCount = 0;
+
+		private BdPartList<PlPlayItem, IPlPlayItem> playItems = new BdPartList<PlPlayItem, IPlPlayItem>(0, 999);
+		private BdPartList<PlSubPath, IPlSubPath> subPaths = new BdPartList<PlSubPath, IPlSubPath>(0, 255);
+
+		#endregion Private Data Fields
+
+		public IBdList<IPlPlayItem> PlayItems
 		{
-			get { return (uint)this.value.Length; }
-			set { Array.Resize(ref this.value, (int)value); }
+			get { throw new NotImplementedException(); }
 		}
 
-		[BdByteArrayField]
-		public byte[] Value
+		public IBdList<IPlSubPath> SubPaths
 		{
-			get { return this.value; }
-			set { this.value = value; }
+			get { throw new NotImplementedException(); }
 		}
 
-		public override string ToString()
-		{
-			return "PlayItemList";
-		}
 
-		//public long DeserializeFrom(IBdRawReadContext context)
-		//{
-		//	uint tDataLen;
-
-		//	//-tDataLen = context.DeserializeUInt32();
-		//	//-context.EnterScope(tDataLen);
-
-		//	try
-		//	{
 		//		//-this.ReservedForFutureUse = context.DeserializeUInt16();
 
 		//		//-uint tPlayItemCount = context.DeserializeUInt16();
@@ -62,5 +52,10 @@ namespace BluraySharp.PlayList
 
 		//	return context.Position;
 		//}
+
+		public override string ToString()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

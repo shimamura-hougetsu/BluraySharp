@@ -42,9 +42,9 @@
   <ItemGroup>
     <None Include="FileSystem\BdfsEntitiesRegistry.cs" />
     <None Include="Architecture\BdPartList.cs" />
-    <Compile Include="Architecture\BdStreamIoContext.cs" />
-    <Compile Include="Architecture\BdStreamReadContext.cs" />
-    <Compile Include="Architecture\BdStreamWriteContext.cs" />
+    <None Include="Architecture\BdStreamIoContext.cs" />
+    <None Include="Architecture\BdStreamReadContext.cs" />
+    <None Include="Architecture\BdStreamWriteContext.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <None Include="FileSystem\BdfsBdmvRoot.cs" />
     <None Include="FileSystem\BdfsArrayEntryFile.cs" />
@@ -58,7 +58,7 @@
     <Compile Include="PlayList\PlAppInfo.cs" />
     <Compile Include="PlayList\PlayList.cs" />
     <Compile Include="PlayList\PlPlayMarkList.cs" />
-    <None Include="PlayList\PlPlayItem.cs" />
+    <Compile Include="PlayList\PlPlayItem.cs" />
     <Compile Include="PlayList\PlPlayItemList.cs" />
     <None Include="PlayList\PlStillInfo.cs" />
     <None Include="PlayList\PlStnAuRecord.cs" />
@@ -73,7 +73,7 @@
     <None Include="PlayList\PlStnSvRecord.cs" />
     <None Include="PlayList\PlStnTable.cs" />
     <None Include="PlayList\PlStnViRecord.cs" />
-    <None Include="PlayList\PlSubPath.cs" />
+    <Compile Include="PlayList\PlSubPath.cs" />
     <None Include="PlayList\PlSubPlayItem.cs" />
     <None Include="PlayList\PlStnViStreamAttribute.cs" />
     <None Include="PlayList\PlStnAuStreamAttribute.cs" />

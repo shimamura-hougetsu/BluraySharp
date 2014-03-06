@@ -105,7 +105,11 @@ namespace BluraySharp.Common.BdPartFramework
 				return null;
 			}
 
-			MemberInfo[] tOfsMembers = typeof(T).GetMember(memberName, MemberTypes.Property | MemberTypes.Field, BindingFlags.Instance | BindingFlags.Public);
+			MemberInfo[] tOfsMembers = typeof(T).GetMember(
+				memberName, MemberTypes.Property | MemberTypes.Field, 
+				BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
+				);
+
 			if (tOfsMembers.Length != 1)
 			{
 				//TODO: cannot find offset indicator member for the field
@@ -180,7 +184,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private static IEnumerable<BdFieldDescriptor> InitializeFields()
 		{
-			MemberInfo[] tMembers = typeof(T).GetMembers();
+			MemberInfo[] tMembers = typeof(T).GetMembers(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			foreach (MemberInfo tMember in tMembers)
 			{
 				object[] tAttributes = tMember.GetCustomAttributes(typeof(BdFieldAttribute), true);
@@ -194,50 +198,5 @@ namespace BluraySharp.Common.BdPartFramework
 				}
 			}
 		}
-		/*
-		public ulong Offset
-		{
-			get
-			{
-				if (! this.IsOffsetSpecified)
-				{
-					//TODO: the field has no offset specified
-					throw new NotSupportedException();
-				}
-				
-				string tOfsIndicator = this.OffsetAttribute.OffsetIndicator;
-				if (!string.IsNullOrEmpty(tOfsIndicator))
-				{
-					return this.GetUIntMember(tOfsIndicator);
-				}
-				else
-				{
-					return this.OffsetAttribute.Offset;
-				}
-			}
-			set
-			{
-				if (!this.IsOffsetSpecified)
-				{
-					//TODO: the field accepts no offset
-					throw new NotSupportedException();
-				}
-
-				string tOfsIndicator = this.OffsetAttribute.OffsetIndicator;
-				if (!string.IsNullOrEmpty(tOfsIndicator))
-				{
-					this.SetUIntMember(tOfsIndicator, value);
-				}
-			}
-		}
-
-		public bool IsOffsetSpecified
-		{
-			get
-			{
-				return !object.ReferenceEquals(this.OffsetAttribute, null);
-			}
-		}
-		*/
 	}
 }

@@ -156,7 +156,7 @@ namespace BluraySharpTest
 		private bool playMarkSkip = false;
 		private bool extDataSkip = true;
 
-		public bool PlayListSkip
+		private bool PlayListSkip
 		{
 			get { return this.playListSkip; }
 			set {
@@ -175,7 +175,7 @@ namespace BluraySharpTest
 				}
 			}
 		}
-		public bool PlayMarkSkip
+		private bool PlayMarkSkip
 		{
 			get { return this.playMarkSkip; }
 			set
@@ -195,7 +195,7 @@ namespace BluraySharpTest
 				}
 			}
 		}
-		public bool ExtDataSkip
+		private bool ExtDataSkip
 		{
 			get { return this.extDataSkip; }
 			set

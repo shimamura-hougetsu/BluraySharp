@@ -1,29 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using BluraySharp.Common;
-using BluraySharp.Architecture;
+﻿using BluraySharp.Common.BdPartFramework;
 
 namespace BluraySharp.PlayList
 {
-	public class PlSubPath : BluraySharp.PlayList.IPlSubPath
+	public class PlSubPath : BdPart, IPlSubPath
 	{
-		public IBdList<IPlPlayItemInfo> PlayItems { get; internal set; }
-
-		internal Byte Reserved1 { get; set; }
-		internal Byte Reserved2 { get; set; }
-
-		public PlSubPathType Type { get; set; }
-
-		//TODO: repeat option
-		private BdBitwise16 repeatOption = new BdBitwise16();
-
-		public long SerializeTo(IBdRawWriteContext context)
+		public Common.IBdList<IPlPlayItemInfo> PlayItems
 		{
-			throw new NotImplementedException();
+			get { throw new System.NotImplementedException(); }
 		}
 
-		public long DeserializeFrom(IBdRawReadContext context)
+		public PlSubPathType Type
 		{
+			get
+			{
+				throw new System.NotImplementedException();
+			}
+			set
+			{
+				throw new System.NotImplementedException();
+			}
+		}
+
+		public override string ToString()
+		{
+			throw new System.NotImplementedException();
+		}
+	}
+}
+	
+	/*
 			uint tDataLen;
 
 			//-tDataLen = context.DeserializeUInt32();
@@ -52,27 +57,5 @@ namespace BluraySharp.PlayList
 
 			return context.Position;
 		}
-
-		public long RawLength
-		{
-			get
-			{
-				long tDataLen = sizeof(uint);
-				tDataLen += sizeof(byte) * 3;
-				tDataLen += repeatOption.RawLength;
-
-				foreach (IBdPart tObj in this.PlayItems)
-				{
-					tDataLen += tObj.RawLength;
-				}
-
-				return tDataLen;
-			}
-		}
-
-		public PlSubPath()
-		{
-			PlayItems = new BdPartList<PlSubPlayItem, IPlPlayItemInfo>(255);
-		}
 	}
-}
+}*/

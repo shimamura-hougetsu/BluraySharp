@@ -6,6 +6,12 @@ namespace BluraySharp.Common.BdStandardPart
 	{
 		private BdBitwise64 value = new BdBitwise64();
 
+		public ulong Value
+		{
+			get { return this.value.Value; }
+			set { this.value.Value = value; }
+		}
+
 		public bool this[BdUOFlag index]
 		{
 			get
