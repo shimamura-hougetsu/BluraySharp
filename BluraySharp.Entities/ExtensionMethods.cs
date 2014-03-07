@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BluraySharp.Architecture;
 using BluraySharp.Common.Serializing;
+using BluraySharp.Common;
 
 namespace BluraySharp
 {
@@ -15,6 +16,18 @@ namespace BluraySharp
 
 			reader.Deserialize(tObject);
 			return tObject;
+		}
+
+		public static void SetLength<T>(this IBdList<T> list, int count)
+		{
+			if (list.Count != count)
+			{
+				list.Clear();
+				for (int i = 0; i < count; ++i)
+				{
+					list.Add(list.CreateNew());
+				}
+			}
 		}
 	}
 }

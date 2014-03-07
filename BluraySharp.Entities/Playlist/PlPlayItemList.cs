@@ -12,50 +12,49 @@ namespace BluraySharp.PlayList
 		private ushort playItemCount = 0;
 		private ushort subPathCount = 0;
 
-		private BdPartList<PlPlayItem, IPlPlayItem> playItems = new BdPartList<PlPlayItem, IPlPlayItem>(0, 999);
-		private BdPartList<PlSubPath, IPlSubPath> subPaths = new BdPartList<PlSubPath, IPlSubPath>(0, 255);
+		private readonly BdPartList<PlPlayItem, IPlPlayItem> playItems = 
+			new BdPartList<PlPlayItem, IPlPlayItem>(0, 999);
+		private readonly BdPartList<PlSubPath, IPlSubPath> subPaths =
+			new BdPartList<PlSubPath, IPlSubPath>(0, 255);
 
 		#endregion Private Data Fields
 
+		[BdUIntField(BdIntSize.U16)]
+		private ushort ReservedForFutureUse
+		{
+			get { return this.reservedForFutureUse; }
+			set { this.reservedForFutureUse = value; }
+		}
+		
+		[BdUIntField(BdIntSize.U16)]
+		private ushort PlayItemCount
+		{
+			get { return (ushort)this.playItems.Count; }
+			set { this.playItems.SetLength(value); }
+		}
+
+		[BdUIntField(BdIntSize.U16)]
+		private ushort SubPathCount
+		{
+			get { return (ushort) this.subPaths.Count; }
+			set { this.subPaths.SetLength(value); }
+		}
+
+		[BdSubPartField]
 		public IBdList<IPlPlayItem> PlayItems
 		{
-			get { throw new NotImplementedException(); }
+			get { return this.playItems; }
 		}
 
+		[BdSubPartField]
 		public IBdList<IPlSubPath> SubPaths
 		{
-			get { throw new NotImplementedException(); }
+			get { return this.subPaths; }
 		}
-
-
-		//		//-this.ReservedForFutureUse = context.DeserializeUInt16();
-
-		//		//-uint tPlayItemCount = context.DeserializeUInt16();
-		//		//-uint tSubPathCount = context.DeserializeUInt16();
-
-		//		PlayItems.Clear();
-		//		//-for (uint i = 0; i < tPlayItemCount; ++i)
-		//		{
-		//			PlayItems.Insert(context.Deserialize<PlPlayItem>());
-		//		}
-
-		//		SubPaths.Clear();
-		//		//-for (uint i = 0; i < tSubPathCount; ++i)
-		//		{
-		//			SubPaths.Insert(context.Deserialize<PlSubPath>());
-		//		}
-		//	}
-		//	finally
-		//	{
-		//		context.ExitScope();
-		//	}
-
-		//	return context.Position;
-		//}
 
 		public override string ToString()
 		{
-			throw new NotImplementedException();
+			return "PlayItems and SubPaths";
 		}
 	}
 }

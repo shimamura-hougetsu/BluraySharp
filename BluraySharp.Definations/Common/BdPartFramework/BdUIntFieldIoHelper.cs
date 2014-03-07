@@ -18,12 +18,28 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private ulong GetValue(IBdFieldVisitor obj)
 		{
+			if (obj.RefEquals(null))
+			{
+				throw new ArgumentNullException();
+			}
+
 			return Convert.ToUInt64(obj.Value);
 		}
 
 		private void SetValue(IBdFieldVisitor obj, ulong value)
 		{
-			obj.Value = Convert.ChangeType(value, obj.Type);
+			if(obj.RefEquals(null))
+			{
+				throw new ArgumentNullException();
+			}
+			
+			Type tIntType = obj.Type;
+			if (obj.Type.BaseType.Equals(typeof(Enum)))
+			{
+				tIntType = Enum.GetUnderlyingType(obj.Type);
+			}
+
+			obj.Value = Convert.ChangeType(value, tIntType);
 		}
 
 		private BdUIntFieldAttribute GetAttribute(IBdFieldVisitor obj)

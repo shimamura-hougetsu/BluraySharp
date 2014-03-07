@@ -18,7 +18,6 @@ namespace BluraySharp.Common.BdPartFramework
 
 		#region Seeker
 
-
 		private IBdFieldDescriptor Current
 		{
 			get
@@ -56,6 +55,18 @@ namespace BluraySharp.Common.BdPartFramework
 			get
 			{
 				return BdFieldTraverser<T>.fields.Count;
+			}
+		}
+
+		public IBdFieldVisitor SeekerScopeIndicator{
+			get
+			{
+				IBdFieldDescriptor tOffsetField = BdFieldTraverser<T>.seekerScopeIndicator;
+				if (tOffsetField.RefEquals(null))
+				{
+					return null;
+				}
+				return new BdFieldRandomVisitor(this.thisObj, tOffsetField);
 			}
 		}
 
@@ -97,28 +108,6 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-		private IBdFieldDescriptor GetFieldDescriptor(string memberName)
-		{
-			if (string.IsNullOrEmpty(memberName))
-			{
-				//TODO: member name not specified.
-				return null;
-			}
-
-			MemberInfo[] tOfsMembers = typeof(T).GetMember(
-				memberName, MemberTypes.Property | MemberTypes.Field, 
-				BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
-				);
-
-			if (tOfsMembers.Length != 1)
-			{
-				//TODO: cannot find offset indicator member for the field
-				return null;
-			}
-
-			return new BdFieldDescriptor(tOfsMembers[0], null);
-		}
-
 		IBdFieldVisitor IBdFieldVisitor.OffsetIndicator
 		{
 			get
@@ -129,7 +118,7 @@ namespace BluraySharp.Common.BdPartFramework
 					return null;
 				}
 
-				IBdFieldDescriptor tOffsetField = this.GetFieldDescriptor(tAttrib.OffsetIndicator);
+				IBdFieldDescriptor tOffsetField = BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.OffsetIndicator);
 				if (tOffsetField.RefEquals(null))
 				{
 					//TODO: FieldNotFound
@@ -149,7 +138,7 @@ namespace BluraySharp.Common.BdPartFramework
 					return null;
 				}
 
-				IBdFieldDescriptor tLengthField = this.GetFieldDescriptor(tAttrib.LengthIndicator);
+				IBdFieldDescriptor tLengthField = BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.LengthIndicator);
 				if (tLengthField.RefEquals(null))
 				{
 					//FieldNotFound
@@ -170,7 +159,7 @@ namespace BluraySharp.Common.BdPartFramework
 					return null;
 				}
 
-				IBdFieldDescriptor tSkipField = this.GetFieldDescriptor(tAttrib.SkipIndicator);
+				IBdFieldDescriptor tSkipField = BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.SkipIndicator);
 				if (tSkipField.RefEquals(null))
 				{
 					//FieldNotFound
@@ -180,7 +169,10 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 		
-		private static List<BdFieldDescriptor> fields = new List<BdFieldDescriptor>(BdFieldTraverser<T>.InitializeFields());
+		private static List<IBdFieldDescriptor> fields = 
+			new List<IBdFieldDescriptor>(BdFieldTraverser<T>.InitializeFields());
+		private static IBdFieldDescriptor seekerScopeIndicator = 
+			BdFieldTraverser<T>.InitializeSeekerScopeIndicator();
 
 		private static IEnumerable<BdFieldDescriptor> InitializeFields()
 		{
@@ -197,6 +189,47 @@ namespace BluraySharp.Common.BdPartFramework
 					yield return new BdFieldDescriptor(tMember, tAttribute);
 				}
 			}
+		}
+
+		private static IBdFieldDescriptor InitializeSeekerScopeIndicator()
+		{
+			object[] tAttributes = 
+				typeof(T).GetCustomAttributes(typeof(BdPartLengthIndicatorAttribute), true);
+			if(tAttributes.Length != 1)
+			{
+				return null;
+			}
+
+			BdPartLengthIndicatorAttribute tAttribute =
+				tAttributes[0] as BdPartLengthIndicatorAttribute;
+			if(tAttribute.Indicator.RefEquals(null))
+			{
+				return null;
+			}
+
+			return BdFieldTraverser<T>.GetFieldDescriptor(tAttribute.Indicator);
+		}
+
+		private static IBdFieldDescriptor GetFieldDescriptor(string memberName)
+		{
+			if (string.IsNullOrEmpty(memberName))
+			{
+				//TODO: member name not specified.
+				return null;
+			}
+
+			MemberInfo[] tOfsMembers = typeof(T).GetMember(
+				memberName, MemberTypes.Property | MemberTypes.Field, 
+				BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
+				);
+
+			if (tOfsMembers.Length != 1)
+			{
+				//TODO: cannot find scope indicator member for the field
+				throw new ApplicationException();
+			}
+
+			return new BdFieldDescriptor(tOfsMembers[0], null);
 		}
 	}
 }

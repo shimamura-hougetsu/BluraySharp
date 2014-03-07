@@ -73,6 +73,10 @@
       <Project>{14FF5AC6-E679-444D-B582-0B4AE067F595}</Project>
       <Name>BluraySharp.Definations</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BluraySharp.Entities\BluraySharp.Entities.csproj">
+      <Project>{dfc6212f-1896-4890-bb9b-4a2b34e8a85b}</Project>
+      <Name>BluraySharp.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

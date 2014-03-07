@@ -13,6 +13,10 @@ namespace BluraySharpTest
 {
 	static class Program
 	{
+		enum A
+		{
+			NA
+		}
 		/// <summary>
 		/// 应用程序的主入口点。
 		/// </summary>
@@ -23,14 +27,18 @@ namespace BluraySharpTest
 			//string tFilePath = @"C:\Users\Subelf.J\Documents\stillinf-norand.mpls";
 			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
 			{
+				A a = A.NA;
+				Type b = typeof(A);
+
+				object q = Convert.ChangeType(1, Enum.GetUnderlyingType(typeof(A)));
+				a = (A)q;
+
 				BdStreamReadContext tReader = new BdStreamReadContext(tFileStream);
-				TestClass tMpls = new TestClass();
+				PlayList tMpls = new PlayList();
 				tReader.Deserialize(tMpls);
 
 				using (FileStream tBakStream = new FileStream(tFilePath + ".bak", FileMode.Open))
 				{
-					tMpls.ExtDataSeg = new BdExtensionData();
-					tMpls.ExtDataLen = 10;
 					BdStreamWriteContext tWriter = new BdStreamWriteContext(tBakStream);
 					tWriter.Serialize(tMpls);
 				}

@@ -20,6 +20,11 @@ namespace BluraySharp.Common.BdPartFramework
 		private delegate long RawOperation(IBdFieldVisitor obj);
 		private long ForEachIn(IBdFieldTraverser obj, IBdRawIoContext context, RawOperation operation, bool isUpdatingIndicators)
 		{
+			long tSeekerScopeLen = 0;
+			bool tSeekerScopeEngaged = false;
+
+			//TODO: seeker scope
+
 			long tLenTotal = 0;
 
 			for (obj.Index = obj.LowerBound;
@@ -27,24 +32,24 @@ namespace BluraySharp.Common.BdPartFramework
 				++obj.Index)
 			{
 				bool tIsSkip = false;
-				IBdFieldVisitor tIndVistor = obj.SkipIndicator;
-				if (tIndVistor != null)
+				IBdFieldVisitor tIndVisitor = obj.SkipIndicator;
+				if (tIndVisitor != null)
 				{
-					tIsSkip = (this.GetIndicatorValue(tIndVistor) != 0);
+					tIsSkip = (this.GetIndicatorValue(tIndVisitor) != 0);
 				}
 
 				long tLen = 0;
 				if(! tIsSkip)
 				{
-					tIndVistor = obj.OffsetIndicator;
-					if (!tIndVistor.RefEquals(null))
+					tIndVisitor = obj.OffsetIndicator;
+					if (!tIndVisitor.RefEquals(null))
 					{
 						if (isUpdatingIndicators)
 						{
-							this.SetIndicatorValue(tIndVistor, (ulong)tLenTotal);
+							this.SetIndicatorValue(tIndVisitor, (ulong)tLenTotal);
 						}
 
-						tLenTotal = (long)this.GetIndicatorValue(tIndVistor);
+						tLenTotal = (long)this.GetIndicatorValue(tIndVisitor);
 
 						if (!context.RefEquals(null))
 						{
@@ -56,16 +61,16 @@ namespace BluraySharp.Common.BdPartFramework
 					long tScopeLen = 0;
 					bool tScopeEngaged = false;
 
-					tIndVistor = obj.LengthIndicator;
-					if(! tIndVistor.RefEquals(null))
+					tIndVisitor = obj.LengthIndicator;
+					if(! tIndVisitor.RefEquals(null))
 					{
 						if (isUpdatingIndicators)
 						{
 							tScopeLen = tLen;
-							this.SetIndicatorValue(tIndVistor, (ulong) tScopeLen);
+							this.SetIndicatorValue(tIndVisitor, (ulong) tScopeLen);
 						}
 
-						tScopeLen = (long)this.GetIndicatorValue(tIndVistor);
+						tScopeLen = (long)this.GetIndicatorValue(tIndVisitor);
 						tScopeEngaged = true;
 
 						if (!context.RefEquals(null))
@@ -115,7 +120,7 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			this.Validate(obj);
 
-			this.ForEachIn(obj, null, null, true);
+			//this.ForEachIn(obj, null, null, true);
 
 			RawOperation tOpr = delegate(IBdFieldVisitor xSubObj)
 			{				

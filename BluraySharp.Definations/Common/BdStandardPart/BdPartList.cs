@@ -7,7 +7,7 @@ namespace BluraySharp.Common.BdStandardPart
 {
 	[DebuggerTypeProxy(typeof(BdPartList<,>.UserFriendView))]
 	[DebuggerDisplay("Count = {Count}")]
-	public class BdPartList<T, I> : IBdList<I>
+	public class BdPartList<T, I> : IBdList<I>, IBdList
 		where T : I, new()
 	{
 		public BdPartList()

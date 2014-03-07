@@ -45,6 +45,11 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
+		public IBdFieldVisitor SeekerScopeIndicator
+		{
+			get { return null; }
+		}
+
 		IBdFieldVisitor IBdFieldVisitor.OffsetIndicator
 		{
 			get { return null; }
