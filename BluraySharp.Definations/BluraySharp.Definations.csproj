@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BdPartFramework\BdFieldRandomVisitor.cs" />
-    <Compile Include="Common\BdPartFramework\BdPartLengthIndicatorAttribute.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldVirtualVisitor.cs" />
+    <Compile Include="Common\BdPartFramework\BdPartScopeAttribute.cs" />
     <Compile Include="Common\BdPartFramework\IBdFieldInfo.cs" />
     <Compile Include="Common\BdStandardPart\BdPartList.cs" />
     <Compile Include="Common\BdStandardPart\BdLangCode.cs" />

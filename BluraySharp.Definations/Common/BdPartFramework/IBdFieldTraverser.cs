@@ -8,6 +8,6 @@ namespace BluraySharp.Common.BdPartFramework
 		int LowerBound { get; }
 		int UpperBound { get; }
 
-		IBdFieldVisitor SeekerScopeIndicator { get; }
+		IBdFieldVisitor ScopeIndicator { get; }
 	}
 }

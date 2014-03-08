@@ -1,9 +1,9 @@
 ﻿
 namespace BluraySharp.Common
 {
-	public enum BdIntSize : int
+	public enum BdIntSize : byte
 	{
-		Auto = 0,
+		None = 0,
 
 		BYTE = 1,
 		WORD = 2,
@@ -14,5 +14,7 @@ namespace BluraySharp.Common
 		U16 = 2,
 		U32 = 4,
 		U64 = 8,
+
+		Auto = 255
 	}
 }

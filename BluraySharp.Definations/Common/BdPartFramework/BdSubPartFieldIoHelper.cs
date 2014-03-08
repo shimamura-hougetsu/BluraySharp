@@ -28,12 +28,12 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private void Validate(IBdFieldVisitor obj)
 		{
-			if (object.ReferenceEquals(obj, null))
+			if (obj.IsNull())
 			{
 				throw new ArgumentNullException("obj");
 			}
 			
-			if (object.ReferenceEquals(this.GetAttribute(obj), null))
+			if (this.GetAttribute(obj).IsNull())
 			{
 				//TODO: BdStringField required
 				throw new ArgumentException("obj");
@@ -41,6 +41,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 			if (obj.Type.GetInterface(typeof(IBdPart).FullName) == null)
 			{
+				Type t = obj.Type.GetInterface(typeof(IBdPart).Name);
 				//TODO: cannot treat Field:obj.Name as IBdPart
 				throw new ArgumentException("obj");
 			}
@@ -58,7 +59,7 @@ namespace BluraySharp.Common.BdPartFramework
 			this.Validate(obj);
 
 			IBdPart tField = this.GetValue(obj);
-			if (!tField.RefEquals(null))
+			if (!tField.IsNull())
 			{
 				return tField.SerializeTo(context);
 			}
@@ -73,7 +74,7 @@ namespace BluraySharp.Common.BdPartFramework
 			this.Validate(obj);
 
 			IBdPart tField = this.GetValue(obj);
-			if (! tField.RefEquals(null))
+			if (! tField.IsNull())
 			{
 				return tField.DeserializeFrom(context);
 			}

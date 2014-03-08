@@ -18,7 +18,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private ulong GetValue(IBdFieldVisitor obj)
 		{
-			if (obj.RefEquals(null))
+			if (obj.IsNull())
 			{
 				throw new ArgumentNullException();
 			}
@@ -28,7 +28,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private void SetValue(IBdFieldVisitor obj, ulong value)
 		{
-			if(obj.RefEquals(null))
+			if(obj.IsNull())
 			{
 				throw new ArgumentNullException();
 			}

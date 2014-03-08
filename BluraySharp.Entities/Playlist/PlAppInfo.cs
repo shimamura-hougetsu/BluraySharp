@@ -45,7 +45,7 @@ namespace BluraySharp.PlayList
 			get { return this.uoMask; }
 			set
 			{
-				if (value.RefEquals(null))
+				if (value.IsNull())
 				{
 					throw new ArgumentNullException("value");
 				}
@@ -59,7 +59,7 @@ namespace BluraySharp.PlayList
 			get { return this.playbackOptioin; }
 			set
 			{
-				if (value.RefEquals(null))
+				if (value.IsNull())
 				{
 					throw new ArgumentNullException("value");
 				}

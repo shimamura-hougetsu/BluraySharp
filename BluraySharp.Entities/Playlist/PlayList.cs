@@ -210,7 +210,7 @@ namespace BluraySharp.PlayList
 			get { return this.extensionData; }
 			set
 			{
-				this.ExtensionDataSkip = (this.extensionData = value).RefEquals(null);
+				this.ExtensionDataSkip = (this.extensionData = value).IsNull();
 			}
 		}
 

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace BluraySharp.Common
 {
-	public interface IBdList<T> : ICollection<T>, IEnumerable<T>, IEnumerable
+	public interface IBdList<T> : IBdList, ICollection<T>, IEnumerable<T>, IEnumerable
 	{
 		T CreateNew();
 
-		T this[int index] { get; set; }
+		new T this[int index] { get; set; }
+
+		new int Count { get; }
 
 		void Insert(int index, T item);
 

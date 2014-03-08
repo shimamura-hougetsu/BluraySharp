@@ -45,7 +45,7 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-		public IBdFieldVisitor SeekerScopeIndicator
+		public IBdFieldVisitor ScopeIndicator
 		{
 			get { return null; }
 		}
@@ -87,8 +87,18 @@ namespace BluraySharp.Common.BdPartFramework
 
 		Type IBdFieldInfo.Type
 		{
-			get { return this.rootField.Type; }
+			get
+			{
+				Type[] tItemTypes = this.rootField.Type.GetGenericArguments();
+				if (tItemTypes.Length != 1)
+				{
+					//Unexpected exception
+					throw new ApplicationException();
+				}
+				return tItemTypes[0];
+			}
 		}
+
 		BdFieldAttribute IBdFieldInfo.Attribute
 		{
 			get { return this.rootField.Attribute; }

@@ -104,5 +104,10 @@ namespace BluraySharp
 		{
 			return object.ReferenceEquals(obj1, obj2);
 		}
+
+		public static bool IsNull(this object obj)
+		{
+			return object.ReferenceEquals(obj, null);
+		}
 	}
 }
