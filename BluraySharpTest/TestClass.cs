@@ -4,6 +4,7 @@ using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharpTest
 {
+	/*
 	public class TestClass : BdPart
 	{
 		private string mplsMark = "MPLS";
@@ -81,7 +82,7 @@ namespace BluraySharpTest
 				this.appInfoLen = value;
 				if (!object.ReferenceEquals(this.appInfoSeg, null))
 				{
-					this.appInfoSeg.Length = value;
+					this.appInfoSeg.LengthIndicator = value;
 				}
 			}
 		}
@@ -221,4 +222,5 @@ namespace BluraySharpTest
 			return "测试文件结构：mpls";
 		}
 	}
+	 */
 }

@@ -70,7 +70,7 @@ namespace BluraySharp.Architecture
 		public BdStreamIoContext(Stream stream)
 		{
 			this.bdStream = stream;
-			this.length = this.bdStream.CanSeek ? bdStream.Length : -1;
+			this.length = (this.bdStream.CanSeek && !this.bdStream.CanWrite) ? bdStream.Length : -1;
 		}
 
 		~BdStreamIoContext()
@@ -137,7 +137,7 @@ namespace BluraySharp.Architecture
 				}
 
 				//required scope is beyond the left area.
-				if (!this.bdStream.CanWrite && this.length != -1 && this.Position + length > this.length)
+				if (this.length != -1 && this.Position + length > this.length)
 				{
 					throw new ArgumentOutOfRangeException("length");
 				}

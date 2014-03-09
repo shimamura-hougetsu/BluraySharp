@@ -85,7 +85,7 @@
     <Compile Include="Common\BdavStreamFormat.cs" />
     <Compile Include="Common\BdavStreamSampleRate.cs" />
     <Compile Include="Common\BdStandardPart\BdBitwiseValue.cs" />
-    <Compile Include="Common\BdavConnectionCondition.cs" />
+    <Compile Include="Common\BdConnectionCondition.cs" />
     <Compile Include="Common\BdStandardPart\BdExtensionData.cs" />
     <Compile Include="Common\BdavStreamCodingType.cs" />
     <Compile Include="Common\BdStandardPart\BdTime.cs" />
@@ -106,10 +106,11 @@
     <Compile Include="Common\Serializing\IBdRawSerializable.cs" />
     <Compile Include="FileSystem\IBdfsTopEntryFile.cs" />
     <Compile Include="JavaObject\IBdJavaObject.cs" />
-    <Compile Include="PlayList\IPClipInfo.cs" />
+    <Compile Include="PlayList\IPlClipFileRef.cs" />
+    <Compile Include="PlayList\IPlClipRef.cs" />
     <Compile Include="PlayList\IPlPlayItem.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
-    <Compile Include="PlayList\IPlStillInfo.cs" />
+    <Compile Include="PlayList\IPlStillOptions.cs" />
     <Compile Include="PlayList\IPlStnStStreamAttribute.cs" />
     <Compile Include="PlayList\IPlStnAuRecord.cs" />
     <Compile Include="PlayList\IPlStnInMuxPipStreamEntryFields.cs" />

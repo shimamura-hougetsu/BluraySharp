@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using BluraySharp.Common;
 using BluraySharp.Architecture;
+using BluraySharp.Common.BdPartFramework;
 
 namespace BluraySharp.PlayList
 {
-	public class PlStnTable: IBdPart, IPlStnTable
+	[BdPartScope(BdIntSize.U16, IndicatorField = "LengthIndicator")]
+	public class PlStnTable : BdPart, IPlStnTable
 	{
 		public IBdList<IPlStnViRecord> ViStreams { get; internal set; }
 
@@ -23,103 +25,97 @@ namespace BluraySharp.PlayList
 
 		public ushort ReservedForFutureUse { get; private set; }
 
-		public PlStnTable()
+
+		//
+
+		private byte[] value = new byte[0];
+
+		public uint LengthIndicator
 		{
-			this.ViStreams = new BdPartList<PlStnViRecord, IPlStnViRecord>(1);
-			this.AuStreams = new BdPartList<PlStnAuRecord, IPlStnAuRecord>(32);
-			this.StStreams = new BdPartList<PlStnStRecord, IPlStnStRecord>(255);
-			this.IgStreams = new BdPartList<PlStnIgRecord, IPlStnIgRecord>(32);
-			this.SaStreams = new BdPartList<PlStnSaRecord, IPlStnSaRecord>(32);
-			this.SvStreams = new BdPartList<PlStnSvRecord, IPlStnSvRecord>(32);
-			this.PipStStreams = new BdPartList<PlStnStRecord, IPlStnStRecord>(32);
+			get { return (uint)this.value.Length; }
+			set { Array.Resize(ref this.value, (int)value); }
 		}
 
-		public long SerializeTo(IBdRawWriteContext context)
+		[BdByteArrayField]
+		public byte[] Value
 		{
-			throw new NotImplementedException();
+			get { return this.value; }
+			set { this.value = value; }
 		}
+		//public long DeserializeFrom(IBdRawReadContext context)
+		//{
+		//	ushort tDataLen;
 
-		public long DeserializeFrom(IBdRawReadContext context)
+		//	//-tDataLen = context.DeserializeUInt16();
+		//	//-context.EnterScope(tDataLen);
+
+		//	try
+		//	{
+		//		//-this.ReservedForFutureUse = context.DeserializeUInt16();
+
+		//		//-byte[] tRecordCount = context.Deserialize(12);
+
+		//		//this.ViStreams.Clear();
+		//		//for (int iRec = 0; iRec < tRecordCount[0]; ++iRec)
+		//		//{
+		//		//    this.ViStreams.Insert(context.Deserialize<PlStnViRecord>());
+		//		//}
+
+		//		//this.AuStreams.Clear();
+		//		//for (int iRec = 0; iRec < tRecordCount[1]; ++iRec)
+		//		//{
+		//		//    this.AuStreams.Insert(context.Deserialize<PlStnAuRecord>());
+		//		//}
+
+		//		//this.StStreams.Clear();
+		//		//for (int iRec = 0; iRec < tRecordCount[2]; ++iRec)
+		//		//{
+		//		//    this.StStreams.Insert(context.Deserialize<PlStnStRecord>());
+		//		//}
+		//		//this.PipStStreams.Clear();
+		//		//for (int iRec = 0; iRec < tRecordCount[6]; ++iRec)
+		//		//{
+		//		//    this.PipStStreams.Insert(context.Deserialize<PlStnStRecord>());
+		//		//}
+
+		//		//this.IgStreams.Clear();
+		//		//for (int iRec = 0; iRec < tRecordCount[3]; ++iRec)
+		//		//{
+		//		//    this.IgStreams.Insert(context.Deserialize<PlStnIgRecord>());
+		//		//}
+
+		//		//this.SaStreams.Clear();
+		//		//for (int iRec = 0; iRec < tRecordCount[4]; ++iRec)
+		//		//{
+		//		//    this.SaStreams.Insert(context.Deserialize<PlStnSaRecord>());
+		//		//}
+
+		//		//this.SvStreams.Clear();
+		//		//for (int iRec = 0; iRec < tRecordCount[5]; ++iRec)
+		//		//{
+		//		//    this.SvStreams.Insert(context.Deserialize<PlStnSvRecord>());
+		//		//}
+
+		//		//for (int iType = 0; iType < (int)PlStnRecordTypes.Count; iType++)
+		//		//{
+		//		//    recordTables[iType] = new List<PlStnRecord>();
+		//		//    for (int iCount = 0; iCount < tRecordCount[iType]; iCount++)
+		//		//    {
+		//		//        recordTables[iType].Add(context.Deserialize<PlStnRecord>());
+		//		//    }
+		//		//}
+		//	}
+		//	finally
+		//	{
+		//		context.ExitScope();
+		//	}
+
+		//	return context.Position;
+		//}
+
+		public override string ToString()
 		{
-			ushort tDataLen;
-
-			//-tDataLen = context.DeserializeUInt16();
-			//-context.EnterScope(tDataLen);
-
-			try
-			{
-				//-this.ReservedForFutureUse = context.DeserializeUInt16();
-
-				//-byte[] tRecordCount = context.Deserialize(12);
-
-				//this.ViStreams.Clear();
-				//for (int iRec = 0; iRec < tRecordCount[0]; ++iRec)
-				//{
-				//    this.ViStreams.Insert(context.Deserialize<PlStnViRecord>());
-				//}
-
-				//this.AuStreams.Clear();
-				//for (int iRec = 0; iRec < tRecordCount[1]; ++iRec)
-				//{
-				//    this.AuStreams.Insert(context.Deserialize<PlStnAuRecord>());
-				//}
-
-				//this.StStreams.Clear();
-				//for (int iRec = 0; iRec < tRecordCount[2]; ++iRec)
-				//{
-				//    this.StStreams.Insert(context.Deserialize<PlStnStRecord>());
-				//}
-				//this.PipStStreams.Clear();
-				//for (int iRec = 0; iRec < tRecordCount[6]; ++iRec)
-				//{
-				//    this.PipStStreams.Insert(context.Deserialize<PlStnStRecord>());
-				//}
-
-				//this.IgStreams.Clear();
-				//for (int iRec = 0; iRec < tRecordCount[3]; ++iRec)
-				//{
-				//    this.IgStreams.Insert(context.Deserialize<PlStnIgRecord>());
-				//}
-
-				//this.SaStreams.Clear();
-				//for (int iRec = 0; iRec < tRecordCount[4]; ++iRec)
-				//{
-				//    this.SaStreams.Insert(context.Deserialize<PlStnSaRecord>());
-				//}
-
-				//this.SvStreams.Clear();
-				//for (int iRec = 0; iRec < tRecordCount[5]; ++iRec)
-				//{
-				//    this.SvStreams.Insert(context.Deserialize<PlStnSvRecord>());
-				//}
-
-				//for (int iType = 0; iType < (int)PlStnRecordTypes.Count; iType++)
-				//{
-				//    recordTables[iType] = new List<PlStnRecord>();
-				//    for (int iCount = 0; iCount < tRecordCount[iType]; iCount++)
-				//    {
-				//        recordTables[iType].Add(context.Deserialize<PlStnRecord>());
-				//    }
-				//}
-			}
-			finally
-			{
-				context.ExitScope();
-			}
-
-			return context.Position;
-		}
-
-		public long RawLength
-		{
-			get
-			{
-				long tDataLen = sizeof(ushort);
-				tDataLen += sizeof(ushort);
-
-
-				return tDataLen;
-			}
+			return "STN Table";
 		}
 	}
 }

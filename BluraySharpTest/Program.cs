@@ -8,6 +8,7 @@ using System.Linq;
 using System.Diagnostics;
 using BluraySharp.Common.BdStandardPart;
 using BluraySharp.Architecture;
+using BluraySharp.Common;
 
 namespace BluraySharpTest
 {
@@ -23,22 +24,20 @@ namespace BluraySharpTest
 		[STAThread]
 		static void Main()
 		{
-			string tFilePath = @"C:\StoreBase\_Temp\[BDMV][120926] 超訳百人一首 うた恋い。1\[ANZX6141] UTAKOI_1\BDMV\PLAYLIST\00000.mpls";
+			string tFilePath = @"C:\StoreBase\_Temp\[BDMV][120926] 超訳百人一首 うた恋い。1\[ANZX6141] UTAKOI_1\BDMV\PLAYLIST\00100.mpls";
 			//string tFilePath = @"C:\Users\Subelf.J\Documents\stillinf-norand.mpls";
 			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
 			{
-				A a = A.NA;
-				Type b = typeof(A);
-
-				object q = Convert.ChangeType(1, Enum.GetUnderlyingType(typeof(A)));
-				a = (A)q;
-
 				BdStreamReadContext tReader = new BdStreamReadContext(tFileStream);
-				PlayList tMpls = new PlayList();
+				IPlayList tMpls = new PlayList();
 				tReader.Deserialize(tMpls);
 
-				using (FileStream tBakStream = new FileStream(tFilePath + ".bak", FileMode.Open))
+				using (FileStream tBakStream = new FileStream(tFilePath + ".bak", FileMode.Create))
 				{
+					IBdList<IPlClipRef> tClipList = tMpls.PlayItemList.PlayItems[0].ClipList;
+					IPlClipRef tClip = tClipList.CreateNew();
+					tClip.ClipFileRef.ClipId = 11;
+					tClipList.Add(tClip);
 					BdStreamWriteContext tWriter = new BdStreamWriteContext(tBakStream);
 					tWriter.Serialize(tMpls);
 				}

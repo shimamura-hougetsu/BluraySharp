@@ -125,11 +125,11 @@ namespace BluraySharp.Common.BdPartFramework
 
 				if (!operation.IsNull())
 				{
-					tTotalLen += operation(obj);
+					tTotalLen += operation(tScopeIndicator);
 				}
 				else
 				{
-					tTotalLen += BdFieldTraverserIoHelper.tOprGetLength(obj);
+					tTotalLen += BdFieldTraverserIoHelper.tOprGetLength(tScopeIndicator);
 				}
 
 				tScopeLen = (long)this.GetIndicatorValue(tScopeIndicator);
@@ -215,7 +215,7 @@ namespace BluraySharp.Common.BdPartFramework
 				return tRet;
 			};
 
-			return this.ForTraverser(obj, context, tOpr, false);
+			return this.ForTraverser(obj, context, tOpr, true);
 		}
 
 		public long DeserializeFrom(IBdFieldTraverser obj, IBdRawReadContext context)
@@ -234,7 +234,7 @@ namespace BluraySharp.Common.BdPartFramework
 				return tRet;
 			};
 
-			return this.ForEachFields(obj, context, tOpr, false);
+			return this.ForTraverser(obj, context, tOpr, false);
 		}
 
 		private ulong GetIndicatorValue(IBdFieldVisitor indicator)

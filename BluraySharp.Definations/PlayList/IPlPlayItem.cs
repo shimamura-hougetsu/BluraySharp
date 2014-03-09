@@ -7,7 +7,7 @@ namespace BluraySharp.PlayList
 		BdUOMask UoMask { get; }
 
 		bool RandomAccessProhibited { get; set; }
-		IPlStillInfo StillInfo { get; }
+		IPlStillOptions StillOptions { get; }
 
 		IPlStnTable StnTable { get; }
 	}

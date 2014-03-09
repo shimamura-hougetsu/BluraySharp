@@ -1,7 +1,7 @@
 ﻿
 namespace BluraySharp.Common
 {
-	public enum BdavConnectionCondition
+	public enum BdConnectionCondition
 	{
 		/// <summary>
 		/// Not Seamless

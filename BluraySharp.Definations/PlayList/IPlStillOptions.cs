@@ -2,7 +2,7 @@
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStillInfo : IBdPart
+	public interface IPlStillOptions : IBdPart
 	{
 		PlStillMode StillMode { get; set; }
 		ushort StillDuration { get; set; }

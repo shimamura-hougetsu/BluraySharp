@@ -3,10 +3,12 @@ using System;
 
 namespace BluraySharp.Common.BdStandardPart
 {
+	[BdPartScope(BdIntSize.U32, IndicatorField = "LengthIndicator")]
 	public class BdExtensionData : BdPart
 	{
 		private byte[] value = new byte[0];
-		public uint Length
+
+		public uint LengthIndicator
 		{
 			get { return (uint)this.value.Length; }
 			set { Array.Resize(ref this.value, (int) value); }

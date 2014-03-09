@@ -14,6 +14,7 @@ namespace BluraySharp.Common.BdPartFramework
 		public BdFieldTraverser(T thisObj)
 		{
 			this.thisObj = thisObj;
+			this.scopeIndicator = this.InitializeScopeIndicator();
 		}
 
 		#region Seeker
@@ -51,7 +52,45 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public IBdFieldVisitor ScopeIndicator
 		{
-			get { return BdFieldTraverser<T>.scopeIndicator; }
+			get { return this.scopeIndicator; }
+		}
+
+		private IBdFieldVisitor scopeIndicator;
+
+		private IBdFieldVisitor InitializeScopeIndicator()
+		{
+			object[] tAttributes =
+				typeof(T).GetCustomAttributes(typeof(BdPartScopeAttribute), true);
+			if (tAttributes.Length != 1)
+			{
+				return null;
+			}
+
+			BdPartScopeAttribute tAttribute =
+				tAttributes[0] as BdPartScopeAttribute;
+
+			if (tAttribute.Size == BdIntSize.None ||
+				tAttribute.Size == BdIntSize.Auto ||
+				!Enum.IsDefined(typeof(BdIntSize), tAttribute.Size))
+			{
+				//Invalid intege type
+				throw new ApplicationException();
+			}
+
+			BdFieldAttribute tScopeIndicAttrib = new BdUIntFieldAttribute(tAttribute.Size);
+			if (tAttribute.IndicatorField.IsNull())
+			{
+				return new BdFieldVirtualVisitor<ulong>(
+					typeof(T).Name + " Scope Indicator",
+					tScopeIndicAttrib
+					);
+			}
+			else
+			{
+				IBdFieldDescriptor tIndField = 
+					BdFieldTraverser<T>.GetFieldDescriptor(tAttribute.IndicatorField, tScopeIndicAttrib);
+				return new BdFieldRandomVisitor(this.thisObj, tIndField);
+			}
 		}
 
 		#endregion 
@@ -87,7 +126,8 @@ namespace BluraySharp.Common.BdPartFramework
 					return null;
 				}
 
-				IBdFieldDescriptor tOffsetField = BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.OffsetIndicator);
+				IBdFieldDescriptor tOffsetField = 
+					BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.OffsetIndicator, null);
 				if (tOffsetField.IsNull())
 				{
 					//TODO: FieldNotFound
@@ -107,7 +147,8 @@ namespace BluraySharp.Common.BdPartFramework
 					return null;
 				}
 
-				IBdFieldDescriptor tLengthField = BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.LengthIndicator);
+				IBdFieldDescriptor tLengthField =
+					BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.LengthIndicator, null);
 				if (tLengthField.IsNull())
 				{
 					//FieldNotFound
@@ -128,7 +169,8 @@ namespace BluraySharp.Common.BdPartFramework
 					return null;
 				}
 
-				IBdFieldDescriptor tSkipField = BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.SkipIndicator);
+				IBdFieldDescriptor tSkipField =
+					BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.SkipIndicator, null);
 				if (tSkipField.IsNull())
 				{
 					//FieldNotFound
@@ -140,8 +182,6 @@ namespace BluraySharp.Common.BdPartFramework
 		
 		private static List<IBdFieldDescriptor> fields = 
 			new List<IBdFieldDescriptor>(BdFieldTraverser<T>.InitializeFields());
-		private static IBdFieldVisitor scopeIndicator =
-			BdFieldTraverser<T>.InitializeScopeIndicator();
 
 		private static IEnumerable<BdFieldDescriptor> InitializeFields()
 		{
@@ -160,32 +200,7 @@ namespace BluraySharp.Common.BdPartFramework
 			}
 		}
 
-		private static IBdFieldVisitor InitializeScopeIndicator()
-		{
-			object[] tAttributes =
-				typeof(T).GetCustomAttributes(typeof(BdPartScopeAttribute), true);
-			if (tAttributes.Length != 1)
-			{
-				return null;
-			}
-
-			BdPartScopeAttribute tAttribute =
-				tAttributes[0] as BdPartScopeAttribute;
-
-			if (tAttribute.Size == BdIntSize.None ||
-				tAttribute.Size == BdIntSize.Auto ||
-				!Enum.IsDefined(typeof(BdIntSize), tAttribute.Size))
-			{
-				//Invalid intege type
-				throw new ApplicationException();
-			}
-
-			BdFieldAttribute tScopeIndicAttrib = new BdUIntFieldAttribute(tAttribute.Size);
-			return new BdFieldVirtualVisitor<ulong>(typeof(T).Name + " Scope Indicator", tScopeIndicAttrib);
-
-		}
-
-		private static IBdFieldDescriptor GetFieldDescriptor(string memberName)
+		private static IBdFieldDescriptor GetFieldDescriptor(string memberName, BdFieldAttribute attribute)
 		{
 			if (string.IsNullOrEmpty(memberName))
 			{
@@ -204,7 +219,7 @@ namespace BluraySharp.Common.BdPartFramework
 				throw new ApplicationException();
 			}
 
-			return new BdFieldDescriptor(tOfsMembers[0], null);
+			return new BdFieldDescriptor(tOfsMembers[0], attribute);
 		}
 	}
 }

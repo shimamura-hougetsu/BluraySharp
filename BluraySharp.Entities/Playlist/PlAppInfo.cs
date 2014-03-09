@@ -5,10 +5,12 @@ using System;
 
 namespace BluraySharp.PlayList
 {
+	[BdPartScope(BdIntSize.U32, IndicatorField="LengthIndicator")]
 	public class PlAppInfo : BdPart, IPlAppInfo
 	{
 		#region Private Data Fields
 
+		private uint lengthIndicator = 0;
 		private byte reservedForFutureUse1 = 0;
 		private PlPlaybackType playbackType = PlPlaybackType.Sequential;
 		private ushort playbackCount = 0;
@@ -17,6 +19,12 @@ namespace BluraySharp.PlayList
 		private BdBitwise16 playbackOptioin = new BdBitwise16();
 
 		#endregion Private Data Fields
+		
+		public uint LengthIndicator
+		{
+			get { return this.lengthIndicator; }
+			set { this.lengthIndicator = value; }
+		}
 
 		[BdUIntField(BdIntSize.U8)]
 		public byte ReservedForFutureUse1

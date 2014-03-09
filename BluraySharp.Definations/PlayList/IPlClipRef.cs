@@ -4,10 +4,9 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPClipInfo : IBdPart
+	public interface IPlClipRef : IBdPart
 	{
-		string ClipCodec { get; set; }
-		uint ClipId { get; set; }
-		string ToString();
+		IPlClipFileRef ClipFileRef { get; }
+		byte StcId { get; set; }
 	}
 }

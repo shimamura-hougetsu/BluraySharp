@@ -4,10 +4,12 @@ using BluraySharp.Common.BdStandardPart;
 using System;
 namespace BluraySharp.PlayList
 {
+	[BdPartScope(BdIntSize.U32, IndicatorField = "LengthIndicator")]
 	public class PlPlayItemList : BdPart, IPlPlayItemList
 	{
 		#region Private Data Fields
 
+		private uint lengthIndicator = 0;
 		private ushort reservedForFutureUse = 0;
 		private ushort playItemCount = 0;
 		private ushort subPathCount = 0;
@@ -18,6 +20,12 @@ namespace BluraySharp.PlayList
 			new BdPartList<PlSubPath, IPlSubPath>(0, 255);
 
 		#endregion Private Data Fields
+
+		private uint LengthIndicator
+		{
+			get { return this.lengthIndicator; }
+			set { this.lengthIndicator = value; }
+		}
 
 		[BdUIntField(BdIntSize.U16)]
 		private ushort ReservedForFutureUse
@@ -30,14 +38,14 @@ namespace BluraySharp.PlayList
 		private ushort PlayItemCount
 		{
 			get { return (ushort)this.playItems.Count; }
-			set { this.playItems.SetLength(value); }
+			set { this.playItems.SetCount(value); }
 		}
 
 		[BdUIntField(BdIntSize.U16)]
 		private ushort SubPathCount
 		{
 			get { return (ushort) this.subPaths.Count; }
-			set { this.subPaths.SetLength(value); }
+			set { this.subPaths.SetCount(value); }
 		}
 
 		[BdSubPartField]

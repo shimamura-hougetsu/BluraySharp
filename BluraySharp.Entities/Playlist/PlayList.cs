@@ -18,25 +18,20 @@ namespace BluraySharp.PlayList
 		private string mplsVer = PlayList.MplsVers[1];
 
 		private uint playItemListOfs = 0;
-		private bool playItemListSkip = false;
 		private uint playMarkListOfs = 0;
-		private bool playMarkListSkip = false;
 		private uint extensionDataOfs = 0;
-		private bool extensionDataSkip = true;
 
 		private byte[] reserevedForFutureUse = new byte[20];
 
-		private uint appInfoLen = 0;
 		private PlAppInfo appInfo = new PlAppInfo();
-
-		private uint playItemListLen = 0;
 		private PlPlayItemList playItemList = new PlPlayItemList();
-
-		private uint playMarkListLen = 0;
 		private PlPlayMarkList playMarkList = new PlPlayMarkList();
-
-		private uint extensionDataLen = 0;
 		private BdExtensionData extensionData = null;
+
+		//skip flags
+		private bool playItemListSkip = false;
+		private bool playMarkListSkip = false;
+		private bool extensionDataSkip = true;
 
 		#endregion Private Data Fields
 
@@ -73,7 +68,6 @@ namespace BluraySharp.PlayList
 					if (this.playItemListSkip = value)
 					{
 						this.playItemList = null;
-						this.playItemListLen = 0;
 						this.playItemListOfs = 0;
 					}
 					else
@@ -104,7 +98,6 @@ namespace BluraySharp.PlayList
 					if (this.playMarkListSkip = value)
 					{
 						this.playMarkList = null;
-						this.playMarkListLen = 0;
 						this.playMarkListOfs = 0;
 					}
 					else
@@ -135,7 +128,6 @@ namespace BluraySharp.PlayList
 					if (this.extensionDataSkip = value)
 					{
 						this.extensionData = null;
-						this.extensionDataLen = 0;
 						this.extensionDataOfs = 0;
 					}
 					else
@@ -162,49 +154,25 @@ namespace BluraySharp.PlayList
 			get { return this.reserevedForFutureUse; }
 		}
 
-		[BdUIntField(BdIntSize.U32)]
-		private uint AppInfoLen
-		{
-			get { return this.appInfoLen; }
-			set { this.appInfoLen = value; }
-		}
-		[BdSubPartField(LengthIndicator="AppInfoLen")]
+		[BdSubPartField]
 		public IPlAppInfo AppInfo
 		{
 			get { return this.appInfo; }
 		}
 
-		[BdUIntField(BdIntSize.U32, SkipIndicator="PlayItemListSkip", OffsetIndicator="PlayItemListOfs")]
-		private uint PlayItemListLen
-		{
-			get { return this.playItemListLen; }
-			set { this.playItemListLen = value; }
-		}
-		[BdSubPartField(SkipIndicator="PlayItemListSkip", LengthIndicator="PlayItemListLen")]
+		[BdSubPartField(SkipIndicator="PlayItemListSkip", OffsetIndicator="PlayItemListOfs")]
 		public IPlPlayItemList PlayItemList
 		{
 			get { return this.playItemList; }
 		}
 
-		[BdUIntField(BdIntSize.U32, SkipIndicator = "PlayMarkListSkip", OffsetIndicator = "PlayMarkListOfs")]
-		private uint PlayMarkListLen
-		{
-			get { return this.playMarkList.Length; }
-			set { this.playMarkList.Length = value; }
-		}
-		[BdSubPartField(SkipIndicator = "PlayMarkListSkip", LengthIndicator = "PlayMarkListLen")]
+		[BdSubPartField(SkipIndicator = "PlayMarkListSkip", OffsetIndicator = "PlayMarkListOfs")]
 		public IPlPlayMarkList PlayMarkList
 		{
 			get { return this.playMarkList; }
 		}
 
-		[BdUIntField(BdIntSize.U32, SkipIndicator = "ExtensionDataSkip", OffsetIndicator = "ExtensionDataOfs")]
-		private uint ExtensionDataLen
-		{
-			get { return this.extensionDataLen; }
-			set { this.extensionDataLen = value; }
-		}
-		[BdSubPartField(SkipIndicator = "ExtensionDataSkip", LengthIndicator = "ExtensionDataLen")]
+		[BdSubPartField(SkipIndicator = "ExtensionDataSkip", OffsetIndicator = "ExtensionDataOfs")]
 		public BdExtensionData ExtensionData
 		{
 			get { return this.extensionData; }

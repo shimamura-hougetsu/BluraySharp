@@ -18,7 +18,7 @@ namespace BluraySharp
 			return tObject;
 		}
 
-		public static void SetLength<T>(this IBdList<T> list, int count)
+		public static void SetCount<T>(this IBdList<T> list, int count)
 		{
 			if (list.Count != count)
 			{
