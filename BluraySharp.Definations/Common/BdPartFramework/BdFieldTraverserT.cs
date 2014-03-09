@@ -28,10 +28,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public int Index
 		{
-			get
-			{
-				return this.fieldIndex;
-			}
+			get { return this.fieldIndex; }
 			set
 			{
 				if (value < 0 && value < BdFieldTraverser<T>.fields.Count)
@@ -44,64 +41,40 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public int LowerBound
 		{
-			get
-			{
-				return 0;
-			}
+			get { return 0; }
 		}
 
 		public int UpperBound
 		{
-			get
-			{
-				return BdFieldTraverser<T>.fields.Count;
-			}
+			get { return BdFieldTraverser<T>.fields.Count; }
 		}
 
 		public IBdFieldVisitor ScopeIndicator
 		{
-			get
-			{
-				return BdFieldTraverser<T>.scopeIndicator;
-			}
+			get { return BdFieldTraverser<T>.scopeIndicator; }
 		}
 
 		#endregion 
 
 		string IBdFieldInfo.Name
 		{
-			get
-			{
-				return this.Current.Name;
-			}
+			get { return this.Current.Name; }
 		}
 
 		Type IBdFieldInfo.Type
 		{
-			get
-			{
-				return this.Current.Type;
-			}
+			get { return this.Current.Type; }
 		}
 
 		BdFieldAttribute IBdFieldInfo.Attribute
 		{
-			get
-			{
-				return this.Current.Attribute;
-			}
+			get { return this.Current.Attribute; }
 		}
 
 		object IBdFieldVisitor.Value
 		{
-			get
-			{
-				return this.Current.GetValue(this.thisObj);
-			}
-			set
-			{
-				this.Current.SetValue(this.thisObj, value);
-			}
+			get { return this.Current.GetValue(this.thisObj); }
+			set { this.Current.SetValue(this.thisObj, value); }
 		}
 
 		IBdFieldVisitor IBdFieldVisitor.OffsetIndicator

@@ -109,19 +109,27 @@ namespace BluraySharp.Common.BdPartFramework
 			long tScopeLen = 0;
 			bool tScopeEngaged = false;
 
+			if (isUpdatingIndicators)
+			{
+				tScopeLen = this.ForEachFields(obj, null, tOprGetLength, true);
+			}
+
 			if (!tScopeIndicator.IsNull())
 			{
 				tScopeEngaged = true;
 
 				if (isUpdatingIndicators)
 				{
-					tScopeLen = this.ForEachFields(obj, null, tOprGetLength, true);
 					this.SetIndicatorValue(tScopeIndicator, (ulong)tScopeLen);
 				}
-				
-				if(!operation.IsNull())
+
+				if (!operation.IsNull())
 				{
 					tTotalLen += operation(obj);
+				}
+				else
+				{
+					tTotalLen += BdFieldTraverserIoHelper.tOprGetLength(obj);
 				}
 
 				tScopeLen = (long)this.GetIndicatorValue(tScopeIndicator);
@@ -134,7 +142,14 @@ namespace BluraySharp.Common.BdPartFramework
 
 			try
 			{
-				tFieldsLen = this.ForEachFields(obj, context, operation, false);
+				if (!operation.IsNull())
+				{
+					tFieldsLen = this.ForEachFields(obj, context, operation, false);
+				}
+				else
+				{
+					tFieldsLen = tScopeLen;
+				}
 			}
 			finally
 			{
@@ -181,7 +196,7 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			this.Validate(obj);
 
-			return this.ForTraverser(obj, null, BdFieldTraverserIoHelper.tOprGetLength, true);
+			return this.ForTraverser(obj, null, null, true);
 		}
 
 		public long SerializeTo(IBdFieldTraverser obj, IBdRawWriteContext context)
