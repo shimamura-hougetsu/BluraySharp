@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BluraySharp.FileSystem
 {
-	public class BdArrayEntryAttribute : BdfsComponentEntryAttribute
+	public class BdArrayComponentAttribute : BdComponentAttribute
 	{
 		private string folderName;
 
@@ -23,7 +23,7 @@ namespace BluraySharp.FileSystem
 			set { maxSerialNumber = value; }
 		}
 
-		public BdArrayEntryAttribute(string folderName, string extension, int maxSerialNumber, bool isBackupRequired)
+		public BdArrayComponentAttribute(string folderName, string extension, int maxSerialNumber, bool isBackupRequired)
 			: base(extension, isBackupRequired)
 		{
 			this.folderName = folderName;

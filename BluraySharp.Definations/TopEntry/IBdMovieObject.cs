@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using BluraySharp.Common;
 using BluraySharp.FileSystem;
 
 namespace BluraySharp.TopEntry
 {
-	[BdfsTopEntry("MovieObject", true)]
-	public interface IBdMovieObject : IBdfsTopEntry
+	[BdBdmvComponent("MovieObject", true)]
+	public interface IBdMovieObject : IBdBdmvComponent
 	{
 	}
 }

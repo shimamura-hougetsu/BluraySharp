@@ -2,7 +2,7 @@
 
 namespace BluraySharp.TopEntry
 {
-	[BdfsTopEntry("sound", true)]
+	[BdBdmvComponent("sound", true)]
 	public interface IBdButtonClickSound
 	{
 	}

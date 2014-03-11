@@ -3,7 +3,7 @@ using BluraySharp.FileSystem;
 
 namespace BluraySharp.TopEntry
 {
-	[BdfsTopEntry("id", true)]
+	[BdBdmvComponent("id", true)]
 	public interface IBdIdentifier
 	{
 	}

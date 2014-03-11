@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BluraySharp.Common.Serializing;
+﻿using BluraySharp.Common;
 
 namespace BluraySharp.FileSystem
 {
 	public interface IBdfsArrayEntryFile<T> : IBdfsComponentEntryFile<T>
-		where T : IBdfsArrayEntry
+		where T : IBdArrayComponent
 	{
 		uint FileId { get; set; }
 	}

@@ -5,7 +5,8 @@ using System.Text;
 
 namespace BluraySharp.FileSystem
 {
-	public class BdfsComponentEntryAttribute : Attribute
+	[AttributeUsage(AttributeTargets.Interface, AllowMultiple=false, Inherited=true)]
+	public class BdComponentAttribute : Attribute
 	{
 		private bool isBackupRequired;
 
@@ -23,7 +24,7 @@ namespace BluraySharp.FileSystem
 			set { extension = value; }
 		}
 
-		public BdfsComponentEntryAttribute(string extension, bool isBackupRequired)
+		public BdComponentAttribute(string extension, bool isBackupRequired)
 		{
 			this.extension = extension;
 			this.isBackupRequired = isBackupRequired;

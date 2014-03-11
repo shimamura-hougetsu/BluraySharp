@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BluraySharp.FileSystem
 {
-	public class BdfsTopEntryAttribute : BdfsComponentEntryAttribute
+	public class BdBdmvComponentAttribute : BdComponentAttribute
 	{
 		private string filename;
 		public string FileName
@@ -14,7 +14,7 @@ namespace BluraySharp.FileSystem
 			set { filename = value; }
 		}
 
-		public BdfsTopEntryAttribute(string filename, bool isBackupRequired)
+		public BdBdmvComponentAttribute(string filename, bool isBackupRequired)
 			: base("bdmv", isBackupRequired)
 		{
 			this.filename = filename;

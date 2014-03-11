@@ -40,20 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FileSystem\BdfsEntitiesRegistry.cs" />
-    <None Include="Architecture\BdPartList.cs" />
-    <None Include="Architecture\BdStreamIoContext.cs" />
-    <None Include="Architecture\BdStreamReadContext.cs" />
-    <None Include="Architecture\BdStreamWriteContext.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <None Include="FileSystem\BdfsBdmvRoot.cs" />
-    <None Include="FileSystem\BdfsArrayEntryFile.cs" />
-    <None Include="FileSystem\BdfsArrayEntryFolder.cs" />
-    <None Include="FileSystem\BdfsComponentEntryFile.cs" />
-    <None Include="FileSystem\BdfsItem.cs" />
-    <None Include="FileSystem\BdfsFolder.cs" />
-    <None Include="FileSystem\BdfsRootFolder.cs" />
-    <None Include="FileSystem\BdfsTopEntryFile.cs" />
     <Compile Include="PlayList\PlClipFileRef.cs" />
     <Compile Include="PlayList\PlAppInfo.cs" />
     <Compile Include="PlayList\BdMoviePlayList.cs" />
@@ -89,6 +76,9 @@
       <Project>{14FF5AC6-E679-444D-B582-0B4AE067F595}</Project>
       <Name>BluraySharp.Definations</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FileSystem\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
