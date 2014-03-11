@@ -31,14 +31,14 @@ namespace BluraySharp.Common
 	public enum BdStCodingType	//subtitle
 	{
 		Unknown,
-		Pg = 0x90,
-		Ts = 0x92,
+		GxPresentation = 0x90,
+		TxSubtitle = 0x92,
 	}
 
 	public enum BdIgCodingType
 	{
 		Unknown,
-		Ig = 0x91,
+		GxInterractive = 0x91,
 	}
 
 	public enum BdSaCodingType

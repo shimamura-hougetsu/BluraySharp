@@ -29,8 +29,6 @@ namespace BluraySharp.PlayList
 
 		private PlStnTable stnTable = new PlStnTable();
 
-		private bool multiAngleSkip = true;
-
 		#endregion
 
 		private uint LengthIndicator

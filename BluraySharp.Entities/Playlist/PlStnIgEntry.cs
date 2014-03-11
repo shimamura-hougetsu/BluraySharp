@@ -6,30 +6,27 @@ namespace BluraySharp.PlayList
 	public class PlStnIgEntry : BdPart, IPlStnIgEntry
 	{
 		private PlStnEntry entryRoot =
-			new PlStnEntry(PlStnStreamEntryType.PlayItem, (byte)BdIgCodingType.Ig);
+			new PlStnEntry(PlStnStreamEntryType.PlayItem, (byte)BdIgCodingType.GxInterractive);
 
+		[BdSubPartField]
 		private PlStnEntry EntryRoot
 		{
 			get { return this.entryRoot; }
 		}
-
 		public PlStnStreamEntryType EntryType
 		{
 			get { return this.entryRoot.EntryType; }
 			set { this.entryRoot.EntryType = value; }
 		}
-
 		public IPlStnEntryInfo EntryInfo
 		{
 			get { return this.entryRoot.EntryInfo; }
 		}
-
 		public BdIgCodingType CodecInfoType
 		{
 			get { return (BdIgCodingType)this.entryRoot.CodecType; }
 			set { this.entryRoot.CodecType = (byte)value; }
 		}
-
 		public IPlStnCodecInfo CodecInfo
 		{
 			get { return this.entryRoot.CodecInfo; }
@@ -37,7 +34,7 @@ namespace BluraySharp.PlayList
 
 		public override string ToString()
 		{
-			return "Interractive Graphics StnEntry";
+			return "Interractive Graphics STN Entry";
 		}
 	}
 }

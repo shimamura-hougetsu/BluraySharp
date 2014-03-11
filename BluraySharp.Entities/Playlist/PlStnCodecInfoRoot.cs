@@ -47,9 +47,8 @@ namespace BluraySharp.PlayList
 			{ 
 				{"Vi", () => new PlStnViCodecInfo() },
 				{"Au", () => new PlStnAuCodecInfo() },
-				{"Ig", () => new PlStnIgCodecInfo() },
-				{"Pg", () => new PlStnPgCodecInfo() },
-				{"Ts", () => new PlStnTsCodecInfo() },
+				{"Gx", () => new PlStnGxCodecInfo() },
+				{"Tx", () => new PlStnTxCodecInfo() },
 				{"Sa", () => new PlStnAuCodecInfo() }
 			};
 		private static readonly Type[] bdStreamCodingTypes =
@@ -70,7 +69,7 @@ namespace BluraySharp.PlayList
 			}
 
 			Type tValueType = PlStnCodecInfoRoot.bdStreamCodingTypes.First(
-				xType => Enum.IsDefined(xType, value));
+				xType => PlStnCodecInfoRoot.IsEnumDefined(xType, value));
 
 			if (tValueType.IsNull())
 			{
@@ -94,6 +93,14 @@ namespace BluraySharp.PlayList
 
 			this.codecInfo = tCodecInfoCreator();
 			this.codecType = value;
+		}
+
+		private static bool IsEnumDefined(Type enumType, byte value)
+		{
+			Type tEnumUnderlyingType = Enum.GetUnderlyingType(enumType);
+			object tEnumValue = Convert.ChangeType(value, tEnumUnderlyingType);
+
+			return Enum.IsDefined(enumType, tEnumValue);
 		}
 	}
 }

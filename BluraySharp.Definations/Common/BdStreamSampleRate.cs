@@ -3,7 +3,8 @@ namespace BluraySharp.Common
 {
 	public enum BdViFrameRate
 	{
-		Unknown,
+		Unknown = 0x00,
+
 		Vi23 = 0x01,
 		Vi24 = 0x02,
 		Vi25 = 0x03,
@@ -14,7 +15,8 @@ namespace BluraySharp.Common
 
 	public enum BdAuSampleRate
 	{
-		Unknown,
+		Unknown = 0x00,
+
 		Au48 = 0x01,
 		Au96 = 0x04,
 		Au192 = 0x05,

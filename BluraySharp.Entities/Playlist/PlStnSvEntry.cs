@@ -39,11 +39,25 @@ namespace BluraySharp.PlayList
 
 
 		[BdUIntField(BdIntSize.U8)]
+		private byte SecondaryAudioIdRefCount
+		{
+			get { return (byte)this.secondaryAudioIdRef.Count; }
+			set { this.secondaryAudioIdRef.SetCount(value); }
+		}
+
+		[BdUIntField(BdIntSize.U8)]
 		public IBdList<byte> SecondaryAudioIdRef
 		{
 			get { return this.secondaryAudioIdRef; }
 		}
 
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte PipSubtitleIdRefCount
+		{
+			get { return (byte)this.pipSubtitleIdRef.Count; }
+			set { this.pipSubtitleIdRef.SetCount(value); }
+		}
 
 		[BdUIntField(BdIntSize.U8)]
 		public IBdList<byte> PipSubtitleIdRef
@@ -53,8 +67,7 @@ namespace BluraySharp.PlayList
 
 		public override string ToString()
 		{
-			return "Svdeo StnEntry";
+			return "Secondary Video STN Entry";
 		}
-
 	}
 }

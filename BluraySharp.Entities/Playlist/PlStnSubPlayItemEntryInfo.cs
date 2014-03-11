@@ -6,8 +6,6 @@ namespace BluraySharp.PlayList
 {
 	public class PlStnSubPlayItemEntryInfo : BdPart, IPlStnSubPlayItemEntryInfo
 	{
-		private byte[] reservedForFutureUse = new byte[4];
-
 		[BdUIntField(BdIntSize.U8)]
 		public byte SubPathId
 		{
@@ -29,6 +27,7 @@ namespace BluraySharp.PlayList
 			set;
 		}
 
+		private byte[] reservedForFutureUse = new byte[4];
 		[BdByteArrayField]
 		private byte[] ResersvedForFutureUse
 		{

@@ -7,7 +7,7 @@ using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
-	[BdPartScope(BdIntSize.U16, IndicatorField = "LengthIndicator")]
+	[BdPartScope(BdIntSize.U16)]
 	public class PlStnTable : BdPart, IPlStnTable
 	{
 		#region Private Data Field
@@ -101,39 +101,46 @@ namespace BluraySharp.PlayList
 			get { return this.reservedForFutureUse2; }
 		}
 
+		[BdSubPartField]
 		public IBdList<IPlStnViEntry> ViStreams
 		{
 			get { return this.viStreams; }
 		}
 
+		[BdSubPartField]
 		public IBdList<IPlStnAuEntry> AuStreams
 		{
 			get { return this.auStreams; }
 		}
 
+		[BdSubPartField]
 		public IBdList<IPlStnStEntry> StStreams
 		{
 			get { return this.stStreams; }
 		}
 
+		[BdSubPartField]
+		public IBdList<IPlStnStEntry> PipStStreams
+		{
+			get { return this.pipStStreams; }
+		}
+
+		[BdSubPartField]
 		public IBdList<IPlStnIgEntry> IgStreams
 		{
 			get { return this.igStreams; }
 		}
 
+		[BdSubPartField]
 		public IBdList<IPlStnSaEntry> SaStreams
 		{
 			get { return this.saStreams; }
 		}
 
+		[BdSubPartField]
 		public IBdList<IPlStnSvEntry> SvStreams
 		{
 			get { return this.svStreams; }
-		}
-
-		public IBdList<IPlStnStEntry> PipStStreams
-		{
-			get { return this.pipStStreams; }
 		}
 		
 		public override string ToString()

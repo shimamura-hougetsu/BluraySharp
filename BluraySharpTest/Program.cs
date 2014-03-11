@@ -29,15 +29,27 @@ namespace BluraySharpTest
 			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
 			{
 				BdByteStreamReadContext tReader = new BdByteStreamReadContext(tFileStream);
-				IPlayList tMpls = new PlayList();
+				IPlayList tMpls = new BdMoviePlayList();
 				tReader.Deserialize(tMpls);
 
 				using (FileStream tBakStream = new FileStream(tFilePath + ".bak", FileMode.Create))
 				{
-					IBdList<IPlClipRef> tClipList = tMpls.PlayItemList.PlayItems[0].ClipList;
-					IPlClipRef tClip = tClipList.CreateNew();
-					tClip.ClipFileRef.ClipId = 11;
-					tClipList.Add(tClip);
+					IBdList<IPlStnStEntry> tStList = tMpls.PlayItemList.PlayItems[0].StnTable.StStreams;
+					IPlStnStEntry tSubtitle = tStList.CreateNew();
+					tSubtitle.EntryType = PlStnStreamEntryType.SubPlayItem;
+					{
+						IPlStnSubPlayItemEntryInfo tSubtitleEntry = tSubtitle.EntryInfo as IPlStnSubPlayItemEntryInfo;
+						tSubtitleEntry.SubPathId = 0;
+						tSubtitleEntry.SubClipEntryId = 0;
+						tSubtitleEntry.StreamProgId = 4608;
+					}
+					tSubtitle.CodecInfoType = BdStCodingType.GxPresentation;
+					{
+						IPlStnGxCodecInfo tSubtitleCodec = tSubtitle.CodecInfo as IPlStnGxCodecInfo;
+						tSubtitleCodec.Language = BdLang.LANG_ZHO;
+					}
+					tStList.Add(tSubtitle);
+
 					BdByteStreamWriteContext tWriter = new BdByteStreamWriteContext(tBakStream);
 					tWriter.Serialize(tMpls);
 				}

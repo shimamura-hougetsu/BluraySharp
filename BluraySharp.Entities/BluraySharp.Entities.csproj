@@ -56,7 +56,7 @@
     <None Include="FileSystem\BdfsTopEntryFile.cs" />
     <Compile Include="PlayList\PlClipFileRef.cs" />
     <Compile Include="PlayList\PlAppInfo.cs" />
-    <Compile Include="PlayList\PlayList.cs" />
+    <Compile Include="PlayList\BdMoviePlayList.cs" />
     <Compile Include="PlayList\PlClipRef.cs" />
     <Compile Include="PlayList\PlPlayMarkList.cs" />
     <Compile Include="PlayList\PlPlayItem.cs" />
@@ -70,7 +70,6 @@
     <Compile Include="PlayList\PlStnPlayItemEntryInfo.cs" />
     <Compile Include="PlayList\PlStnEntry.cs" />
     <Compile Include="PlayList\PlStnSaEntry.cs" />
-    <None Include="PlayList\PlStnSaCodecInfo.cs.bak" />
     <Compile Include="PlayList\PlStnSubPlayItemEntryInfo.cs" />
     <Compile Include="PlayList\PlStnSvEntry.cs" />
     <Compile Include="PlayList\PlStnTable.cs" />
@@ -80,12 +79,10 @@
     <Compile Include="PlayList\PlStnViCodecInfo.cs" />
     <Compile Include="PlayList\PlStnAuCodecInfo.cs" />
     <Compile Include="PlayList\PlStnStEntry.cs" />
-    <Compile Include="PlayList\PlStnTsCodecInfo.cs" />
-    <Compile Include="PlayList\PlStnIgCodecInfo.cs" />
-    <None Include="PlayList\PlStnStStreamAttribute.cs.bak" />
+    <Compile Include="PlayList\PlStnTxCodecInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\VersionInfo.cs" />
-    <Compile Include="PlayList\PlStnPgCodecInfo.cs" />
+    <Compile Include="PlayList\PlStnGxCodecInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BluraySharp.Definations\BluraySharp.Definations.csproj">

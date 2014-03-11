@@ -66,7 +66,6 @@
     <Compile Include="Common\BdPartFramework\IBdFieldDescriptor.cs" />
     <Compile Include="Common\BdPartFramework\IBdFieldTraverser.cs" />
     <Compile Include="Common\BdPartFramework\IBdRawIoHelperT.cs" />
-    <None Include="Common\BdStreamPresentingType.cs.bak" />
     <Compile Include="Common\Serializing\BdByteStreamIoContext.cs" />
     <Compile Include="Common\Serializing\BdByteStreamReadContext.cs" />
     <Compile Include="Common\Serializing\BdByteStreamWriteContext.cs" />
@@ -121,7 +120,6 @@
     <Compile Include="PlayList\IPlStnStEntry.cs" />
     <Compile Include="PlayList\IPlStnCodecInfo.cs" />
     <Compile Include="PlayList\IPlStnInMuxPipEntryInfo.cs" />
-    <Compile Include="PlayList\IPlStnPgCodecInfo.cs" />
     <Compile Include="PlayList\IPlStnPlayItemEntryInfo.cs" />
     <Compile Include="Common\IBdPart.cs" />
     <Compile Include="Common\Serializing\IBdRawIoContext.cs" />
@@ -132,7 +130,7 @@
     <Compile Include="PlayList\IPlStnAuEntry.cs" />
     <Compile Include="PlayList\IPlStnViRecord.cs" />
     <Compile Include="PlayList\IPlStnSubPlayItemEntryInfo.cs" />
-    <Compile Include="PlayList\IPlStnTsCodecInfo.cs" />
+    <Compile Include="PlayList\IPlStnTxCodecInfo.cs" />
     <Compile Include="PlayList\IPlStnViCodecInfo.cs" />
     <Compile Include="PlayList\IPlStnTable.cs" />
     <Compile Include="PlayList\IPlSubPath.cs" />
@@ -140,7 +138,7 @@
     <Compile Include="PlayList\PlStillMode.cs" />
     <Compile Include="PlayList\PlSubPathType.cs" />
     <Compile Include="PlayList\PlStnStreamEntryType.cs" />
-    <Compile Include="PlayList\IPlStnIgCodecInfo.cs" />
+    <Compile Include="PlayList\IPlStnGxCodecInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

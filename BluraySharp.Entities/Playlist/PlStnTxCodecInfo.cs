@@ -1,13 +1,19 @@
-﻿using BluraySharp.Common;
+
+using BluraySharp.Common;
 using BluraySharp.Common.BdPartFramework;
 using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
-	public class PlStnIgCodecInfo : BdPart, IPlStnIgCodecInfo
+	public class PlStnTxCodecInfo : BdPart, IPlStnTxCodecInfo
 	{
+
+		[BdUIntField(BdIntSize.U8)]
+		public BdCharacterCodingType CharCode { get; set; }
+
+
+
 		private BdLangCode language = BdLang.LANG_ENG;
-		private byte[] reservedForFutureUse = new byte[1];
 
 		[BdSubPartField]
 		public BdLangCode LanguageCode
@@ -20,6 +26,9 @@ namespace BluraySharp.PlayList
 			set { this.language = value; }
 		}
 
+		private byte[] reservedForFutureUse = new byte[1];
+
+
 		[BdByteArrayField]
 		private byte[] ReservedForFutureUse
 		{
@@ -28,7 +37,7 @@ namespace BluraySharp.PlayList
 
 		public override string ToString()
 		{
-			return "STN Interractive Graphics CodecInfo";
+			return "STN Graphics CodecInfo";
 		}
 	}
 }

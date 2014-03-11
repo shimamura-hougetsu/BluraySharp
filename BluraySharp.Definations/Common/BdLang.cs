@@ -3,6 +3,7 @@ namespace BluraySharp.Common
 {
 	public enum BdLang
 	{
+		Unknown = 0x00,
 		LANG_AAR,
 		LANG_ABK,
 		LANG_ACE,

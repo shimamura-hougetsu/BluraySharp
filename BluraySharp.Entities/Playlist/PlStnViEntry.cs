@@ -8,28 +8,25 @@ namespace BluraySharp.PlayList
 		private PlStnEntry entryRoot =
 			new PlStnEntry(PlStnStreamEntryType.PlayItem, (byte)BdViCodingType.ViAvc);
 
+		[BdSubPartField]
 		private PlStnEntry EntryRoot
 		{
 			get { return this.entryRoot; }
 		}
-
 		public PlStnStreamEntryType EntryType
 		{
 			get { return this.entryRoot.EntryType; }
 			set { this.entryRoot.EntryType = value; }
 		}
-
 		public IPlStnEntryInfo EntryInfo
 		{
 			get { return this.entryRoot.EntryInfo; }
-		}
-		
+		}		
 		public BdViCodingType CodecInfoType
 		{
 			get { return (BdViCodingType)this.entryRoot.CodecType; }
 			set { this.entryRoot.CodecType = (byte)value; }
-		}
-		
+		}		
 		public IPlStnCodecInfo CodecInfo
 		{
 			get { return this.entryRoot.CodecInfo; }
@@ -37,7 +34,7 @@ namespace BluraySharp.PlayList
 
 		public override string ToString()
 		{
-			return "Primary Video StnEntry";
+			return "Primary Video STN Entry";
 		}
 	}
 }

@@ -7,35 +7,12 @@ using System.Linq;
 
 namespace BluraySharp.PlayList
 {
-	public class PlayList : BdPart, IPlayList
+	public class BdMoviePlayList : BdPart, IPlayList
 	{
-		#region Private Data Fields
+		#region MplsMark
 
 		private const string MplsMarkConst = "MPLS";
-		private string mplsMark = PlayList.MplsMarkConst;
-
-		private static readonly string[] MplsVers = new string[] {"0100", "0200"};
-		private string mplsVer = PlayList.MplsVers[1];
-
-		private uint playItemListOfs = 0;
-		private uint playMarkListOfs = 0;
-		private uint extensionDataOfs = 0;
-
-		private byte[] reserevedForFutureUse = new byte[20];
-
-		private PlAppInfo appInfo = new PlAppInfo();
-		private PlPlayItemList playItemList = new PlPlayItemList();
-		private PlPlayMarkList playMarkList = new PlPlayMarkList();
-		private BdExtensionData extensionData = null;
-
-		//skip flags
-		private bool playItemListSkip = false;
-		private bool playMarkListSkip = false;
-		private bool extensionDataSkip = true;
-
-		#endregion Private Data Fields
-
-		#region BdPart
+		private string mplsMark = BdMoviePlayList.MplsMarkConst;
 
 		[BdStringField(4, Common.BdCharacterCodingType.UTF8)]
 		public string MplsMark
@@ -43,21 +20,35 @@ namespace BluraySharp.PlayList
 			get { return this.mplsMark; }
 			set
 			{
-				Debug.Assert(value == PlayList.MplsMarkConst);
+				Debug.Assert(value == BdMoviePlayList.MplsMarkConst);
 				this.mplsMark = value;
 			}
 		}
+
+		#endregion
+
+		#region MplsVer
+
+		private static readonly string[] MplsVers = new string[] { "0100", "0200" };
+		private string mplsVer = BdMoviePlayList.MplsVers[1];
+
 		[BdStringField(4, Common.BdCharacterCodingType.UTF8)]
 		public string MplsVer
 		{
 			get { return this.mplsVer; }
 			set
 			{
-				Debug.Assert(PlayList.MplsVers.Contains(value));
+				Debug.Assert(BdMoviePlayList.MplsVers.Contains(value));
 				this.mplsVer = value;
 			}
 		}
 
+		#endregion
+
+		#region PlayItemListOfs
+
+
+		private bool playItemListSkip = false;
 		public bool PlayItemListSkip
 		{
 			get { return this.playItemListSkip; }
@@ -77,6 +68,9 @@ namespace BluraySharp.PlayList
 				}
 			}
 		}
+
+		private uint playItemListOfs = 0;
+
 		[BdUIntField(BdIntSize.U32)]
 		public uint PlayItemListOfs
 		{
@@ -88,6 +82,11 @@ namespace BluraySharp.PlayList
 			}
 		}
 
+		#endregion
+
+		#region PlayMarkListOfs
+
+		private bool playMarkListSkip = false;
 		public bool PlayMarkListSkip
 		{
 			get { return this.playMarkListSkip; }
@@ -107,6 +106,9 @@ namespace BluraySharp.PlayList
 				}
 			}
 		}
+
+		private uint playMarkListOfs = 0;
+
 		[BdUIntField(BdIntSize.U32)]
 		public uint PlayMarkListOfs
 		{
@@ -118,6 +120,11 @@ namespace BluraySharp.PlayList
 			}
 		}
 
+		#endregion
+
+		#region ExtensionDataOfs
+		
+		private bool extensionDataSkip = true;
 		public bool ExtensionDataSkip
 		{
 			get { return this.extensionDataSkip; }
@@ -137,6 +144,9 @@ namespace BluraySharp.PlayList
 				}
 			}
 		}
+		
+		private uint extensionDataOfs = 0;
+
 		[BdUIntField(BdIntSize.U32)]
 		public uint ExtensionDataOfs
 		{
@@ -148,11 +158,23 @@ namespace BluraySharp.PlayList
 			}
 		}
 
+		#endregion
+
+		#region ReserevedForFutureUse
+		
+		private byte[] reserevedForFutureUse = new byte[20];
+
 		[BdByteArrayField]
 		public byte[] ReserevedForFutureUse
 		{
 			get { return this.reserevedForFutureUse; }
 		}
+
+		#endregion
+
+		#region AppInfo
+
+		private PlAppInfo appInfo = new PlAppInfo();
 
 		[BdSubPartField]
 		public IPlAppInfo AppInfo
@@ -160,17 +182,35 @@ namespace BluraySharp.PlayList
 			get { return this.appInfo; }
 		}
 
+		#endregion
+
+		#region PlayItemList
+
+		private PlPlayItemList playItemList = new PlPlayItemList();
+
 		[BdSubPartField(SkipIndicator="PlayItemListSkip", OffsetIndicator="PlayItemListOfs")]
 		public IPlPlayItemList PlayItemList
 		{
 			get { return this.playItemList; }
 		}
 
+		#endregion
+
+		#region PlayMarkList
+
+		private PlPlayMarkList playMarkList = new PlPlayMarkList();
+
 		[BdSubPartField(SkipIndicator = "PlayMarkListSkip", OffsetIndicator = "PlayMarkListOfs")]
 		public IPlPlayMarkList PlayMarkList
 		{
 			get { return this.playMarkList; }
 		}
+
+		#endregion
+
+		#region ExtensionData
+
+		private BdExtensionData extensionData = null;
 
 		[BdSubPartField(SkipIndicator = "ExtensionDataSkip", OffsetIndicator = "ExtensionDataOfs")]
 		public BdExtensionData ExtensionData
@@ -182,11 +222,11 @@ namespace BluraySharp.PlayList
 			}
 		}
 
-		#endregion BdPart
+		#endregion
 
 		public override string ToString()
 		{
-			return "PlayList";
+			return "Bluray MPLS(Movie Play List) file.";
 		}
 	}
 }

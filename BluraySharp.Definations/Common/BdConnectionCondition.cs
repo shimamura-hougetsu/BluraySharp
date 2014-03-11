@@ -1,8 +1,9 @@
 ﻿
 namespace BluraySharp.Common
 {
-	public enum BdConnectionCondition
+	public enum BdConnectionCondition : byte
 	{
+		Unknown = 0x00,
 		/// <summary>
 		/// Not Seamless
 		/// </summary>
