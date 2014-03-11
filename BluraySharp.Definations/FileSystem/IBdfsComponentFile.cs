@@ -4,7 +4,7 @@ using BluraySharp.Common.Serializing;
 
 namespace BluraySharp.FileSystem
 {
-	public interface IBdfsComponentEntryFile<T> : IBdfsItem
+	public interface IBdfsComponentFile<T> : IBdfsItem
 		where T : IBdComponent
 	{
 		void Save(T entry);

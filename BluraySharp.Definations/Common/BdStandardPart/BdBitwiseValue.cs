@@ -10,7 +10,11 @@ namespace BluraySharp.Common.BdStandardPart
 	internal class BdBitwise8 : BdBitwiseValue<System.Byte>
 	{
 		[BdUIntField(BdIntSize.U8)]
-		public override ulong Value { get; set; }
+		public ulong Value
+		{
+			get { return base.Bits; }
+			set { base.Bits = value; }
+		}
 
 		/// <summary>
 		/// Ctor
@@ -29,7 +33,11 @@ namespace BluraySharp.Common.BdStandardPart
 	internal class BdBitwise16 : BdBitwiseValue<System.UInt16>
 	{
 		[BdUIntField(BdIntSize.U16)]
-		public override ulong Value { get; set; }
+		public ulong Value
+		{
+			get { return base.Bits; }
+			set { base.Bits = value; }
+		}
 
 		public BdBitwise16() : this(0) { }
 		public BdBitwise16(System.UInt16 value) : base(value) { }
@@ -41,7 +49,11 @@ namespace BluraySharp.Common.BdStandardPart
 	internal class BdBitwise32 : BdBitwiseValue<System.UInt32>
 	{
 		[BdUIntField(BdIntSize.U32)]
-		public override ulong Value { get; set; }
+		public ulong Value
+		{
+			get { return base.Bits; }
+			set { base.Bits = value; }
+		}
 
 		public BdBitwise32(): this(0) { }
 		public BdBitwise32(System.UInt32 value) : base(value) { }
@@ -53,7 +65,11 @@ namespace BluraySharp.Common.BdStandardPart
 	internal class BdBitwise64 : BdBitwiseValue<System.UInt64>
 	{
 		[BdUIntField(BdIntSize.U64)]
-		public override ulong Value { get; set; }
+		public ulong Value
+		{
+			get { return base.Bits; }
+			set { base.Bits = value; }
+		}
 
 		public BdBitwise64(): this(0) { }
 		public BdBitwise64(System.UInt64 value) : base(value) { }
@@ -64,16 +80,12 @@ namespace BluraySharp.Common.BdStandardPart
 	{
 		public BdBitwiseValue(T value)
 		{
-			this.Value = Convert.ToUInt64(value);
+			this.Bits = Convert.ToUInt64(value);
 		}
 
-		public abstract ulong Value
-		{
-			get;
-			set;
-		}
+		protected ulong Bits { get; set; }
 
-		protected byte ValueSize
+		private byte ValueSize
 		{
 			get
 			{
@@ -88,7 +100,7 @@ namespace BluraySharp.Common.BdStandardPart
 				this.VerifyIndexRange(index, length);
 
 				ulong tValue = ~(0xFFFFFFFFFFFFFFFF << length);
-				tValue &= (this.Value >> index);
+				tValue &= (this.Bits >> index);
 
 				return (T) tValue.ToUInt((BdIntSize) this.ValueSize);
 			}
@@ -99,10 +111,10 @@ namespace BluraySharp.Common.BdStandardPart
 				ulong tValue1 = ~(0xFFFFFFFFFFFFFFFF << length);
 				ulong tValue2 = ~(tValue1 << index);
 
-				tValue2 &= this.Value;
+				tValue2 &= this.Bits;
 				tValue1 &= Convert.ToUInt64(value);
 
-				this.Value = tValue2 | (tValue1 << index);
+				this.Bits = tValue2 | (tValue1 << index);
 			}
 		}
 
@@ -136,7 +148,7 @@ namespace BluraySharp.Common.BdStandardPart
 			tStrLen += tLen; //length of total
 
 			StringBuilder tString = new StringBuilder(tStrLen, tStrLen);
-			ulong tMask = this.Value;
+			ulong tMask = this.Bits;
 
 			for (int i = tLen - 1; i >= 0; --i)
 			{

@@ -7,7 +7,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.FileSystem
 {
-	public interface IBdfsTopEntryFile<T> : IBdfsComponentEntryFile<T>
+	public interface IBdfsTopEntryFile<T> : IBdfsComponentFile<T>
 		where T : IBdBdmvComponent
 	{
 	}

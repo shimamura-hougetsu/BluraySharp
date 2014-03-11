@@ -72,11 +72,7 @@ namespace BluraySharp.Architecture
 			this.bdStream = stream;
 			this.length = (this.bdStream.CanSeek && !this.bdStream.CanWrite) ? bdStream.Length : -1;
 		}
-
-		~BdByteStreamIoContext()
-		{
-		}
-
+		
 		protected int Read(byte[] buffer, int offset, int length)
 		{
 			lock (this.snapshotLocker)

@@ -3,9 +3,9 @@ using BluraySharp.Common;
 
 namespace BluraySharp.FileSystem
 {
-	public interface IBdfsArrayEntryFolder<T> : IBdfsFolder<IBdfsArrayEntryFile<T>>
+	public interface IBdfsArrayComponentFolder<T> : IBdfsFolder<IBdfsArrayComponentFile<T>>
 		where T : IBdArrayComponent
 	{
-		IBdList<IBdfsArrayEntryFile<T>> Files { get; }
+		IBdList<IBdfsArrayComponentFile<T>> Files { get; }
 	}
 }
