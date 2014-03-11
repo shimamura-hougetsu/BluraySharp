@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.FileSystem
+namespace BluraySharp.Common
 {
 	[AttributeUsage(AttributeTargets.Interface, AllowMultiple=false, Inherited=true)]
-	public class BdComponentAttribute : Attribute
+	public class BdmvEntryAttribute : Attribute
 	{
 		private bool isBackupRequired;
 
@@ -24,7 +24,7 @@ namespace BluraySharp.FileSystem
 			set { extension = value; }
 		}
 
-		public BdComponentAttribute(string extension, bool isBackupRequired)
+		public BdmvEntryAttribute(string extension, bool isBackupRequired)
 		{
 			this.extension = extension;
 			this.isBackupRequired = isBackupRequired;

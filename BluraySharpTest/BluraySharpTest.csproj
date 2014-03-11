@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestClass.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -73,9 +72,9 @@
       <Project>{14FF5AC6-E679-444D-B582-0B4AE067F595}</Project>
       <Name>BluraySharp.Definations</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BluraySharp.Entities\BluraySharp.Entities.csproj">
-      <Project>{dfc6212f-1896-4890-bb9b-4a2b34e8a85b}</Project>
-      <Name>BluraySharp.Entities</Name>
+    <ProjectReference Include="..\BluraySharp\BluraySharp.csproj">
+      <Project>{4ff5cf31-db94-4962-a92d-17a149135012}</Project>
+      <Name>BluraySharp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

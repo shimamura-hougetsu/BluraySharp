@@ -1,11 +1,10 @@
 ﻿
 using BluraySharp.Common;
-using BluraySharp.Common.Serializing;
 
 namespace BluraySharp.FileSystem
 {
-	public interface IBdfsComponentFile<T> : IBdfsItem
-		where T : IBdComponent
+	public interface IBdfsEntryFile<T> : IBdfsItem
+		where T : IBdmvEntry
 	{
 		void Save(T entry);
 		T Load();

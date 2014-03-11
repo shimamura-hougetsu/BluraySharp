@@ -41,9 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FileSystem\BdfsEntryFileT.cs" />
+    <Compile Include="FileSystem\BdfsEntryRegistry.cs" />
+    <Compile Include="FileSystem\BdfsItem.cs" />
+    <Compile Include="FileSystem\BdfsStandaloneFileT.cs" />
     <Compile Include="PlayList\PlClipFileRef.cs" />
     <Compile Include="PlayList\PlAppInfo.cs" />
-    <Compile Include="PlayList\BdMoviePlayList.cs" />
+    <Compile Include="PlayList\BdMpls.cs" />
     <Compile Include="PlayList\PlClipRef.cs" />
     <Compile Include="PlayList\PlPlayMark.cs" />
     <Compile Include="PlayList\PlPlayMarkList.cs" />
@@ -78,9 +82,7 @@
       <Name>BluraySharp.Definations</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FileSystem\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

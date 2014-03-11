@@ -2,8 +2,8 @@
 
 namespace BluraySharp.FileSystem
 {
-	public interface IBdfsArrayComponentFile<T> : IBdfsComponentFile<T>
-		where T : IBdArrayComponent
+	public interface IBdfsArrayEntryFile<T> : IBdfsEntryFile<T>
+		where T : IBdmvArrayEntry
 	{
 		uint FileId { get; set; }
 	}

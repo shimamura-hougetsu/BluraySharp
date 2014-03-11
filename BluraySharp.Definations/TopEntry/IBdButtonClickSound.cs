@@ -1,8 +1,8 @@
-﻿using BluraySharp.FileSystem;
+﻿using BluraySharp.Common;
 
 namespace BluraySharp.TopEntry
 {
-	[BdBdmvComponent("sound", true)]
+	[BdmvTopEntry("sound", true)]
 	public interface IBdButtonClickSound
 	{
 	}

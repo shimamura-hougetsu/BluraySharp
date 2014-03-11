@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace BluraySharp.PlayList
 {
-	public class BdMoviePlayList : BdPart, IPlayList
+	public class BdMpls : BdPart, IBdMpls
 	{
 		#region MplsMark
 
 		private const string MplsMarkConst = "MPLS";
-		private string mplsMark = BdMoviePlayList.MplsMarkConst;
+		private string mplsMark = BdMpls.MplsMarkConst;
 
 		[BdStringField(4, Common.BdCharacterCodingType.UTF8)]
 		public string MplsMark
@@ -20,7 +20,7 @@ namespace BluraySharp.PlayList
 			get { return this.mplsMark; }
 			set
 			{
-				Debug.Assert(value == BdMoviePlayList.MplsMarkConst);
+				Debug.Assert(value == BdMpls.MplsMarkConst);
 				this.mplsMark = value;
 			}
 		}
@@ -30,7 +30,7 @@ namespace BluraySharp.PlayList
 		#region MplsVer
 
 		private static readonly string[] MplsVers = new string[] { "0100", "0200" };
-		private string mplsVer = BdMoviePlayList.MplsVers[1];
+		private string mplsVer = BdMpls.MplsVers[1];
 
 		[BdStringField(4, Common.BdCharacterCodingType.UTF8)]
 		public string MplsVer
@@ -38,7 +38,7 @@ namespace BluraySharp.PlayList
 			get { return this.mplsVer; }
 			set
 			{
-				Debug.Assert(BdMoviePlayList.MplsVers.Contains(value));
+				Debug.Assert(BdMpls.MplsVers.Contains(value));
 				this.mplsVer = value;
 			}
 		}

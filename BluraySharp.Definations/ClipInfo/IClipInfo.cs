@@ -3,8 +3,8 @@ using BluraySharp.FileSystem;
 
 namespace BluraySharp.ClipInfo
 {
-	[BdArrayComponent("CLIPINF", "clpi", 100000, true)]
-	public interface IClipInfo : IBdArrayComponent
+	[BdmvArrayEntry("CLIPINF", "clpi", 100000, true)]
+	public interface IClipInfo : IBdmvArrayEntry
 	{
 	}
 }

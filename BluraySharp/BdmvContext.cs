@@ -4,11 +4,22 @@ using BluraySharp.Architecture;
 using BluraySharp.PlayList;
 using BluraySharp.Common.Serializing;
 using BluraySharp.Common;
+using BluraySharp.FileSystem;
 
 namespace BluraySharp
 {
 	public class BdmvContext
-	{	
+	{
+		public IBdfsEntryFile<T> OpenFile<T>(string filePath) where T : IBdmvEntry
+		{
+			return new BdfsStandaloneFile<T>(filePath);
+		}
+
+		public IBdfsRootFolder OpenBdmvFolder(string directoryPath)
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Copy<T>(T src, T dest) where T : IBdPart
 		{
 			if (object.ReferenceEquals(dest, null))

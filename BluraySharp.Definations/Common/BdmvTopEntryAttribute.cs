@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.FileSystem
+namespace BluraySharp.Common
 {
-	public class BdBdmvComponentAttribute : BdComponentAttribute
+	public class BdmvTopEntryAttribute : BdmvEntryAttribute
 	{
 		private string filename;
 		public string FileName
@@ -14,7 +14,7 @@ namespace BluraySharp.FileSystem
 			set { filename = value; }
 		}
 
-		public BdBdmvComponentAttribute(string filename, bool isBackupRequired)
+		public BdmvTopEntryAttribute(string filename, bool isBackupRequired)
 			: base("bdmv", isBackupRequired)
 		{
 			this.filename = filename;

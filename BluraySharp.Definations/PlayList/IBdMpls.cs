@@ -4,8 +4,8 @@ using BluraySharp.FileSystem;
 
 namespace BluraySharp.PlayList
 {
-	[BdArrayComponent("PLAYLIST", "mpls", 2000, true)]
-	public interface IPlayList: IBdArrayComponent
+	[BdmvArrayEntry("PLAYLIST", "mpls", 2000, true)]
+	public interface IBdMpls: IBdmvArrayEntry
 	{
 		string MplsMark { get; }
 		string MplsVer { get; set; }

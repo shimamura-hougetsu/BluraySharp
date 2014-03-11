@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BluraySharp.FileSystem
+namespace BluraySharp.Common
 {
-	public class BdArrayComponentAttribute : BdComponentAttribute
+	public class BdmvArrayEntryAttribute : BdmvEntryAttribute
 	{
 		private string folderName;
 
@@ -23,7 +23,7 @@ namespace BluraySharp.FileSystem
 			set { maxSerialNumber = value; }
 		}
 
-		public BdArrayComponentAttribute(string folderName, string extension, int maxSerialNumber, bool isBackupRequired)
+		public BdmvArrayEntryAttribute(string folderName, string extension, int maxSerialNumber, bool isBackupRequired)
 			: base(extension, isBackupRequired)
 		{
 			this.folderName = folderName;
