@@ -32,10 +32,10 @@ namespace BluraySharp.PlayList
 		[BdSubPartField]
 		private PlStnCodecInfoRoot CodecInfoRoot { get; set; }
 
-		public byte CodecType
+		public byte CodecInfoType
 		{
-			get { return this.CodecInfoRoot.CodecType; }
-			set { this.CodecInfoRoot.CodecType = value; }
+			get { return this.CodecInfoRoot.CodecInfoType; }
+			set { this.CodecInfoRoot.CodecInfoType = value; }
 		}
 		public IPlStnCodecInfo CodecInfo
 		{

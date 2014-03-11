@@ -113,7 +113,7 @@
     <Compile Include="PlayList\IPlStillOptions.cs" />
     <Compile Include="PlayList\IPlStnAuCodecInfo.cs" />
     <Compile Include="PlayList\IPlStnEntryInfo.cs" />
-    <Compile Include="PlayList\IPlStnRecord.cs" />
+    <Compile Include="PlayList\IPlStnEntry.cs" />
     <Compile Include="PlayList\IPlStnSvRecord.cs" />
     <Compile Include="PlayList\IPlStnSaEntry.cs" />
     <Compile Include="PlayList\IPlStnIgEntry.cs" />

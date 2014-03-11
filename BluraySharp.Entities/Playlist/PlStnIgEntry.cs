@@ -26,8 +26,8 @@ namespace BluraySharp.PlayList
 		}
 		public BdIgCodingType CodecInfoType
 		{
-			get { return (BdIgCodingType)this.entryRoot.CodecType; }
-			set { this.entryRoot.CodecType = (byte)value; }
+			get { return (BdIgCodingType)this.entryRoot.CodecInfoType; }
+			set { this.entryRoot.CodecInfoType = (byte)value; }
 		}
 		public IPlStnCodecInfo CodecInfo
 		{

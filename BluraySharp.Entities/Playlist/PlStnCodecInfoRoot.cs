@@ -14,17 +14,17 @@ namespace BluraySharp.PlayList
 			this.UpdateCodecInfoType(codecType);
 		}
 
-		#region CodecType
+		#region CodecInfoType
 
-		private byte codecType;
+		private byte codecInfoType;
 
 		[BdUIntField(BdIntSize.U8)]
-		public byte CodecType
+		public byte CodecInfoType
 		{
-			get { return this.codecType; }
+			get { return this.codecInfoType; }
 			set
 			{
-				if (this.codecType != value)
+				if (this.codecInfoType != value)
 				{
 					this.UpdateCodecInfoType(value);
 				}
@@ -82,7 +82,7 @@ namespace BluraySharp.PlayList
 			}
 
 			this.codecInfo = tCodecInfoCreator();
-			this.codecType = value;
+			this.codecInfoType = value;
 		}
 
 		private static bool IsEnumDefined(Type enumType, byte value)
