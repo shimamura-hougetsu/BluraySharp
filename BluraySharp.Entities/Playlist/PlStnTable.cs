@@ -2,124 +2,157 @@
 using System.Collections.Generic;
 using BluraySharp.Common;
 using BluraySharp.Architecture;
+using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
-	public class PlStnTable: IBdPart, IPlStnTable
+	[BdPartScope(BdIntSize.U16)]
+	public class PlStnTable : BdPart, IPlStnTable
 	{
-		public IBdList<IPlStnViRecord> ViStreams { get; internal set; }
+		#region ReservedForFutureUse1
 
-		public IBdList<IPlStnAuRecord> AuStreams { get; internal set; }
+		[BdUIntField(BdIntSize.U16)]
+		private ushort ReservedForFutureUse1 { get; set; }
 
-		public IBdList<IPlStnStRecord> StStreams { get; internal set; }
+		#endregion
 
-		public IBdList<IPlStnIgRecord> IgStreams { get; internal set; }
+		#region EntryCounts
 
-		public IBdList<IPlStnSaRecord> SaStreams { get; internal set; }
-
-		public IBdList<IPlStnSvRecord> SvStreams { get; internal set; }
-
-		public IBdList<IPlStnStRecord> PipStStreams { get; internal set; }
-
-		public ushort ReservedForFutureUse { get; private set; }
-
-		public PlStnTable()
+		[BdUIntField(BdIntSize.U8)]
+		private byte ViStreamsCount
 		{
-			this.ViStreams = new BdPartList<PlStnViRecord, IPlStnViRecord>(1);
-			this.AuStreams = new BdPartList<PlStnAuRecord, IPlStnAuRecord>(32);
-			this.StStreams = new BdPartList<PlStnStRecord, IPlStnStRecord>(255);
-			this.IgStreams = new BdPartList<PlStnIgRecord, IPlStnIgRecord>(32);
-			this.SaStreams = new BdPartList<PlStnSaRecord, IPlStnSaRecord>(32);
-			this.SvStreams = new BdPartList<PlStnSvRecord, IPlStnSvRecord>(32);
-			this.PipStStreams = new BdPartList<PlStnStRecord, IPlStnStRecord>(32);
+			get { return (byte)this.viStreams.Count; }
+			set { this.viStreams.SetCount(value); }
 		}
 
-		public long SerializeTo(IBdRawWriteContext context)
+		[BdUIntField(BdIntSize.U8)]
+		private byte AuStreamsCount
 		{
-			throw new NotImplementedException();
+			get { return (byte)this.auStreams.Count; }
+			set { this.auStreams.SetCount(value); }
 		}
 
-		public long DeserializeFrom(IBdRawReadContext context)
+		[BdUIntField(BdIntSize.U8)]
+		private byte StStreamsCount
 		{
-			ushort tDataLen;
-
-			tDataLen = context.DeserializeUInt16();
-			context.EnterScope(tDataLen);
-
-			try
-			{
-				this.ReservedForFutureUse = context.DeserializeUInt16();
-
-				byte[] tRecordCount = context.DeserializeBytes(12);
-
-				this.ViStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[0]; ++iRec)
-				{
-					this.ViStreams.Insert(context.Deserialize<PlStnViRecord>());
-				}
-
-				this.AuStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[1]; ++iRec)
-				{
-					this.AuStreams.Insert(context.Deserialize<PlStnAuRecord>());
-				}
-
-				this.StStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[2]; ++iRec)
-				{
-					this.StStreams.Insert(context.Deserialize<PlStnStRecord>());
-				}
-				this.PipStStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[6]; ++iRec)
-				{
-					this.PipStStreams.Insert(context.Deserialize<PlStnStRecord>());
-				}
-
-				this.IgStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[3]; ++iRec)
-				{
-					this.IgStreams.Insert(context.Deserialize<PlStnIgRecord>());
-				}
-
-				this.SaStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[4]; ++iRec)
-				{
-					this.SaStreams.Insert(context.Deserialize<PlStnSaRecord>());
-				}
-
-				this.SvStreams.Clear();
-				for (int iRec = 0; iRec < tRecordCount[5]; ++iRec)
-				{
-					this.SvStreams.Insert(context.Deserialize<PlStnSvRecord>());
-				}
-
-				//for (int iType = 0; iType < (int)PlStnRecordTypes.Count; iType++)
-				//{
-				//    recordTables[iType] = new List<PlStnRecord>();
-				//    for (int iCount = 0; iCount < tRecordCount[iType]; iCount++)
-				//    {
-				//        recordTables[iType].Add(context.Deserialize<PlStnRecord>());
-				//    }
-				//}
-			}
-			finally
-			{
-				context.ExitScope();
-			}
-
-			return context.Position;
+			get { return (byte)this.stStreams.Count; }
+			set { this.stStreams.SetCount(value); }
 		}
 
-		public long RawLength
+		[BdUIntField(BdIntSize.U8)]
+		private byte IgStreamsCount
 		{
-			get
-			{
-				long tDataLen = sizeof(ushort);
-				tDataLen += sizeof(ushort);
+			get { return (byte)this.igStreams.Count; }
+			set { this.igStreams.SetCount(value); }
+		}
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte SaStreamsCount
+		{
+			get { return (byte)this.saStreams.Count; }
+			set { this.saStreams.SetCount(value); }
+		}
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte SvStreamsCount
+		{
+			get { return (byte)this.svStreams.Count; }
+			set { this.svStreams.SetCount(value); }
+		}
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte PipStStreamsCount
+		{
+			get { return (byte)this.pipStStreams.Count; }
+			set { this.pipStStreams.SetCount(value); }
+		}
+
+		#endregion
+
+		#region ReservedForFutureUse2
+
+		private byte[] reservedForFutureUse2 = new byte[5];
+		[BdByteArrayField]
+		private byte[] ReservedForFutureUse2
+		{
+			get { return this.reservedForFutureUse2; }
+		}
 
 
-				return tDataLen;
-			}
+		#endregion
+
+		#region Entry Lists
+
+		private BdList<PlStnViEntry, IPlStnViEntry> viStreams =
+			new BdList<PlStnViEntry, IPlStnViEntry>(1) { new PlStnViEntry() };
+
+		[BdSubPartField]
+		public IBdList<IPlStnViEntry> ViStreams
+		{
+			get { return this.viStreams; }
+		}
+
+		private BdList<PlStnAuEntry, IPlStnAuEntry> auStreams =
+			new BdList<PlStnAuEntry, IPlStnAuEntry>(32);
+
+		[BdSubPartField]
+		public IBdList<IPlStnAuEntry> AuStreams
+		{
+			get { return this.auStreams; }
+		}
+		
+		private BdList<PlStnStEntry, IPlStnStEntry> stStreams =
+			new BdList<PlStnStEntry, IPlStnStEntry>(255);
+
+		[BdSubPartField]
+		public IBdList<IPlStnStEntry> StStreams
+		{
+			get { return this.stStreams; }
+		}
+
+		private BdList<PlStnStEntry, IPlStnStEntry> pipStStreams =
+			new BdList<PlStnStEntry, IPlStnStEntry>(32);
+
+		[BdSubPartField]
+		public IBdList<IPlStnStEntry> PipStStreams
+		{
+			get { return this.pipStStreams; }
+		}
+
+		private BdList<PlStnIgEntry, IPlStnIgEntry> igStreams =
+			new BdList<PlStnIgEntry, IPlStnIgEntry>(32);
+
+		[BdSubPartField]
+		public IBdList<IPlStnIgEntry> IgStreams
+		{
+			get { return this.igStreams; }
+		}
+
+		private BdList<PlStnSaEntry, IPlStnSaEntry> saStreams =
+			new BdList<PlStnSaEntry, IPlStnSaEntry>(32);
+
+
+		[BdSubPartField]
+		public IBdList<IPlStnSaEntry> SaStreams
+		{
+			get { return this.saStreams; }
+		}
+
+		private BdList<PlStnSvEntry, IPlStnSvEntry> svStreams =
+			new BdList<PlStnSvEntry, IPlStnSvEntry>(32);
+
+		[BdSubPartField]
+		public IBdList<IPlStnSvEntry> SvStreams
+		{
+			get { return this.svStreams; }
+		}
+
+		#endregion
+		
+		public override string ToString()
+		{
+			return "STN Table";
 		}
 	}
 }

@@ -1,8 +1,8 @@
-﻿using BluraySharp.Architecture;
+﻿using BluraySharp.Common;
 
 namespace BluraySharp.TopEntry
 {
-	[BdTopEntry("sound", true)]
+	[BdmvTopEntry("sound", true)]
 	public interface IBdButtonClickSound
 	{
 	}

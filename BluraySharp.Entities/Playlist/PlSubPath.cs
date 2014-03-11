@@ -1,78 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
-using BluraySharp.Common;
-using BluraySharp.Architecture;
+﻿using BluraySharp.Common;
+using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
-	public class PlSubPath : BluraySharp.PlayList.IPlSubPath
+	[BdPartScope(BdIntSize.U32)]
+	public class PlSubPath : BdPart, IPlSubPath
 	{
-		public IBdList<IPlPlayItemInfo> PlayItems { get; internal set; }
+		#region ReservedForFutureUse1
 
-		internal Byte Reserved1 { get; set; }
-		internal Byte Reserved2 { get; set; }
+		[BdUIntField(BdIntSize.U8)]
+		private byte ReservedForFutureUse1 { get; set; }
 
+		#endregion
+
+		#region SubPath Type
+
+		[BdUIntField(BdIntSize.U8)]
 		public PlSubPathType Type { get; set; }
 
-		//TODO: repeat option
-		private BdBitwise16 repeatOption = new BdBitwise16();
+		#endregion
 
-		public long SerializeTo(IBdRawWriteContext context)
+		#region RepeatOptions
+
+		private BdBitwise16 repeatOptions = new BdBitwise16();
+		[BdSubPartField]
+		private BdBitwise16 RepeatOptions
 		{
-			throw new NotImplementedException();
+			get { return this.repeatOptions; }
+		}
+		public bool IsRepeat
+		{
+			get { return this.RepeatOptions[0, 1] == 1; }
+			set { this.RepeatOptions[0, 1] = (ushort)(value ? 1 : 0); }
 		}
 
-		public long DeserializeFrom(IBdRawReadContext context)
+		#endregion
+
+		#region ReservedForFutureUse2
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte ReservedForFutureUse2 { get; set; }
+
+		#endregion
+
+		#region SubPlayItemCount
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte SubPlayItemCount
 		{
-			uint tDataLen;
-
-			tDataLen = context.DeserializeUInt32();
-			context.EnterScope(tDataLen);
-
-			try
-			{
-				Reserved1 = context.DeserializeByte();
-				Type = (PlSubPathType) context.DeserializeByte();
-
-				repeatOption = context.Deserialize<BdBitwise16>();
-				Reserved2 = context.DeserializeByte();
-
-				byte tSubPlayItemCount = context.DeserializeByte();
-				PlayItems.Clear();
-
-				for (byte i = 0; i < tSubPlayItemCount; ++i)
-				{
-					PlayItems.Insert(context.Deserialize<PlSubPlayItem>());
-				}
-			}
-			finally
-			{
-				context.ExitScope();
-			}
-
-			return context.Position;
+			get { return (byte)this.PlayItems.Count; }
+			set { this.PlayItems.SetCount(value); }
 		}
 
-		public long RawLength
+		#endregion
+
+		#region PlayItems
+
+		private BdList<PlSubPlayItem, IPlSubPlayItem> playItems = 
+			new BdList<PlSubPlayItem,IPlSubPlayItem>(0, 255);
+
+		[BdSubPartField]
+		public IBdList<IPlSubPlayItem> PlayItems
 		{
-			get
-			{
-				long tDataLen = sizeof(uint);
-				tDataLen += sizeof(byte) * 3;
-				tDataLen += repeatOption.RawLength;
-
-				foreach (IBdPart tObj in this.PlayItems)
-				{
-					tDataLen += tObj.RawLength;
-				}
-
-				return tDataLen;
-			}
+			get { return this.playItems; }
 		}
 
-		public PlSubPath()
+		#endregion
+
+		public override string ToString()
 		{
-			PlayItems = new BdPartList<PlSubPlayItem, IPlPlayItemInfo>(255);
+			return "SubPath";
 		}
 	}
 }

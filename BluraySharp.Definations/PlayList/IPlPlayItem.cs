@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BluraySharp.Common;
+﻿using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
@@ -10,8 +6,11 @@ namespace BluraySharp.PlayList
 	{
 		BdUOMask UoMask { get; }
 
-		bool RandomAccessProhibited { get; set; }
-		IPlStillInfo StillInfo { get; }
+		bool RandomAccessFlag { get; set; }
+		IPlStillOptions StillOptions { get; }
+
+		bool IsMultiAngleDifferentAudios { get; set; }
+		bool IsMultiAngleOptionsSeamlessChange { get; set; }
 
 		IPlStnTable StnTable { get; }
 	}

@@ -2,31 +2,39 @@
 using System.IO;
 using BluraySharp;
 using BluraySharp.PlayList;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Diagnostics;
+using BluraySharp.Common.BdStandardPart;
+using BluraySharp.Architecture;
+using BluraySharp.Common;
+using BluraySharp.FileSystem;
 
 namespace BluraySharpTest
 {
 	static class Program
 	{
+		enum A
+		{
+			NA
+		}
 		/// <summary>
 		/// 应用程序的主入口点。
 		/// </summary>
 		[STAThread]
 		static void Main()
 		{
-			//string tFilePath = @"C:\StoreBase\_Temp\玉响\[BDMV][111221] たまゆら～hitotose～ 第1巻\TAMAYURA_HITOTOSE_1\BDMV\PLAYLIST\00000.mpls";
-			string tFilePath = @"C:\Users\Subelf.J\Documents\stillinf-norand.mpls";
+			BdmvContext tBdmvContext = new BdmvContext();
 
-			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
-			{
-				BdmvContext tContext = new BdmvContext();
-				IPlayList tMpls = tContext.OpenComponentFile<IPlayList>(tFileStream);
+			string tInFilePath = @"C:\StoreBase\_Temp\[BDMV][Bakuman. S1-S3].ZHO\!CMD.DIR\SUB\[BDMV][アニメ][120620] バクマン。2ndシリーズ BD-BOX1\BAKUMAN_10\BDMV\PLAYLIST\00000.mpls";
+			string tOutFilePath = @"C:\StoreBase\_Temp\[BDMV][Bakuman. S1-S3].ZHO\!CMD.DIR\SUB\[BDMV][アニメ][120620] バクマン。2ndシリーズ BD-BOX1\BAKUMAN_10\BDMV\PLAYLIST\00999.mpls";
 
-				System.Diagnostics.Debug.WriteLine(
-				        tMpls.PlayItemList.PlayItems[0].ConnectionCondition.ToStringLocalized()
-				    );
+			IBdfsEntryFile<IBdMpls> tInFile = tBdmvContext.OpenFile<IBdMpls>(tInFilePath);
+			IBdfsEntryFile<IBdMpls> tOutFile = tBdmvContext.OpenFile<IBdMpls>(tOutFilePath);
 
-				tMpls.ToString();
-			}
+			IBdMpls tMpls = tInFile.Load();
+			tOutFile.Save(tMpls);
 		}
 	}
 }

@@ -4,6 +4,7 @@ namespace BluraySharp.Common
 	public enum BdViFormat
 	{
 		Unknown,
+
 		Vi480i = 0x01,
 		Vi576i = 0x02,
 		Vi480p = 0x03,
@@ -16,6 +17,7 @@ namespace BluraySharp.Common
 	public enum BdAuPresentationType
 	{
 		Unknown,
+
 		Mono = 0x01,
 		Stereo = 0x03,
 		Multi = 0x06,
@@ -25,6 +27,7 @@ namespace BluraySharp.Common
 	public enum BdCharacterCodingType
 	{
 		Unknown,
+
 		UTF8 = 0x01,
 		UTF16BE = 0x02,
 	}

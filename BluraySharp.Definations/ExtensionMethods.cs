@@ -1,6 +1,7 @@
-﻿using System;
+﻿using BluraySharp.Common;
+using System;
 using System.Collections.Generic;
-using BluraySharp.Architecture;
+using System.Linq;
 
 namespace BluraySharp
 {
@@ -44,6 +45,69 @@ namespace BluraySharp
 			{
 				return obj.RawLength;
 			}
+		}
+
+		/// <summary>
+		/// Convert a ulong value to byte, ushort or uint, by specifying outputSize.
+		/// </summary>
+		/// <param name="value">Source ulong value</param>
+		/// <param name="outputSize">Expected size of output value</param>
+		/// <returns>Output value</returns>
+		public static object ToUInt(this ulong value, BdIntSize outputSize)
+		{
+			switch (outputSize)
+			{
+				case BdIntSize.U8:
+					return Convert.ToByte(value);
+				case BdIntSize.U16:
+					return Convert.ToUInt16(value);
+				case BdIntSize.U32:
+					return Convert.ToUInt32(value);
+				case BdIntSize.U64:
+					return value;
+				default:
+					throw new ArgumentException("outputSize");
+			}
+		}
+
+		private static Dictionary<BdViFrameRate, double> bdViFrameRateToDoubleTable =
+			new Dictionary<BdViFrameRate, double>()
+			{
+				{BdViFrameRate.Vi23, 24000/1001.0 },
+				{BdViFrameRate.Vi24, 24000/1000.0 },
+				{BdViFrameRate.Vi25, 25000/1000.0 },
+				{BdViFrameRate.Vi29, 30000/1001.0 },
+				{BdViFrameRate.Vi50, 50000/1000.0 },
+				{BdViFrameRate.Vi59, 60000/1001.0 }
+			};
+		public static double ToDouble(this BdViFrameRate value)
+		{
+			return ExtensionMethods.bdViFrameRateToDoubleTable[value];
+		}
+
+
+		private static Dictionary<BdAuSampleRate, double> bdAuSampleRateToDoubleTable =
+			new Dictionary<BdAuSampleRate, double>()
+			{
+				{BdAuSampleRate.Au48, 48000.0 },
+				{BdAuSampleRate.Au96, 96000.0 },
+				{BdAuSampleRate.Au192, 192000.0 },
+				{BdAuSampleRate.Au48_96, 48000.0 },
+				{BdAuSampleRate.Au48_192, 48000.0 },
+			};
+		public static double ToDouble(this BdAuSampleRate value)
+		{
+			return ExtensionMethods.bdAuSampleRateToDoubleTable[value];
+		}
+
+		public static bool RefEquals(this object obj1, object obj2)
+		{
+			return object.ReferenceEquals(obj1, obj2);
+		}
+
+		public static bool IsNull(this object obj)
+		{
+			return obj.RefEquals(null);
 		}
 	}
 }

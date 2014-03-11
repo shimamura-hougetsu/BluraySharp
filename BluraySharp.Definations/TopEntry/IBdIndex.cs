@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BluraySharp.Architecture;
+﻿using BluraySharp.Common;
 
 namespace BluraySharp.TopEntry
 {
-	[BdTopEntry("index", true)]
-	public interface IBdIndex : IBdTopEntry
+	[BdmvTopEntry("index", true)]
+	public interface IBdIndex : IBdmvTopEntry
 	{
 	}
 }

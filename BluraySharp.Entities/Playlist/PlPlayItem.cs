@@ -2,157 +2,221 @@
 using System.Collections.Generic;
 using BluraySharp.Common;
 using BluraySharp.Architecture;
+using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
-	public class PlPlayItem : IPlPlayItem
+	[BdPartScope(BdIntSize.U16)]
+	public class PlPlayItem : BdPart, IPlPlayItem
 	{
-		public IBdList<IPlAngleClipInfo> AngleList { get; internal set; }
+		#region MainAngle ClipFileRef
 
-		public byte StcId { get; set; }
-		public BdTime InTime { get; set; }
-		public BdTime OutTime { get; set; }
+		private BdList<PlClipRef, IPlClipRef> angles =
+			new BdList<PlClipRef, IPlClipRef>(0, 9) { new PlClipRef() };
 
+
+		private IPlClipRef MainAngle
+		{
+			get
+			{
+				if (this.angles.Count == 0)
+				{
+					//MainAngle not specified;
+					throw new ApplicationException();
+				}
+
+				return this.angles[this.angles.LowerBound];
+			}
+		}
+
+		[BdSubPartField]
+		private IPlClipFileRef MainAngleClipFileRef
+		{
+			get
+			{
+				return this.MainAngle.ClipFileRef;
+			}
+		}
+
+		#endregion
+
+		#region ClipArrangingOptions
+
+		private BdBitwise16 clipArrangingOptions = new BdBitwise16(1);
+
+		[BdSubPartField]
+		private BdBitwise16 ClipArrangingOptions
+		{
+			get
+			{
+				this.MultiAngleSkip = (this.angles.Count <= 1);
+				return this.clipArrangingOptions;
+			}
+			set
+			{
+				this.clipArrangingOptions.Value = value.Value;
+			}
+		}
 		public BdConnectionCondition ConnectionCondition
 		{
-			get
-			{
-				return (BdConnectionCondition)arrangingOption[0, 4];
-			}
-			set
-			{
-				arrangingOption[0, 4] = (ushort)value;
-			}
+			get { return (BdConnectionCondition) this.clipArrangingOptions[0, 4]; }
+			set { this.clipArrangingOptions[0, 4] = (ushort) value; }
+		}
+		private bool MultiAngleSkip
+		{
+			get { return this.clipArrangingOptions[4, 1] == 0; }
+			set { this.clipArrangingOptions[4, 1] = (ushort)(value ? 0 : 1); }
 		}
 
-		public bool IsMultiAngle
+		#endregion
+
+		#region MainAngle StcIdRef
+		[BdUIntField(BdIntSize.U8)]
+		private byte StcIdRef
+		{
+			get { return this.MainAngle.StcIdRef; }
+			set { this.MainAngle.StcIdRef = value; }
+		}
+		#endregion
+
+		#region	InTime
+
+		private BdTime inTime = new BdTime();
+
+		[BdSubPartField]
+		public BdTime InTime
+		{
+			get { return this.inTime; }
+			set { this.inTime.Value = value.Value; }
+		}
+
+		#endregion
+
+		#region OutTime
+
+		private BdTime outTime = new BdTime();
+
+		[BdSubPartField]
+		public BdTime OutTime
+		{
+			get { return this.outTime; }
+			set { this.outTime.Value = value.Value; }
+		}
+
+		#endregion
+
+		#region UoMask
+
+		private BdUOMask uoMask = new BdUOMask();
+
+		[BdSubPartField]
+		public BdUOMask UoMask
+		{
+			get { return this.uoMask; }
+			set { this.uoMask.Value = value.Value; }
+		}
+
+		#endregion
+
+		#region SeekingFlagValue
+
+		private BdBitwise8 playbackOptioin = new BdBitwise8();
+
+		[BdSubPartField]
+		private BdBitwise8 PlaybackOptioin
+		{
+			get { return this.playbackOptioin; }
+		}
+		public bool RandomAccessFlag
+		{
+			get { return this.playbackOptioin[7, 1] == 1u; }
+			set { this.playbackOptioin[7, 1] = (byte)(value ? 1 : 0); }
+		}
+
+		#endregion
+
+		#region StillOptions
+
+		private PlStillOptions stillOptions = new PlStillOptions();
+
+		[BdSubPartField]
+		public IPlStillOptions StillOptions
+		{
+			get { return this.stillOptions; }
+		}
+
+		#endregion
+
+		#region AngleCount
+
+		[BdUIntField(BdIntSize.U8, SkipIndicator = "MultiAngleSkip")]
+		private byte AngleCount
+		{
+			get { return (byte)angles.Count; }
+			set { this.angles.SetCount(value); }
+		}
+
+		#endregion
+
+		#region MultiAngleOptions
+
+		private BdBitwise8 multiAngleOptions = new BdBitwise8();
+
+		[BdSubPartField(SkipIndicator = "MultiAngleSkip")]
+		private BdBitwise8 MultiAngleOptions
+		{
+			get { return this.MultiAngleSkip ? null : this.multiAngleOptions; }
+		}
+		public bool IsMultiAngleDifferentAudios
+		{
+			get { return this.multiAngleOptions[1, 1] == 1; }
+			set { this.multiAngleOptions[1, 1] = (byte)(value ? 1 : 0); }
+		}
+		public bool IsMultiAngleOptionsSeamlessChange
+		{
+			get { return this.multiAngleOptions[0, 1] == 1; }
+			set { this.multiAngleOptions[0, 1] = (byte)(value ? 1 : 0); }
+		}
+
+		#endregion
+
+		#region MultiAngles
+
+		[BdSubPartField(SkipIndicator = "MultiAngleSkip")]
+		private IBdList<IPlClipRef> MultiAngles
 		{
 			get
 			{
-				return arrangingOption[4, 1] == 1;
-			}
-			set
-			{
-				arrangingOption[4, 1] = (ushort) (value ? 1u : 0u);
-			}
-		}
-
-		public BdUOMask UoMask { get; internal set; }
-
-		public bool RandomAccessProhibited
-		{
-			get
-			{
-				return this.seekingFlagValue[7, 1] == 1u;
-			}
-			set
-			{
-				this.seekingFlagValue[7, 1] = (byte) (value ? 1 : 0);
-			}
-		}
-
-		internal BdBitwise8 seekingFlagValue = new BdBitwise8();
-
-		public IPlStillInfo StillInfo { get; internal set; }
-
-		internal BdBitwise16 arrangingOption = new BdBitwise16();
-		internal BdBitwise8 multiAngleOption = new BdBitwise8();
-		
-		public IPlStnTable StnTable { get; internal set; }
-
-		public long SerializeTo(IBdRawWriteContext context)
-		{
-			throw new NotImplementedException();
-		}
-
-		public long DeserializeFrom(IBdRawReadContext context)
-		{
-			ushort tDataLen;
-
-			tDataLen = context.DeserializeUInt16();
-			context.EnterScope(tDataLen);
-
-			try
-			{
-				this.AngleList.Clear();
-
-				PlAngleClipInfo tAngle = context.Deserialize<PlAngleClipInfo>();
-				this.AngleList.Insert(tAngle);
-
-				arrangingOption = context.Deserialize<BdBitwise16>();
-				StcId = context.DeserializeByte();
-
-				InTime = context.Deserialize<BdTime>();
-				OutTime = context.Deserialize<BdTime>();
-				UoMask = context.Deserialize<BdUOMask>();
-
-				seekingFlagValue = context.Deserialize<BdBitwise8>();
-				StillInfo = context.Deserialize<PlStillInfo>();
-
-				if (this.IsMultiAngle)
+				BdList<PlClipRef, IPlClipRef> tRet = new BdList<PlClipRef, IPlClipRef>(0, 9);
+				for (int i = this.angles.LowerBound + 1; i < this.angles.UpperBound; ++i)
 				{
-					byte tAngleCount = context.DeserializeByte();
-
-					multiAngleOption = context.Deserialize<BdBitwise8>();
-
-					if (tAngleCount < 1)
-					{
-						tAngleCount = 1;
-					}
-
-					for(byte i = 0; i< tAngleCount; ++i)
-					{
-						AngleList.Insert(context.Deserialize<PlAngleClipInfo>());
-					}
+					tRet.Add(this.angles[i]);
 				}
-
-				StnTable = context.Deserialize<PlStnTable>();
-			}
-			finally
-			{
-				context.ExitScope();
-			}
-
-			return context.Position;
-		}
-
-		public long RawLength
-		{
-			get
-			{
-				long tDataLen = sizeof(ushort);
-
-				tDataLen += sizeof(byte);
-				tDataLen += this.InTime.RawLength;
-				tDataLen += this.OutTime.RawLength;
-
-				tDataLen += this.UoMask.RawLength;
-				tDataLen += this.seekingFlagValue.RawLength;
-
-				tDataLen += this.StillInfo.RawLength;
-				tDataLen += this.arrangingOption.RawLength;
-
-				if (this.IsMultiAngle && multiAngleOption != null)
-				{
-					tDataLen += this.multiAngleOption.RawLength;
-				}
-
-				foreach (IBdPart tObj in this.AngleList)
-				{
-					tDataLen += tObj.RawLength;
-				}
-
-				tDataLen += this.StnTable.RawLength;
-
-				return tDataLen;
+				return tRet;
 			}
 		}
-
-		public PlPlayItem()
+		public IBdList<IPlClipRef> ClipList
 		{
-			this.AngleList = new BdPartList<PlAngleClipInfo, IPlAngleClipInfo>(9);
-			this.InTime = new BdTime();
-			this.OutTime = new BdTime();
+			get { return this.angles; }
+		}
+
+		#endregion
+
+		#region StnTable
+
+		private PlStnTable stnTable = new PlStnTable();
+		[BdSubPartField]
+		public IPlStnTable StnTable
+		{
+			get { return this.stnTable; }
+		}
+
+		#endregion
+
+		public override string ToString()
+		{
+			return "PlayItem";
 		}
 	}
 }

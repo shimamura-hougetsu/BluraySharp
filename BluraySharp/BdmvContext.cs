@@ -2,48 +2,24 @@
 using System.IO;
 using BluraySharp.Architecture;
 using BluraySharp.PlayList;
+using BluraySharp.Common.Serializing;
+using BluraySharp.Common;
+using BluraySharp.FileSystem;
 
 namespace BluraySharp
 {
 	public class BdmvContext
 	{
-		private IBdEntitiesRegistry registry = BdEntitiesRegistry.Instance;
-
-		public IPlayList CreatePlayList()
+		public IBdfsEntryFile<T> OpenFile<T>(string filePath) where T : IBdmvEntry
 		{
-			return new PlayList.PlayList();
+			return new BdfsStandaloneFile<T>(filePath);
 		}
 
-		public T OpenComponentFile<T>(FileStream file) where T: IBdComponentEntry
+		public IBdfsRootFolder OpenBdmvFolder(string directoryPath)
 		{
-			if (object.ReferenceEquals(file, null))
-			{
-				throw new ArgumentNullException("file");
-			}
-
-			IBdRawReadContext tRawIo = new BdStreamReadContext(file);
-			T tRet = this.registry.CreateEntry<T>();
-			tRawIo.Deserialize(tRet);
-
-			return tRet;
+			throw new NotImplementedException();
 		}
 
-		public void SaveComponentFile<T>(FileStream file, T component) where T: IBdComponentEntry
-		{
-			if (object.ReferenceEquals(file, null))
-			{
-				throw new ArgumentNullException("file");
-			}
-
-			if (object.ReferenceEquals(component, null))
-			{
-				throw new ArgumentNullException("playList");
-			}
-
-			IBdRawWriteContext tRawIo = new BdStreamWriteContext(file);
-			tRawIo.Serialize(component);
-		}
-		
 		public void Copy<T>(T src, T dest) where T : IBdPart
 		{
 			if (object.ReferenceEquals(dest, null))
@@ -55,12 +31,12 @@ namespace BluraySharp
 			{
 				using (MemoryStream tMem = new MemoryStream())
 				{
-					IBdRawWriteContext tSerializer = new BdStreamWriteContext(tMem);
+					IBdRawWriteContext tSerializer = new BdByteStreamWriteContext(tMem);
 					tSerializer.Serialize(src);
 
 					tMem.Position = 0;
 
-					IBdRawReadContext tDeserializer = new BdStreamReadContext(tMem);
+					IBdRawReadContext tDeserializer = new BdByteStreamReadContext(tMem);
 					tDeserializer.Deserialize(dest);
 				}
 			}

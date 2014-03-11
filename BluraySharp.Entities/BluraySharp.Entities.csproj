@@ -40,51 +40,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Architecture\BdEntitiesRegistry.cs" />
-    <Compile Include="Architecture\BdPartList.cs" />
-    <Compile Include="Architecture\BdStreamIoContext.cs" />
-    <Compile Include="Architecture\BdStreamReadContext.cs" />
-    <Compile Include="Architecture\BdStreamWriteContext.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <None Include="FileSystem\BdfsBdmvRoot.cs" />
-    <None Include="FileSystem\BdfsArrayEntryFile.cs" />
-    <None Include="FileSystem\BdfsArrayEntryFolder.cs" />
-    <None Include="FileSystem\BdfsComponentEntryFile.cs" />
-    <None Include="FileSystem\BdfsItem.cs" />
-    <None Include="FileSystem\BdfsFolder.cs" />
-    <None Include="FileSystem\BdfsRootFolder.cs" />
-    <None Include="FileSystem\BdfsTopEntryFile.cs" />
-    <Compile Include="PlayList\PlAngleClipInfo.cs" />
+    <Compile Include="FileSystem\BdfsEntryFileT.cs" />
+    <Compile Include="FileSystem\BdfsEntryRegistry.cs" />
+    <Compile Include="FileSystem\BdfsItem.cs" />
+    <Compile Include="FileSystem\BdfsStandaloneFileT.cs" />
+    <Compile Include="PlayList\PlClipFileRef.cs" />
     <Compile Include="PlayList\PlAppInfo.cs" />
-    <Compile Include="PlayList\PlayList.cs" />
-    <Compile Include="PlayList\PlMarkList.cs" />
+    <Compile Include="PlayList\BdMpls.cs" />
+    <Compile Include="PlayList\PlClipRef.cs" />
+    <Compile Include="PlayList\PlPlayMark.cs" />
+    <Compile Include="PlayList\PlPlayMarkList.cs" />
     <Compile Include="PlayList\PlPlayItem.cs" />
     <Compile Include="PlayList\PlPlayItemList.cs" />
-    <Compile Include="PlayList\PlStillInfo.cs" />
-    <Compile Include="PlayList\PlStnAuRecord.cs" />
-    <Compile Include="PlayList\PlStnIgRecord.cs" />
-    <Compile Include="PlayList\PlStnInMuxPipStreamEntryFields.cs" />
-    <Compile Include="PlayList\PlStnPlayItemStreamEntryFields.cs" />
-    <Compile Include="PlayList\PlStnRecord.cs" />
-    <Compile Include="PlayList\PlStnSaRecord.cs" />
-    <Compile Include="PlayList\PlStnSaStreamAttribute.cs" />
-    <Compile Include="PlayList\PlStnStreamEntryFields.cs" />
-    <Compile Include="PlayList\PlStnSubPlayItemStreamEntryFields.cs" />
-    <Compile Include="PlayList\PlStnSvRecord.cs" />
+    <Compile Include="PlayList\PlStillOptions.cs" />
+    <Compile Include="PlayList\PlStnAuEntry.cs" />
+    <Compile Include="PlayList\PlStnCodecInfoRoot.cs" />
+    <Compile Include="PlayList\PlStnEntryInfoRoot.cs" />
+    <Compile Include="PlayList\PlStnIgEntry.cs" />
+    <Compile Include="PlayList\PlStnInMuxPipEntryInfo.cs" />
+    <Compile Include="PlayList\PlStnPlayItemEntryInfo.cs" />
+    <Compile Include="PlayList\PlStnEntryRoot.cs" />
+    <Compile Include="PlayList\PlStnSaEntry.cs" />
+    <Compile Include="PlayList\PlStnSubPlayItemEntryInfo.cs" />
+    <Compile Include="PlayList\PlStnSvEntry.cs" />
     <Compile Include="PlayList\PlStnTable.cs" />
-    <Compile Include="PlayList\PlStnViRecord.cs" />
+    <Compile Include="PlayList\PlStnViEntry.cs" />
     <Compile Include="PlayList\PlSubPath.cs" />
     <Compile Include="PlayList\PlSubPlayItem.cs" />
-    <Compile Include="PlayList\PlStnViStreamAttribute.cs" />
-    <Compile Include="PlayList\PlStnAuStreamAttribute.cs" />
-    <Compile Include="PlayList\PlStnStRecord.cs" />
-    <Compile Include="PlayList\PlStnStStreamAttributeFields.cs" />
-    <Compile Include="PlayList\PlStnIgStreamAttribute.cs" />
-    <Compile Include="PlayList\PlStnStStreamAttribute.cs" />
+    <Compile Include="PlayList\PlStnViCodecInfo.cs" />
+    <Compile Include="PlayList\PlStnAuCodecInfo.cs" />
+    <Compile Include="PlayList\PlStnStEntry.cs" />
+    <Compile Include="PlayList\PlStnTxCodecInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\VersionInfo.cs" />
-    <Compile Include="PlayList\PlStnPgStreamAttributeFields.cs" />
-    <Compile Include="PlayList\PlStnTsStreamAttributeFields.cs" />
+    <Compile Include="PlayList\PlStnGxCodecInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BluraySharp.Definations\BluraySharp.Definations.csproj">
@@ -92,6 +82,7 @@
       <Name>BluraySharp.Definations</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

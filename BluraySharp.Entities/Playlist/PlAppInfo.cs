@@ -1,114 +1,109 @@
 ﻿using BluraySharp.Common;
+using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 using System;
-using System.Xml.Serialization;
-using BluraySharp.Architecture;
 
 namespace BluraySharp.PlayList
 {
-	public class PlAppInfo : BluraySharp.PlayList.IPlAppInfo
+	[BdPartScope(BdIntSize.U32)]
+	public class PlAppInfo : BdPart, IPlAppInfo
 	{
+		#region ReservedForFutureUse1
+
+		[BdUIntField(BdIntSize.U8)]
+		public byte ReservedForFutureUse1 { get; set; }
+		
+		#endregion 
+
+		#region PlaybackType
+
+		private PlPlaybackType playbackType = PlPlaybackType.Sequential;
+
+		[BdUIntField(BdIntSize.U8)]
 		public PlPlaybackType PlaybackType
 		{
-			get { return playbackType; }
-			set { playbackType = value; }
+			get { return this.playbackType; }
+			set { this.playbackType = value; }
 		}
 
-		public ushort PlaybackCount
-		{
-			get { return playbackCount; }
-			set { playbackCount = value; }
-		}
+		#endregion PlaybackCount
 
-		public BdUOMask UoMask
-		{
-			get { return uoMask; }
-			set
-			{
-				if (value == null)
-				{
-					throw new ArgumentNullException("value");
-				}
-				uoMask = value;
-			}
-		}
-
-		public bool RandomAccessFlag
-		{
-			get;
-			set;
-		}
-		public bool AudioMixAppFlag
-		{
-			get;
-			set;
-		}
-		public bool LosslessMayBypassMixer
-		{
-			get;
-			set;
-		}
-
-		private byte reservedForFutureUse1 = 0;
-		private PlPlaybackType playbackType = PlPlaybackType.Sequential;
+		#region PlaybackCount
 		private ushort playbackCount = 0;
-		private BdUOMask uoMask = new BdUOMask();
-		private BdBitwise16 playbackOption = new BdBitwise16(0);
 
-		public long SerializeTo(IBdRawWriteContext context)
-		{
-			uint tDataLen = (uint) this.RawLength;
-			context.Serialize(tDataLen);
-
-			context.EnterScope(tDataLen);
-			try
-			{
-				context.Serialize((byte)this.playbackType);
-				context.Serialize(this.playbackCount);
-				context.Serialize(this.uoMask);
-				context.Serialize(this.playbackOption);
-			}
-			finally
-			{
-				context.ExitScope();
-			}
-
-			return context.Position;
-		}
-
-		public long DeserializeFrom(IBdRawReadContext context)
-		{
-			uint tDataLen = context.DeserializeUInt32();
-
-			context.EnterScope();
-			try
-			{
-				this.reservedForFutureUse1 = context.DeserializeByte();
-
-				this.playbackType = (PlPlaybackType)context.DeserializeByte();
-				this.playbackCount = context.DeserializeUInt16();
-
-				this.uoMask = context.Deserialize<BdUOMask>();
-
-				this.playbackOption = context.Deserialize<BdBitwise16>();
-			}
-			finally
-			{
-				context.ExitScope();
-			}
-
-			return context.Position;
-		}
-
-		public long RawLength
+		[BdUIntField(BdIntSize.U16)]
+		public ushort PlaybackCount
 		{
 			get
 			{
-				return
-					sizeof(uint) +
-					sizeof(byte) * 2 +
-					sizeof(ushort) * 2 +
-					UoMask.RawLength;
+				return (ushort) (
+					(this.PlaybackType == PlPlaybackType.Sequential) ?
+					  0 :
+					  this.playbackCount);
 			}
+			set { this.playbackCount = value; }
+		}
+
+		#endregion
+
+		#region UoMask
+
+		private BdUOMask uoMask = new BdUOMask();
+
+		[BdSubPartField]
+		public BdUOMask UoMask
+		{
+			get { return this.uoMask; }
+			set
+			{
+				if (value.IsNull())
+				{
+					throw new ArgumentNullException("value");
+				}
+				this.uoMask.Value = value.Value;
+			}
+		}
+
+		#endregion
+
+		#region PlaybackOptioin
+
+		private BdBitwise16 playbackOptioin = new BdBitwise16();
+
+		[BdSubPartField]
+		private BdBitwise16 PlaybackOptioin
+		{
+			get { return this.playbackOptioin; }
+			set
+			{
+				if (value.IsNull())
+				{
+					throw new ArgumentNullException("value");
+				}
+				this.playbackOptioin.Value = value.Value;
+			}
+		}
+		public bool RandomAccessFlag
+		{
+			get { return this.PlaybackOptioin[15, 1] == 1; }
+			set { this.PlaybackOptioin[15, 1] = (ushort)(value ? 1 : 0); }
+		}
+		public bool AudioMixAppFlag
+		{
+			get { return this.PlaybackOptioin[14, 1] == 1; }
+			set { this.PlaybackOptioin[14, 1] = (ushort)(value ? 1 : 0); }
+		}
+		public bool LosslessMayBypassMixer
+		{
+			get { return this.PlaybackOptioin[13, 1] == 1; }
+			set { this.PlaybackOptioin[13, 1] = (ushort)(value ? 1 : 0); }
+		}
+
+		#endregion
+
+		public override string ToString()
+		{
+			return "Play List AppInfo";
 		}
 	}
 }

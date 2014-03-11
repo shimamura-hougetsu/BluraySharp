@@ -1,8 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BluraySharp.Architecture;
+using System.IO;
 
 namespace BluraySharp.FileSystem
 {
@@ -14,17 +13,17 @@ namespace BluraySharp.FileSystem
 			set;
 		}
 
-		public virtual System.IO.FileSystemInfo DetailedInfo
+		public virtual FileSystemInfo DetailedInfo
 		{
 			get
 			{
-				return new System.IO.FileInfo(this.GetFullPath());
+				return new FileInfo(this.GetFullPath());
 			}
 		}
 
 		public IBdfsAttribute Attribute
 		{
-			get { throw new NotImplementedException(); }
+			get { return null; }
 		}
 
 		public IBdfsItem Parent
@@ -33,7 +32,7 @@ namespace BluraySharp.FileSystem
 			set;
 		}
 
-		public virtual IBdList<IBdfsItem> Children
+		public virtual IEnumerable<IBdfsItem> Children
 		{
 			get { return null; }
 		}
@@ -70,7 +69,7 @@ namespace BluraySharp.FileSystem
 			yield return this;
 		}
 
-		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+		IEnumerator System.Collections.IEnumerable.GetEnumerator()
 		{
 			return this.GetEnumerator();
 		}

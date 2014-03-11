@@ -1,9 +1,8 @@
-﻿
-using BluraySharp.Architecture;
+﻿using BluraySharp.Common;
 
 namespace BluraySharp.TopEntry
 {
-	[BdTopEntry("id", true)]
+	[BdmvTopEntry("id", true)]
 	public interface IBdIdentifier
 	{
 	}

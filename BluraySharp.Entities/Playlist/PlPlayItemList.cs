@@ -1,81 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
-using BluraySharp.Architecture;
-
+﻿using BluraySharp.Common;
+using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
+using System;
 namespace BluraySharp.PlayList
 {
-	public class PlPlayItemList : BluraySharp.PlayList.IPlPlayItemList
+	[BdPartScope(BdIntSize.U32)]
+	public class PlPlayItemList : BdPart, IPlPlayItemList
 	{
-		public IBdList<IPlPlayItem> PlayItems { get; internal set; }
+		#region ReservedForFutureUse
 
-		public IBdList<IPlSubPath> SubPaths { get; internal set; }
+		[BdUIntField(BdIntSize.U16)]
+		private ushort ReservedForFutureUse { get; set; }
 
-		internal ushort ReservedForFutureUse { get; set; }
+		#endregion
 
-		public long SerializeTo(IBdRawWriteContext context)
+		#region PlayItemCount
+		[BdUIntField(BdIntSize.U16)]
+		private ushort PlayItemCount
 		{
-			throw new NotImplementedException();
+			get { return (ushort)this.playItems.Count; }
+			set { this.playItems.SetCount(value); }
 		}
 
-		public long DeserializeFrom(IBdRawReadContext context)
+		#endregion
+
+		#region SubPathCount
+		[BdUIntField(BdIntSize.U16)]
+		private ushort SubPathCount
 		{
-			uint tDataLen;
-
-			tDataLen = context.DeserializeUInt32();
-			context.EnterScope(tDataLen);
-
-			try
-			{
-				this.ReservedForFutureUse = context.DeserializeUInt16();
-
-				uint tPlayItemCount = context.DeserializeUInt16();
-				uint tSubPathCount = context.DeserializeUInt16();
-
-				PlayItems.Clear();
-				for (uint i = 0; i < tPlayItemCount; ++i)
-				{
-					PlayItems.Insert(context.Deserialize<PlPlayItem>());
-				}
-
-				SubPaths.Clear();
-				for (uint i = 0; i < tSubPathCount; ++i)
-				{
-					SubPaths.Insert(context.Deserialize<PlSubPath>());
-				}
-			}
-			finally
-			{
-				context.ExitScope();
-			}
-
-			return context.Position;
+			get { return (ushort) this.subPaths.Count; }
+			set { this.subPaths.SetCount(value); }
 		}
 
-		public long RawLength
+		#endregion
+
+		#region PlayItems
+		private readonly BdList<PlPlayItem, IPlPlayItem> playItems =
+			new BdList<PlPlayItem, IPlPlayItem>(0, 999);
+
+		[BdSubPartField]
+		public IBdList<IPlPlayItem> PlayItems
 		{
-			get
-			{
-				long tDataLen = sizeof(uint);
-				tDataLen += sizeof(ushort);
-
-				foreach (IBdPart tObj in this.PlayItems)
-				{
-					tDataLen += tObj.RawLength;
-				}
-
-				foreach (IBdPart tObj in this.SubPaths)
-				{
-					tDataLen += tObj.RawLength;
-				}
-
-				return tDataLen;
-			}
+			get { return this.playItems; }
 		}
 
-		public PlPlayItemList()
+		#endregion
+
+		#region SubPaths
+
+		private readonly BdList<PlSubPath, IPlSubPath> subPaths =
+			new BdList<PlSubPath, IPlSubPath>(0, 255);
+
+		[BdSubPartField]
+		public IBdList<IPlSubPath> SubPaths
 		{
-			PlayItems = new BdPartList<PlPlayItem, IPlPlayItem>(999);
-			SubPaths = new BdPartList<PlSubPath, IPlSubPath>(255);
+			get { return this.subPaths; }
+		}
+
+		#endregion
+		
+		public override string ToString()
+		{
+			return "PlayItems and SubPaths";
 		}
 	}
 }
