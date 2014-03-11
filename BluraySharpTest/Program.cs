@@ -28,7 +28,7 @@ namespace BluraySharpTest
 			//string tFilePath = @"C:\Users\Subelf.J\Documents\stillinf-norand.mpls";
 			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
 			{
-				BdStreamReadContext tReader = new BdStreamReadContext(tFileStream);
+				BdByteStreamReadContext tReader = new BdByteStreamReadContext(tFileStream);
 				IPlayList tMpls = new PlayList();
 				tReader.Deserialize(tMpls);
 
@@ -38,7 +38,7 @@ namespace BluraySharpTest
 					IPlClipRef tClip = tClipList.CreateNew();
 					tClip.ClipFileRef.ClipId = 11;
 					tClipList.Add(tClip);
-					BdStreamWriteContext tWriter = new BdStreamWriteContext(tBakStream);
+					BdByteStreamWriteContext tWriter = new BdByteStreamWriteContext(tBakStream);
 					tWriter.Serialize(tMpls);
 				}
 				tMpls.ToString();

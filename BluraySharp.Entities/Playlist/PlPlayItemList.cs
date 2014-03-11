@@ -14,10 +14,10 @@ namespace BluraySharp.PlayList
 		private ushort playItemCount = 0;
 		private ushort subPathCount = 0;
 
-		private readonly BdPartList<PlPlayItem, IPlPlayItem> playItems = 
-			new BdPartList<PlPlayItem, IPlPlayItem>(0, 999);
-		private readonly BdPartList<PlSubPath, IPlSubPath> subPaths =
-			new BdPartList<PlSubPath, IPlSubPath>(0, 255);
+		private readonly BdList<PlPlayItem, IPlPlayItem> playItems = 
+			new BdList<PlPlayItem, IPlPlayItem>(0, 999);
+		private readonly BdList<PlSubPath, IPlSubPath> subPaths =
+			new BdList<PlSubPath, IPlSubPath>(0, 255);
 
 		#endregion Private Data Fields
 

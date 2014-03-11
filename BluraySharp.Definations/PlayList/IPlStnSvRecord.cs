@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BluraySharp.Common;
+﻿using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnSvRecord : IPlStnRecord
+	public interface IPlStnSvEntry : IPlStnEntry
 	{
-		BdViCodingType CodingType { get; set; }
-		BdViFormat VideoFormat { get; set; }
-		BdViFrameRate FrameRate { get; set; }
-
-		IList<byte> SecondaryAudioRef { get; }
-		IList<byte> PipSubtitleRef { get; }
+		IBdList<byte> SecondaryAudioIdRef { get; }
+		IBdList<byte> PipSubtitleIdRef { get; }
 	}
 }

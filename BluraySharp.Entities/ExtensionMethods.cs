@@ -18,7 +18,7 @@ namespace BluraySharp
 			return tObject;
 		}
 
-		public static void SetCount<T>(this IBdList<T> list, int count)
+		public static int SetCount<T>(this IBdList<T> list, int count)
 		{
 			if (list.Count != count)
 			{
@@ -28,6 +28,8 @@ namespace BluraySharp
 					list.Add(list.CreateNew());
 				}
 			}
+
+			return list.Count;
 		}
 	}
 }

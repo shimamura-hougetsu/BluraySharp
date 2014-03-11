@@ -13,8 +13,8 @@ namespace BluraySharp.PlayList
 		#region Private Data Fields
 
 		private uint lengthIndicator = 0;
-		private BdPartList<PlClipRef, IPlClipRef> angles =
-			new BdPartList<PlClipRef, IPlClipRef>(0, 9) { new PlClipRef() };
+		private BdList<PlClipRef, IPlClipRef> angles =
+			new BdList<PlClipRef, IPlClipRef>(0, 9) { new PlClipRef() };
 		private BdBitwise16 clipArrangingOptions = new BdBitwise16();
 
 		private BdTime inTime = new BdTime();
@@ -156,7 +156,7 @@ namespace BluraySharp.PlayList
 		{
 			get
 			{
-				BdPartList<PlClipRef, IPlClipRef> tRet = new BdPartList<PlClipRef, IPlClipRef>(0, 9);
+				BdList<PlClipRef, IPlClipRef> tRet = new BdList<PlClipRef, IPlClipRef>(0, 9);
 				for (int i = this.angles.LowerBound + 1; i < this.angles.UpperBound; ++i)
 				{
 					tRet.Add(this.angles[i]);
