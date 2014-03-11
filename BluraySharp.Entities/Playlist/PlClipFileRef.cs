@@ -9,22 +9,22 @@ namespace BluraySharp.PlayList
 {
 	public class PlClipFileRef : BdPart, IPlClipFileRef
 	{
-		private uint clipId = 0;
-
-		private const string clipCodecConst = "M2TS";
-		private string clipCodec = PlClipFileRef.clipCodecConst;
+		#region ClipIdString
 
 		[BdStringField(5, Common.BdCharacterCodingType.UTF8)]
 		private string ClipIdString
 		{
-			get { return this.clipId.ToString("00000"); }
-			set { this.clipId = uint.Parse(value); }
+			get { return this.ClipId.ToString("00000"); }
+			set { this.ClipId = uint.Parse(value); }
 		}
-		public uint ClipId
-		{
-			get { return this.clipId; }
-			set { this.clipId = value; }
-		}
+		public uint ClipId { get; set; }
+
+		#endregion
+
+		#region ClipCodec
+
+		private const string clipCodecConst = "M2TS";
+		private string clipCodec = PlClipFileRef.clipCodecConst;
 
 		[BdStringField(4, Common.BdCharacterCodingType.UTF8)]
 		public string ClipCodec
@@ -40,6 +40,8 @@ namespace BluraySharp.PlayList
 				this.clipCodec = value;
 			}
 		}
+
+		#endregion
 
 		public override string ToString()
 		{

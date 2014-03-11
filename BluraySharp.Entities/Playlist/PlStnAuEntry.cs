@@ -5,11 +5,13 @@ namespace BluraySharp.PlayList
 {
 	public class PlStnAuEntry : BdPart, IPlStnAuEntry
 	{
-		private PlStnEntry entryRoot =
-			new PlStnEntry(PlStnStreamEntryType.PlayItem, (byte)BdAuCodingType.AuLPCM);
+		#region Entry Root
+
+		private PlStnEntryRoot entryRoot =
+			new PlStnEntryRoot(PlStnStreamEntryType.PlayItem, (byte)BdAuCodingType.AuLPCM);
 
 		[BdSubPartField]
-		private PlStnEntry EntryRoot
+		private PlStnEntryRoot EntryRoot
 		{
 			get { return this.entryRoot; }
 		}
@@ -32,6 +34,7 @@ namespace BluraySharp.PlayList
 			get { return this.entryRoot.CodecInfo; }
 		}
 
+		#endregion
 
 		public override string ToString()
 		{

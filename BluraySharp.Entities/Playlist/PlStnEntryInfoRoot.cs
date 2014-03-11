@@ -12,15 +12,12 @@ namespace BluraySharp.PlayList
 	{
 		public PlStnEntryInfoRoot(PlStnStreamEntryType entryType)
 		{
-			this.EntryType = entryType;
+			this.UpdateEntryType(entryType);
 		}
 
-		#region
-		
-		private PlStnStreamEntryType entryType;
-		private IPlStnEntryInfo entryInfo;
+		#region EntryType
 
-		#endregion
+		private PlStnStreamEntryType entryType;
 
 		[BdUIntField(BdIntSize.U8)]
 		public PlStnStreamEntryType EntryType
@@ -38,11 +35,6 @@ namespace BluraySharp.PlayList
 			}
 		}
 
-		[BdSubPartField]
-		public IPlStnEntryInfo EntryInfo
-		{
-			get { return this.entryInfo; }
-		}
 
 		private void UpdateEntryType(PlStnStreamEntryType type)
 		{
@@ -60,10 +52,24 @@ namespace BluraySharp.PlayList
 				default:
 					throw new ArgumentException("value");
 			}
-			
+
 			this.entryType = type;
 		}
 
+
+		#endregion
+
+		#region EntryInfo
+
+		private IPlStnEntryInfo entryInfo;
+
+		[BdSubPartField]
+		public IPlStnEntryInfo EntryInfo
+		{
+			get { return this.entryInfo; }
+		}
+
+		#endregion
 
 		public override string ToString()
 		{

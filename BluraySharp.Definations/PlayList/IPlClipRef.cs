@@ -7,6 +7,6 @@ namespace BluraySharp.PlayList
 	public interface IPlClipRef : IBdPart
 	{
 		IPlClipFileRef ClipFileRef { get; }
-		byte StcId { get; set; }
+		byte StcIdRef { get; set; }
 	}
 }

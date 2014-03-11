@@ -34,6 +34,7 @@ namespace BluraySharpTest
 
 				using (FileStream tBakStream = new FileStream(tFilePath + ".bak", FileMode.Create))
 				{
+					tMpls.AppInfo.AudioMixAppFlag = true;
 					IBdList<IPlStnStEntry> tStList = tMpls.PlayItemList.PlayItems[0].StnTable.StStreams;
 					IPlStnStEntry tSubtitle = tStList.CreateNew();
 					tSubtitle.EntryType = PlStnStreamEntryType.SubPlayItem;

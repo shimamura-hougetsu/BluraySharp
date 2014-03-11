@@ -8,6 +8,8 @@ namespace BluraySharp.PlayList
 {
 	public class PlClipRef : BdPart, IPlClipRef
 	{
+		#region ClipFileRef
+
 		private PlClipFileRef clipFileId = new PlClipFileRef();
 
 		[BdSubPartField]
@@ -16,9 +18,15 @@ namespace BluraySharp.PlayList
 			get { return this.clipFileId; }
 		}
 
-		[BdUIntField(Common.BdIntSize.U8)]
-		public byte StcId { get; set; }
+		#endregion
 
+		#region StcIdRef
+
+		[BdUIntField(Common.BdIntSize.U8)]
+		public byte StcIdRef { get; set; }
+
+		#endregion
+		
 		public override string ToString()
 		{
 			return this.ClipFileRef.ToString();

@@ -10,41 +10,14 @@ namespace BluraySharp.PlayList
 	[BdPartScope(BdIntSize.U16)]
 	public class PlStnTable : BdPart, IPlStnTable
 	{
-		#region Private Data Field
+		#region ReservedForFutureUse1
 
-		private ushort reservedForFutureUse1 = 0;
-
-		private byte[] reservedForFutureUse2 = new byte[5];
-
-		private BdList<PlStnViEntry, IPlStnViEntry> viStreams =
-			new BdList<PlStnViEntry, IPlStnViEntry>(1) { new PlStnViEntry() };
-
-		private BdList<PlStnAuEntry, IPlStnAuEntry> auStreams = 
-			new BdList<PlStnAuEntry,IPlStnAuEntry>(32);
-
-		private BdList<PlStnStEntry, IPlStnStEntry> stStreams =
-			new BdList<PlStnStEntry,IPlStnStEntry>(255);
-
-		private BdList<PlStnIgEntry, IPlStnIgEntry> igStreams =
-			new BdList<PlStnIgEntry, IPlStnIgEntry>(32);
-		
-		private BdList<PlStnSaEntry, IPlStnSaEntry> saStreams =
-			new BdList<PlStnSaEntry, IPlStnSaEntry>(32);
-
-		private BdList<PlStnSvEntry, IPlStnSvEntry> svStreams =
-			new BdList<PlStnSvEntry, IPlStnSvEntry>(32);
-
-		private BdList<PlStnStEntry, IPlStnStEntry> pipStStreams = 
-			new BdList<PlStnStEntry, IPlStnStEntry>(32);
+		[BdUIntField(BdIntSize.U16)]
+		private ushort ReservedForFutureUse1 { get; set; }
 
 		#endregion
 
-		[BdUIntField(BdIntSize.U16)]
-		private ushort ReservedForFutureUse1
-		{
-			get { return this.reservedForFutureUse1; }
-			set { this.reservedForFutureUse1 = value; }
-		}
+		#region EntryCounts
 
 		[BdUIntField(BdIntSize.U8)]
 		private byte ViStreamsCount
@@ -95,11 +68,24 @@ namespace BluraySharp.PlayList
 			set { this.pipStStreams.SetCount(value); }
 		}
 
+		#endregion
+
+		#region ReservedForFutureUse2
+
+		private byte[] reservedForFutureUse2 = new byte[5];
 		[BdByteArrayField]
 		private byte[] ReservedForFutureUse2
 		{
 			get { return this.reservedForFutureUse2; }
 		}
+
+
+		#endregion
+
+		#region Entry Lists
+
+		private BdList<PlStnViEntry, IPlStnViEntry> viStreams =
+			new BdList<PlStnViEntry, IPlStnViEntry>(1) { new PlStnViEntry() };
 
 		[BdSubPartField]
 		public IBdList<IPlStnViEntry> ViStreams
@@ -107,11 +93,17 @@ namespace BluraySharp.PlayList
 			get { return this.viStreams; }
 		}
 
+		private BdList<PlStnAuEntry, IPlStnAuEntry> auStreams =
+			new BdList<PlStnAuEntry, IPlStnAuEntry>(32);
+
 		[BdSubPartField]
 		public IBdList<IPlStnAuEntry> AuStreams
 		{
 			get { return this.auStreams; }
 		}
+		
+		private BdList<PlStnStEntry, IPlStnStEntry> stStreams =
+			new BdList<PlStnStEntry, IPlStnStEntry>(255);
 
 		[BdSubPartField]
 		public IBdList<IPlStnStEntry> StStreams
@@ -119,11 +111,17 @@ namespace BluraySharp.PlayList
 			get { return this.stStreams; }
 		}
 
+		private BdList<PlStnStEntry, IPlStnStEntry> pipStStreams =
+			new BdList<PlStnStEntry, IPlStnStEntry>(32);
+
 		[BdSubPartField]
 		public IBdList<IPlStnStEntry> PipStStreams
 		{
 			get { return this.pipStStreams; }
 		}
+
+		private BdList<PlStnIgEntry, IPlStnIgEntry> igStreams =
+			new BdList<PlStnIgEntry, IPlStnIgEntry>(32);
 
 		[BdSubPartField]
 		public IBdList<IPlStnIgEntry> IgStreams
@@ -131,17 +129,26 @@ namespace BluraySharp.PlayList
 			get { return this.igStreams; }
 		}
 
+		private BdList<PlStnSaEntry, IPlStnSaEntry> saStreams =
+			new BdList<PlStnSaEntry, IPlStnSaEntry>(32);
+
+
 		[BdSubPartField]
 		public IBdList<IPlStnSaEntry> SaStreams
 		{
 			get { return this.saStreams; }
 		}
 
+		private BdList<PlStnSvEntry, IPlStnSvEntry> svStreams =
+			new BdList<PlStnSvEntry, IPlStnSvEntry>(32);
+
 		[BdSubPartField]
 		public IBdList<IPlStnSvEntry> SvStreams
 		{
 			get { return this.svStreams; }
 		}
+
+		#endregion
 		
 		public override string ToString()
 		{

@@ -6,13 +6,12 @@ namespace BluraySharp.PlayList
 {
 	public class PlStnSaEntry : BdPart, IPlStnSaEntry
 	{
-		private PlStnEntry entryRoot =
-			new PlStnEntry(PlStnStreamEntryType.PlayItem, (byte)BdSaCodingType.SaDtsHD);
-		private BdList<byte, byte> primaryAudioIdRef =
-			new BdList<byte, byte>();
+		#region Entry Root
+		private PlStnEntryRoot entryRoot =
+			new PlStnEntryRoot(PlStnStreamEntryType.PlayItem, (byte)BdSaCodingType.SaDtsHD);
 
 		[BdSubPartField]
-		private PlStnEntry EntryRoot
+		private PlStnEntryRoot EntryRoot
 		{
 			get { return this.entryRoot; }
 		}
@@ -35,6 +34,10 @@ namespace BluraySharp.PlayList
 			get { return this.entryRoot.CodecInfo; }
 		}
 
+		#endregion
+
+		#region PrimaryAudioIdRef
+
 		[BdUIntField(BdIntSize.U8)]
 		private byte PrimaryAudioIdRefCount
 		{
@@ -42,11 +45,16 @@ namespace BluraySharp.PlayList
 			set { this.primaryAudioIdRef.SetCount(value);}
 		}
 
+		private BdList<byte, byte> primaryAudioIdRef =
+			new BdList<byte, byte>();
+
 		[BdUIntField(BdIntSize.U8)]
 		public IBdList<byte> PrimaryAudioIdRef
 		{
 			get { return this.primaryAudioIdRef; }
 		}
+
+		#endregion
 
 		public override string ToString()
 		{

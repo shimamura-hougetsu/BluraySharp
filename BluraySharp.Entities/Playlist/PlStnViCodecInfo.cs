@@ -11,42 +11,50 @@ namespace BluraySharp.PlayList
 {
 	public class PlStnViCodecInfo : BdPart, IPlStnViCodecInfo
 	{
-		private BdBitwise8 formatValue = new BdBitwise8();
-		private byte[] reservedForFutureUse = new byte[3];
+		#region FormatValue
+
+		private BdBitwise8 formatOptions = new BdBitwise8();
 
 		[BdSubPartField]
-		private BdBitwise8 FormatValue
+		private BdBitwise8 FormatOptions
 		{
-			get { return this.formatValue; }
+			get { return this.formatOptions; }
 		}
 		public BdViFormat VideoFormat
 		{
 			get
 			{
-				return (BdViFormat)this.FormatValue[0, 4];
+				return (BdViFormat)this.FormatOptions[0, 4];
 			}
 			set
 			{
-				this.FormatValue[0, 4] = (byte)value;
+				this.FormatOptions[0, 4] = (byte)value;
 			}
 		}		
 		public BdViFrameRate FrameRate
 		{
 			get
 			{
-				return (BdViFrameRate)this.FormatValue[4, 4];
+				return (BdViFrameRate)this.FormatOptions[4, 4];
 			}
 			set
 			{
-				this.FormatValue[4, 4] = (byte)value;
+				this.FormatOptions[4, 4] = (byte)value;
 			}
 		}
+		#endregion
+
+		#region ReservedForFutureUse
+
+		private byte[] reservedForFutureUse = new byte[3];
 
 		[BdByteArrayField]
 		private byte[] ReservedForFutureUse
 		{
 			get { return this.reservedForFutureUse; }
 		}
+
+		#endregion
 
 		public override string ToString()
 		{

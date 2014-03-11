@@ -6,8 +6,11 @@ namespace BluraySharp.PlayList
 	{
 		BdUOMask UoMask { get; }
 
-		bool RandomAccessProhibited { get; set; }
+		bool RandomAccessFlag { get; set; }
 		IPlStillOptions StillOptions { get; }
+
+		bool IsMultiAngleDifferentAudios { get; set; }
+		bool IsMultiAngleOptionsSeamlessChange { get; set; }
 
 		IPlStnTable StnTable { get; }
 	}

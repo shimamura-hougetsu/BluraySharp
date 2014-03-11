@@ -7,11 +7,14 @@ namespace BluraySharp.PlayList
 {
 	public class PlStnTxCodecInfo : BdPart, IPlStnTxCodecInfo
 	{
+		#region CharCode
 
 		[BdUIntField(BdIntSize.U8)]
 		public BdCharacterCodingType CharCode { get; set; }
 
+		#endregion
 
+		#region Language
 
 		private BdLangCode language = BdLang.LANG_ENG;
 
@@ -26,14 +29,18 @@ namespace BluraySharp.PlayList
 			set { this.language = value; }
 		}
 
-		private byte[] reservedForFutureUse = new byte[1];
+		#endregion
 
+		#region ReservedForFutureUse
+		private byte[] reservedForFutureUse = new byte[1];
 
 		[BdByteArrayField]
 		private byte[] ReservedForFutureUse
 		{
 			get { return this.reservedForFutureUse; }
 		}
+
+		#endregion
 
 		public override string ToString()
 		{

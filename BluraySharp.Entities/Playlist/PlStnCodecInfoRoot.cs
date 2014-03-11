@@ -11,11 +11,12 @@ namespace BluraySharp.PlayList
 	{
 		public PlStnCodecInfoRoot(byte codecType)
 		{
-			this.CodecType = codecType;
+			this.UpdateCodecInfoType(codecType);
 		}
 
+		#region CodecType
+
 		private byte codecType;
-		private IPlStnCodecInfo codecInfo;
 
 		[BdUIntField(BdIntSize.U8)]
 		public byte CodecType
@@ -28,17 +29,6 @@ namespace BluraySharp.PlayList
 					this.UpdateCodecInfoType(value);
 				}
 			}
-		}
-
-		[BdSubPartField]
-		public IPlStnCodecInfo CodecInfo
-		{
-			get { return this.codecInfo; }
-		}
-
-		public override string ToString()
-		{
-			return "Internal StnCodecInfo Serializing Helper";
 		}
 
 		private delegate IPlStnCodecInfo CodecInfoCreator();
@@ -83,7 +73,7 @@ namespace BluraySharp.PlayList
 				throw new ArgumentException("value");
 			}
 
-			CodecInfoCreator tCodecInfoCreator = 
+			CodecInfoCreator tCodecInfoCreator =
 				PlStnCodecInfoRoot.bdStreamCodingTypeCatagory[tValuePrefix];
 
 			if (tCodecInfoCreator.IsNull())
@@ -102,5 +92,25 @@ namespace BluraySharp.PlayList
 
 			return Enum.IsDefined(enumType, tEnumValue);
 		}
+
+		#endregion
+
+		#region CodecInfo
+
+		private IPlStnCodecInfo codecInfo;
+
+		[BdSubPartField]
+		public IPlStnCodecInfo CodecInfo
+		{
+			get { return this.codecInfo; }
+		}
+
+		#endregion
+
+		public override string ToString()
+		{
+			return "Internal StnCodecInfo Serializing Helper";
+		}
+
 	}
 }

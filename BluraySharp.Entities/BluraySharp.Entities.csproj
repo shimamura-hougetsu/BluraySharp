@@ -68,7 +68,7 @@
     <Compile Include="PlayList\PlStnIgEntry.cs" />
     <Compile Include="PlayList\PlStnInMuxPipEntryInfo.cs" />
     <Compile Include="PlayList\PlStnPlayItemEntryInfo.cs" />
-    <Compile Include="PlayList\PlStnEntry.cs" />
+    <Compile Include="PlayList\PlStnEntryRoot.cs" />
     <Compile Include="PlayList\PlStnSaEntry.cs" />
     <Compile Include="PlayList\PlStnSubPlayItemEntryInfo.cs" />
     <Compile Include="PlayList\PlStnSvEntry.cs" />

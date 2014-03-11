@@ -7,12 +7,9 @@ namespace BluraySharp.PlayList
 {
 	public class PlStillOptions : BdPart, IPlStillOptions
 	{
-		#region Private Data Fields
+		#region StillMode
 
 		private PlStillMode stillMode = PlStillMode.NotStill;
-		private ushort stillDuration = 0;
-
-		#endregion
 
 		[BdUIntField(BdIntSize.U8)]
 		public PlStillMode StillMode
@@ -20,12 +17,28 @@ namespace BluraySharp.PlayList
 			get { return this.stillMode; }
 			set { this.stillMode = value; }
 		}
+
+		#endregion
+
+		#region StillDuration
+
+		private ushort stillDuration = 0;
+
 		[BdUIntField(BdIntSize.U16)]
 		public ushort StillDuration
 		{
-			get { return this.stillDuration; }
+			get
+			{
+				return (ushort)(
+					  this.StillMode == PlStillMode.StillForDuration ?
+					  this.stillDuration :
+					  0
+				  );
+			}
 			set { this.stillDuration = value; }
 		}
+
+		#endregion
 
 		public override string ToString()
 		{

@@ -4,36 +4,17 @@ using BluraySharp.Common.BdStandardPart;
 using System;
 namespace BluraySharp.PlayList
 {
-	[BdPartScope(BdIntSize.U32, IndicatorField = "LengthIndicator")]
+	[BdPartScope(BdIntSize.U32)]
 	public class PlPlayItemList : BdPart, IPlPlayItemList
 	{
-		#region Private Data Fields
-
-		private uint lengthIndicator = 0;
-		private ushort reservedForFutureUse = 0;
-		private ushort playItemCount = 0;
-		private ushort subPathCount = 0;
-
-		private readonly BdList<PlPlayItem, IPlPlayItem> playItems = 
-			new BdList<PlPlayItem, IPlPlayItem>(0, 999);
-		private readonly BdList<PlSubPath, IPlSubPath> subPaths =
-			new BdList<PlSubPath, IPlSubPath>(0, 255);
-
-		#endregion Private Data Fields
-
-		private uint LengthIndicator
-		{
-			get { return this.lengthIndicator; }
-			set { this.lengthIndicator = value; }
-		}
+		#region ReservedForFutureUse
 
 		[BdUIntField(BdIntSize.U16)]
-		private ushort ReservedForFutureUse
-		{
-			get { return this.reservedForFutureUse; }
-			set { this.reservedForFutureUse = value; }
-		}
-		
+		private ushort ReservedForFutureUse { get; set; }
+
+		#endregion
+
+		#region PlayItemCount
 		[BdUIntField(BdIntSize.U16)]
 		private ushort PlayItemCount
 		{
@@ -41,6 +22,9 @@ namespace BluraySharp.PlayList
 			set { this.playItems.SetCount(value); }
 		}
 
+		#endregion
+
+		#region SubPathCount
 		[BdUIntField(BdIntSize.U16)]
 		private ushort SubPathCount
 		{
@@ -48,11 +32,24 @@ namespace BluraySharp.PlayList
 			set { this.subPaths.SetCount(value); }
 		}
 
+		#endregion
+
+		#region PlayItems
+		private readonly BdList<PlPlayItem, IPlPlayItem> playItems =
+			new BdList<PlPlayItem, IPlPlayItem>(0, 999);
+
 		[BdSubPartField]
 		public IBdList<IPlPlayItem> PlayItems
 		{
 			get { return this.playItems; }
 		}
+
+		#endregion
+
+		#region SubPaths
+
+		private readonly BdList<PlSubPath, IPlSubPath> subPaths =
+			new BdList<PlSubPath, IPlSubPath>(0, 255);
 
 		[BdSubPartField]
 		public IBdList<IPlSubPath> SubPaths
@@ -60,6 +57,8 @@ namespace BluraySharp.PlayList
 			get { return this.subPaths; }
 		}
 
+		#endregion
+		
 		public override string ToString()
 		{
 			return "PlayItems and SubPaths";

@@ -7,35 +7,14 @@ using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
-	[BdPartScope(BdIntSize.U16, IndicatorField = "LengthIndicator")]
+	[BdPartScope(BdIntSize.U16)]
 	public class PlPlayItem : BdPart, IPlPlayItem
 	{
-		#region Private Data Fields
+		#region MainAngle ClipFileRef
 
-		private uint lengthIndicator = 0;
 		private BdList<PlClipRef, IPlClipRef> angles =
 			new BdList<PlClipRef, IPlClipRef>(0, 9) { new PlClipRef() };
-		private BdBitwise16 clipArrangingOptions = new BdBitwise16();
 
-		private BdTime inTime = new BdTime();
-		private BdTime outTime = new BdTime();
-		private BdUOMask uoMask = new BdUOMask();
-
-		private BdBitwise8 seekingFlagValue = new BdBitwise8();
-		private PlStillOptions stillOptions = new PlStillOptions();
-
-		private byte angleCount = 1;
-		private BdBitwise8 multiAngleOptions = new BdBitwise8();
-
-		private PlStnTable stnTable = new PlStnTable();
-
-		#endregion
-
-		private uint LengthIndicator
-		{
-			get { return this.lengthIndicator; }
-			set { this.lengthIndicator = value; }
-		}
 
 		private IPlClipRef MainAngle
 		{
@@ -60,6 +39,12 @@ namespace BluraySharp.PlayList
 			}
 		}
 
+		#endregion
+
+		#region ClipArrangingOptions
+
+		private BdBitwise16 clipArrangingOptions = new BdBitwise16();
+
 		[BdSubPartField]
 		private BdBitwise16 ClipArrangingOptions
 		{
@@ -83,13 +68,21 @@ namespace BluraySharp.PlayList
 			get { return this.clipArrangingOptions[4, 1] == 0; }
 			set { this.clipArrangingOptions[4, 1] = (ushort)(value ? 0 : 1); }
 		}
-		
+
+		#endregion
+
+		#region MainAngle StcIdRef
 		[BdUIntField(BdIntSize.U8)]
-		public byte StcId
+		private byte StcIdRef
 		{
-			get { return this.MainAngle.StcId; }
-			set { this.MainAngle.StcId = value; }
+			get { return this.MainAngle.StcIdRef; }
+			set { this.MainAngle.StcIdRef = value; }
 		}
+		#endregion
+
+		#region	InTime
+
+		private BdTime inTime = new BdTime();
 
 		[BdSubPartField]
 		public BdTime InTime
@@ -98,12 +91,24 @@ namespace BluraySharp.PlayList
 			set { this.inTime.Value = value.Value; }
 		}
 
+		#endregion
+
+		#region OutTime
+
+		private BdTime outTime = new BdTime();
+
 		[BdSubPartField]
 		public BdTime OutTime
 		{
 			get { return this.outTime; }
 			set { this.outTime.Value = value.Value; }
 		}
+
+		#endregion
+
+		#region UoMask
+
+		private BdUOMask uoMask = new BdUOMask();
 
 		[BdSubPartField]
 		public BdUOMask UoMask
@@ -112,16 +117,28 @@ namespace BluraySharp.PlayList
 			set { this.uoMask.Value = value.Value; }
 		}
 
+		#endregion
+
+		#region SeekingFlagValue
+
+		private BdBitwise8 playbackOptioin = new BdBitwise8();
+
 		[BdSubPartField]
-		private BdBitwise8 SeekingFlagValue
+		private BdBitwise8 PlaybackOptioin
 		{
-			get { return this.seekingFlagValue; }
+			get { return this.playbackOptioin; }
 		}
-		public bool RandomAccessProhibited
+		public bool RandomAccessFlag
 		{
-			get { return this.seekingFlagValue[7, 1] == 1u; }
-			set { this.seekingFlagValue[7, 1] = (byte)(value ? 1 : 0); }
+			get { return this.playbackOptioin[7, 1] == 1u; }
+			set { this.playbackOptioin[7, 1] = (byte)(value ? 1 : 0); }
 		}
+
+		#endregion
+
+		#region StillOptions
+
+		private PlStillOptions stillOptions = new PlStillOptions();
 
 		[BdSubPartField]
 		public IPlStillOptions StillOptions
@@ -129,25 +146,42 @@ namespace BluraySharp.PlayList
 			get { return this.stillOptions; }
 		}
 
+		#endregion
+
+		#region AngleCount
+
 		[BdUIntField(BdIntSize.U8, SkipIndicator = "MultiAngleSkip")]
 		private byte AngleCount
 		{
-			get
-			{
-				this.angleCount = (byte)angles.Count;
-				return this.angleCount;
-			}
-			set
-			{
-				this.angles.SetCount(value);
-			}
+			get { return (byte)angles.Count; }
+			set { this.angles.SetCount(value); }
 		}
+
+		#endregion
+
+		#region MultiAngleOptions
+
+		private BdBitwise8 multiAngleOptions = new BdBitwise8();
 
 		[BdSubPartField(SkipIndicator = "MultiAngleSkip")]
 		private BdBitwise8 MultiAngleOptions
 		{
-			get { return this.multiAngleOptions; }
+			get { return this.MultiAngleSkip ? null : this.multiAngleOptions; }
 		}
+		public bool IsMultiAngleDifferentAudios
+		{
+			get { return this.multiAngleOptions[1, 1] == 1; }
+			set { this.multiAngleOptions[1, 1] = (byte)(value ? 1 : 0); }
+		}
+		public bool IsMultiAngleOptionsSeamlessChange
+		{
+			get { return this.multiAngleOptions[0, 1] == 1; }
+			set { this.multiAngleOptions[0, 1] = (byte)(value ? 1 : 0); }
+		}
+
+		#endregion
+
+		#region MultiAngles
 
 		[BdSubPartField(SkipIndicator = "MultiAngleSkip")]
 		private IBdList<IPlClipRef> MultiAngles
@@ -161,19 +195,24 @@ namespace BluraySharp.PlayList
 				}
 				return tRet;
 			}
-
 		}
-
 		public IBdList<IPlClipRef> ClipList
 		{
 			get { return this.angles; }
 		}
 
+		#endregion
+
+		#region StnTable
+
+		private PlStnTable stnTable = new PlStnTable();
 		[BdSubPartField]
 		public IPlStnTable StnTable
 		{
 			get { return this.stnTable; }
 		}
+
+		#endregion
 
 		public override string ToString()
 		{

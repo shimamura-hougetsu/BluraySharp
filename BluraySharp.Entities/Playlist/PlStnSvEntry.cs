@@ -6,15 +6,13 @@ namespace BluraySharp.PlayList
 {
 	public class PlStnSvEntry : BdPart, IPlStnSvEntry
 	{
-		private PlStnEntry entryRoot =
-			new PlStnEntry(PlStnStreamEntryType.PlayItem, (byte)BdViCodingType.ViAvc);
-		private BdList<byte, byte> secondaryAudioIdRef
-			= new BdList<byte,byte>();
-		private BdList<byte, byte> pipSubtitleIdRef =
-			new BdList<byte, byte>();
+		#region Entry Root
+
+		private PlStnEntryRoot entryRoot =
+			new PlStnEntryRoot(PlStnStreamEntryType.PlayItem, (byte)BdViCodingType.ViAvc);
 
 		[BdSubPartField]
-		private PlStnEntry EntryRoot
+		private PlStnEntryRoot EntryRoot
 		{
 			get { return this.entryRoot; }
 		}
@@ -37,6 +35,13 @@ namespace BluraySharp.PlayList
 			get { return this.entryRoot.CodecInfo; }
 		}
 
+		
+		#endregion
+
+		#region SecondaryAudioIdRef
+
+		private BdList<byte, byte> secondaryAudioIdRef
+			= new BdList<byte,byte>();
 
 		[BdUIntField(BdIntSize.U8)]
 		private byte SecondaryAudioIdRefCount
@@ -51,6 +56,12 @@ namespace BluraySharp.PlayList
 			get { return this.secondaryAudioIdRef; }
 		}
 
+		#endregion
+
+		#region PipSubtitleIdRef
+
+		private BdList<byte, byte> pipSubtitleIdRef =
+			new BdList<byte, byte>();
 
 		[BdUIntField(BdIntSize.U8)]
 		private byte PipSubtitleIdRefCount
@@ -64,6 +75,8 @@ namespace BluraySharp.PlayList
 		{
 			get { return this.pipSubtitleIdRef; }
 		}
+
+		#endregion
 
 		public override string ToString()
 		{
