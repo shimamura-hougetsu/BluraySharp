@@ -44,6 +44,7 @@
     <Compile Include="Common\BdPartFramework\BdFieldVirtualVisitor.cs" />
     <Compile Include="Common\BdPartFramework\BdPartScopeAttribute.cs" />
     <Compile Include="Common\BdPartFramework\IBdFieldInfo.cs" />
+    <Compile Include="Common\BdPlayMarkType.cs" />
     <Compile Include="Common\BdStandardPart\BdList.cs" />
     <Compile Include="Common\BdStandardPart\BdLangCode.cs" />
     <Compile Include="Common\BdPartFramework\BdByteArrayFieldAttribute.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="PlayList\IPlClipRef.cs" />
     <Compile Include="PlayList\IPlPlayItem.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
+    <Compile Include="PlayList\IPlPlayMark.cs" />
     <Compile Include="PlayList\IPlStillOptions.cs" />
     <Compile Include="PlayList\IPlStnAuCodecInfo.cs" />
     <Compile Include="PlayList\IPlStnEntryInfo.cs" />

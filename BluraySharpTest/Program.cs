@@ -30,10 +30,11 @@ namespace BluraySharpTest
 			{
 				BdByteStreamReadContext tReader = new BdByteStreamReadContext(tFileStream);
 				IPlayList tMpls = new BdMoviePlayList();
-				tReader.Deserialize(tMpls);
+				//tReader.Deserialize(tMpls);
 
 				using (FileStream tBakStream = new FileStream(tOutFilePath, FileMode.Create))
 				{
+					/*
 					IBdList<IPlSubPlayItem> tList = tMpls.PlayItemList.SubPaths[0].PlayItems;
 					IPlSubPlayItem tItem = tList.CreateNew();
 					tItem.ClipList[0].ClipFileRef.ClipId = 33;
@@ -43,7 +44,13 @@ namespace BluraySharpTest
 					tItem.SyncPlayItemId = 0;
 					tItem.SyncPlayTime = new BdTime();
 					tList.Add(tItem);
+					*/
 
+					{
+						IBdList<IPlPlayItem> tList = tMpls.PlayItemList.PlayItems;
+						IPlPlayItem tItem = tList.CreateNew();
+						tList.Add(tItem);
+					}
 					BdByteStreamWriteContext tWriter = new BdByteStreamWriteContext(tBakStream);
 					tWriter.Serialize(tMpls);
 				}

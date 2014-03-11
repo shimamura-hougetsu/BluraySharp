@@ -1,5 +1,6 @@
 ﻿using BluraySharp.Common;
 using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 using System;
 
 namespace BluraySharp.PlayList
@@ -7,22 +8,26 @@ namespace BluraySharp.PlayList
 	/// <summary>
 	/// Not Implemented Yet
 	/// </summary>
-	[BdPartScope(BdIntSize.U32, IndicatorField = "LengthIndicator")]
+	[BdPartScope(BdIntSize.U32)]
 	public class PlPlayMarkList : BdPart, IPlPlayMarkList
 	{
-		public uint LengthIndicator
+		[BdUIntField(BdIntSize.U16)]
+		private ushort MarkCount
 		{
-			get { return (uint)this.value.Length; }
-			set { Array.Resize(ref this.value, (int) value); }
+			get { return (ushort)this.MarkList.Count; }
+			set { this.MarkList.SetCount(value); }
 		}
 
-		private byte[] value = new byte[0];
+		private IBdList<IPlPlayMark> markList =
+			new BdList<PlPlayMark, IPlPlayMark>(0, 999) 
+			{ 
+				new PlPlayMark() { MarkType = BdPlayMarkType.PmEntryMark }
+			};
 
-		[BdByteArrayField]
-		public byte[] Value
+		[BdSubPartField]
+		IBdList<IPlPlayMark> MarkList
 		{
-			get { return this.value; }
-			set { this.value = value; }
+			get { return this.markList; }
 		}
 
 		public override string ToString()
