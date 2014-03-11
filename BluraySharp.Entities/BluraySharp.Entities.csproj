@@ -75,7 +75,7 @@
     <Compile Include="PlayList\PlStnTable.cs" />
     <Compile Include="PlayList\PlStnViEntry.cs" />
     <Compile Include="PlayList\PlSubPath.cs" />
-    <None Include="PlayList\PlSubPlayItem.cs" />
+    <Compile Include="PlayList\PlSubPlayItem.cs" />
     <Compile Include="PlayList\PlStnViCodecInfo.cs" />
     <Compile Include="PlayList\PlStnAuCodecInfo.cs" />
     <Compile Include="PlayList\PlStnStEntry.cs" />

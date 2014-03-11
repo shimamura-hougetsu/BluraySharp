@@ -24,15 +24,15 @@ namespace BluraySharpTest
 		[STAThread]
 		static void Main()
 		{
-			string tFilePath = @"C:\StoreBase\_Temp\[BDMV][120926] 超訳百人一首 うた恋い。1\[ANZX6141] UTAKOI_1\BDMV\PLAYLIST\00100.mpls";
-			//string tFilePath = @"C:\Users\Subelf.J\Documents\stillinf-norand.mpls";
-			using (FileStream tFileStream = new FileStream(tFilePath, FileMode.Open))
+			string tInFilePath = @"C:\StoreBase\_Temp\[BDMV][Bakuman. S1-S3].ZHO\!CMD.DIR\SUB\[BDMV][アニメ][120620] バクマン。2ndシリーズ BD-BOX1\BAKUMAN_10\BDMV\PLAYLIST\00000.mpls";
+			string tOutFilePath = @"C:\StoreBase\_Temp\[BDMV][Bakuman. S1-S3].ZHO\!CMD.DIR\SUB\[BDMV][アニメ][120620] バクマン。2ndシリーズ BD-BOX1\BAKUMAN_10\BDMV\PLAYLIST\00999.mpls";
+			using (FileStream tFileStream = new FileStream(tInFilePath, FileMode.Open))
 			{
 				BdByteStreamReadContext tReader = new BdByteStreamReadContext(tFileStream);
 				IPlayList tMpls = new BdMoviePlayList();
 				tReader.Deserialize(tMpls);
 
-				using (FileStream tBakStream = new FileStream(tFilePath + ".bak", FileMode.Create))
+				using (FileStream tBakStream = new FileStream(tOutFilePath, FileMode.Create))
 				{
 					tMpls.AppInfo.AudioMixAppFlag = true;
 					IBdList<IPlStnStEntry> tStList = tMpls.PlayItemList.PlayItems[0].StnTable.StStreams;

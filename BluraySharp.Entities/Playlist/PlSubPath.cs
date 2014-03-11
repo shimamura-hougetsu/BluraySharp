@@ -1,61 +1,71 @@
-﻿using BluraySharp.Common.BdPartFramework;
+﻿using BluraySharp.Common;
+using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
+	[BdPartScope(BdIntSize.U32)]
 	public class PlSubPath : BdPart, IPlSubPath
 	{
-		public Common.IBdList<IPlPlayItemInfo> PlayItems
+		#region ReservedForFutureUse1
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte ReservedForFutureUse1 { get; set; }
+
+		#endregion
+
+		#region SubPath Type
+
+		[BdUIntField(BdIntSize.U8)]
+		public PlSubPathType Type { get; set; }
+
+		#endregion
+
+		#region RepeatOptions
+
+		[BdSubPartField]
+		private BdBitwise16 repeatOptions { get; set; }
+		public bool IsRepeat
 		{
-			get { throw new System.NotImplementedException(); }
+			get { return this.repeatOptions[0, 1] == 1; }
+			set { this.repeatOptions[0, 1] = (ushort)(value ? 1 : 0); }
 		}
 
-		public PlSubPathType Type
+		#endregion
+
+		#region ReservedForFutureUse2
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte ReservedForFutureUse2 { get; set; }
+		#endregion
+
+		#region SubPlayItemCount
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte SubPlayItemCount
 		{
-			get
-			{
-				throw new System.NotImplementedException();
-			}
-			set
-			{
-				throw new System.NotImplementedException();
-			}
+			get { return (byte)this.PlayItems.Count; }
+			set { this.PlayItems.SetCount(value); }
 		}
+
+		#endregion
+
+		#region PlayItems
+
+		private BdList<PlSubPlayItem, IPlSubPlayItem> playItems = 
+			new BdList<PlSubPlayItem,IPlSubPlayItem>(0, 255);
+
+		[BdSubPartField]
+		public IBdList<IPlSubPlayItem> PlayItems
+		{
+			get { return this.playItems; }
+		}
+
+		#endregion
 
 		public override string ToString()
 		{
-			throw new System.NotImplementedException();
+			return "SubPath";
 		}
 	}
 }
-	
-	/*
-			uint tDataLen;
-
-			//-tDataLen = context.DeserializeUInt32();
-			//-context.EnterScope(tDataLen);
-
-			try
-			{
-				//-Reserved1 = context.DeserializeByte();
-				//-Type = (PlSubPathType) context.DeserializeByte();
-
-				repeatOption = context.Deserialize<BdBitwise16>();
-				//-Reserved2 = context.DeserializeByte();
-
-				//-byte tSubPlayItemCount = context.DeserializeByte();
-				PlayItems.Clear();
-
-				//-for (byte i = 0; i < tSubPlayItemCount; ++i)
-				{
-					PlayItems.Insert(context.Deserialize<PlSubPlayItem>());
-				}
-			}
-			finally
-			{
-				context.ExitScope();
-			}
-
-			return context.Position;
-		}
-	}
-}*/

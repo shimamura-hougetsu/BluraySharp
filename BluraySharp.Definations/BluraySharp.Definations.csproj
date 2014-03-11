@@ -134,6 +134,7 @@
     <Compile Include="PlayList\IPlStnViCodecInfo.cs" />
     <Compile Include="PlayList\IPlStnTable.cs" />
     <Compile Include="PlayList\IPlSubPath.cs" />
+    <Compile Include="PlayList\IPlSubPlayItem.cs" />
     <Compile Include="PlayList\PlPlaybackType.cs" />
     <Compile Include="PlayList\PlStillMode.cs" />
     <Compile Include="PlayList\PlSubPathType.cs" />
