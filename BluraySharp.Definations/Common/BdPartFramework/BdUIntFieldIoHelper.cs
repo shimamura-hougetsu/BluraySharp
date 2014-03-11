@@ -49,12 +49,12 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private void Validate(IBdFieldVisitor obj)
 		{
-			if (object.ReferenceEquals(obj, null))
+			if (obj.IsNull())
 			{
 				throw new ArgumentNullException("obj");
 			}
 			
-			if (object.ReferenceEquals(this.GetAttribute(obj), null))
+			if (this.GetAttribute(obj).IsNull())
 			{
 				//TODO: BdStringField required
 				throw new ArgumentException("obj");

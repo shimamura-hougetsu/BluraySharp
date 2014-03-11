@@ -18,12 +18,12 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private void Validate(IBdFieldVisitor obj)
 		{
-			if(object.ReferenceEquals(obj, null))
+			if(obj.IsNull())
 			{
 				throw new ArgumentNullException("obj");
 			}
 
-			if (object.ReferenceEquals(obj.Type, null))
+			if (obj.Type.IsNull())
 			{
 				//TODO: Unknown field type
 				throw new ArgumentException("obj");

@@ -107,55 +107,7 @@ namespace BluraySharp
 
 		public static bool IsNull(this object obj)
 		{
-			return object.ReferenceEquals(obj, null);
+			return obj.RefEquals(null);
 		}
-
-		//private static Dictionary<BdStreamPresentingType, List<BdStreamCodingType>>
-		//	bdStreamCodingTypeClassifyingTable = new Dictionary<BdStreamPresentingType, List<BdStreamCodingType>>()
-		//	{
-		//		{
-		//			BdStreamPresentingType.PrimaryVideo,
-		//			new List<BdStreamCodingType>()
-		//			{
-		//				BdStreamCodingType.ViMpeg1,
-		//				BdStreamCodingType.ViMpeg2,
-		//				BdStreamCodingType.ViAvc,
-		//				BdStreamCodingType.ViMvc,
-		//				BdStreamCodingType.ViVc1,
-		//			}
-		//		},
-				
-		//		{
-		//			BdStreamPresentingType.PrimaryAudio,
-		//			new List<BdStreamCodingType>()
-		//			{
-		//				BdStreamCodingType.AuMpeg1,
-		//				BdStreamCodingType.AuMpeg2,
-		//				BdStreamCodingType.AuLPCM,
-		//				BdStreamCodingType.AuDolby,
-		//				BdStreamCodingType.AuDts,
-		//				BdStreamCodingType.AuDolbyLossless,
-		//				BdStreamCodingType.AuDolbyPlus,
-		//				BdStreamCodingType.AuDtsHDHR,
-		//				BdStreamCodingType.AuDtsHDMA,
-		//			}
-		//		},
-
-		//		{
-		//			BdStreamPresentingType.PresentationGraphics,
-		//			new List<BdStreamCodingType>()
-		//			{
-		//				BdStreamCodingType.Pg
-		//			}
-		//		},
-				
-		//		{
-		//			BdStreamPresentingType.PresentationGraphics,
-		//			new List<BdStreamCodingType>()
-		//			{
-		//				BdStreamCodingType.Pg
-		//			}
-		//		},
-		//	};
 	}
 }

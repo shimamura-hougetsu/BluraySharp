@@ -170,7 +170,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private void Validate(IBdFieldTraverser obj)
 		{
-			if (object.ReferenceEquals(obj, null))
+			if (obj.IsNull())
 			{
 				throw new ArgumentNullException("obj");
 			}
