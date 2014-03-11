@@ -40,7 +40,7 @@ namespace BluraySharp.PlayList
 
 		#region ClipArrangingOptions
 
-		private BdBitwise32 clipArrangingOptions = new BdBitwise32();
+		private BdBitwise32 clipArrangingOptions = new BdBitwise32(0x20);
 
 		[BdSubPartField]
 		private BdBitwise32 ClipArrangingOptions
@@ -62,8 +62,8 @@ namespace BluraySharp.PlayList
 		}
 		private bool MultiAngleSkip
 		{
-			get { return this.clipArrangingOptions[0, 1] == 1; }
-			set { this.clipArrangingOptions[0, 1] = (uint)(value ? 1 : 0); }
+			get { return this.clipArrangingOptions[0, 1] == 0; }
+			set { this.clipArrangingOptions[0, 1] = (uint)(value ? 0 : 1); }
 		}
 
 		#endregion
@@ -110,8 +110,14 @@ namespace BluraySharp.PlayList
 		[BdUIntField(BdIntSize.U16)]
 		public ushort SyncPlayItemId { get; set; }
 
+		private BdTime syncPlayTime = new BdTime();
+
 		[BdSubPartField]
-		public BdTime SyncPlayTimeOffset { get; set; }
+		public BdTime SyncPlayTime
+		{
+			get { return this.syncPlayTime; }
+			set { this.syncPlayTime.Value = value.Value; }
+		}
 
 		#endregion
 
@@ -128,7 +134,7 @@ namespace BluraySharp.PlayList
 
 		#region ReservedForFutureUse
 
-		[BdUIntField(BdIntSize.U8)]
+		[BdUIntField(BdIntSize.U8, SkipIndicator = "MultiAngleSkip")]
 		private byte ReservedForFutureUse { get; set; }
 
 		#endregion

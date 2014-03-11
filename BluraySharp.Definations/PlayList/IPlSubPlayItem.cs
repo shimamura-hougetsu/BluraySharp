@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
 	public interface IPlSubPlayItem : IPlPlayItemInfo
 	{
+		ushort SyncPlayItemId { get; set; }
+		BdTime SyncPlayTime { get; set; }
 	}
 }

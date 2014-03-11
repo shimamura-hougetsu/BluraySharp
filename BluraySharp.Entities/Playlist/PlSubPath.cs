@@ -23,12 +23,16 @@ namespace BluraySharp.PlayList
 
 		#region RepeatOptions
 
+		private BdBitwise16 repeatOptions = new BdBitwise16();
 		[BdSubPartField]
-		private BdBitwise16 repeatOptions { get; set; }
+		private BdBitwise16 RepeatOptions
+		{
+			get { return this.repeatOptions; }
+		}
 		public bool IsRepeat
 		{
-			get { return this.repeatOptions[0, 1] == 1; }
-			set { this.repeatOptions[0, 1] = (ushort)(value ? 1 : 0); }
+			get { return this.RepeatOptions[0, 1] == 1; }
+			set { this.RepeatOptions[0, 1] = (ushort)(value ? 1 : 0); }
 		}
 
 		#endregion
@@ -37,6 +41,7 @@ namespace BluraySharp.PlayList
 
 		[BdUIntField(BdIntSize.U8)]
 		private byte ReservedForFutureUse2 { get; set; }
+
 		#endregion
 
 		#region SubPlayItemCount

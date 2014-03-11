@@ -2,6 +2,7 @@
 
 namespace BluraySharp.Common.BdPartFramework
 {
+	[AttributeUsage(AttributeTargets.Property, Inherited=true, AllowMultiple=false)]
 	internal abstract class BdFieldAttribute : Attribute
 	{
 		public BdFieldType FieldType { get; private set; }

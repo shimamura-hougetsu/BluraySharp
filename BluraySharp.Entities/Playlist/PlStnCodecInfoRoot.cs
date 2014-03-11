@@ -55,6 +55,7 @@ namespace BluraySharp.PlayList
 		{
 			if (value == 0)
 			{
+				//Invalid info type value;
 				throw new ArgumentException("value");
 			}
 

@@ -7,6 +7,13 @@ namespace BluraySharp.Common.BdStandardPart
 {
 	public class BdTime: BdPart
 	{
+		public BdTime() { }
+
+		public BdTime(int hours, int minutes, int seconds, int milliseconds)
+		{
+			this.AsSpan = new TimeSpan(0, hours, minutes, seconds, milliseconds);
+		}
+
 		[BdUIntField(BdIntSize.U32)]
 		public uint Value { get; set; }
 

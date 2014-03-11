@@ -34,22 +34,15 @@ namespace BluraySharpTest
 
 				using (FileStream tBakStream = new FileStream(tOutFilePath, FileMode.Create))
 				{
-					tMpls.AppInfo.AudioMixAppFlag = true;
-					IBdList<IPlStnStEntry> tStList = tMpls.PlayItemList.PlayItems[0].StnTable.StStreams;
-					IPlStnStEntry tSubtitle = tStList.CreateNew();
-					tSubtitle.EntryType = PlStnStreamEntryType.SubPlayItem;
-					{
-						IPlStnSubPlayItemEntryInfo tSubtitleEntry = tSubtitle.EntryInfo as IPlStnSubPlayItemEntryInfo;
-						tSubtitleEntry.SubPathId = 0;
-						tSubtitleEntry.SubClipEntryId = 0;
-						tSubtitleEntry.StreamProgId = 4608;
-					}
-					tSubtitle.CodecInfoType = BdStCodingType.GxPresentation;
-					{
-						IPlStnGxCodecInfo tSubtitleCodec = tSubtitle.CodecInfo as IPlStnGxCodecInfo;
-						tSubtitleCodec.Language = BdLang.LANG_ZHO;
-					}
-					tStList.Add(tSubtitle);
+					IBdList<IPlSubPlayItem> tList = tMpls.PlayItemList.SubPaths[0].PlayItems;
+					IPlSubPlayItem tItem = tList.CreateNew();
+					tItem.ClipList[0].ClipFileRef.ClipId = 33;
+					tItem.InTime.AsSpan = new TimeSpan(0, 0, 10, 00, 00);
+					tItem.OutTime.AsSpan = new TimeSpan(0, 1, 59, 31, 00);
+					tItem.ConnectionCondition = BdConnectionCondition.NotSeamless;
+					tItem.SyncPlayItemId = 0;
+					tItem.SyncPlayTime = new BdTime();
+					tList.Add(tItem);
 
 					BdByteStreamWriteContext tWriter = new BdByteStreamWriteContext(tBakStream);
 					tWriter.Serialize(tMpls);

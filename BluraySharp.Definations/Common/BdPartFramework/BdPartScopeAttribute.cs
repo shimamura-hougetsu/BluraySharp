@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BluraySharp.Common.BdPartFramework
 {
+	[AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
 	internal class BdPartScopeAttribute : Attribute
 	{
 		public BdIntSize Size { get; private set; }

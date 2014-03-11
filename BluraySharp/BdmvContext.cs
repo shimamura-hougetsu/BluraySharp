@@ -2,6 +2,8 @@
 using System.IO;
 using BluraySharp.Architecture;
 using BluraySharp.PlayList;
+using BluraySharp.Common.Serializing;
+using BluraySharp.Common;
 
 namespace BluraySharp
 {
@@ -55,12 +57,12 @@ namespace BluraySharp
 			{
 				using (MemoryStream tMem = new MemoryStream())
 				{
-					IBdRawWriteContext tSerializer = new BdStreamWriteContext(tMem);
+					IBdRawWriteContext tSerializer = new BdByteStreamWriteContext(tMem);
 					tSerializer.Serialize(src);
 
 					tMem.Position = 0;
 
-					IBdRawReadContext tDeserializer = new BdStreamReadContext(tMem);
+					IBdRawReadContext tDeserializer = new BdByteStreamReadContext(tMem);
 					tDeserializer.Deserialize(dest);
 				}
 			}

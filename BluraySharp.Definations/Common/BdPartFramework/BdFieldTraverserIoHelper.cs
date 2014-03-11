@@ -111,7 +111,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 			if (isUpdatingIndicators)
 			{
-				tScopeLen = this.ForEachFields(obj, null, tOprGetLength, true);
+				tScopeLen = this.ForEachFields(obj, null, BdFieldTraverserIoHelper.oprGetLength, true);
 			}
 
 			if (!tScopeIndicator.IsNull())
@@ -129,7 +129,7 @@ namespace BluraySharp.Common.BdPartFramework
 				}
 				else
 				{
-					tTotalLen += BdFieldTraverserIoHelper.tOprGetLength(tScopeIndicator);
+					tTotalLen += BdFieldTraverserIoHelper.oprGetLength(tScopeIndicator);
 				}
 
 				tScopeLen = (long)this.GetIndicatorValue(tScopeIndicator);
@@ -179,7 +179,7 @@ namespace BluraySharp.Common.BdPartFramework
 		private static IBdRawIoHelper<IBdFieldVisitor> ioHelper =
 			BdIoHelperFactory.GetHelper<IBdFieldVisitor>();
 
-		private static RawOperation tOprGetLength = delegate(IBdFieldVisitor xSubObj)
+		private static RawOperation oprGetLength = delegate(IBdFieldVisitor xSubObj)
 		{
 			long tRet = 0;
 
