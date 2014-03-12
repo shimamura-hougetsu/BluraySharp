@@ -103,7 +103,7 @@
     <Compile Include="FileSystem\IBdfsFolderT.cs" />
     <Compile Include="FileSystem\IBdfsRootFolder.cs" />
     <Compile Include="Common\IBdmvArrayEntry.cs" />
-    <Compile Include="FileSystem\IBdfsEntryRegistry.cs" />
+    <Compile Include="Common\IBdmvEntryRegistry.cs" />
     <Compile Include="Common\Serializing\IBdRawSerializable.cs" />
     <Compile Include="FileSystem\IBdfsTopEntryFileT.cs" />
     <Compile Include="JavaObject\IBdJavaObject.cs" />

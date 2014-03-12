@@ -8,7 +8,7 @@ namespace BluraySharp.FileSystem
 	public class BdfsEntryFile<T> : BdfsItem, IBdfsEntryFile<T>
 		where T : IBdmvEntry
 	{
-		protected BdmvEntryAttribute compAttrib = BdfsEntryRegistry.Instance.GetEntryAttribute<T>();
+		protected BdmvEntryAttribute compAttrib = BdmvEntryRegistry.Instance.GetEntryAttribute<T>();
 
 		public void Save(T entry)
 		{
@@ -61,8 +61,8 @@ namespace BluraySharp.FileSystem
 		{
 			using (FileStream tFile = new FileStream(tPath, FileMode.Open, FileAccess.Read))
 			{
-				T tRet = BdfsEntryRegistry.Instance.CreateEntry<T>();
-
+				T tRet = BdmvEntryRegistry.Instance.CreateEntry<T>();
+				
 				BdByteStreamReadContext tRawIo = new BdByteStreamReadContext(tFile);
 				tRawIo.Deserialize(tRet);
 

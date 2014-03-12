@@ -10,6 +10,12 @@ namespace BluraySharp
 {
 	public class BdmvContext
 	{
+		private static BdmvEntryRegistry entryRegistry = BdmvEntryRegistry.Instance;
+		public T CreateNewBdmvEntry<T>() where T : IBdmvEntry
+		{
+			return entryRegistry.CreateEntry<T>();
+		}
+
 		public IBdfsEntryFile<T> OpenFile<T>(string filePath) where T : IBdmvEntry
 		{
 			return new BdfsStandaloneFile<T>(filePath);

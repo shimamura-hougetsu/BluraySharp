@@ -1,10 +1,10 @@
 ﻿using BluraySharp.Common;
 using System.Collections.Generic;
 
-namespace BluraySharp.FileSystem
+namespace BluraySharp.Common
 {
 	//Singleton
-	public class BdfsEntryRegistry : IBdfsEntryRegistry
+	public class BdmvEntryRegistry : IBdmvEntryRegistry
 	{
 		private delegate IBdmvEntry EntryCreator();
 
@@ -52,16 +52,16 @@ namespace BluraySharp.FileSystem
 				);
 		}
 
-		private static BdfsEntryRegistry instance = new BdfsEntryRegistry();
-		public static BdfsEntryRegistry Instance
+		private static BdmvEntryRegistry instance = new BdmvEntryRegistry();
+		public static BdmvEntryRegistry Instance
 		{
 			get
 			{
-				return BdfsEntryRegistry.instance;
+				return BdmvEntryRegistry.instance;
 			}
 		}
 
-		private BdfsEntryRegistry()
+		private BdmvEntryRegistry()
 		{
 			this.RegisterArrayEntry<PlayList.BdMpls, PlayList.IBdMpls>();
 		}

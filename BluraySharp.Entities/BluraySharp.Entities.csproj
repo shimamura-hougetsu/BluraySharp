@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FileSystem\BdfsEntryFileT.cs" />
-    <Compile Include="FileSystem\BdfsEntryRegistry.cs" />
+    <Compile Include="Common\BdmvEntryRegistry.cs" />
     <Compile Include="FileSystem\BdfsItem.cs" />
     <Compile Include="FileSystem\BdfsStandaloneFileT.cs" />
     <Compile Include="PlayList\PlClipFileRef.cs" />

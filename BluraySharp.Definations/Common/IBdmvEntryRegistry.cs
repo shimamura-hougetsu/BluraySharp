@@ -1,9 +1,9 @@
 ﻿
 using BluraySharp.Common;
 
-namespace BluraySharp.FileSystem
+namespace BluraySharp.Common
 {
-	public interface IBdfsEntryRegistry
+	public interface IBdmvEntryRegistry
 	{
 		T CreateEntry<T>() where T : IBdmvEntry;
 		BdmvEntryAttribute GetEntryAttribute<T>() where T : IBdmvEntry;
