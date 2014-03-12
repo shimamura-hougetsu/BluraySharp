@@ -20,52 +20,52 @@ namespace BluraySharp.PlayList
 		#region EntryCounts
 
 		[BdUIntField(BdIntSize.U8)]
-		private byte ViStreamsCount
+		private byte ViEntriesCount
 		{
-			get { return (byte)this.viStreams.Count; }
-			set { this.viStreams.SetCount(value); }
+			get { return (byte)this.viEntries.Count; }
+			set { this.viEntries.SetCount(value); }
 		}
 
 		[BdUIntField(BdIntSize.U8)]
-		private byte AuStreamsCount
+		private byte AuEntriesCount
 		{
-			get { return (byte)this.auStreams.Count; }
-			set { this.auStreams.SetCount(value); }
+			get { return (byte)this.auEntries.Count; }
+			set { this.auEntries.SetCount(value); }
 		}
 
 		[BdUIntField(BdIntSize.U8)]
-		private byte StStreamsCount
+		private byte StEntriesCount
 		{
-			get { return (byte)this.stStreams.Count; }
-			set { this.stStreams.SetCount(value); }
+			get { return (byte)this.stEntries.Count; }
+			set { this.stEntries.SetCount(value); }
 		}
 
 		[BdUIntField(BdIntSize.U8)]
-		private byte IgStreamsCount
+		private byte IgEntriesCount
 		{
-			get { return (byte)this.igStreams.Count; }
-			set { this.igStreams.SetCount(value); }
+			get { return (byte)this.igEntries.Count; }
+			set { this.igEntries.SetCount(value); }
 		}
 
 		[BdUIntField(BdIntSize.U8)]
-		private byte SaStreamsCount
+		private byte SaEntriesCount
 		{
-			get { return (byte)this.saStreams.Count; }
-			set { this.saStreams.SetCount(value); }
+			get { return (byte)this.saEntries.Count; }
+			set { this.saEntries.SetCount(value); }
 		}
 
 		[BdUIntField(BdIntSize.U8)]
-		private byte SvStreamsCount
+		private byte SvEntriesCount
 		{
-			get { return (byte)this.svStreams.Count; }
-			set { this.svStreams.SetCount(value); }
+			get { return (byte)this.svEntries.Count; }
+			set { this.svEntries.SetCount(value); }
 		}
 
 		[BdUIntField(BdIntSize.U8)]
-		private byte PipStStreamsCount
+		private byte PipStEntriesCount
 		{
-			get { return (byte)this.pipStStreams.Count; }
-			set { this.pipStStreams.SetCount(value); }
+			get { return (byte)this.pipStEntries.Count; }
+			set { this.pipStEntries.SetCount(value); }
 		}
 
 		#endregion
@@ -84,68 +84,68 @@ namespace BluraySharp.PlayList
 
 		#region Entry Lists
 
-		private BdList<PlStnViEntry, IPlStnViEntry> viStreams =
+		private BdList<PlStnViEntry, IPlStnViEntry> viEntries =
 			new BdList<PlStnViEntry, IPlStnViEntry>(1) { new PlStnViEntry() };
 
 		[BdSubPartField]
-		public IBdList<IPlStnViEntry> ViStreams
+		public IBdList<IPlStnViEntry> ViEntries
 		{
-			get { return this.viStreams; }
+			get { return this.viEntries; }
 		}
 
-		private BdList<PlStnAuEntry, IPlStnAuEntry> auStreams =
+		private BdList<PlStnAuEntry, IPlStnAuEntry> auEntries =
 			new BdList<PlStnAuEntry, IPlStnAuEntry>(32);
 
 		[BdSubPartField]
-		public IBdList<IPlStnAuEntry> AuStreams
+		public IBdList<IPlStnAuEntry> AuEntries
 		{
-			get { return this.auStreams; }
+			get { return this.auEntries; }
 		}
 		
-		private BdList<PlStnStEntry, IPlStnStEntry> stStreams =
+		private BdList<PlStnStEntry, IPlStnStEntry> stEntries =
 			new BdList<PlStnStEntry, IPlStnStEntry>(255);
 
 		[BdSubPartField]
-		public IBdList<IPlStnStEntry> StStreams
+		public IBdList<IPlStnStEntry> StEntries
 		{
-			get { return this.stStreams; }
+			get { return this.stEntries; }
 		}
 
-		private BdList<PlStnStEntry, IPlStnStEntry> pipStStreams =
+		private BdList<PlStnStEntry, IPlStnStEntry> pipStEntries =
 			new BdList<PlStnStEntry, IPlStnStEntry>(32);
 
 		[BdSubPartField]
-		public IBdList<IPlStnStEntry> PipStStreams
+		public IBdList<IPlStnStEntry> PipStEntries
 		{
-			get { return this.pipStStreams; }
+			get { return this.pipStEntries; }
 		}
 
-		private BdList<PlStnIgEntry, IPlStnIgEntry> igStreams =
+		private BdList<PlStnIgEntry, IPlStnIgEntry> igEntries =
 			new BdList<PlStnIgEntry, IPlStnIgEntry>(32);
 
 		[BdSubPartField]
-		public IBdList<IPlStnIgEntry> IgStreams
+		public IBdList<IPlStnIgEntry> IgEntries
 		{
-			get { return this.igStreams; }
+			get { return this.igEntries; }
 		}
 
-		private BdList<PlStnSaEntry, IPlStnSaEntry> saStreams =
+		private BdList<PlStnSaEntry, IPlStnSaEntry> saEntries =
 			new BdList<PlStnSaEntry, IPlStnSaEntry>(32);
 
 
 		[BdSubPartField]
-		public IBdList<IPlStnSaEntry> SaStreams
+		public IBdList<IPlStnSaEntry> SaEntries
 		{
-			get { return this.saStreams; }
+			get { return this.saEntries; }
 		}
 
-		private BdList<PlStnSvEntry, IPlStnSvEntry> svStreams =
+		private BdList<PlStnSvEntry, IPlStnSvEntry> svEntries =
 			new BdList<PlStnSvEntry, IPlStnSvEntry>(32);
 
 		[BdSubPartField]
-		public IBdList<IPlStnSvEntry> SvStreams
+		public IBdList<IPlStnSvEntry> SvEntries
 		{
-			get { return this.svStreams; }
+			get { return this.svEntries; }
 		}
 
 		#endregion

@@ -11,7 +11,7 @@ namespace BluraySharp
 	public class BdmvContext
 	{
 		private static BdmvEntryRegistry entryRegistry = BdmvEntryRegistry.Instance;
-		public T CreateNewBdmvEntry<T>() where T : IBdmvEntry
+		public T CreateEntry<T>() where T : IBdmvEntry
 		{
 			return entryRegistry.CreateEntry<T>();
 		}
@@ -21,7 +21,7 @@ namespace BluraySharp
 			return new BdfsStandaloneFile<T>(filePath);
 		}
 
-		public IBdfsRootFolder OpenBdmvFolder(string directoryPath)
+		public IBdfsRootFolder OpenFolder(string directoryPath)
 		{
 			throw new NotImplementedException();
 		}

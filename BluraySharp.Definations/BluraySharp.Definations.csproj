@@ -116,7 +116,7 @@
     <Compile Include="PlayList\IPlStnAuCodecInfo.cs" />
     <Compile Include="PlayList\IPlStnEntryInfo.cs" />
     <Compile Include="PlayList\IPlStnEntry.cs" />
-    <Compile Include="PlayList\IPlStnSvRecord.cs" />
+    <Compile Include="PlayList\IPlStnSvEntry.cs" />
     <Compile Include="PlayList\IPlStnSaEntry.cs" />
     <Compile Include="PlayList\IPlStnIgEntry.cs" />
     <Compile Include="PlayList\IPlStnStEntry.cs" />
@@ -130,7 +130,7 @@
     <Compile Include="PlayList\IPlPlayMarkList.cs" />
     <Compile Include="PlayList\IPlPlayItemInfo.cs" />
     <Compile Include="PlayList\IPlStnAuEntry.cs" />
-    <Compile Include="PlayList\IPlStnViRecord.cs" />
+    <Compile Include="PlayList\IPlStnViEntry.cs" />
     <Compile Include="PlayList\IPlStnSubPlayItemEntryInfo.cs" />
     <Compile Include="PlayList\IPlStnTxCodecInfo.cs" />
     <Compile Include="PlayList\IPlStnViCodecInfo.cs" />
