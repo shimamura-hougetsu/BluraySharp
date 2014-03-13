@@ -4,7 +4,7 @@ namespace BluraySharp.PlayList
 {
 	internal class PlStnEntryRoot : BdPart
 	{
-		public PlStnEntryRoot(PlStnStreamEntryType entryType, byte codecType)
+		public PlStnEntryRoot(PlStnEntryType entryType, byte codecType)
 		{
 			this.EntryInfoRoot = new PlStnEntryInfoRoot(entryType);
 			this.CodecInfoRoot = new PlStnCodecInfoRoot(codecType);
@@ -15,7 +15,7 @@ namespace BluraySharp.PlayList
 		[BdSubPartField]
 		private PlStnEntryInfoRoot EntryInfoRoot { get; set; }
 
-		public PlStnStreamEntryType EntryType
+		public PlStnEntryType EntryType
 		{
 			get { return this.EntryInfoRoot.EntryType; }
 			set { this.EntryInfoRoot.EntryType = value; }

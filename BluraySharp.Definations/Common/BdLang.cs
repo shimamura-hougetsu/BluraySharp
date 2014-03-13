@@ -3,512 +3,1019 @@ namespace BluraySharp.Common
 {
 	public enum BdLang
 	{
+		[BdEnumDescription(BdLang.Unknown)]
 		Unknown = 0x00,
+		[BdLangDescription(BdLang.LANG_AAR)]
 		LANG_AAR,
+		[BdLangDescription(BdLang.LANG_ABK)]
 		LANG_ABK,
+		[BdLangDescription(BdLang.LANG_ACE)]
 		LANG_ACE,
+		[BdLangDescription(BdLang.LANG_ACH)]
 		LANG_ACH,
+		[BdLangDescription(BdLang.LANG_ADA)]
 		LANG_ADA,
+		[BdLangDescription(BdLang.LANG_ADY)]
 		LANG_ADY,
+		[BdLangDescription(BdLang.LANG_AFA)]
 		LANG_AFA,
+		[BdLangDescription(BdLang.LANG_AFH)]
 		LANG_AFH,
+		[BdLangDescription(BdLang.LANG_AFR)]
 		LANG_AFR,
+		[BdLangDescription(BdLang.LANG_AIN)]
 		LANG_AIN,
+		[BdLangDescription(BdLang.LANG_AKA)]
 		LANG_AKA,
+		[BdLangDescription(BdLang.LANG_AKK)]
 		LANG_AKK,
+		[BdLangDescription(BdLang.LANG_ALB)]
 		LANG_ALB,
+		[BdLangDescription(BdLang.LANG_ALE)]
 		LANG_ALE,
+		[BdLangDescription(BdLang.LANG_ALG)]
 		LANG_ALG,
+		[BdLangDescription(BdLang.LANG_ALT)]
 		LANG_ALT,
+		[BdLangDescription(BdLang.LANG_AMH)]
 		LANG_AMH,
+		[BdLangDescription(BdLang.LANG_ANG)]
 		LANG_ANG,
+		[BdLangDescription(BdLang.LANG_ANP)]
 		LANG_ANP,
+		[BdLangDescription(BdLang.LANG_APA)]
 		LANG_APA,
+		[BdLangDescription(BdLang.LANG_ARA)]
 		LANG_ARA,
+		[BdLangDescription(BdLang.LANG_ARC)]
 		LANG_ARC,
+		[BdLangDescription(BdLang.LANG_ARG)]
 		LANG_ARG,
+		[BdLangDescription(BdLang.LANG_ARM)]
 		LANG_ARM,
+		[BdLangDescription(BdLang.LANG_ARN)]
 		LANG_ARN,
+		[BdLangDescription(BdLang.LANG_ARP)]
 		LANG_ARP,
+		[BdLangDescription(BdLang.LANG_ART)]
 		LANG_ART,
+		[BdLangDescription(BdLang.LANG_ARW)]
 		LANG_ARW,
+		[BdLangDescription(BdLang.LANG_ASM)]
 		LANG_ASM,
+		[BdLangDescription(BdLang.LANG_AST)]
 		LANG_AST,
+		[BdLangDescription(BdLang.LANG_ATH)]
 		LANG_ATH,
+		[BdLangDescription(BdLang.LANG_AUS)]
 		LANG_AUS,
+		[BdLangDescription(BdLang.LANG_AVA)]
 		LANG_AVA,
+		[BdLangDescription(BdLang.LANG_AVE)]
 		LANG_AVE,
+		[BdLangDescription(BdLang.LANG_AWA)]
 		LANG_AWA,
+		[BdLangDescription(BdLang.LANG_AYM)]
 		LANG_AYM,
+		[BdLangDescription(BdLang.LANG_AZE)]
 		LANG_AZE,
+		[BdLangDescription(BdLang.LANG_BAD)]
 		LANG_BAD,
+		[BdLangDescription(BdLang.LANG_BAI)]
 		LANG_BAI,
+		[BdLangDescription(BdLang.LANG_BAK)]
 		LANG_BAK,
+		[BdLangDescription(BdLang.LANG_BAL)]
 		LANG_BAL,
+		[BdLangDescription(BdLang.LANG_BAM)]
 		LANG_BAM,
+		[BdLangDescription(BdLang.LANG_BAN)]
 		LANG_BAN,
+		[BdLangDescription(BdLang.LANG_BAQ)]
 		LANG_BAQ,
+		[BdLangDescription(BdLang.LANG_BAS)]
 		LANG_BAS,
+		[BdLangDescription(BdLang.LANG_BAT)]
 		LANG_BAT,
+		[BdLangDescription(BdLang.LANG_BEJ)]
 		LANG_BEJ,
+		[BdLangDescription(BdLang.LANG_BEL)]
 		LANG_BEL,
+		[BdLangDescription(BdLang.LANG_BEM)]
 		LANG_BEM,
+		[BdLangDescription(BdLang.LANG_BEN)]
 		LANG_BEN,
+		[BdLangDescription(BdLang.LANG_BER)]
 		LANG_BER,
+		[BdLangDescription(BdLang.LANG_BHO)]
 		LANG_BHO,
+		[BdLangDescription(BdLang.LANG_BIH)]
 		LANG_BIH,
+		[BdLangDescription(BdLang.LANG_BIK)]
 		LANG_BIK,
+		[BdLangDescription(BdLang.LANG_BIN)]
 		LANG_BIN,
+		[BdLangDescription(BdLang.LANG_BIS)]
 		LANG_BIS,
+		[BdLangDescription(BdLang.LANG_BLA)]
 		LANG_BLA,
+		[BdLangDescription(BdLang.LANG_BNT)]
 		LANG_BNT,
+		[BdLangDescription(BdLang.LANG_BOD)]
 		LANG_BOD,
+		[BdLangDescription(BdLang.LANG_BOS)]
 		LANG_BOS,
+		[BdLangDescription(BdLang.LANG_BRA)]
 		LANG_BRA,
+		[BdLangDescription(BdLang.LANG_BRE)]
 		LANG_BRE,
+		[BdLangDescription(BdLang.LANG_BTK)]
 		LANG_BTK,
+		[BdLangDescription(BdLang.LANG_BUA)]
 		LANG_BUA,
+		[BdLangDescription(BdLang.LANG_BUG)]
 		LANG_BUG,
+		[BdLangDescription(BdLang.LANG_BUL)]
 		LANG_BUL,
+		[BdLangDescription(BdLang.LANG_BUR)]
 		LANG_BUR,
+		[BdLangDescription(BdLang.LANG_BYN)]
 		LANG_BYN,
+		[BdLangDescription(BdLang.LANG_CAD)]
 		LANG_CAD,
+		[BdLangDescription(BdLang.LANG_CAI)]
 		LANG_CAI,
+		[BdLangDescription(BdLang.LANG_CAR)]
 		LANG_CAR,
+		[BdLangDescription(BdLang.LANG_CAT)]
 		LANG_CAT,
+		[BdLangDescription(BdLang.LANG_CAU)]
 		LANG_CAU,
+		[BdLangDescription(BdLang.LANG_CEB)]
 		LANG_CEB,
+		[BdLangDescription(BdLang.LANG_CEL)]
 		LANG_CEL,
+		[BdLangDescription(BdLang.LANG_CES)]
 		LANG_CES,
+		[BdLangDescription(BdLang.LANG_CHA)]
 		LANG_CHA,
+		[BdLangDescription(BdLang.LANG_CHB)]
 		LANG_CHB,
+		[BdLangDescription(BdLang.LANG_CHE)]
 		LANG_CHE,
+		[BdLangDescription(BdLang.LANG_CHG)]
 		LANG_CHG,
+		[BdLangDescription(BdLang.LANG_CHI)]
 		LANG_CHI,
+		[BdLangDescription(BdLang.LANG_CHK)]
 		LANG_CHK,
+		[BdLangDescription(BdLang.LANG_CHM)]
 		LANG_CHM,
+		[BdLangDescription(BdLang.LANG_CHN)]
 		LANG_CHN,
+		[BdLangDescription(BdLang.LANG_CHO)]
 		LANG_CHO,
+		[BdLangDescription(BdLang.LANG_CHP)]
 		LANG_CHP,
+		[BdLangDescription(BdLang.LANG_CHR)]
 		LANG_CHR,
+		[BdLangDescription(BdLang.LANG_CHU)]
 		LANG_CHU,
+		[BdLangDescription(BdLang.LANG_CHV)]
 		LANG_CHV,
+		[BdLangDescription(BdLang.LANG_CHY)]
 		LANG_CHY,
+		[BdLangDescription(BdLang.LANG_CMC)]
 		LANG_CMC,
+		[BdLangDescription(BdLang.LANG_COP)]
 		LANG_COP,
+		[BdLangDescription(BdLang.LANG_COR)]
 		LANG_COR,
+		[BdLangDescription(BdLang.LANG_COS)]
 		LANG_COS,
+		[BdLangDescription(BdLang.LANG_CPE)]
 		LANG_CPE,
+		[BdLangDescription(BdLang.LANG_CPF)]
 		LANG_CPF,
+		[BdLangDescription(BdLang.LANG_CPP)]
 		LANG_CPP,
+		[BdLangDescription(BdLang.LANG_CRE)]
 		LANG_CRE,
+		[BdLangDescription(BdLang.LANG_CRH)]
 		LANG_CRH,
+		[BdLangDescription(BdLang.LANG_CRP)]
 		LANG_CRP,
+		[BdLangDescription(BdLang.LANG_CSB)]
 		LANG_CSB,
+		[BdLangDescription(BdLang.LANG_CUS)]
 		LANG_CUS,
+		[BdLangDescription(BdLang.LANG_CYM)]
 		LANG_CYM,
+		[BdLangDescription(BdLang.LANG_CZE)]
 		LANG_CZE,
+		[BdLangDescription(BdLang.LANG_DAK)]
 		LANG_DAK,
+		[BdLangDescription(BdLang.LANG_DAN)]
 		LANG_DAN,
+		[BdLangDescription(BdLang.LANG_DAR)]
 		LANG_DAR,
+		[BdLangDescription(BdLang.LANG_DAY)]
 		LANG_DAY,
+		[BdLangDescription(BdLang.LANG_DEL)]
 		LANG_DEL,
+		[BdLangDescription(BdLang.LANG_DEN)]
 		LANG_DEN,
+		[BdLangDescription(BdLang.LANG_DEU)]
 		LANG_DEU,
+		[BdLangDescription(BdLang.LANG_DGR)]
 		LANG_DGR,
+		[BdLangDescription(BdLang.LANG_DIN)]
 		LANG_DIN,
+		[BdLangDescription(BdLang.LANG_DIV)]
 		LANG_DIV,
+		[BdLangDescription(BdLang.LANG_DOI)]
 		LANG_DOI,
+		[BdLangDescription(BdLang.LANG_DRA)]
 		LANG_DRA,
+		[BdLangDescription(BdLang.LANG_DSB)]
 		LANG_DSB,
+		[BdLangDescription(BdLang.LANG_DUA)]
 		LANG_DUA,
+		[BdLangDescription(BdLang.LANG_DUM)]
 		LANG_DUM,
+		[BdLangDescription(BdLang.LANG_DUT)]
 		LANG_DUT,
+		[BdLangDescription(BdLang.LANG_DYU)]
 		LANG_DYU,
+		[BdLangDescription(BdLang.LANG_DZO)]
 		LANG_DZO,
+		[BdLangDescription(BdLang.LANG_EFI)]
 		LANG_EFI,
+		[BdLangDescription(BdLang.LANG_EGY)]
 		LANG_EGY,
+		[BdLangDescription(BdLang.LANG_EKA)]
 		LANG_EKA,
+		[BdLangDescription(BdLang.LANG_ELL)]
 		LANG_ELL,
+		[BdLangDescription(BdLang.LANG_ELX)]
 		LANG_ELX,
+		[BdLangDescription(BdLang.LANG_ENG)]
 		LANG_ENG,
+		[BdLangDescription(BdLang.LANG_ENM)]
 		LANG_ENM,
+		[BdLangDescription(BdLang.LANG_EPO)]
 		LANG_EPO,
+		[BdLangDescription(BdLang.LANG_EST)]
 		LANG_EST,
+		[BdLangDescription(BdLang.LANG_EUS)]
 		LANG_EUS,
+		[BdLangDescription(BdLang.LANG_EWE)]
 		LANG_EWE,
+		[BdLangDescription(BdLang.LANG_EWO)]
 		LANG_EWO,
+		[BdLangDescription(BdLang.LANG_FAN)]
 		LANG_FAN,
+		[BdLangDescription(BdLang.LANG_FAO)]
 		LANG_FAO,
+		[BdLangDescription(BdLang.LANG_FAS)]
 		LANG_FAS,
+		[BdLangDescription(BdLang.LANG_FAT)]
 		LANG_FAT,
+		[BdLangDescription(BdLang.LANG_FIJ)]
 		LANG_FIJ,
+		[BdLangDescription(BdLang.LANG_FIL)]
 		LANG_FIL,
+		[BdLangDescription(BdLang.LANG_FIN)]
 		LANG_FIN,
+		[BdLangDescription(BdLang.LANG_FIU)]
 		LANG_FIU,
+		[BdLangDescription(BdLang.LANG_FON)]
 		LANG_FON,
+		[BdLangDescription(BdLang.LANG_FRA)]
 		LANG_FRA,
+		[BdLangDescription(BdLang.LANG_FRE)]
 		LANG_FRE,
+		[BdLangDescription(BdLang.LANG_FRM)]
 		LANG_FRM,
+		[BdLangDescription(BdLang.LANG_FRO)]
 		LANG_FRO,
+		[BdLangDescription(BdLang.LANG_FRR)]
 		LANG_FRR,
+		[BdLangDescription(BdLang.LANG_FRS)]
 		LANG_FRS,
+		[BdLangDescription(BdLang.LANG_FRY)]
 		LANG_FRY,
+		[BdLangDescription(BdLang.LANG_FUL)]
 		LANG_FUL,
+		[BdLangDescription(BdLang.LANG_FUR)]
 		LANG_FUR,
+		[BdLangDescription(BdLang.LANG_GAA)]
 		LANG_GAA,
+		[BdLangDescription(BdLang.LANG_GAY)]
 		LANG_GAY,
+		[BdLangDescription(BdLang.LANG_GBA)]
 		LANG_GBA,
+		[BdLangDescription(BdLang.LANG_GEM)]
 		LANG_GEM,
+		[BdLangDescription(BdLang.LANG_GEO)]
 		LANG_GEO,
+		[BdLangDescription(BdLang.LANG_GER)]
 		LANG_GER,
+		[BdLangDescription(BdLang.LANG_GEZ)]
 		LANG_GEZ,
+		[BdLangDescription(BdLang.LANG_GIL)]
 		LANG_GIL,
+		[BdLangDescription(BdLang.LANG_GLA)]
 		LANG_GLA,
+		[BdLangDescription(BdLang.LANG_GLE)]
 		LANG_GLE,
+		[BdLangDescription(BdLang.LANG_GLG)]
 		LANG_GLG,
+		[BdLangDescription(BdLang.LANG_GLV)]
 		LANG_GLV,
+		[BdLangDescription(BdLang.LANG_GMH)]
 		LANG_GMH,
+		[BdLangDescription(BdLang.LANG_GOH)]
 		LANG_GOH,
+		[BdLangDescription(BdLang.LANG_GON)]
 		LANG_GON,
+		[BdLangDescription(BdLang.LANG_GOR)]
 		LANG_GOR,
+		[BdLangDescription(BdLang.LANG_GOT)]
 		LANG_GOT,
+		[BdLangDescription(BdLang.LANG_GRB)]
 		LANG_GRB,
+		[BdLangDescription(BdLang.LANG_GRC)]
 		LANG_GRC,
+		[BdLangDescription(BdLang.LANG_GRE)]
 		LANG_GRE,
+		[BdLangDescription(BdLang.LANG_GRN)]
 		LANG_GRN,
+		[BdLangDescription(BdLang.LANG_GSW)]
 		LANG_GSW,
+		[BdLangDescription(BdLang.LANG_GUJ)]
 		LANG_GUJ,
+		[BdLangDescription(BdLang.LANG_GWI)]
 		LANG_GWI,
+		[BdLangDescription(BdLang.LANG_HAI)]
 		LANG_HAI,
+		[BdLangDescription(BdLang.LANG_HAT)]
 		LANG_HAT,
+		[BdLangDescription(BdLang.LANG_HAU)]
 		LANG_HAU,
+		[BdLangDescription(BdLang.LANG_HAW)]
 		LANG_HAW,
+		[BdLangDescription(BdLang.LANG_HEB)]
 		LANG_HEB,
+		[BdLangDescription(BdLang.LANG_HER)]
 		LANG_HER,
+		[BdLangDescription(BdLang.LANG_HIL)]
 		LANG_HIL,
+		[BdLangDescription(BdLang.LANG_HIM)]
 		LANG_HIM,
+		[BdLangDescription(BdLang.LANG_HIN)]
 		LANG_HIN,
+		[BdLangDescription(BdLang.LANG_HIT)]
 		LANG_HIT,
+		[BdLangDescription(BdLang.LANG_HMN)]
 		LANG_HMN,
+		[BdLangDescription(BdLang.LANG_HMO)]
 		LANG_HMO,
+		[BdLangDescription(BdLang.LANG_HRV)]
 		LANG_HRV,
+		[BdLangDescription(BdLang.LANG_HSB)]
 		LANG_HSB,
+		[BdLangDescription(BdLang.LANG_HUN)]
 		LANG_HUN,
+		[BdLangDescription(BdLang.LANG_HUP)]
 		LANG_HUP,
+		[BdLangDescription(BdLang.LANG_HYE)]
 		LANG_HYE,
+		[BdLangDescription(BdLang.LANG_IBA)]
 		LANG_IBA,
+		[BdLangDescription(BdLang.LANG_IBO)]
 		LANG_IBO,
+		[BdLangDescription(BdLang.LANG_ICE)]
 		LANG_ICE,
+		[BdLangDescription(BdLang.LANG_IDO)]
 		LANG_IDO,
+		[BdLangDescription(BdLang.LANG_III)]
 		LANG_III,
+		[BdLangDescription(BdLang.LANG_IJO)]
 		LANG_IJO,
+		[BdLangDescription(BdLang.LANG_IKU)]
 		LANG_IKU,
+		[BdLangDescription(BdLang.LANG_ILE)]
 		LANG_ILE,
+		[BdLangDescription(BdLang.LANG_ILO)]
 		LANG_ILO,
+		[BdLangDescription(BdLang.LANG_INA)]
 		LANG_INA,
+		[BdLangDescription(BdLang.LANG_INC)]
 		LANG_INC,
+		[BdLangDescription(BdLang.LANG_IND)]
 		LANG_IND,
+		[BdLangDescription(BdLang.LANG_INE)]
 		LANG_INE,
+		[BdLangDescription(BdLang.LANG_INH)]
 		LANG_INH,
+		[BdLangDescription(BdLang.LANG_IPK)]
 		LANG_IPK,
+		[BdLangDescription(BdLang.LANG_IRA)]
 		LANG_IRA,
+		[BdLangDescription(BdLang.LANG_IRO)]
 		LANG_IRO,
+		[BdLangDescription(BdLang.LANG_ISL)]
 		LANG_ISL,
+		[BdLangDescription(BdLang.LANG_ITA)]
 		LANG_ITA,
+		[BdLangDescription(BdLang.LANG_JAV)]
 		LANG_JAV,
+		[BdLangDescription(BdLang.LANG_JBO)]
 		LANG_JBO,
+		[BdLangDescription(BdLang.LANG_JPN)]
 		LANG_JPN,
+		[BdLangDescription(BdLang.LANG_JPR)]
 		LANG_JPR,
+		[BdLangDescription(BdLang.LANG_JRB)]
 		LANG_JRB,
+		[BdLangDescription(BdLang.LANG_KAA)]
 		LANG_KAA,
+		[BdLangDescription(BdLang.LANG_KAB)]
 		LANG_KAB,
+		[BdLangDescription(BdLang.LANG_KAC)]
 		LANG_KAC,
+		[BdLangDescription(BdLang.LANG_KAL)]
 		LANG_KAL,
+		[BdLangDescription(BdLang.LANG_KAM)]
 		LANG_KAM,
+		[BdLangDescription(BdLang.LANG_KAN)]
 		LANG_KAN,
+		[BdLangDescription(BdLang.LANG_KAR)]
 		LANG_KAR,
+		[BdLangDescription(BdLang.LANG_KAS)]
 		LANG_KAS,
+		[BdLangDescription(BdLang.LANG_KAT)]
 		LANG_KAT,
+		[BdLangDescription(BdLang.LANG_KAU)]
 		LANG_KAU,
+		[BdLangDescription(BdLang.LANG_KAW)]
 		LANG_KAW,
+		[BdLangDescription(BdLang.LANG_KAZ)]
 		LANG_KAZ,
+		[BdLangDescription(BdLang.LANG_KBD)]
 		LANG_KBD,
+		[BdLangDescription(BdLang.LANG_KHA)]
 		LANG_KHA,
+		[BdLangDescription(BdLang.LANG_KHI)]
 		LANG_KHI,
+		[BdLangDescription(BdLang.LANG_KHM)]
 		LANG_KHM,
+		[BdLangDescription(BdLang.LANG_KHO)]
 		LANG_KHO,
+		[BdLangDescription(BdLang.LANG_KIK)]
 		LANG_KIK,
+		[BdLangDescription(BdLang.LANG_KIN)]
 		LANG_KIN,
+		[BdLangDescription(BdLang.LANG_KIR)]
 		LANG_KIR,
+		[BdLangDescription(BdLang.LANG_KMB)]
 		LANG_KMB,
+		[BdLangDescription(BdLang.LANG_KOK)]
 		LANG_KOK,
+		[BdLangDescription(BdLang.LANG_KOM)]
 		LANG_KOM,
+		[BdLangDescription(BdLang.LANG_KON)]
 		LANG_KON,
+		[BdLangDescription(BdLang.LANG_KOR)]
 		LANG_KOR,
+		[BdLangDescription(BdLang.LANG_KOS)]
 		LANG_KOS,
+		[BdLangDescription(BdLang.LANG_KPE)]
 		LANG_KPE,
+		[BdLangDescription(BdLang.LANG_KRC)]
 		LANG_KRC,
+		[BdLangDescription(BdLang.LANG_KRL)]
 		LANG_KRL,
+		[BdLangDescription(BdLang.LANG_KRO)]
 		LANG_KRO,
+		[BdLangDescription(BdLang.LANG_KRU)]
 		LANG_KRU,
+		[BdLangDescription(BdLang.LANG_KUA)]
 		LANG_KUA,
+		[BdLangDescription(BdLang.LANG_KUM)]
 		LANG_KUM,
+		[BdLangDescription(BdLang.LANG_KUR)]
 		LANG_KUR,
+		[BdLangDescription(BdLang.LANG_KUT)]
 		LANG_KUT,
+		[BdLangDescription(BdLang.LANG_LAD)]
 		LANG_LAD,
+		[BdLangDescription(BdLang.LANG_LAH)]
 		LANG_LAH,
+		[BdLangDescription(BdLang.LANG_LAM)]
 		LANG_LAM,
+		[BdLangDescription(BdLang.LANG_LAO)]
 		LANG_LAO,
+		[BdLangDescription(BdLang.LANG_LAT)]
 		LANG_LAT,
+		[BdLangDescription(BdLang.LANG_LAV)]
 		LANG_LAV,
+		[BdLangDescription(BdLang.LANG_LEZ)]
 		LANG_LEZ,
+		[BdLangDescription(BdLang.LANG_LIM)]
 		LANG_LIM,
+		[BdLangDescription(BdLang.LANG_LIN)]
 		LANG_LIN,
+		[BdLangDescription(BdLang.LANG_LIT)]
 		LANG_LIT,
+		[BdLangDescription(BdLang.LANG_LOL)]
 		LANG_LOL,
+		[BdLangDescription(BdLang.LANG_LOZ)]
 		LANG_LOZ,
+		[BdLangDescription(BdLang.LANG_LTZ)]
 		LANG_LTZ,
+		[BdLangDescription(BdLang.LANG_LUA)]
 		LANG_LUA,
+		[BdLangDescription(BdLang.LANG_LUB)]
 		LANG_LUB,
+		[BdLangDescription(BdLang.LANG_LUG)]
 		LANG_LUG,
+		[BdLangDescription(BdLang.LANG_LUI)]
 		LANG_LUI,
+		[BdLangDescription(BdLang.LANG_LUN)]
 		LANG_LUN,
+		[BdLangDescription(BdLang.LANG_LUO)]
 		LANG_LUO,
+		[BdLangDescription(BdLang.LANG_LUS)]
 		LANG_LUS,
+		[BdLangDescription(BdLang.LANG_MAC)]
 		LANG_MAC,
+		[BdLangDescription(BdLang.LANG_MAD)]
 		LANG_MAD,
+		[BdLangDescription(BdLang.LANG_MAG)]
 		LANG_MAG,
+		[BdLangDescription(BdLang.LANG_MAH)]
 		LANG_MAH,
+		[BdLangDescription(BdLang.LANG_MAI)]
 		LANG_MAI,
+		[BdLangDescription(BdLang.LANG_MAK)]
 		LANG_MAK,
+		[BdLangDescription(BdLang.LANG_MAL)]
 		LANG_MAL,
+		[BdLangDescription(BdLang.LANG_MAN)]
 		LANG_MAN,
+		[BdLangDescription(BdLang.LANG_MAO)]
 		LANG_MAO,
+		[BdLangDescription(BdLang.LANG_MAP)]
 		LANG_MAP,
+		[BdLangDescription(BdLang.LANG_MAR)]
 		LANG_MAR,
+		[BdLangDescription(BdLang.LANG_MAS)]
 		LANG_MAS,
+		[BdLangDescription(BdLang.LANG_MAY)]
 		LANG_MAY,
+		[BdLangDescription(BdLang.LANG_MDF)]
 		LANG_MDF,
+		[BdLangDescription(BdLang.LANG_MDR)]
 		LANG_MDR,
+		[BdLangDescription(BdLang.LANG_MEN)]
 		LANG_MEN,
+		[BdLangDescription(BdLang.LANG_MGA)]
 		LANG_MGA,
+		[BdLangDescription(BdLang.LANG_MIC)]
 		LANG_MIC,
+		[BdLangDescription(BdLang.LANG_MIN)]
 		LANG_MIN,
+		[BdLangDescription(BdLang.LANG_MIS)]
 		LANG_MIS,
+		[BdLangDescription(BdLang.LANG_MKD)]
 		LANG_MKD,
+		[BdLangDescription(BdLang.LANG_MKH)]
 		LANG_MKH,
+		[BdLangDescription(BdLang.LANG_MLG)]
 		LANG_MLG,
+		[BdLangDescription(BdLang.LANG_MLT)]
 		LANG_MLT,
+		[BdLangDescription(BdLang.LANG_MNC)]
 		LANG_MNC,
+		[BdLangDescription(BdLang.LANG_MNI)]
 		LANG_MNI,
+		[BdLangDescription(BdLang.LANG_MNO)]
 		LANG_MNO,
+		[BdLangDescription(BdLang.LANG_MOH)]
 		LANG_MOH,
+		[BdLangDescription(BdLang.LANG_MON)]
 		LANG_MON,
+		[BdLangDescription(BdLang.LANG_MOS)]
 		LANG_MOS,
+		[BdLangDescription(BdLang.LANG_MRI)]
 		LANG_MRI,
+		[BdLangDescription(BdLang.LANG_MSA)]
 		LANG_MSA,
+		[BdLangDescription(BdLang.LANG_MUL)]
 		LANG_MUL,
+		[BdLangDescription(BdLang.LANG_MUN)]
 		LANG_MUN,
+		[BdLangDescription(BdLang.LANG_MUS)]
 		LANG_MUS,
+		[BdLangDescription(BdLang.LANG_MWL)]
 		LANG_MWL,
+		[BdLangDescription(BdLang.LANG_MWR)]
 		LANG_MWR,
+		[BdLangDescription(BdLang.LANG_MYA)]
 		LANG_MYA,
+		[BdLangDescription(BdLang.LANG_MYN)]
 		LANG_MYN,
+		[BdLangDescription(BdLang.LANG_MYV)]
 		LANG_MYV,
+		[BdLangDescription(BdLang.LANG_NAH)]
 		LANG_NAH,
+		[BdLangDescription(BdLang.LANG_NAI)]
 		LANG_NAI,
+		[BdLangDescription(BdLang.LANG_NAP)]
 		LANG_NAP,
+		[BdLangDescription(BdLang.LANG_NAU)]
 		LANG_NAU,
+		[BdLangDescription(BdLang.LANG_NAV)]
 		LANG_NAV,
+		[BdLangDescription(BdLang.LANG_NBL)]
 		LANG_NBL,
+		[BdLangDescription(BdLang.LANG_NDE)]
 		LANG_NDE,
+		[BdLangDescription(BdLang.LANG_NDO)]
 		LANG_NDO,
+		[BdLangDescription(BdLang.LANG_NDS)]
 		LANG_NDS,
+		[BdLangDescription(BdLang.LANG_NEP)]
 		LANG_NEP,
+		[BdLangDescription(BdLang.LANG_NEW)]
 		LANG_NEW,
+		[BdLangDescription(BdLang.LANG_NIA)]
 		LANG_NIA,
+		[BdLangDescription(BdLang.LANG_NIC)]
 		LANG_NIC,
+		[BdLangDescription(BdLang.LANG_NIU)]
 		LANG_NIU,
+		[BdLangDescription(BdLang.LANG_NLD)]
 		LANG_NLD,
+		[BdLangDescription(BdLang.LANG_NNO)]
 		LANG_NNO,
+		[BdLangDescription(BdLang.LANG_NOB)]
 		LANG_NOB,
+		[BdLangDescription(BdLang.LANG_NOG)]
 		LANG_NOG,
+		[BdLangDescription(BdLang.LANG_NON)]
 		LANG_NON,
+		[BdLangDescription(BdLang.LANG_NOR)]
 		LANG_NOR,
+		[BdLangDescription(BdLang.LANG_NQO)]
 		LANG_NQO,
+		[BdLangDescription(BdLang.LANG_NSO)]
 		LANG_NSO,
+		[BdLangDescription(BdLang.LANG_NUB)]
 		LANG_NUB,
+		[BdLangDescription(BdLang.LANG_NWC)]
 		LANG_NWC,
+		[BdLangDescription(BdLang.LANG_NYA)]
 		LANG_NYA,
+		[BdLangDescription(BdLang.LANG_NYM)]
 		LANG_NYM,
+		[BdLangDescription(BdLang.LANG_NYN)]
 		LANG_NYN,
+		[BdLangDescription(BdLang.LANG_NYO)]
 		LANG_NYO,
+		[BdLangDescription(BdLang.LANG_NZI)]
 		LANG_NZI,
+		[BdLangDescription(BdLang.LANG_OCI)]
 		LANG_OCI,
+		[BdLangDescription(BdLang.LANG_OJI)]
 		LANG_OJI,
+		[BdLangDescription(BdLang.LANG_ORI)]
 		LANG_ORI,
+		[BdLangDescription(BdLang.LANG_ORM)]
 		LANG_ORM,
+		[BdLangDescription(BdLang.LANG_OSA)]
 		LANG_OSA,
+		[BdLangDescription(BdLang.LANG_OSS)]
 		LANG_OSS,
+		[BdLangDescription(BdLang.LANG_OTA)]
 		LANG_OTA,
+		[BdLangDescription(BdLang.LANG_OTO)]
 		LANG_OTO,
+		[BdLangDescription(BdLang.LANG_PAA)]
 		LANG_PAA,
+		[BdLangDescription(BdLang.LANG_PAG)]
 		LANG_PAG,
+		[BdLangDescription(BdLang.LANG_PAL)]
 		LANG_PAL,
+		[BdLangDescription(BdLang.LANG_PAM)]
 		LANG_PAM,
+		[BdLangDescription(BdLang.LANG_PAN)]
 		LANG_PAN,
+		[BdLangDescription(BdLang.LANG_PAP)]
 		LANG_PAP,
+		[BdLangDescription(BdLang.LANG_PAU)]
 		LANG_PAU,
+		[BdLangDescription(BdLang.LANG_PEO)]
 		LANG_PEO,
+		[BdLangDescription(BdLang.LANG_PER)]
 		LANG_PER,
+		[BdLangDescription(BdLang.LANG_PHI)]
 		LANG_PHI,
+		[BdLangDescription(BdLang.LANG_PHN)]
 		LANG_PHN,
+		[BdLangDescription(BdLang.LANG_PLI)]
 		LANG_PLI,
+		[BdLangDescription(BdLang.LANG_POL)]
 		LANG_POL,
+		[BdLangDescription(BdLang.LANG_PON)]
 		LANG_PON,
+		[BdLangDescription(BdLang.LANG_POR)]
 		LANG_POR,
+		[BdLangDescription(BdLang.LANG_PRA)]
 		LANG_PRA,
+		[BdLangDescription(BdLang.LANG_PRO)]
 		LANG_PRO,
+		[BdLangDescription(BdLang.LANG_PUS)]
 		LANG_PUS,
+		[BdLangDescription(BdLang.LANG_QAA)]
 		LANG_QAA,
+		[BdLangDescription(BdLang.LANG_QUE)]
 		LANG_QUE,
+		[BdLangDescription(BdLang.LANG_RAJ)]
 		LANG_RAJ,
+		[BdLangDescription(BdLang.LANG_RAP)]
 		LANG_RAP,
+		[BdLangDescription(BdLang.LANG_RAR)]
 		LANG_RAR,
+		[BdLangDescription(BdLang.LANG_ROA)]
 		LANG_ROA,
+		[BdLangDescription(BdLang.LANG_ROH)]
 		LANG_ROH,
+		[BdLangDescription(BdLang.LANG_ROM)]
 		LANG_ROM,
+		[BdLangDescription(BdLang.LANG_RON)]
 		LANG_RON,
+		[BdLangDescription(BdLang.LANG_RUM)]
 		LANG_RUM,
+		[BdLangDescription(BdLang.LANG_RUN)]
 		LANG_RUN,
+		[BdLangDescription(BdLang.LANG_RUP)]
 		LANG_RUP,
+		[BdLangDescription(BdLang.LANG_RUS)]
 		LANG_RUS,
+		[BdLangDescription(BdLang.LANG_SAD)]
 		LANG_SAD,
+		[BdLangDescription(BdLang.LANG_SAG)]
 		LANG_SAG,
+		[BdLangDescription(BdLang.LANG_SAH)]
 		LANG_SAH,
+		[BdLangDescription(BdLang.LANG_SAI)]
 		LANG_SAI,
+		[BdLangDescription(BdLang.LANG_SAL)]
 		LANG_SAL,
+		[BdLangDescription(BdLang.LANG_SAM)]
 		LANG_SAM,
+		[BdLangDescription(BdLang.LANG_SAN)]
 		LANG_SAN,
+		[BdLangDescription(BdLang.LANG_SAS)]
 		LANG_SAS,
+		[BdLangDescription(BdLang.LANG_SAT)]
 		LANG_SAT,
+		[BdLangDescription(BdLang.LANG_SCN)]
 		LANG_SCN,
+		[BdLangDescription(BdLang.LANG_SCO)]
 		LANG_SCO,
+		[BdLangDescription(BdLang.LANG_SEL)]
 		LANG_SEL,
+		[BdLangDescription(BdLang.LANG_SEM)]
 		LANG_SEM,
+		[BdLangDescription(BdLang.LANG_SGA)]
 		LANG_SGA,
+		[BdLangDescription(BdLang.LANG_SGN)]
 		LANG_SGN,
+		[BdLangDescription(BdLang.LANG_SHN)]
 		LANG_SHN,
+		[BdLangDescription(BdLang.LANG_SID)]
 		LANG_SID,
+		[BdLangDescription(BdLang.LANG_SIN)]
 		LANG_SIN,
+		[BdLangDescription(BdLang.LANG_SIO)]
 		LANG_SIO,
+		[BdLangDescription(BdLang.LANG_SIT)]
 		LANG_SIT,
+		[BdLangDescription(BdLang.LANG_SLA)]
 		LANG_SLA,
+		[BdLangDescription(BdLang.LANG_SLK)]
 		LANG_SLK,
+		[BdLangDescription(BdLang.LANG_SLO)]
 		LANG_SLO,
+		[BdLangDescription(BdLang.LANG_SLV)]
 		LANG_SLV,
+		[BdLangDescription(BdLang.LANG_SMA)]
 		LANG_SMA,
+		[BdLangDescription(BdLang.LANG_SME)]
 		LANG_SME,
+		[BdLangDescription(BdLang.LANG_SMI)]
 		LANG_SMI,
+		[BdLangDescription(BdLang.LANG_SMJ)]
 		LANG_SMJ,
+		[BdLangDescription(BdLang.LANG_SMN)]
 		LANG_SMN,
+		[BdLangDescription(BdLang.LANG_SMO)]
 		LANG_SMO,
+		[BdLangDescription(BdLang.LANG_SMS)]
 		LANG_SMS,
+		[BdLangDescription(BdLang.LANG_SNA)]
 		LANG_SNA,
+		[BdLangDescription(BdLang.LANG_SND)]
 		LANG_SND,
+		[BdLangDescription(BdLang.LANG_SNK)]
 		LANG_SNK,
+		[BdLangDescription(BdLang.LANG_SOG)]
 		LANG_SOG,
+		[BdLangDescription(BdLang.LANG_SOM)]
 		LANG_SOM,
+		[BdLangDescription(BdLang.LANG_SON)]
 		LANG_SON,
+		[BdLangDescription(BdLang.LANG_SOT)]
 		LANG_SOT,
+		[BdLangDescription(BdLang.LANG_SPA)]
 		LANG_SPA,
+		[BdLangDescription(BdLang.LANG_SQI)]
 		LANG_SQI,
+		[BdLangDescription(BdLang.LANG_SRD)]
 		LANG_SRD,
+		[BdLangDescription(BdLang.LANG_SRN)]
 		LANG_SRN,
+		[BdLangDescription(BdLang.LANG_SRP)]
 		LANG_SRP,
+		[BdLangDescription(BdLang.LANG_SRR)]
 		LANG_SRR,
+		[BdLangDescription(BdLang.LANG_SSA)]
 		LANG_SSA,
+		[BdLangDescription(BdLang.LANG_SSW)]
 		LANG_SSW,
+		[BdLangDescription(BdLang.LANG_SUK)]
 		LANG_SUK,
+		[BdLangDescription(BdLang.LANG_SUN)]
 		LANG_SUN,
+		[BdLangDescription(BdLang.LANG_SUS)]
 		LANG_SUS,
+		[BdLangDescription(BdLang.LANG_SUX)]
 		LANG_SUX,
+		[BdLangDescription(BdLang.LANG_SWA)]
 		LANG_SWA,
+		[BdLangDescription(BdLang.LANG_SWE)]
 		LANG_SWE,
+		[BdLangDescription(BdLang.LANG_SYC)]
 		LANG_SYC,
+		[BdLangDescription(BdLang.LANG_SYR)]
 		LANG_SYR,
+		[BdLangDescription(BdLang.LANG_TAH)]
 		LANG_TAH,
+		[BdLangDescription(BdLang.LANG_TAI)]
 		LANG_TAI,
+		[BdLangDescription(BdLang.LANG_TAM)]
 		LANG_TAM,
+		[BdLangDescription(BdLang.LANG_TAT)]
 		LANG_TAT,
+		[BdLangDescription(BdLang.LANG_TEL)]
 		LANG_TEL,
+		[BdLangDescription(BdLang.LANG_TEM)]
 		LANG_TEM,
+		[BdLangDescription(BdLang.LANG_TER)]
 		LANG_TER,
+		[BdLangDescription(BdLang.LANG_TET)]
 		LANG_TET,
+		[BdLangDescription(BdLang.LANG_TGK)]
 		LANG_TGK,
+		[BdLangDescription(BdLang.LANG_TGL)]
 		LANG_TGL,
+		[BdLangDescription(BdLang.LANG_THA)]
 		LANG_THA,
+		[BdLangDescription(BdLang.LANG_TIB)]
 		LANG_TIB,
+		[BdLangDescription(BdLang.LANG_TIG)]
 		LANG_TIG,
+		[BdLangDescription(BdLang.LANG_TIR)]
 		LANG_TIR,
+		[BdLangDescription(BdLang.LANG_TIV)]
 		LANG_TIV,
+		[BdLangDescription(BdLang.LANG_TKL)]
 		LANG_TKL,
+		[BdLangDescription(BdLang.LANG_TLH)]
 		LANG_TLH,
+		[BdLangDescription(BdLang.LANG_TLI)]
 		LANG_TLI,
+		[BdLangDescription(BdLang.LANG_TMH)]
 		LANG_TMH,
+		[BdLangDescription(BdLang.LANG_TOG)]
 		LANG_TOG,
+		[BdLangDescription(BdLang.LANG_TON)]
 		LANG_TON,
+		[BdLangDescription(BdLang.LANG_TPI)]
 		LANG_TPI,
+		[BdLangDescription(BdLang.LANG_TSI)]
 		LANG_TSI,
+		[BdLangDescription(BdLang.LANG_TSN)]
 		LANG_TSN,
+		[BdLangDescription(BdLang.LANG_TSO)]
 		LANG_TSO,
+		[BdLangDescription(BdLang.LANG_TUK)]
 		LANG_TUK,
+		[BdLangDescription(BdLang.LANG_TUM)]
 		LANG_TUM,
+		[BdLangDescription(BdLang.LANG_TUP)]
 		LANG_TUP,
+		[BdLangDescription(BdLang.LANG_TUR)]
 		LANG_TUR,
+		[BdLangDescription(BdLang.LANG_TUT)]
 		LANG_TUT,
+		[BdLangDescription(BdLang.LANG_TVL)]
 		LANG_TVL,
+		[BdLangDescription(BdLang.LANG_TWI)]
 		LANG_TWI,
+		[BdLangDescription(BdLang.LANG_TYV)]
 		LANG_TYV,
+		[BdLangDescription(BdLang.LANG_UDM)]
 		LANG_UDM,
+		[BdLangDescription(BdLang.LANG_UGA)]
 		LANG_UGA,
+		[BdLangDescription(BdLang.LANG_UIG)]
 		LANG_UIG,
+		[BdLangDescription(BdLang.LANG_UKR)]
 		LANG_UKR,
+		[BdLangDescription(BdLang.LANG_UMB)]
 		LANG_UMB,
+		[BdLangDescription(BdLang.LANG_UND)]
 		LANG_UND,
+		[BdLangDescription(BdLang.LANG_URD)]
 		LANG_URD,
+		[BdLangDescription(BdLang.LANG_UZB)]
 		LANG_UZB,
+		[BdLangDescription(BdLang.LANG_VAI)]
 		LANG_VAI,
+		[BdLangDescription(BdLang.LANG_VEN)]
 		LANG_VEN,
+		[BdLangDescription(BdLang.LANG_VIE)]
 		LANG_VIE,
+		[BdLangDescription(BdLang.LANG_VOL)]
 		LANG_VOL,
+		[BdLangDescription(BdLang.LANG_VOT)]
 		LANG_VOT,
+		[BdLangDescription(BdLang.LANG_WAK)]
 		LANG_WAK,
+		[BdLangDescription(BdLang.LANG_WAL)]
 		LANG_WAL,
+		[BdLangDescription(BdLang.LANG_WAR)]
 		LANG_WAR,
+		[BdLangDescription(BdLang.LANG_WAS)]
 		LANG_WAS,
+		[BdLangDescription(BdLang.LANG_WEL)]
 		LANG_WEL,
+		[BdLangDescription(BdLang.LANG_WEN)]
 		LANG_WEN,
+		[BdLangDescription(BdLang.LANG_WLN)]
 		LANG_WLN,
+		[BdLangDescription(BdLang.LANG_WOL)]
 		LANG_WOL,
+		[BdLangDescription(BdLang.LANG_XAL)]
 		LANG_XAL,
+		[BdLangDescription(BdLang.LANG_XHO)]
 		LANG_XHO,
+		[BdLangDescription(BdLang.LANG_YAO)]
 		LANG_YAO,
+		[BdLangDescription(BdLang.LANG_YAP)]
 		LANG_YAP,
+		[BdLangDescription(BdLang.LANG_YID)]
 		LANG_YID,
+		[BdLangDescription(BdLang.LANG_YOR)]
 		LANG_YOR,
+		[BdLangDescription(BdLang.LANG_YPK)]
 		LANG_YPK,
+		[BdLangDescription(BdLang.LANG_ZAP)]
 		LANG_ZAP,
+		[BdLangDescription(BdLang.LANG_ZBL)]
 		LANG_ZBL,
+		[BdLangDescription(BdLang.LANG_ZEN)]
 		LANG_ZEN,
+		[BdLangDescription(BdLang.LANG_ZGH)]
 		LANG_ZGH,
+		[BdLangDescription(BdLang.LANG_ZHA)]
 		LANG_ZHA,
+		[BdLangDescription(BdLang.LANG_ZHO)]
 		LANG_ZHO,
+		[BdLangDescription(BdLang.LANG_ZND)]
 		LANG_ZND,
+		[BdLangDescription(BdLang.LANG_ZUL)]
 		LANG_ZUL,
+		[BdLangDescription(BdLang.LANG_ZUN)]
 		LANG_ZUN,
+		[BdLangDescription(BdLang.LANG_ZXX)]
 		LANG_ZXX,
+		[BdLangDescription(BdLang.LANG_ZZA)]
 		LANG_ZZA
 	}
 }

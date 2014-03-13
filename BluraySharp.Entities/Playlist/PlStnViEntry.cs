@@ -8,14 +8,14 @@ namespace BluraySharp.PlayList
 		#region Entry Root
 
 		private PlStnEntryRoot entryRoot =
-			new PlStnEntryRoot(PlStnStreamEntryType.PlayItem, (byte)BdViCodingType.ViAvc);
+			new PlStnEntryRoot(PlStnEntryType.PlayItem, (byte)BdViCodingType.ViAvc);
 
 		[BdSubPartField]
 		private PlStnEntryRoot EntryRoot
 		{
 			get { return this.entryRoot; }
 		}
-		public PlStnStreamEntryType EntryType
+		public PlStnEntryType EntryType
 		{
 			get { return this.entryRoot.EntryType; }
 			set { this.entryRoot.EntryType = value; }

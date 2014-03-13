@@ -1,6 +1,4 @@
-﻿using System;
-using BluraySharp.Common;
-using BluraySharp.Common;
+﻿using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {

@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel;
 namespace BluraySharp.PlayList
 {
 	public enum PlSubPathType : byte

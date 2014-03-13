@@ -1,7 +1,7 @@
 ﻿
 namespace BluraySharp.PlayList
 {
-	public enum PlStnStreamEntryType : byte
+	public enum PlStnEntryType : byte
 	{
 		Unknown,
 

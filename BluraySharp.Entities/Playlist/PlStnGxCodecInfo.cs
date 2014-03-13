@@ -8,7 +8,7 @@ namespace BluraySharp.PlayList
 	{
 		#region Language
 
-		private BdLangCode language = BdLang.LANG_ENG;
+		private BdLangCode language = new BdLangCode();
 
 		[BdSubPartField]
 		public BdLangCode LanguageCode

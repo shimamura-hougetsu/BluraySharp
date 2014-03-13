@@ -1,7 +1,9 @@
 ﻿using BluraySharp.Common;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace BluraySharp
 {
@@ -108,6 +110,77 @@ namespace BluraySharp
 		public static bool IsNull(this object obj)
 		{
 			return obj.RefEquals(null);
+		}
+
+
+		private static readonly Dictionary<BdLang, string> langCodeTable =
+			ExtensionMethods.CreateLangCodeTable();
+
+		private static Dictionary<BdLang, string> CreateLangCodeTable()
+		{
+			Dictionary<BdLang, string> tDictionary = new Dictionary<BdLang,string>();
+			foreach(BdLang iLang in Enum.GetValues(typeof(BdLang)))
+			{
+				Match tMatch = Regex.Match(
+					Enum.GetName(typeof(BdLang), iLang),
+					@"LANG_(\w{3})"
+					);
+				if(tMatch.Success)
+				{
+					tDictionary[iLang] = tMatch.Groups[1].Value.ToLower();
+				}
+			}
+
+			return tDictionary;
+		}
+
+		private static Dictionary<BdLang, CultureInfo> cultureInfoTable =
+			ExtensionMethods.CreateCultureInfoTable();
+		private static Dictionary<BdLang, CultureInfo> CreateCultureInfoTable()
+		{
+			CultureInfo[] tCultureInfos = CultureInfo.GetCultures(CultureTypes.NeutralCultures);
+			Dictionary<BdLang, CultureInfo> tDictionary = new Dictionary<BdLang, CultureInfo>();
+
+			foreach (BdLang iBdLang in ExtensionMethods.langCodeTable.Keys)
+			{
+				CultureInfo tCultureInfo = tCultureInfos.FirstOrDefault(
+					xCultureInfo =>
+						xCultureInfo.ThreeLetterISOLanguageName == ExtensionMethods.langCodeTable[iBdLang]
+					);
+				tDictionary.Add(iBdLang, tCultureInfo);
+			}
+
+			return tDictionary;
+		}
+
+		public static string ToIsoLangCode(this BdLang lang)
+		{
+			if (ExtensionMethods.langCodeTable.ContainsKey(lang))
+			{
+				return ExtensionMethods.langCodeTable[lang];
+			}
+			else
+			{
+				throw new KeyNotFoundException("lang");
+			}
+		}
+
+		public static BdLang ToBdLang(this BluraySharp.Common.BdStandardPart.BdLangCode isoLangCode)
+		{
+			return ExtensionMethods.langCodeTable.First(xPair => xPair.Value == isoLangCode.IsoLangCode).Key;
+		}
+
+		public static string ToStringLocalized(this BdLang lang)
+		{
+			CultureInfo tCultureInfo = ExtensionMethods.cultureInfoTable[lang];
+			if (tCultureInfo.IsNull())
+			{
+				return (lang as Enum).ToStringLocalized();
+			}
+			else
+			{
+				return tCultureInfo.NativeName;
+			}
 		}
 	}
 }

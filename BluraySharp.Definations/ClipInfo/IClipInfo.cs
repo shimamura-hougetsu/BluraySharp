@@ -1,5 +1,4 @@
 ﻿using BluraySharp.Common;
-using BluraySharp.Common;
 
 namespace BluraySharp.ClipInfo
 {

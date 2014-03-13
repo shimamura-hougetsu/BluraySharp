@@ -10,17 +10,17 @@ namespace BluraySharp.PlayList
 	[BdPartScope(BdIntSize.U8)]
 	internal class PlStnEntryInfoRoot : BdPart
 	{
-		public PlStnEntryInfoRoot(PlStnStreamEntryType entryType)
+		public PlStnEntryInfoRoot(PlStnEntryType entryType)
 		{
 			this.UpdateEntryType(entryType);
 		}
 
 		#region EntryType
 
-		private PlStnStreamEntryType entryType;
+		private PlStnEntryType entryType;
 
 		[BdUIntField(BdIntSize.U8)]
-		public PlStnStreamEntryType EntryType
+		public PlStnEntryType EntryType
 		{
 			get
 			{
@@ -36,17 +36,17 @@ namespace BluraySharp.PlayList
 		}
 
 
-		private void UpdateEntryType(PlStnStreamEntryType type)
+		private void UpdateEntryType(PlStnEntryType type)
 		{
 			switch (type)
 			{
-				case PlStnStreamEntryType.PlayItem:
+				case PlStnEntryType.PlayItem:
 					this.entryInfo = new PlStnPlayItemEntryInfo();
 					break;
-				case PlStnStreamEntryType.SubPlayItem:
+				case PlStnEntryType.SubPlayItem:
 					this.entryInfo = new PlStnSubPlayItemEntryInfo();
 					break;
-				case PlStnStreamEntryType.InMuxPip:
+				case PlStnEntryType.InMuxPip:
 					this.entryInfo = new PlStnInMuxPipEntryInfo();
 					break;
 				default:

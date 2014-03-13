@@ -4,7 +4,7 @@ namespace BluraySharp.PlayList
 {
 	public interface IPlStnEntry : IBdPart
 	{
-		PlStnStreamEntryType EntryType { get; set; }
+		PlStnEntryType EntryType { get; set; }
 		IPlStnEntryInfo EntryInfo { get; }
 	}
 }
