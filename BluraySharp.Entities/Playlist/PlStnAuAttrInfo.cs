@@ -5,7 +5,7 @@ using System;
 
 namespace BluraySharp.PlayList
 {
-	public class PlStnAuCodecInfo : BdPart, IPlStnAuCodecInfo
+	public class PlStnAuAttrInfo : BdPart, IPlStnAuAttribInfo
 	{
 		#region FormatValue
 
@@ -49,7 +49,7 @@ namespace BluraySharp.PlayList
 
 		public override string ToString()
 		{
-			return "STN Audio CodecInfo";
+			return "STN Audio AttrInfo";
 		}
 	}
 }

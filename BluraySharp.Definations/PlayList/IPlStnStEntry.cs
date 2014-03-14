@@ -4,7 +4,7 @@ namespace BluraySharp.PlayList
 {
 	public interface IPlStnStEntry : IPlStnEntry
 	{
-		BdStCodingType CodecInfoType { get; set; }
-		IPlStnCodecInfo CodecInfo { get; }
+		BdStCodingType AttrInfoType { get; set; }
+		IPlStnAttrInfo AttrInfo { get; }
 	}
 }

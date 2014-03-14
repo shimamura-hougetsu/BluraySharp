@@ -5,7 +5,7 @@ using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
-	public class PlStnTxCodecInfo : BdPart, IPlStnTxCodecInfo
+	public class PlStnTxAttrInfo : BdPart, IPlStnTxAttrInfo
 	{
 		#region CharCode
 
@@ -44,7 +44,7 @@ namespace BluraySharp.PlayList
 
 		public override string ToString()
 		{
-			return "STN Graphics CodecInfo";
+			return "STN Graphics AttrInfo";
 		}
 	}
 }

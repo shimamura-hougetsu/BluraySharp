@@ -4,10 +4,10 @@ namespace BluraySharp.PlayList
 {
 	internal class PlStnEntryRoot : BdPart
 	{
-		public PlStnEntryRoot(PlStnEntryType entryType, byte codecType)
+		public PlStnEntryRoot(PlStnEntryType entryType, byte attrType)
 		{
 			this.EntryInfoRoot = new PlStnEntryInfoRoot(entryType);
-			this.CodecInfoRoot = new PlStnCodecInfoRoot(codecType);
+			this.AttrInfoRoot = new PlStnAttrInfoRoot(attrType);
 		}
 
 		#region EntryInfo Root
@@ -27,19 +27,19 @@ namespace BluraySharp.PlayList
 
 		#endregion
 		
-		#region CodecInfo Root
+		#region AttrInfo Root
 
 		[BdSubPartField]
-		private PlStnCodecInfoRoot CodecInfoRoot { get; set; }
+		private PlStnAttrInfoRoot AttrInfoRoot { get; set; }
 
-		public byte CodecInfoType
+		public byte AttrInfoType
 		{
-			get { return this.CodecInfoRoot.CodecInfoType; }
-			set { this.CodecInfoRoot.CodecInfoType = value; }
+			get { return this.AttrInfoRoot.AttrInfoType; }
+			set { this.AttrInfoRoot.AttrInfoType = value; }
 		}
-		public IPlStnCodecInfo CodecInfo
+		public IPlStnAttrInfo AttrInfo
 		{
-			get { return this.CodecInfoRoot.CodecInfo; }
+			get { return this.AttrInfoRoot.AttrInfo; }
 		}
 
 		#endregion

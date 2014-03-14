@@ -24,14 +24,14 @@ namespace BluraySharp.PlayList
 		{
 			get { return this.entryRoot.EntryInfo; }
 		}
-		public BdIgCodingType CodecInfoType
+		public BdIgCodingType AttrInfoType
 		{
-			get { return (BdIgCodingType)this.entryRoot.CodecInfoType; }
-			set { this.entryRoot.CodecInfoType = (byte)value; }
+			get { return (BdIgCodingType)this.entryRoot.AttrInfoType; }
+			set { this.entryRoot.AttrInfoType = (byte)value; }
 		}
-		public IPlStnCodecInfo CodecInfo
+		public IPlStnAttrInfo AttrInfo
 		{
-			get { return this.entryRoot.CodecInfo; }
+			get { return this.entryRoot.AttrInfo; }
 		}
 
 		#endregion

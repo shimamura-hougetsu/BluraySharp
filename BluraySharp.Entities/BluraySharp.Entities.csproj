@@ -55,7 +55,7 @@
     <Compile Include="PlayList\PlPlayItemList.cs" />
     <Compile Include="PlayList\PlStillOptions.cs" />
     <Compile Include="PlayList\PlStnAuEntry.cs" />
-    <Compile Include="PlayList\PlStnCodecInfoRoot.cs" />
+    <Compile Include="PlayList\PlStnAttrInfoRoot.cs" />
     <Compile Include="PlayList\PlStnEntryInfoRoot.cs" />
     <Compile Include="PlayList\PlStnIgEntry.cs" />
     <Compile Include="PlayList\PlStnInMuxPipEntryInfo.cs" />
@@ -68,13 +68,13 @@
     <Compile Include="PlayList\PlStnViEntry.cs" />
     <Compile Include="PlayList\PlSubPath.cs" />
     <Compile Include="PlayList\PlSubPlayItem.cs" />
-    <Compile Include="PlayList\PlStnViCodecInfo.cs" />
-    <Compile Include="PlayList\PlStnAuCodecInfo.cs" />
+    <Compile Include="PlayList\PlStnViAttrInfo.cs" />
+    <Compile Include="PlayList\PlStnAuAttrInfo.cs" />
     <Compile Include="PlayList\PlStnStEntry.cs" />
-    <Compile Include="PlayList\PlStnTxCodecInfo.cs" />
+    <Compile Include="PlayList\PlStnTxAttrInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\VersionInfo.cs" />
-    <Compile Include="PlayList\PlStnGxCodecInfo.cs" />
+    <Compile Include="PlayList\PlStnGxAttrInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BluraySharp.Definations\BluraySharp.Definations.csproj">

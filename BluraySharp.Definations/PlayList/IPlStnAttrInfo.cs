@@ -3,7 +3,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnCodecInfo : IBdPart
+	public interface IPlStnAttrInfo : IBdPart
 	{
 	}
 }

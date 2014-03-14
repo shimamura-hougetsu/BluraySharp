@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\BdLangDescriptionAttribute.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldRandomVisitor.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldVirtualVisitor.cs" />
     <Compile Include="Common\BdPartFramework\BdPartScopeAttribute.cs" />
@@ -68,7 +67,6 @@
     <Compile Include="Common\BdPartFramework\IBdFieldDescriptor.cs" />
     <Compile Include="Common\BdPartFramework\IBdFieldTraverser.cs" />
     <Compile Include="Common\BdPartFramework\IBdRawIoHelperT.cs" />
-    <Compile Include="Common\BdEnumDescriptionAttribute.cs" />
     <Compile Include="Common\Serializing\BdByteStreamIoContext.cs" />
     <Compile Include="Common\Serializing\BdByteStreamReadContext.cs" />
     <Compile Include="Common\Serializing\BdByteStreamWriteContext.cs" />
@@ -115,14 +113,14 @@
     <Compile Include="PlayList\IPlPlayItemList.cs" />
     <Compile Include="PlayList\IPlPlayMark.cs" />
     <Compile Include="PlayList\IPlStillOptions.cs" />
-    <Compile Include="PlayList\IPlStnAuCodecInfo.cs" />
+    <Compile Include="PlayList\IPlStnAuAttribInfo.cs" />
     <Compile Include="PlayList\IPlStnEntryInfo.cs" />
     <Compile Include="PlayList\IPlStnEntry.cs" />
     <Compile Include="PlayList\IPlStnSvEntry.cs" />
     <Compile Include="PlayList\IPlStnSaEntry.cs" />
     <Compile Include="PlayList\IPlStnIgEntry.cs" />
     <Compile Include="PlayList\IPlStnStEntry.cs" />
-    <Compile Include="PlayList\IPlStnCodecInfo.cs" />
+    <Compile Include="PlayList\IPlStnAttrInfo.cs" />
     <Compile Include="PlayList\IPlStnInMuxPipEntryInfo.cs" />
     <Compile Include="PlayList\IPlStnPlayItemEntryInfo.cs" />
     <Compile Include="Common\IBdPart.cs" />
@@ -134,8 +132,8 @@
     <Compile Include="PlayList\IPlStnAuEntry.cs" />
     <Compile Include="PlayList\IPlStnViEntry.cs" />
     <Compile Include="PlayList\IPlStnSubPlayItemEntryInfo.cs" />
-    <Compile Include="PlayList\IPlStnTxCodecInfo.cs" />
-    <Compile Include="PlayList\IPlStnViCodecInfo.cs" />
+    <Compile Include="PlayList\IPlStnTxAttrInfo.cs" />
+    <Compile Include="PlayList\IPlStnViAttrInfo.cs" />
     <Compile Include="PlayList\IPlStnTable.cs" />
     <Compile Include="PlayList\IPlSubPath.cs" />
     <Compile Include="PlayList\IPlSubPlayItem.cs" />
@@ -143,7 +141,7 @@
     <Compile Include="PlayList\PlStillMode.cs" />
     <Compile Include="PlayList\PlSubPathType.cs" />
     <Compile Include="PlayList\PlStnEntryType.cs" />
-    <Compile Include="PlayList\IPlStnGxCodecInfo.cs" />
+    <Compile Include="PlayList\IPlStnGxAttrInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

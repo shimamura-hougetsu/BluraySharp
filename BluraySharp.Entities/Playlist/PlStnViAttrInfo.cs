@@ -9,7 +9,7 @@ using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
-	public class PlStnViCodecInfo : BdPart, IPlStnViCodecInfo
+	public class PlStnViAttrInfo : BdPart, IPlStnViAttrInfo
 	{
 		#region FormatValue
 
@@ -58,7 +58,7 @@ namespace BluraySharp.PlayList
 
 		public override string ToString()
 		{
-			return "STN Video CodecInfo";
+			return "STN Video AttrInfo";
 		}
 	}
 }

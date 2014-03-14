@@ -4,7 +4,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnViCodecInfo : IPlStnCodecInfo
+	public interface IPlStnViAttrInfo : IPlStnAttrInfo
 	{
 		BdViFormat VideoFormat { get; set; }
 		BdViFrameRate FrameRate { get; set; }

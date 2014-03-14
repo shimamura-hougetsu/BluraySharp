@@ -2,7 +2,7 @@
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnGxCodecInfo : IPlStnCodecInfo
+	public interface IPlStnGxAttrInfo : IPlStnAttrInfo
 	{
 		BdLang Language { get; set; }
 	}
