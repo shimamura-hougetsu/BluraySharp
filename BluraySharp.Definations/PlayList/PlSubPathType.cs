@@ -6,6 +6,9 @@ namespace BluraySharp.PlayList
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<PlSubPathType>))]
 	public enum PlSubPathType : byte
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+		Unknown = 0x00,
 		/// <summary>
 		/// Primary Audio for Browsable SlideShow
 		/// </summary>

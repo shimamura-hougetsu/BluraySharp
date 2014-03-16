@@ -1,8 +1,11 @@
 ﻿
+using System.ComponentModel;
 namespace BluraySharp.Common
 {
+	[TypeConverter(typeof(BdEnumConverter<BdConnectionCondition>))]
 	public enum BdConnectionCondition : byte
 	{
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		Unknown = 0x00,
 		/// <summary>
 		/// Not Seamless

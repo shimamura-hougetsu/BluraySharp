@@ -7,61 +7,34 @@ using System.Text;
 
 namespace BluraySharp.Common
 {
-	internal class BdLangConverter : TypeConverter
+	internal class BdLangConverter : EnumConverter
 	{
 		Dictionary<string, Dictionary<string, BdLang>> enumDict =
 			new Dictionary<string, Dictionary<string, BdLang>>();
-		Array langValues = Enum.GetValues(typeof(BdLang));
+
+		public BdLangConverter()
+			: base(typeof(BdLang)) { }
 		
-		public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
-		{
-			if (context.PropertyDescriptor.PropertyType.Equals(typeof(BdLang)))
-			{
-				return true;
-			}
-
-			return base.GetPropertiesSupported(context);
-		}
-
-		public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
-		{
-			return new StandardValuesCollection(langValues);
-		}
-
 		public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
 		{
-			return true;
+			return false;
 		}
-
-		public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-		{
-			if(sourceType.Equals(typeof(string)))
-			{
-				return true;
-			}
-
-			return base.CanConvertFrom(context, sourceType);
-		}
-
-		public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
-		{
-			if (destinationType.Equals(typeof(string)))
-			{
-				return true;
-			}
-
-			return base.CanConvertTo(context, destinationType);
-		}
-
+		
 		public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
 		{
 			if (value.GetType().Equals(typeof(string)))
 			{
 				var tDict = this.GetNameDictLocalized(culture);
-				var tEnum = tDict.FirstOrDefault(xPair => xPair.Key.Equals(value)).Value;
-				if (!tEnum.IsNull())
+				try
 				{
-					return tEnum;
+					return tDict.First(xPair => xPair.Key.Equals(value)).Value;
+				}
+				catch (InvalidOperationException){}
+
+				var tValue = (value as string);
+				if (!string.IsNullOrEmpty(tValue))
+				{
+					return tValue.Trim().ToBdLang();
 				}
 			}
 

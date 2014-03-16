@@ -4,6 +4,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdViCodingType>))]
 	public enum BdViCodingType
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown,
 		ViMpeg1 = 0x01,
 		ViMpeg2 = 0x02,
@@ -16,6 +18,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdAuCodingType>))]
 	public enum BdAuCodingType
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown,
 		AuMpeg1 = 0x03,
 		AuMpeg2 = 0x04,
@@ -33,6 +37,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdStCodingType>))]
 	public enum BdStCodingType	//subtitle
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown,
 		GxPresentation = 0x90,
 		TxSubtitle = 0x92,
@@ -41,6 +47,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdIgCodingType>))]
 	public enum BdIgCodingType
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown,
 		GxInterractive = 0x91,
 	}
@@ -48,6 +56,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdSaCodingType>))]
 	public enum BdSaCodingType
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown,
 		SaDolbyPlus = 0xA1,
 		SaDtsHD = 0xA2,

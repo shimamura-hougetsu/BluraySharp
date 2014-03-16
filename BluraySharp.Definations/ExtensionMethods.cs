@@ -22,15 +22,21 @@ namespace BluraySharp
 		{
 			List<string> tDescDict = new List<string>();
 			string tEnumName = Enum.GetName(obj.GetType(), obj);
-			string tEnumDesc = string.Format("Enum_{0}_{1}", obj.GetType().Name, tEnumName);
+			string tEnumDesc = null;
 
-			tEnumDesc = Properties.Resources.ResourceManager.GetString(tEnumDesc, culture);
+			if (!culture.Equals(CultureInfo.InvariantCulture))
+			{
+				tEnumDesc = string.Format("Enum_{0}_{1}", obj.GetType().Name, tEnumName);
+				tEnumDesc = Properties.Resources.ResourceManager.GetString(tEnumDesc, culture);
+			}
+
 			if (string.IsNullOrEmpty(tEnumDesc))
 			{
 				tEnumDesc = tEnumName;
 			}
 
 			return tEnumDesc;
+
 		}
 
 		public static string ToStringLocalized(this Enum obj)
@@ -93,7 +99,6 @@ namespace BluraySharp
 			return ExtensionMethods.bdViFrameRateToDoubleTable[value];
 		}
 
-
 		private static Dictionary<BdAuSampleRate, double> bdAuSampleRateToDoubleTable =
 			new Dictionary<BdAuSampleRate, double>()
 			{
@@ -129,15 +134,15 @@ namespace BluraySharp
 			{
 				Match tMatch = Regex.Match(
 					Enum.GetName(typeof(BdLang), iLang),
-					@"LANG_(\w{3})\b"
+					@"([A-Z][a-z]{2})\b"
 					);
 				if (tMatch.Success)
 				{
-					tDictionary[iLang] = tMatch.Groups[1].Value.ToLower();
+					tDictionary[iLang] = tMatch.Captures[0].Value.ToLower();
 				}
 				else
 				{
-					tDictionary[iLang] = CultureInfo.CurrentUICulture.ThreeLetterISOLanguageName;
+					tDictionary[iLang] = "\0\0\0";
 				}
 			}
 
@@ -177,9 +182,18 @@ namespace BluraySharp
 			}
 		}
 
-		public static BdLang ToBdLang(this BluraySharp.Common.BdStandardPart.BdLangCode langCode)
+		internal static BdLang ToBdLang(this string langCode)
 		{
-			return ExtensionMethods.langCodeTable.First(xPair => xPair.Value == langCode.IsoLangCode).Key;
+			Match tMatches = Regex.Match(langCode, @"^([a-z]{3})\b");
+			if (!tMatches.Success)
+			{
+				return BdLang.Ivl;
+			}
+			else
+			{
+				string tIsoLangCode = tMatches.Captures[0].Value;
+				return ExtensionMethods.langCodeTable.FirstOrDefault(xPair => xPair.Value == tIsoLangCode).Key;
+			}
 		}
 
 		public static string ToStringLocalized(this BdLang lang)
@@ -191,17 +205,25 @@ namespace BluraySharp
 		{
 			CultureInfo tCultureInfo = ExtensionMethods.cultureInfoTable[lang];
 			string tIsoLangCode = lang.ToIsoLangCode();
-			string tDisplayName;
-			if (tCultureInfo.IsNull())
+
+			if (culture.Equals(CultureInfo.InvariantCulture))
 			{
-				tDisplayName = (lang as Enum).ToStringLocalized(culture);
+				return tIsoLangCode;
 			}
 			else
 			{
-				tDisplayName = tCultureInfo.NativeName;
-			}
+				string tDisplayName;
+				if (tCultureInfo.IsNull())
+				{
+					tDisplayName = (lang as Enum).ToStringLocalized(culture);
+				}
+				else
+				{
+					tDisplayName = tCultureInfo.NativeName;
+				}
 
-			return string.Format("{0}({1})", tIsoLangCode, tDisplayName);
+				return string.Format("{0} ({1})", tIsoLangCode, tDisplayName);
+			}
 		}
 	}
 }

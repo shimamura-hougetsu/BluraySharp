@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace BluraySharp.Common.BdStandardPart
 {
@@ -19,7 +20,7 @@ namespace BluraySharp.Common.BdStandardPart
 
 		public BdLang Value
 		{
-			get { return this.ToBdLang(); }
+			get { return this.IsoLangCode.ToBdLang(); }
 			set { this.IsoLangCode = value.ToIsoLangCode(); }
 		}
 
@@ -47,6 +48,5 @@ namespace BluraySharp.Common.BdStandardPart
 		{
 			return this.Value.ToStringLocalized();
 		}
-
 	}
 }

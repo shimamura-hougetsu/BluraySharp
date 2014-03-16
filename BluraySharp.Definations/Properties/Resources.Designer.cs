@@ -61,6 +61,231 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Dolby Digital (AC3) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_AuDolby {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_AuDolby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Dolby Lossless (TrueHD) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_AuDolbyLossless {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_AuDolbyLossless", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Dolby Digital Plus (AC3+) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_AuDolbyPlus {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_AuDolbyPlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DTS 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_AuDts {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_AuDts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DTS-HD High Resolution Audio (HDHR) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_AuDtsHDHR {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_AuDtsHDHR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DTS-HD Master Audio (HDMA) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_AuDtsHDMA {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_AuDtsHDMA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Linear PCM (LPCM) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_AuLPCM {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_AuLPCM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-1 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_AuMpeg1 {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_AuMpeg1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-2 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_AuMpeg2 {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_AuMpeg2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuCodingType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdAuCodingType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Stero+Multi Combo 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuPresentationType_Combo {
+            get {
+                return ResourceManager.GetString("Enum_BdAuPresentationType_Combo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Dual Mono 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuPresentationType_DualMono {
+            get {
+                return ResourceManager.GetString("Enum_BdAuPresentationType_DualMono", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Mono 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuPresentationType_Mono {
+            get {
+                return ResourceManager.GetString("Enum_BdAuPresentationType_Mono", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Multi Channel 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuPresentationType_Multi {
+            get {
+                return ResourceManager.GetString("Enum_BdAuPresentationType_Multi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Stero 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuPresentationType_Stereo {
+            get {
+                return ResourceManager.GetString("Enum_BdAuPresentationType_Stereo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuPresentationType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdAuPresentationType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 192 kHz 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuSampleRate_Au192 {
+            get {
+                return ResourceManager.GetString("Enum_BdAuSampleRate_Au192", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 48 kHz 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuSampleRate_Au48 {
+            get {
+                return ResourceManager.GetString("Enum_BdAuSampleRate_Au48", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 48+192 kHz Combo 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuSampleRate_Au48_192 {
+            get {
+                return ResourceManager.GetString("Enum_BdAuSampleRate_Au48_192", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 48+96 kHz Combo 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuSampleRate_Au48_96 {
+            get {
+                return ResourceManager.GetString("Enum_BdAuSampleRate_Au48_96", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 96 kHz 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuSampleRate_Au96 {
+            get {
+                return ResourceManager.GetString("Enum_BdAuSampleRate_Au96", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdAuSampleRate_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdAuSampleRate_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdCharacterCodingType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdCharacterCodingType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 UTF-16 Big Ending 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdCharacterCodingType_UTF16BE {
+            get {
+                return ResourceManager.GetString("Enum_BdCharacterCodingType_UTF16BE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 UTF-8 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdCharacterCodingType_UTF8 {
+            get {
+                return ResourceManager.GetString("Enum_BdCharacterCodingType_UTF8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Not Seamless 的本地化字符串。
         /// </summary>
         internal static string Enum_BdConnectionCondition_NotSeamless {
@@ -84,6 +309,87 @@ namespace BluraySharp.Properties {
         internal static string Enum_BdConnectionCondition_SeamlessConcat {
             get {
                 return ResourceManager.GetString("Enum_BdConnectionCondition_SeamlessConcat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdConnectionCondition_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdConnectionCondition_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Interractive Graphics (IG) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdIgCodingType_GxInterractive {
+            get {
+                return ResourceManager.GetString("Enum_BdIgCodingType_GxInterractive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdIgCodingType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdIgCodingType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Dolby Digital Plus (AC3+) for Secodary 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdSaCodingType_SaDolbyPlus {
+            get {
+                return ResourceManager.GetString("Enum_BdSaCodingType_SaDolbyPlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DTS-HD LBR for Secondary 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdSaCodingType_SaDtsHD {
+            get {
+                return ResourceManager.GetString("Enum_BdSaCodingType_SaDtsHD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdSaCodingType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdSaCodingType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Presentation Graphics (PG) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStCodingType_GxPresentation {
+            get {
+                return ResourceManager.GetString("Enum_BdStCodingType_GxPresentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Text Subtitle (textST) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStCodingType_TxSubtitle {
+            get {
+                return ResourceManager.GetString("Enum_BdStCodingType_TxSubtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStCodingType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdStCodingType_Unknown", resourceCulture);
             }
         }
         
@@ -178,7 +484,7 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Pip Pg textST Stream Number Change 的本地化字符串。
+        ///   查找类似 PiP Pg textST Stream Number Change 的本地化字符串。
         /// </summary>
         internal static string Enum_BdUOFlag_PipStChange {
             get {
@@ -232,7 +538,7 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Pip Pg textST Enable Disable (Reserved) 的本地化字符串。
+        ///   查找类似 PiP Pg textST Enable Disable (Reserved) 的本地化字符串。
         /// </summary>
         internal static string Enum_BdUOFlag_ReservedForPipStEnableDisable {
             get {
@@ -358,7 +664,7 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Subtitle Enable/Disable 的本地化字符串。
+        ///   查找类似 Subtitle Enable Disable 的本地化字符串。
         /// </summary>
         internal static string Enum_BdUOFlag_StEnableDisable {
             get {
@@ -390,6 +696,384 @@ namespace BluraySharp.Properties {
         internal static string Enum_BdUOFlag_TimeSearch {
             get {
                 return ResourceManager.GetString("Enum_BdUOFlag_TimeSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViCodingType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdViCodingType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-4 AVC (H.264) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViCodingType_ViAvc {
+            get {
+                return ResourceManager.GetString("Enum_BdViCodingType_ViAvc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-1 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViCodingType_ViMpeg1 {
+            get {
+                return ResourceManager.GetString("Enum_BdViCodingType_ViMpeg1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-2 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViCodingType_ViMpeg2 {
+            get {
+                return ResourceManager.GetString("Enum_BdViCodingType_ViMpeg2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MVC 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViCodingType_ViMvc {
+            get {
+                return ResourceManager.GetString("Enum_BdViCodingType_ViMvc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 VC-1 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViCodingType_ViVc1 {
+            get {
+                return ResourceManager.GetString("Enum_BdViCodingType_ViVc1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFormat_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdViFormat_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 1080i 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFormat_Vi1080i {
+            get {
+                return ResourceManager.GetString("Enum_BdViFormat_Vi1080i", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 1080p 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFormat_Vi1080p {
+            get {
+                return ResourceManager.GetString("Enum_BdViFormat_Vi1080p", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 480i 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFormat_Vi480i {
+            get {
+                return ResourceManager.GetString("Enum_BdViFormat_Vi480i", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 480p 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFormat_Vi480p {
+            get {
+                return ResourceManager.GetString("Enum_BdViFormat_Vi480p", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 576i 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFormat_Vi576i {
+            get {
+                return ResourceManager.GetString("Enum_BdViFormat_Vi576i", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 576p 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFormat_Vi576p {
+            get {
+                return ResourceManager.GetString("Enum_BdViFormat_Vi576p", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 720p 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFormat_Vi720p {
+            get {
+                return ResourceManager.GetString("Enum_BdViFormat_Vi720p", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFrameRate_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_BdViFrameRate_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 23.976 fps 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFrameRate_Vi23 {
+            get {
+                return ResourceManager.GetString("Enum_BdViFrameRate_Vi23", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 24 fps 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFrameRate_Vi24 {
+            get {
+                return ResourceManager.GetString("Enum_BdViFrameRate_Vi24", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 25 fps 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFrameRate_Vi25 {
+            get {
+                return ResourceManager.GetString("Enum_BdViFrameRate_Vi25", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 29.97 fps 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFrameRate_Vi29 {
+            get {
+                return ResourceManager.GetString("Enum_BdViFrameRate_Vi29", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 50 fps 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFrameRate_Vi50 {
+            get {
+                return ResourceManager.GetString("Enum_BdViFrameRate_Vi50", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 59.94 fps 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdViFrameRate_Vi59 {
+            get {
+                return ResourceManager.GetString("Enum_BdViFrameRate_Vi59", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Random 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlPlaybackType_Random {
+            get {
+                return ResourceManager.GetString("Enum_PlPlaybackType_Random", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Sequential 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlPlaybackType_Sequential {
+            get {
+                return ResourceManager.GetString("Enum_PlPlaybackType_Sequential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Shuffle 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlPlaybackType_Shuffle {
+            get {
+                return ResourceManager.GetString("Enum_PlPlaybackType_Shuffle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlPlaybackType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_PlPlaybackType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Entry Mark 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlPlayMarkType_PmEntryMark {
+            get {
+                return ResourceManager.GetString("Enum_PlPlayMarkType_PmEntryMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Link Point 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlPlayMarkType_PmLinkPoint {
+            get {
+                return ResourceManager.GetString("Enum_PlPlayMarkType_PmLinkPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlPlayMarkType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_PlPlayMarkType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Not Still 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlStillMode_NotStill {
+            get {
+                return ResourceManager.GetString("Enum_PlStillMode_NotStill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Still for Duration 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlStillMode_StillForDuration {
+            get {
+                return ResourceManager.GetString("Enum_PlStillMode_StillForDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Still Infinitely 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlStillMode_StillInfinitely {
+            get {
+                return ResourceManager.GetString("Enum_PlStillMode_StillInfinitely", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 In-Mux PiP Stream from a Play Item 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlStnEntryType_InMuxPip {
+            get {
+                return ResourceManager.GetString("Enum_PlStnEntryType_InMuxPip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Stream from a Play Item 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlStnEntryType_PlayItem {
+            get {
+                return ResourceManager.GetString("Enum_PlStnEntryType_PlayItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Stream from a Sub Play Item 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlStnEntryType_SubPlayItem {
+            get {
+                return ResourceManager.GetString("Enum_PlStnEntryType_SubPlayItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlStnEntryType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_PlStnEntryType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Interractive Graphics Menu 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlSubPathType_IgMenu {
+            get {
+                return ResourceManager.GetString("Enum_PlSubPathType_IgMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 In-Mux Synchronous PiP 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlSubPathType_IMSync {
+            get {
+                return ResourceManager.GetString("Enum_PlSubPathType_IMSync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Out-of-Mux Asynchronous PiP 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlSubPathType_OoMAsync {
+            get {
+                return ResourceManager.GetString("Enum_PlSubPathType_OoMAsync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Out-of-Mux Synchronous Streams 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlSubPathType_OoMSync {
+            get {
+                return ResourceManager.GetString("Enum_PlSubPathType_OoMSync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Primary Audio for Browsable Slideshow 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlSubPathType_PrAudio {
+            get {
+                return ResourceManager.GetString("Enum_PlSubPathType_PrAudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Textual Subtitle 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlSubPathType_TextSub {
+            get {
+                return ResourceManager.GetString("Enum_PlSubPathType_TextSub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unknown 的本地化字符串。
+        /// </summary>
+        internal static string Enum_PlSubPathType_Unknown {
+            get {
+                return ResourceManager.GetString("Enum_PlSubPathType_Unknown", resourceCulture);
             }
         }
     }

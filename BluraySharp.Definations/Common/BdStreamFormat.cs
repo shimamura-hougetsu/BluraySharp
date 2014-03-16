@@ -4,6 +4,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdViFormat>))]
 	public enum BdViFormat
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown,
 
 		Vi480i = 0x01,
@@ -18,6 +20,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdAuPresentationType>))]
 	public enum BdAuPresentationType
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown,
 
 		Mono = 0x01,
@@ -30,6 +34,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdCharacterCodingType>))]
 	public enum BdCharacterCodingType
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown,
 
 		UTF8 = 0x01,

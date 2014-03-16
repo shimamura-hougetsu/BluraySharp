@@ -6,7 +6,8 @@ namespace BluraySharp.Common
 	public enum BdUOFlag : byte
 	{
 		PipStChange = 0x1E,	//0x1E = 30
-		//ReservedForPipStEnableDisable = 0x1F,
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		ReservedForPipStEnableDisable,
 
 
 		SecondaryAudioChange = 0x20,
@@ -25,10 +26,9 @@ namespace BluraySharp.Common
 
 
 		AngleChange = 0x28,
-
-		//ReservedForStChange = 0x29,
-
-		PrimaryAudioChange = 0x3A,
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		ReservedForStChange,
+		PrimaryAudioChange,
 
 
 		SelectButtonAndActivate = 0x2B,
@@ -46,17 +46,21 @@ namespace BluraySharp.Common
 		ForwardPlay,
 
 		StillOff,
-		//ReservedForPauseOff = 0x36,
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		ReservedForPauseOff = 0x36,
 		PauseOn = 0x37,
 		Stop,
-
-		//ReservedForPlayFirstplay = 0x39,
+		
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		ReservedForPlayFirstplay = 0x39,
 
 		SkipToPrevPoint = 0x3A,
 		SkipToNextPoint,
 		TimeSearch,
 		ChapterSearch,
-		//ReservedForTitleSearch,
-		//ReservedForMenuCall,	//0x3F=63
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		ReservedForTitleSearch,
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		ReservedForMenuCall,	//0x3F=63
 	}
 }

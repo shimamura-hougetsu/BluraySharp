@@ -5,9 +5,6 @@ using System;
 
 namespace BluraySharp.PlayList
 {
-	/// <summary>
-	/// Not Implemented Yet
-	/// </summary>
 	[BdPartScope(BdIntSize.U32)]
 	public class PlPlayMarkList : BdPart, IPlPlayMarkList
 	{

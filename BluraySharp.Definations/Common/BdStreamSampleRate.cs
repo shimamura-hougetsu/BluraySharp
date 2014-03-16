@@ -4,6 +4,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdViFrameRate>))]
 	public enum BdViFrameRate
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown = 0x00,
 
 		Vi23 = 0x01,
@@ -17,6 +19,8 @@ namespace BluraySharp.Common
 	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdAuSampleRate>))]
 	public enum BdAuSampleRate
 	{
+		[System.ComponentModel.Browsable(false)]
+		[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown = 0x00,
 
 		Au48 = 0x01,

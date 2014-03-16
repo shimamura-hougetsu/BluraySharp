@@ -117,6 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Enum_BdAuCodingType_AuDolby" xml:space="preserve">
+    <value>Dolby (AC3)</value>
+  </data>
+  <data name="Enum_BdAuCodingType_AuDolbyLossless" xml:space="preserve">
+    <value>Dolby Lossless (TrueHD)</value>
+  </data>
+  <data name="Enum_BdAuCodingType_AuDolbyPlus" xml:space="preserve">
+    <value>Dolby Digital Plus (AC3+)</value>
+  </data>
+  <data name="Enum_BdAuCodingType_AuDts" xml:space="preserve">
+    <value>DTS</value>
+  </data>
+  <data name="Enum_BdAuCodingType_AuDtsHDHR" xml:space="preserve">
+    <value>DTS-HD HR</value>
+  </data>
+  <data name="Enum_BdAuCodingType_AuDtsHDMA" xml:space="preserve">
+    <value>DTS-HD MA</value>
+  </data>
+  <data name="Enum_BdAuCodingType_AuLPCM" xml:space="preserve">
+    <value>LPCM</value>
+  </data>
+  <data name="Enum_BdAuCodingType_AuMpeg1" xml:space="preserve">
+    <value>MPEG-1</value>
+  </data>
+  <data name="Enum_BdAuCodingType_AuMpeg2" xml:space="preserve">
+    <value>MPEG-2</value>
+  </data>
+  <data name="Enum_BdAuCodingType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdAuPresentationType_Combo" xml:space="preserve">
+    <value>立体声、多声道组合</value>
+  </data>
+  <data name="Enum_BdAuPresentationType_DualMono" xml:space="preserve">
+    <value>双路单声道</value>
+  </data>
+  <data name="Enum_BdAuPresentationType_Mono" xml:space="preserve">
+    <value>单声道</value>
+  </data>
+  <data name="Enum_BdAuPresentationType_Multi" xml:space="preserve">
+    <value>多声道</value>
+  </data>
+  <data name="Enum_BdAuPresentationType_Stereo" xml:space="preserve">
+    <value>立体声</value>
+  </data>
+  <data name="Enum_BdAuPresentationType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdAuSampleRate_Au192" xml:space="preserve">
+    <value>192 kHz</value>
+  </data>
+  <data name="Enum_BdAuSampleRate_Au48" xml:space="preserve">
+    <value>48 kHz</value>
+  </data>
+  <data name="Enum_BdAuSampleRate_Au48_192" xml:space="preserve">
+    <value>48+192 kHz 组合</value>
+  </data>
+  <data name="Enum_BdAuSampleRate_Au48_96" xml:space="preserve">
+    <value>48+96 kHz 组合</value>
+  </data>
+  <data name="Enum_BdAuSampleRate_Au96" xml:space="preserve">
+    <value>96 kHz</value>
+  </data>
+  <data name="Enum_BdAuSampleRate_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdCharacterCodingType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdCharacterCodingType_UTF16BE" xml:space="preserve">
+    <value>UTF-16 Big Ending</value>
+  </data>
+  <data name="Enum_BdCharacterCodingType_UTF8" xml:space="preserve">
+    <value>UTF-8</value>
+  </data>
   <data name="Enum_BdConnectionCondition_NotSeamless" xml:space="preserve">
     <value>普通</value>
   </data>
@@ -125,6 +200,33 @@
   </data>
   <data name="Enum_BdConnectionCondition_SeamlessConcat" xml:space="preserve">
     <value>无缝衔接</value>
+  </data>
+  <data name="Enum_BdConnectionCondition_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdIgCodingType_GxInterractive" xml:space="preserve">
+    <value>IG (交互图层)</value>
+  </data>
+  <data name="Enum_BdIgCodingType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdSaCodingType_SaDolbyPlus" xml:space="preserve">
+    <value>Dolby Digital Plus (AC3+) 副音轨</value>
+  </data>
+  <data name="Enum_BdSaCodingType_SaDtsHD" xml:space="preserve">
+    <value>DTS-HD LBR 副音轨</value>
+  </data>
+  <data name="Enum_BdSaCodingType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdStCodingType_GxPresentation" xml:space="preserve">
+    <value>PG (显示图层)</value>
+  </data>
+  <data name="Enum_BdStCodingType_TxSubtitle" xml:space="preserve">
+    <value>textST (文本字幕)</value>
+  </data>
+  <data name="Enum_BdStCodingType_Unknown" xml:space="preserve">
+    <value>未知</value>
   </data>
   <data name="Enum_BdUOFlag_ActivateButton" xml:space="preserve">
     <value>激活按钮</value>
@@ -227,5 +329,131 @@
   </data>
   <data name="Enum_BdUOFlag_TimeSearch" xml:space="preserve">
     <value>时间轴跳转</value>
+  </data>
+  <data name="Enum_BdViCodingType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdViCodingType_ViAvc" xml:space="preserve">
+    <value>MPEG-4 AVC (H.264)</value>
+  </data>
+  <data name="Enum_BdViCodingType_ViMpeg1" xml:space="preserve">
+    <value>MPEG-1</value>
+  </data>
+  <data name="Enum_BdViCodingType_ViMpeg2" xml:space="preserve">
+    <value>MPEG-2</value>
+  </data>
+  <data name="Enum_BdViCodingType_ViMvc" xml:space="preserve">
+    <value>MVC</value>
+  </data>
+  <data name="Enum_BdViCodingType_ViVc1" xml:space="preserve">
+    <value>VC-1</value>
+  </data>
+  <data name="Enum_BdViFormat_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdViFormat_Vi1080i" xml:space="preserve">
+    <value>1080i</value>
+  </data>
+  <data name="Enum_BdViFormat_Vi1080p" xml:space="preserve">
+    <value>1080p</value>
+  </data>
+  <data name="Enum_BdViFormat_Vi480i" xml:space="preserve">
+    <value>480i</value>
+  </data>
+  <data name="Enum_BdViFormat_Vi480p" xml:space="preserve">
+    <value>480p</value>
+  </data>
+  <data name="Enum_BdViFormat_Vi576i" xml:space="preserve">
+    <value>576i</value>
+  </data>
+  <data name="Enum_BdViFormat_Vi576p" xml:space="preserve">
+    <value>576p</value>
+  </data>
+  <data name="Enum_BdViFormat_Vi720p" xml:space="preserve">
+    <value>720p</value>
+  </data>
+  <data name="Enum_BdViFrameRate_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdViFrameRate_Vi23" xml:space="preserve">
+    <value>23.976 fps</value>
+  </data>
+  <data name="Enum_BdViFrameRate_Vi24" xml:space="preserve">
+    <value>24 fps</value>
+  </data>
+  <data name="Enum_BdViFrameRate_Vi25" xml:space="preserve">
+    <value>25 fps</value>
+  </data>
+  <data name="Enum_BdViFrameRate_Vi29" xml:space="preserve">
+    <value>29.97 fps</value>
+  </data>
+  <data name="Enum_BdViFrameRate_Vi50" xml:space="preserve">
+    <value>50 fps</value>
+  </data>
+  <data name="Enum_BdViFrameRate_Vi59" xml:space="preserve">
+    <value>59.94 fps</value>
+  </data>
+  <data name="Enum_PlPlaybackType_Random" xml:space="preserve">
+    <value>随机</value>
+  </data>
+  <data name="Enum_PlPlaybackType_Sequential" xml:space="preserve">
+    <value>顺序</value>
+  </data>
+  <data name="Enum_PlPlaybackType_Shuffle" xml:space="preserve">
+    <value>乱序</value>
+  </data>
+  <data name="Enum_PlPlaybackType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_PlPlayMarkType_PmEntryMark" xml:space="preserve">
+    <value>切入标识</value>
+  </data>
+  <data name="Enum_PlPlayMarkType_PmLinkPoint" xml:space="preserve">
+    <value>连接点</value>
+  </data>
+  <data name="Enum_PlPlayMarkType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_PlStillMode_NotStill" xml:space="preserve">
+    <value>正常播放</value>
+  </data>
+  <data name="Enum_PlStillMode_StillForDuration" xml:space="preserve">
+    <value>指定静止时长</value>
+  </data>
+  <data name="Enum_PlStillMode_StillInfinitely" xml:space="preserve">
+    <value>无限期静止</value>
+  </data>
+  <data name="Enum_PlStnEntryType_InMuxPip" xml:space="preserve">
+    <value>内封画中画视频流(主路径)</value>
+  </data>
+  <data name="Enum_PlStnEntryType_PlayItem" xml:space="preserve">
+    <value>主路径媒体流</value>
+  </data>
+  <data name="Enum_PlStnEntryType_SubPlayItem" xml:space="preserve">
+    <value>子路径媒体流</value>
+  </data>
+  <data name="Enum_PlStnEntryType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_PlSubPathType_IgMenu" xml:space="preserve">
+    <value>交换式图形菜单</value>
+  </data>
+  <data name="Enum_PlSubPathType_IMSync" xml:space="preserve">
+    <value>内封同步式画中画视频流</value>
+  </data>
+  <data name="Enum_PlSubPathType_OoMAsync" xml:space="preserve">
+    <value>外挂异步式画中画视频流</value>
+  </data>
+  <data name="Enum_PlSubPathType_OoMSync" xml:space="preserve">
+    <value>外挂同步式媒体流</value>
+  </data>
+  <data name="Enum_PlSubPathType_PrAudio" xml:space="preserve">
+    <value>浏览式影集主音轨</value>
+  </data>
+  <data name="Enum_PlSubPathType_TextSub" xml:space="preserve">
+    <value>文本字幕</value>
+  </data>
+  <data name="Enum_PlSubPathType_Unknown" xml:space="preserve">
+    <value>媒体流</value>
   </data>
 </root>
