@@ -127,105 +127,105 @@
     <value>Seamless Concatenated</value>
   </data>
   <data name="Enum_BdUOFlag_ActivateButton" xml:space="preserve">
-    <value>ActivateButton</value>
+    <value>Activate Button</value>
   </data>
   <data name="Enum_BdUOFlag_AngleChange" xml:space="preserve">
-    <value>AngleChange</value>
+    <value>Angle Number Change</value>
   </data>
   <data name="Enum_BdUOFlag_BackwardPlay" xml:space="preserve">
-    <value>BackwardPlay</value>
+    <value>Backward Play</value>
   </data>
   <data name="Enum_BdUOFlag_ChapterSearch" xml:space="preserve">
-    <value>ChapterSearch</value>
+    <value>Chapter Search</value>
   </data>
   <data name="Enum_BdUOFlag_ForwardPlay" xml:space="preserve">
-    <value>ForwardPlay</value>
+    <value>Forward Play</value>
   </data>
   <data name="Enum_BdUOFlag_MoveDownSelectedButton" xml:space="preserve">
-    <value>MoveDownSelectedButton</value>
+    <value>Move Down Selected Button</value>
   </data>
   <data name="Enum_BdUOFlag_MoveLeftSelectedButton" xml:space="preserve">
-    <value>MoveLeftSelectedButton</value>
+    <value>Move Left Selected Button</value>
   </data>
   <data name="Enum_BdUOFlag_MoveRightSelectedButton" xml:space="preserve">
-    <value>MoveRightSelectedButton</value>
+    <value>Move Right Selected Button</value>
   </data>
   <data name="Enum_BdUOFlag_MoveUpSelectedButton" xml:space="preserve">
-    <value>MoveUpSelectedButton</value>
+    <value>Move Up Selected Button</value>
   </data>
   <data name="Enum_BdUOFlag_PauseOn" xml:space="preserve">
-    <value>PauseOn</value>
+    <value>Pause On</value>
   </data>
-  <data name="Enum_BdUOFlag_PgChange" xml:space="preserve">
-    <value>PgChange</value>
-  </data>
-  <data name="Enum_BdUOFlag_PgEnableDisable" xml:space="preserve">
-    <value>PgEnableDisable</value>
-  </data>
-  <data name="Enum_BdUOFlag_PipPgChange" xml:space="preserve">
-    <value>PipPgChange</value>
+  <data name="Enum_BdUOFlag_PipStChange" xml:space="preserve">
+    <value>Pip Pg textST Stream Number Change</value>
   </data>
   <data name="Enum_BdUOFlag_PopupOff" xml:space="preserve">
-    <value>PopupOff</value>
+    <value>Popup Off</value>
   </data>
   <data name="Enum_BdUOFlag_PopupOn" xml:space="preserve">
-    <value>PopupOn</value>
+    <value>Popup On</value>
   </data>
   <data name="Enum_BdUOFlag_PrimaryAudioChange" xml:space="preserve">
-    <value>PrimaryAudioChange</value>
+    <value>Primary Audio Stream Number Change</value>
   </data>
   <data name="Enum_BdUOFlag_ReservedForMenuCall" xml:space="preserve">
-    <value>ReservedForMenuCall</value>
+    <value>MenuCall (Reserved)</value>
   </data>
   <data name="Enum_BdUOFlag_ReservedForPauseOff" xml:space="preserve">
-    <value>ReservedForPauseOff</value>
+    <value>PauseOff (Reserved)</value>
   </data>
-  <data name="Enum_BdUOFlag_ReservedForPgChange" xml:space="preserve">
-    <value>ReservedForPgChange</value>
-  </data>
-  <data name="Enum_BdUOFlag_ReservedForPipPgEnableDisable" xml:space="preserve">
-    <value>ReservedForPipPgEnableDisable</value>
+  <data name="Enum_BdUOFlag_ReservedForPipStEnableDisable" xml:space="preserve">
+    <value>Pip Pg textST Enable Disable (Reserved)</value>
   </data>
   <data name="Enum_BdUOFlag_ReservedForPlayFirstplay" xml:space="preserve">
-    <value>ReservedForPlayFirstplay</value>
+    <value>Play Firstplay (Reserved)</value>
+  </data>
+  <data name="Enum_BdUOFlag_ReservedForStChange" xml:space="preserve">
+    <value>Pg textST Stream Number Change (Reserved)</value>
   </data>
   <data name="Enum_BdUOFlag_ReservedForTitleSearch" xml:space="preserve">
-    <value>ReservedForTitleSearch</value>
+    <value>Title Search (Reserved)</value>
   </data>
   <data name="Enum_BdUOFlag_Resume" xml:space="preserve">
     <value>Resume</value>
   </data>
   <data name="Enum_BdUOFlag_SecondaryAudioChange" xml:space="preserve">
-    <value>SecondaryAudioChange</value>
+    <value>Secondary Audio Stream Number Change</value>
   </data>
   <data name="Enum_BdUOFlag_SecondaryAudioEnableDisable" xml:space="preserve">
-    <value>SecondaryAudioEnableDisable</value>
+    <value>Secondary Audio Enable Disable</value>
   </data>
   <data name="Enum_BdUOFlag_SecondaryVideoChange" xml:space="preserve">
-    <value>SecondaryVideoChange</value>
+    <value>Secondary Video Stream Number Change</value>
   </data>
   <data name="Enum_BdUOFlag_SecondaryVideoEnableDisable" xml:space="preserve">
-    <value>SecondaryVideoEnableDisable</value>
-  </data>
-  <data name="Enum_BdUOFlag_SelectAndActivateButton" xml:space="preserve">
-    <value>SelectAndActivateButton</value>
+    <value>Secondary Video Enable Disable</value>
   </data>
   <data name="Enum_BdUOFlag_SelectButton" xml:space="preserve">
-    <value>SelectButton</value>
+    <value>Select Button</value>
+  </data>
+  <data name="Enum_BdUOFlag_SelectButtonAndActivate" xml:space="preserve">
+    <value>Select Button And Activate</value>
   </data>
   <data name="Enum_BdUOFlag_SkipToNextPoint" xml:space="preserve">
-    <value>SkipToNextPoint</value>
+    <value>Skip to Next Point</value>
   </data>
   <data name="Enum_BdUOFlag_SkipToPrevPoint" xml:space="preserve">
-    <value>SkipToPrevPoint</value>
+    <value>Skip Back to Previous Point</value>
   </data>
-  <data name="Enum_BdUOFlag_Still" xml:space="preserve">
-    <value>Still</value>
+  <data name="Enum_BdUOFlag_StChange" xml:space="preserve">
+    <value>Subtile Change</value>
+  </data>
+  <data name="Enum_BdUOFlag_StEnableDisable" xml:space="preserve">
+    <value>Subtitle Enable/Disable</value>
+  </data>
+  <data name="Enum_BdUOFlag_StillOff" xml:space="preserve">
+    <value>Still Off</value>
   </data>
   <data name="Enum_BdUOFlag_Stop" xml:space="preserve">
     <value>Stop</value>
   </data>
   <data name="Enum_BdUOFlag_TimeSearch" xml:space="preserve">
-    <value>TimeSearch</value>
+    <value>Time Search</value>
   </data>
 </root>

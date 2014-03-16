@@ -1,7 +1,8 @@
-﻿
-using System.ComponentModel;
+﻿using System.ComponentModel;
+
 namespace BluraySharp.Common
 {
+	[TypeConverter(typeof(BdLangConverter))]
 	public enum BdLang
 	{
 		LANG_IVL = 0x0,

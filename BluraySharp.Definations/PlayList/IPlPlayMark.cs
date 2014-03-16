@@ -5,7 +5,7 @@ namespace BluraySharp.PlayList
 {
 	public interface IPlPlayMark : IBdPart
 	{
-		BdPlayMarkType MarkType { get; set; }
+		PlPlayMarkType MarkType { get; set; }
 		ushort PlayItemSId { get; set; }
 		BdTime TimeStamp { get; set; }
 		ushort StreamProgId { get; set; }

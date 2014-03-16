@@ -8,7 +8,7 @@ namespace BluraySharp.Common.BdStandardPart
 {
 	public class BdLangCode : BdPart
 	{
-		private string isoLangCode = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
+		private string isoLangCode = CultureInfo.CurrentUICulture.ThreeLetterISOLanguageName;
 
 		[BdStringField(3, BdCharacterCodingType.UTF8)]
 		public string IsoLangCode

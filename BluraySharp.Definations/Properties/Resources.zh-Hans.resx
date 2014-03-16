@@ -145,7 +145,7 @@
     <value>选择下方按钮</value>
   </data>
   <data name="Enum_BdUOFlag_MoveLeftSelectedButton" xml:space="preserve">
-    <value>选择右方按钮</value>
+    <value>选择左方按钮</value>
   </data>
   <data name="Enum_BdUOFlag_MoveRightSelectedButton" xml:space="preserve">
     <value>选择右方按钮</value>
@@ -156,14 +156,8 @@
   <data name="Enum_BdUOFlag_PauseOn" xml:space="preserve">
     <value>暂停</value>
   </data>
-  <data name="Enum_BdUOFlag_PgChange" xml:space="preserve">
-    <value>切换图层轨</value>
-  </data>
-  <data name="Enum_BdUOFlag_PgEnableDisable" xml:space="preserve">
-    <value>禁用/启用图层轨</value>
-  </data>
-  <data name="Enum_BdUOFlag_PipPgChange" xml:space="preserve">
-    <value>切换画中画轨</value>
+  <data name="Enum_BdUOFlag_PipStChange" xml:space="preserve">
+    <value>切换画中画字幕轨</value>
   </data>
   <data name="Enum_BdUOFlag_PopupOff" xml:space="preserve">
     <value>关闭弹出菜单</value>
@@ -180,14 +174,14 @@
   <data name="Enum_BdUOFlag_ReservedForPauseOff" xml:space="preserve">
     <value>取消暂停(保留)</value>
   </data>
-  <data name="Enum_BdUOFlag_ReservedForPgChange" xml:space="preserve">
-    <value>切换图层轨(保留)</value>
-  </data>
-  <data name="Enum_BdUOFlag_ReservedForPipPgEnableDisable" xml:space="preserve">
-    <value>禁用/启用画中画轨(保留)</value>
+  <data name="Enum_BdUOFlag_ReservedForPipStEnableDisable" xml:space="preserve">
+    <value>开关画中画字幕轨(保留)</value>
   </data>
   <data name="Enum_BdUOFlag_ReservedForPlayFirstplay" xml:space="preserve">
     <value>播放起始画面(保留)</value>
+  </data>
+  <data name="Enum_BdUOFlag_ReservedForStChange" xml:space="preserve">
+    <value>切换字幕轨(保留)</value>
   </data>
   <data name="Enum_BdUOFlag_ReservedForTitleSearch" xml:space="preserve">
     <value>主标题跳转(保留)</value>
@@ -199,19 +193,19 @@
     <value>切换副音频轨</value>
   </data>
   <data name="Enum_BdUOFlag_SecondaryAudioEnableDisable" xml:space="preserve">
-    <value>禁用/启用副音频轨</value>
+    <value>开关副音频轨</value>
   </data>
   <data name="Enum_BdUOFlag_SecondaryVideoChange" xml:space="preserve">
     <value>切换副视频轨</value>
   </data>
   <data name="Enum_BdUOFlag_SecondaryVideoEnableDisable" xml:space="preserve">
-    <value>禁用/启用副视频轨</value>
-  </data>
-  <data name="Enum_BdUOFlag_SelectAndActivateButton" xml:space="preserve">
-    <value>选择、激活按钮</value>
+    <value>开关副视频轨</value>
   </data>
   <data name="Enum_BdUOFlag_SelectButton" xml:space="preserve">
     <value>选择按钮</value>
+  </data>
+  <data name="Enum_BdUOFlag_SelectButtonAndActivate" xml:space="preserve">
+    <value>选择按钮并激活</value>
   </data>
   <data name="Enum_BdUOFlag_SkipToNextPoint" xml:space="preserve">
     <value>章节前跳</value>
@@ -219,8 +213,14 @@
   <data name="Enum_BdUOFlag_SkipToPrevPoint" xml:space="preserve">
     <value>章节回跳</value>
   </data>
-  <data name="Enum_BdUOFlag_Still" xml:space="preserve">
-    <value>画面静止</value>
+  <data name="Enum_BdUOFlag_StChange" xml:space="preserve">
+    <value>切换字幕轨</value>
+  </data>
+  <data name="Enum_BdUOFlag_StEnableDisable" xml:space="preserve">
+    <value>开关字幕轨</value>
+  </data>
+  <data name="Enum_BdUOFlag_StillOff" xml:space="preserve">
+    <value>取消画面静止</value>
   </data>
   <data name="Enum_BdUOFlag_Stop" xml:space="preserve">
     <value>停止</value>

@@ -35,7 +35,7 @@ namespace BluraySharp
 
 		public static string ToStringLocalized(this Enum obj)
 		{
-			return obj.ToStringLocalized(CultureInfo.CurrentCulture);
+			return obj.ToStringLocalized(CultureInfo.CurrentUICulture);
 		}
 
 		/// <summary>
@@ -184,15 +184,24 @@ namespace BluraySharp
 
 		public static string ToStringLocalized(this BdLang lang)
 		{
+			return lang.ToStringLocalized(CultureInfo.CurrentUICulture);
+		}
+
+		public static string ToStringLocalized(this BdLang lang, CultureInfo culture)
+		{
 			CultureInfo tCultureInfo = ExtensionMethods.cultureInfoTable[lang];
+			string tIsoLangCode = lang.ToIsoLangCode();
+			string tDisplayName;
 			if (tCultureInfo.IsNull())
 			{
-				return (lang as Enum).ToStringLocalized();
+				tDisplayName = (lang as Enum).ToStringLocalized(culture);
 			}
 			else
 			{
-				return tCultureInfo.NativeName;
+				tDisplayName = tCultureInfo.NativeName;
 			}
+
+			return string.Format("{0}({1})", tIsoLangCode, tDisplayName);
 		}
 	}
 }

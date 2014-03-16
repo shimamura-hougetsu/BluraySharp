@@ -14,7 +14,7 @@ namespace BluraySharp.PlayList
 		private byte ReservedForFutureUse { get; set; }
 
 		[BdUIntField(BdIntSize.U8)]
-		public BdPlayMarkType MarkType { get; set; }
+		public PlPlayMarkType MarkType { get; set; }
 
 		[BdUIntField(BdIntSize.U16)]
 		public ushort PlayItemSId { get; set; }

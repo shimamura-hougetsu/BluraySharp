@@ -1,6 +1,7 @@
 ﻿
 namespace BluraySharp.Common
 {
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdViCodingType>))]
 	public enum BdViCodingType
 	{
 		Unknown,
@@ -12,6 +13,7 @@ namespace BluraySharp.Common
 		ViVc1 = 0xEA,
 	}
 
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdAuCodingType>))]
 	public enum BdAuCodingType
 	{
 		Unknown,
@@ -28,6 +30,7 @@ namespace BluraySharp.Common
 		AuDtsHDMA = 0x86,
 	}
 
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdStCodingType>))]
 	public enum BdStCodingType	//subtitle
 	{
 		Unknown,
@@ -35,12 +38,14 @@ namespace BluraySharp.Common
 		TxSubtitle = 0x92,
 	}
 
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdIgCodingType>))]
 	public enum BdIgCodingType
 	{
 		Unknown,
 		GxInterractive = 0x91,
 	}
 
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdSaCodingType>))]
 	public enum BdSaCodingType
 	{
 		Unknown,

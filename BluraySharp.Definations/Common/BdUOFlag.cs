@@ -1,28 +1,37 @@
-﻿
+﻿using System.ComponentModel;
+
 namespace BluraySharp.Common
 {
+	[TypeConverter(typeof(BdEnumConverter<BdUOFlag>))]
 	public enum BdUOFlag : byte
 	{
-		PipPgChange = 0x1E,	//0x1E = 30
-		ReservedForPipPgEnableDisable,
+		PipStChange = 0x1E,	//0x1E = 30
+		//ReservedForPipStEnableDisable = 0x1F,
 
-		SecondaryAudioChange,
+
+		SecondaryAudioChange = 0x20,
 		SecondaryAudioEnableDisable,
 
 		SecondaryVideoChange,
 		SecondaryVideoEnableDisable,
 
-		PgChange,
-		PgEnableDisable,
+
+		StChange = 0x24,
+		StEnableDisable,
+
 
 		PopupOff,
 		PopupOn,
 
-		AngleChange,
-		ReservedForPgChange,
-		PrimaryAudioChange,
 
-		SelectAndActivateButton,
+		AngleChange = 0x28,
+
+		//ReservedForStChange = 0x29,
+
+		PrimaryAudioChange = 0x3A,
+
+
+		SelectButtonAndActivate = 0x2B,
 		ActivateButton,
 		SelectButton,
 		MoveRightSelectedButton,
@@ -30,19 +39,24 @@ namespace BluraySharp.Common
 		MoveDownSelectedButton,
 		MoveUpSelectedButton,
 
-		Resume,
+
+		Resume = 0x32,
+
 		BackwardPlay,
 		ForwardPlay,
-		Still,
-		ReservedForPauseOff,
-		PauseOn,
+
+		StillOff,
+		//ReservedForPauseOff = 0x36,
+		PauseOn = 0x37,
 		Stop,
-		ReservedForPlayFirstplay,
-		SkipToPrevPoint,
+
+		//ReservedForPlayFirstplay = 0x39,
+
+		SkipToPrevPoint = 0x3A,
 		SkipToNextPoint,
 		TimeSearch,
 		ChapterSearch,
-		ReservedForTitleSearch,
-		ReservedForMenuCall,	//0x3F=63
+		//ReservedForTitleSearch,
+		//ReservedForMenuCall,	//0x3F=63
 	}
 }

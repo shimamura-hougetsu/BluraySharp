@@ -1,6 +1,7 @@
 ﻿
 namespace BluraySharp.Common
 {
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdViFrameRate>))]
 	public enum BdViFrameRate
 	{
 		Unknown = 0x00,
@@ -13,6 +14,7 @@ namespace BluraySharp.Common
 		Vi59 = 0x07
 	}
 
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdAuSampleRate>))]
 	public enum BdAuSampleRate
 	{
 		Unknown = 0x00,

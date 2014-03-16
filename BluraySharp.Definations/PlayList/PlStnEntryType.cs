@@ -1,6 +1,8 @@
 ﻿
+using BluraySharp.Common;
 namespace BluraySharp.PlayList
 {
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<PlStnEntryType>))]
 	public enum PlStnEntryType : byte
 	{
 		Unknown,

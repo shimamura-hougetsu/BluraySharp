@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BdEnumConverter.cs" />
+    <Compile Include="Common\BdLangConverter.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldRandomVisitor.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldVirtualVisitor.cs" />
     <Compile Include="Common\BdPartFramework\BdPartScopeAttribute.cs" />
     <Compile Include="Common\BdPartFramework\IBdFieldInfo.cs" />
-    <Compile Include="Common\BdPlayMarkType.cs" />
+    <Compile Include="PlayList\PlPlayMarkType.cs" />
     <Compile Include="Common\BdStandardPart\BdList.cs" />
     <Compile Include="Common\BdStandardPart\BdLangCode.cs" />
     <Compile Include="Common\BdPartFramework\BdByteArrayFieldAttribute.cs" />

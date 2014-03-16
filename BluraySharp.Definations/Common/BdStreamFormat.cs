@@ -1,6 +1,7 @@
 ﻿
 namespace BluraySharp.Common
 {
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdViFormat>))]
 	public enum BdViFormat
 	{
 		Unknown,
@@ -14,6 +15,7 @@ namespace BluraySharp.Common
 		Vi576p = 0x07
 	}
 
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdAuPresentationType>))]
 	public enum BdAuPresentationType
 	{
 		Unknown,
@@ -25,6 +27,7 @@ namespace BluraySharp.Common
 		Combo = 0x0C
 	}
 
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<BdCharacterCodingType>))]
 	public enum BdCharacterCodingType
 	{
 		Unknown,

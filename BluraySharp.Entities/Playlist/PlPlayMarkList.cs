@@ -21,7 +21,7 @@ namespace BluraySharp.PlayList
 		private IBdList<IPlPlayMark> markList =
 			new BdList<PlPlayMark, IPlPlayMark>(0, 999) 
 			{ 
-				new PlPlayMark() { MarkType = BdPlayMarkType.PmEntryMark }
+				new PlPlayMark() { MarkType = PlPlayMarkType.PmEntryMark }
 			};
 
 		[BdSubPartField]
