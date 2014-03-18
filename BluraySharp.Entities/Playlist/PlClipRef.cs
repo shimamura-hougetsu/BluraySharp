@@ -1,4 +1,5 @@
 ﻿using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace BluraySharp.PlayList
 	{
 		#region ClipFileRef
 
-		private PlClipFileRef clipFileId = new PlClipFileRef();
+		private BdClipFileRef clipFileId = new BdClipFileRef();
 
 		[BdSubPartField]
-		public IPlClipFileRef ClipFileRef
+		public BdClipFileRef ClipFileRef
 		{
 			get { return this.clipFileId; }
 		}

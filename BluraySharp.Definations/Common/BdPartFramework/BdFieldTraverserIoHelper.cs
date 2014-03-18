@@ -18,7 +18,7 @@ namespace BluraySharp.Common.BdPartFramework
 		private BdFieldTraverserIoHelper() { }
 
 		private delegate long RawOperation(IBdFieldVisitor obj);
-		private long ForEachFields(IBdFieldTraverser obj, IBdRawIoContext context, RawOperation operation, bool isUpdatingIndicators)
+		private long ForEachFields(IBdFieldTraverser obj, IBdRawIoContext context, RawOperation operation)
 		{
 			long tLenTotal = 0;
 
@@ -26,6 +26,7 @@ namespace BluraySharp.Common.BdPartFramework
 			{
 				obj.Index = i;
 
+				//get skip flag from SkipIndicator of the current field
 				bool tIsSkip = false;
 				IBdFieldVisitor tIndVisitor = obj.SkipIndicator;
 				if (tIndVisitor != null)
@@ -33,64 +34,78 @@ namespace BluraySharp.Common.BdPartFramework
 					tIsSkip = (this.GetIndicatorValue(tIndVisitor) != 0);
 				}
 
-				long tLen = 0;
-				if (!tIsSkip)
+				if (tIsSkip)
 				{
-					tIndVisitor = obj.OffsetIndicator;
-					if (!tIndVisitor.IsNull())
+					//then Skip.
+					continue;
+				}
+
+				long tLen = 0;
+
+				//get specified offset of the current field
+				tIndVisitor = obj.OffsetIndicator;
+				if (!tIndVisitor.IsNull())
+				{
+					//update offset indicators when operation delegate is null
+					if (operation.IsNull())
 					{
-						if (isUpdatingIndicators)
-						{
-							this.SetIndicatorValue(tIndVisitor, (ulong)tLenTotal);
-						}
-
-						tLenTotal = (long)this.GetIndicatorValue(tIndVisitor);
-
-						if (!context.IsNull())
-						{
-							context.Position = tLenTotal;
-						}
+						this.SetIndicatorValue(tIndVisitor, (ulong)tLenTotal);
 					}
 
-					tLen = BdFieldTraverserIoHelper.ioHelper.GetRawLength(obj);
-					long tScopeLen = 0;
-					bool tScopeEngaged = false;
+					//retrieve offset value
+					tLenTotal = (long)this.GetIndicatorValue(tIndVisitor);
 
-					tIndVisitor = obj.LengthIndicator;
-					if (!tIndVisitor.IsNull())
+					//and move the stream io position to
+					if (!context.IsNull())
 					{
-						if (isUpdatingIndicators)
-						{
-							tScopeLen = tLen;
-							this.SetIndicatorValue(tIndVisitor, (ulong)tScopeLen);
-						}
+						context.Position = tLenTotal;
+					}
+				}
 
-						tScopeLen = (long)this.GetIndicatorValue(tIndVisitor);
+				if (operation.IsNull())
+				{
+					//update offset indicators when operation delegate is null
+					//so count the total length in advance here
+					tLen = BdFieldTraverserIoHelper.oprGetLength(obj);
+				}
+
+				long tScopeLen = tLen;
+				bool tScopeEngaged = false;
+
+				tIndVisitor = obj.LengthIndicator;
+				if (!tIndVisitor.IsNull())
+				{
+					if (operation.IsNull())
+					{
+						//update
+						this.SetIndicatorValue(tIndVisitor, (ulong)tScopeLen);
+					}
+
+					tScopeLen = (long)this.GetIndicatorValue(tIndVisitor);
+
+					if (!context.IsNull())
+					{
+						//enter scope
+						context.EnterScope(tScopeLen);
+						//and set up a flag
 						tScopeEngaged = true;
-
-						if (!context.IsNull())
-						{
-							context.EnterScope(tScopeLen);
-						}
 					}
+				}
 
-					try
+				try
+				{
+					if (! operation.IsNull())
 					{
-						if (!operation.IsNull())
-						{
-							tLen = operation(obj);
-						}
+						tLen = operation(obj);
 					}
-					finally
+					// else tLen == BdFieldTraverserIoHelper.oprGetLength(obj);
+				}
+				finally
+				{
+					if (tScopeEngaged)
 					{
-						if (tScopeEngaged)
-						{
-							if (!context.IsNull())
-							{
-								context.ExitScope();
-							}
-							tLen = tScopeLen;
-						}
+						context.ExitScope();
+						tLen = tScopeLen;
 					}
 				}
 
@@ -100,36 +115,36 @@ namespace BluraySharp.Common.BdPartFramework
 			return tLenTotal;
 		}
 		
-		private long ForTraverser(IBdFieldTraverser obj, IBdRawIoContext context, RawOperation operation, bool isUpdatingIndicators)
+		private long ForTraverser(IBdFieldTraverser obj, IBdRawIoContext context, RawOperation operation)
 		{
 			long tTotalLen = 0;
 			long tFieldsLen = 0;
 
-			IBdFieldVisitor tScopeIndicator = obj.ScopeIndicator;
-			long tScopeLen = 0;
-			bool tScopeEngaged = false;
-
-			if (isUpdatingIndicators)
+			if (operation.IsNull())
 			{
-				tScopeLen = this.ForEachFields(obj, null, BdFieldTraverserIoHelper.oprGetLength, true);
+				//null value of operation claims an indicator update
+				//Get total length of fields, and update fields
+				tFieldsLen = this.ForEachFields(obj, null, null);
 			}
 
+			long tScopeLen = tFieldsLen;
+			bool tScopeEngaged = false;
+
+			IBdFieldVisitor tScopeIndicator = obj.ScopeIndicator;
 			if (!tScopeIndicator.IsNull())
 			{
-				tScopeEngaged = true;
-
-				if (isUpdatingIndicators)
+				if (operation.IsNull())
 				{
+					//update bdpart scope indicator
 					this.SetIndicatorValue(tScopeIndicator, (ulong)tScopeLen);
-				}
 
-				if (!operation.IsNull())
-				{
-					tTotalLen += operation(tScopeIndicator);
+					//and count in the indicator 
+					tTotalLen += BdFieldTraverserIoHelper.oprGetLength(tScopeIndicator);
 				}
 				else
 				{
-					tTotalLen += BdFieldTraverserIoHelper.oprGetLength(tScopeIndicator);
+					//just perform the operation on scope indicator directly.
+					tTotalLen += operation(tScopeIndicator);
 				}
 
 				tScopeLen = (long)this.GetIndicatorValue(tScopeIndicator);
@@ -137,6 +152,7 @@ namespace BluraySharp.Common.BdPartFramework
 				if (!context.IsNull())
 				{
 					context.EnterScope(tScopeLen);
+					tScopeEngaged = true;
 				}
 			}
 
@@ -144,22 +160,16 @@ namespace BluraySharp.Common.BdPartFramework
 			{
 				if (!operation.IsNull())
 				{
-					tFieldsLen = this.ForEachFields(obj, context, operation, false);
+					tFieldsLen = this.ForEachFields(obj, context, operation);
 				}
-				else
-				{
-					tFieldsLen = tScopeLen;
-				}
+				//else tFieldsLen == this.ForEachFields(obj, null, null);
 			}
 			finally
 			{
 				if (tScopeEngaged)
 				{
 					tFieldsLen = tScopeLen;
-					if (!context.IsNull())
-					{
-						context.ExitScope();
-					}
+					context.ExitScope();
 				}
 			}
 
@@ -179,6 +189,9 @@ namespace BluraySharp.Common.BdPartFramework
 		private static IBdRawIoHelper<IBdFieldVisitor> ioHelper =
 			BdIoHelperFactory.GetHelper<IBdFieldVisitor>();
 
+		/// <summary>
+		/// BdRaw IoOperation : Get RawLength of a field
+		/// </summary>
 		private static RawOperation oprGetLength = delegate(IBdFieldVisitor xSubObj)
 		{
 			long tRet = 0;
@@ -191,31 +204,42 @@ namespace BluraySharp.Common.BdPartFramework
 			return tRet;
 		};
 
-
+		/// <summary>
+		/// Get total length of BdPart object, meanwhile update all of its indicator fields.
+		/// </summary>
+		/// <param name="obj">A traverser walking through all fields of a BdPart object</param>
+		/// <returns>Total Length</returns>
 		public long GetRawLength(IBdFieldTraverser obj)
 		{
 			this.Validate(obj);
 
-			return this.ForTraverser(obj, null, null, true);
+			//specifying a null value for operation to update all indicator fields
+			return this.ForTraverser(obj, null, null);
 		}
 
+		/// <summary>
+		/// Serialize a BdPart object into an IBdRawWriteContext
+		/// </summary>
+		/// <param name="obj">A traverser walking through all fields of a BdPart object</param>
+		/// <param name="context">Destination of Serialization</param>
+		/// <returns>Total Length</returns>
 		public long SerializeTo(IBdFieldTraverser obj, IBdRawWriteContext context)
 		{
 			this.Validate(obj);
 
 			RawOperation tOpr = delegate(IBdFieldVisitor xSubObj)
 			{
-				long tRet = 0;
+				long xtRet = 0;
 
 				if (!xSubObj.Value.IsNull())
 				{
-					tRet = BdFieldTraverserIoHelper.ioHelper.SerializeTo(xSubObj, context);
+					xtRet = BdFieldTraverserIoHelper.ioHelper.SerializeTo(xSubObj, context);
 				}
 
-				return tRet;
+				return xtRet;
 			};
-
-			return this.ForTraverser(obj, context, tOpr, true);
+			
+			return this.ForTraverser(obj, context, tOpr);
 		}
 
 		public long DeserializeFrom(IBdFieldTraverser obj, IBdRawReadContext context)
@@ -234,7 +258,7 @@ namespace BluraySharp.Common.BdPartFramework
 				return tRet;
 			};
 
-			return this.ForTraverser(obj, context, tOpr, false);
+			return this.ForTraverser(obj, context, tOpr);
 		}
 
 		private ulong GetIndicatorValue(IBdFieldVisitor indicator)

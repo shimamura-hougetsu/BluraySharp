@@ -1,12 +1,11 @@
-﻿using System;
-using BluraySharp.Common.Serializing;
-using BluraySharp.Common;
+﻿using BluraySharp.Common;
+using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.PlayList
 {
 	public interface IPlClipRef : IBdPart
 	{
-		IPlClipFileRef ClipFileRef { get; }
+		BdClipFileRef ClipFileRef { get; }
 		byte StcIdRef { get; set; }
 	}
 }

@@ -40,12 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClipInfo\CiApplicationType.cs" />
+    <Compile Include="ClipInfo\CiTsType.cs" />
+    <Compile Include="ClipInfo\ICiAppFontRef.cs" />
+    <Compile Include="ClipInfo\ICiAtcDeltaEntry.cs" />
+    <Compile Include="ClipInfo\ICiClipInfo.cs" />
+    <Compile Include="ClipInfo\ICiTsTypeInfo.cs" />
     <Compile Include="Common\BdEnumConverter.cs" />
     <Compile Include="Common\BdLangConverter.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldRandomVisitor.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldVirtualVisitor.cs" />
     <Compile Include="Common\BdPartFramework\BdPartScopeAttribute.cs" />
     <Compile Include="Common\BdPartFramework\IBdFieldInfo.cs" />
+    <Compile Include="Common\BdStandardPart\BdFontFileRef.cs" />
+    <Compile Include="Common\BdStandardPart\BdClipFileRef.cs" />
+    <Compile Include="Common\Serializing\BdRawIoTask.cs" />
+    <Compile Include="Common\Serializing\IBdRawIoTask.cs" />
     <Compile Include="PlayList\PlPlayMarkType.cs" />
     <Compile Include="Common\BdStandardPart\BdList.cs" />
     <Compile Include="Common\BdStandardPart\BdLangCode.cs" />
@@ -84,7 +94,7 @@
     <Compile Include="Common\IBdmvTopEntry.cs" />
     <Compile Include="Common\BdmvTopEntryAttribute.cs" />
     <Compile Include="Common\Serializing\IBdRawReadContext.cs" />
-    <Compile Include="ClipInfo\IClipInfo.cs" />
+    <Compile Include="ClipInfo\IBdClpi.cs" />
     <Compile Include="Common\BdStreamFormat.cs" />
     <Compile Include="Common\BdStreamSampleRate.cs" />
     <Compile Include="Common\BdStandardPart\BdBitwiseValue.cs" />
@@ -109,7 +119,6 @@
     <Compile Include="Common\Serializing\IBdRawSerializable.cs" />
     <Compile Include="FileSystem\IBdfsTopEntryFileT.cs" />
     <Compile Include="JavaObject\IBdJavaObject.cs" />
-    <Compile Include="PlayList\IPlClipFileRef.cs" />
     <Compile Include="PlayList\IPlClipRef.cs" />
     <Compile Include="PlayList\IPlPlayItem.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />

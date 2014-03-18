@@ -45,7 +45,6 @@
     <Compile Include="Common\BdmvEntryRegistry.cs" />
     <Compile Include="FileSystem\BdfsItem.cs" />
     <Compile Include="FileSystem\BdfsStandaloneFileT.cs" />
-    <Compile Include="PlayList\PlClipFileRef.cs" />
     <Compile Include="PlayList\PlAppInfo.cs" />
     <Compile Include="PlayList\BdMpls.cs" />
     <Compile Include="PlayList\PlClipRef.cs" />

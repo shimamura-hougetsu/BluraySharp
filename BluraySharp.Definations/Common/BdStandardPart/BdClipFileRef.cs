@@ -1,13 +1,9 @@
-﻿using System;
-using BluraySharp.Architecture;
-using System.Text;
-using BluraySharp.Common.BdPartFramework;
-using BluraySharp.Common;
-using BluraySharp.Common.BdStandardPart;
+﻿using BluraySharp.Common.BdPartFramework;
+using System;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.Common.BdStandardPart
 {
-	public class PlClipFileRef : BdPart, IPlClipFileRef
+	public class BdClipFileRef : BdPart
 	{
 		#region ClipIdString
 
@@ -24,7 +20,7 @@ namespace BluraySharp.PlayList
 		#region ClipCodec
 
 		private const string clipCodecConst = "M2TS";
-		private string clipCodec = PlClipFileRef.clipCodecConst;
+		private string clipCodec = BdClipFileRef.clipCodecConst;
 
 		[BdStringField(4, Common.BdCharacterCodingType.UTF8)]
 		public string ClipCodec
@@ -32,7 +28,7 @@ namespace BluraySharp.PlayList
 			get { return this.clipCodec; }
 			set
 			{
-				if (!PlClipFileRef.clipCodecConst.Equals(value))
+				if (!BdClipFileRef.clipCodecConst.Equals(value))
 				{
 					//TODO: Invalid codec
 					throw new ArgumentException();
@@ -45,7 +41,7 @@ namespace BluraySharp.PlayList
 
 		public override string ToString()
 		{
-			return string.Format("ClipRef: {0:00000}.{1}", this.ClipId, this.ClipCodec);
+			return string.Format("ClipRef: {0}.{1}", this.ClipIdString, this.ClipCodec);
 		}
 	}
 }

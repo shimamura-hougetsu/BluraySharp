@@ -36,7 +36,8 @@ namespace BluraySharp.PlayList
 
 		#region PlayItems
 		private readonly BdList<PlPlayItem, IPlPlayItem> playItems =
-			new BdList<PlPlayItem, IPlPlayItem>(0, 999);
+			new BdList<PlPlayItem, IPlPlayItem>(0, 999)
+			{ new PlPlayItem() };
 
 		[BdSubPartField]
 		public IBdList<IPlPlayItem> PlayItems

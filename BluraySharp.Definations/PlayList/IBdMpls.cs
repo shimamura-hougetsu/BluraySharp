@@ -8,9 +8,9 @@ namespace BluraySharp.PlayList
 		string MplsMark { get; }
 		string MplsVer { get; set; }
 
-		BluraySharp.PlayList.IPlAppInfo AppInfo { get; }
-		BluraySharp.PlayList.IPlPlayItemList PlayItemList { get; }
-		BluraySharp.PlayList.IPlPlayMarkList PlayMarkList { get; }
+		IPlAppInfo AppInfo { get; }
+		IPlPlayItemList PlayItemList { get; }
+		IPlPlayMarkList PlayMarkList { get; }
 		BluraySharp.Common.BdStandardPart.BdExtensionData ExtensionData { get; set; }
 	}
 }

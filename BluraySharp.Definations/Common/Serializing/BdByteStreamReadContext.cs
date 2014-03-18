@@ -15,7 +15,18 @@ namespace BluraySharp.Architecture
 		
 		public void Deserialize(IBdRawSerializable obj)
 		{
+			bool tIsNewTask = !this.InTask;
+
+			if (tIsNewTask)
+			{
+				if (!this.StartTask())
+				{
+					//context is busy.
+					throw new ApplicationException();
+				}
+			}
 			this.EnterScope();
+
 			try
 			{
 				this.Position = obj.DeserializeFrom(this);
@@ -23,6 +34,11 @@ namespace BluraySharp.Architecture
 			finally
 			{
 				this.ExitScope();
+
+				if (tIsNewTask)
+				{
+					this.EndTask();
+				}
 			}
 		}
 

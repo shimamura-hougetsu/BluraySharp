@@ -31,7 +31,7 @@ namespace BluraySharp.PlayList
 		}
 
 		[BdSubPartField]
-		private IPlClipFileRef MainAngleClipFileRef
+		private BdClipFileRef MainAngleClipFileRef
 		{
 			get
 			{

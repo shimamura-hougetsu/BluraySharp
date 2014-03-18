@@ -148,7 +148,7 @@
     <value>Unknown</value>
   </data>
   <data name="Enum_BdAuPresentationType_Combo" xml:space="preserve">
-    <value>Stero+Multi Combo</value>
+    <value>Stereo+Multi Combo</value>
   </data>
   <data name="Enum_BdAuPresentationType_DualMono" xml:space="preserve">
     <value>Dual Mono</value>
@@ -160,7 +160,7 @@
     <value>Multi Channel</value>
   </data>
   <data name="Enum_BdAuPresentationType_Stereo" xml:space="preserve">
-    <value>Stero</value>
+    <value>Stereo</value>
   </data>
   <data name="Enum_BdAuPresentationType_Unknown" xml:space="preserve">
     <value>Unknown</value>

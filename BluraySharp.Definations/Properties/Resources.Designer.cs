@@ -151,7 +151,7 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Stero+Multi Combo 的本地化字符串。
+        ///   查找类似 Stereo+Multi Combo 的本地化字符串。
         /// </summary>
         internal static string Enum_BdAuPresentationType_Combo {
             get {
@@ -187,7 +187,7 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Stero 的本地化字符串。
+        ///   查找类似 Stereo 的本地化字符串。
         /// </summary>
         internal static string Enum_BdAuPresentationType_Stereo {
             get {

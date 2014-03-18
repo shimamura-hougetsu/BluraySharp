@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using BluraySharp.Common.Serializing;
+using System.Threading;
 
 namespace BluraySharp.Architecture
 {
@@ -72,7 +73,7 @@ namespace BluraySharp.Architecture
 			this.bdStream = stream;
 			this.length = (this.bdStream.CanSeek && !this.bdStream.CanWrite) ? bdStream.Length : -1;
 		}
-		
+
 		protected int Read(byte[] buffer, int offset, int length)
 		{
 			lock (this.snapshotLocker)
@@ -219,6 +220,60 @@ namespace BluraySharp.Architecture
 				this.isLengthSpecified = tSnapshot.IsLengthSpecified;
 
 				this.Position += length;
+			}
+		}
+
+		private object lkTaskLocker = new object();
+		private object taskLocker = null;
+
+		public bool StartTask()
+		{
+			lock (this.lkTaskLocker)
+			{
+				//No task online right now
+				if (taskLocker.IsNull())
+				{
+					this.taskLocker = new object();
+					Monitor.Enter(this.taskLocker);
+
+					return true;
+				}
+
+				return false;
+			}
+		}
+
+		public void EndTask()
+		{
+			lock (this.lkTaskLocker)
+			{
+				if (this.taskLocker.IsNull())
+				{
+					//Ending a non-existing task.
+					throw new ApplicationException();
+				}
+				else
+				{
+					Monitor.Exit(this.taskLocker);
+					this.taskLocker = null;
+				}
+			}
+		}
+
+		public bool InTask
+		{
+			get
+			{
+				lock (this.lkTaskLocker)
+				{
+					if (!this.taskLocker.IsNull() && Monitor.TryEnter(this.taskLocker, 0))
+					{
+						Monitor.Exit(this.taskLocker);
+						return true;
+					}
+
+					return false;
+				}
 			}
 		}
 	}
