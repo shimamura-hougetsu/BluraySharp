@@ -61,96 +61,6 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Dolby Digital (AC3) 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_AuDolby {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_AuDolby", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Dolby Lossless (TrueHD) 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_AuDolbyLossless {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_AuDolbyLossless", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Dolby Digital Plus (AC3+) 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_AuDolbyPlus {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_AuDolbyPlus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 DTS 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_AuDts {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_AuDts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 DTS-HD High Resolution Audio (HDHR) 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_AuDtsHDHR {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_AuDtsHDHR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 DTS-HD Master Audio (HDMA) 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_AuDtsHDMA {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_AuDtsHDMA", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Linear PCM (LPCM) 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_AuLPCM {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_AuLPCM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 MPEG-1 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_AuMpeg1 {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_AuMpeg1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 MPEG-2 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_AuMpeg2 {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_AuMpeg2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Unknown 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdAuCodingType_Unknown {
-            get {
-                return ResourceManager.GetString("Enum_BdAuCodingType_Unknown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 Stereo+Multi Combo 的本地化字符串。
         /// </summary>
         internal static string Enum_BdAuPresentationType_Combo {
@@ -322,74 +232,182 @@ namespace BluraySharp.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Dolby Digital (AC3) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_AuDolby {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_AuDolby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Dolby Lossless (TrueHD) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_AuDolbyLossless {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_AuDolbyLossless", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Dolby Digital Plus (AC3+) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_AuDolbyPlus {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_AuDolbyPlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DTS 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_AuDts {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_AuDts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DTS-HD High Resolution Audio (HDHR) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_AuDtsHDHR {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_AuDtsHDHR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DTS-HD Master Audio (HDMA) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_AuDtsHDMA {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_AuDtsHDMA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Linear PCM (LPCM) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_AuLPCM {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_AuLPCM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-1 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_AuMpeg1 {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_AuMpeg1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-2 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_AuMpeg2 {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_AuMpeg2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Interractive Graphics (IG) 的本地化字符串。
         /// </summary>
-        internal static string Enum_BdIgCodingType_GxInterractive {
+        internal static string Enum_BdStreamCodingType_GxInterractive {
             get {
-                return ResourceManager.GetString("Enum_BdIgCodingType_GxInterractive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Unknown 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdIgCodingType_Unknown {
-            get {
-                return ResourceManager.GetString("Enum_BdIgCodingType_Unknown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Dolby Digital Plus (AC3+) for Secodary 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdSaCodingType_SaDolbyPlus {
-            get {
-                return ResourceManager.GetString("Enum_BdSaCodingType_SaDolbyPlus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 DTS-HD LBR for Secondary 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdSaCodingType_SaDtsHD {
-            get {
-                return ResourceManager.GetString("Enum_BdSaCodingType_SaDtsHD", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Unknown 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdSaCodingType_Unknown {
-            get {
-                return ResourceManager.GetString("Enum_BdSaCodingType_Unknown", resourceCulture);
+                return ResourceManager.GetString("Enum_BdStreamCodingType_GxInterractive", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 Presentation Graphics (PG) 的本地化字符串。
         /// </summary>
-        internal static string Enum_BdStCodingType_GxPresentation {
+        internal static string Enum_BdStreamCodingType_GxPresentation {
             get {
-                return ResourceManager.GetString("Enum_BdStCodingType_GxPresentation", resourceCulture);
+                return ResourceManager.GetString("Enum_BdStreamCodingType_GxPresentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Dolby Digital Plus (AC3+) for Secodary 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_SaDolbyPlus {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_SaDolbyPlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 DTS-HD LBR for Secondary 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_SaDtsHD {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_SaDtsHD", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 Text Subtitle (textST) 的本地化字符串。
         /// </summary>
-        internal static string Enum_BdStCodingType_TxSubtitle {
+        internal static string Enum_BdStreamCodingType_TxSubtitle {
             get {
-                return ResourceManager.GetString("Enum_BdStCodingType_TxSubtitle", resourceCulture);
+                return ResourceManager.GetString("Enum_BdStreamCodingType_TxSubtitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 Unknown 的本地化字符串。
         /// </summary>
-        internal static string Enum_BdStCodingType_Unknown {
+        internal static string Enum_BdStreamCodingType_Unknown {
             get {
-                return ResourceManager.GetString("Enum_BdStCodingType_Unknown", resourceCulture);
+                return ResourceManager.GetString("Enum_BdStreamCodingType_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-4 AVC (H.264) 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_ViAvc {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_ViAvc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-1 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_ViMpeg1 {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_ViMpeg1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MPEG-2 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_ViMpeg2 {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_ViMpeg2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MVC 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_ViMvc {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_ViMvc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 VC-1 的本地化字符串。
+        /// </summary>
+        internal static string Enum_BdStreamCodingType_ViVc1 {
+            get {
+                return ResourceManager.GetString("Enum_BdStreamCodingType_ViVc1", resourceCulture);
             }
         }
         
@@ -696,60 +714,6 @@ namespace BluraySharp.Properties {
         internal static string Enum_BdUOFlag_TimeSearch {
             get {
                 return ResourceManager.GetString("Enum_BdUOFlag_TimeSearch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Unknown 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdViCodingType_Unknown {
-            get {
-                return ResourceManager.GetString("Enum_BdViCodingType_Unknown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 MPEG-4 AVC (H.264) 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdViCodingType_ViAvc {
-            get {
-                return ResourceManager.GetString("Enum_BdViCodingType_ViAvc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 MPEG-1 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdViCodingType_ViMpeg1 {
-            get {
-                return ResourceManager.GetString("Enum_BdViCodingType_ViMpeg1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 MPEG-2 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdViCodingType_ViMpeg2 {
-            get {
-                return ResourceManager.GetString("Enum_BdViCodingType_ViMpeg2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 MVC 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdViCodingType_ViMvc {
-            get {
-                return ResourceManager.GetString("Enum_BdViCodingType_ViMvc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 VC-1 的本地化字符串。
-        /// </summary>
-        internal static string Enum_BdViCodingType_ViVc1 {
-            get {
-                return ResourceManager.GetString("Enum_BdViCodingType_ViVc1", resourceCulture);
             }
         }
         

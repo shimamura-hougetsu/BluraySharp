@@ -8,7 +8,10 @@ namespace BluraySharp.PlayList
 	{
 		#region Entry Root
 		private PlStnEntryRoot entryRoot =
-			new PlStnEntryRoot(PlStnEntryType.PlayItem, (byte)BdSaCodingType.SaDtsHD);
+			new PlStnEntryRoot(
+				PlStnEntryType.PlayItem,
+				(BdStreamCodingType)BdSaCodingType.SaDtsHD
+				);
 
 		[BdSubPartField]
 		private PlStnEntryRoot EntryRoot
@@ -27,7 +30,7 @@ namespace BluraySharp.PlayList
 		public BdSaCodingType AttrInfoType
 		{
 			get { return (BdSaCodingType)this.entryRoot.AttrInfoType; }
-			set { this.entryRoot.AttrInfoType = (byte)value; }
+			set { this.entryRoot.AttrInfoType = (BdStreamCodingType)value; }
 		}
 		public IPlStnAttrInfo AttrInfo
 		{

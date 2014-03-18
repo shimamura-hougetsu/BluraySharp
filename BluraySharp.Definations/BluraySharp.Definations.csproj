@@ -46,7 +46,7 @@
     <Compile Include="ClipInfo\ICiAtcDeltaEntry.cs" />
     <Compile Include="ClipInfo\ICiClipInfo.cs" />
     <Compile Include="ClipInfo\ICiTsTypeInfo.cs" />
-    <Compile Include="Common\BdEnumConverter.cs" />
+    <Compile Include="Common\BdEnumConverterT.cs" />
     <Compile Include="Common\BdLangConverter.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldRandomVisitor.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldVirtualVisitor.cs" />
@@ -54,6 +54,7 @@
     <Compile Include="Common\BdPartFramework\IBdFieldInfo.cs" />
     <Compile Include="Common\BdStandardPart\BdFontFileRef.cs" />
     <Compile Include="Common\BdStandardPart\BdClipFileRef.cs" />
+    <Compile Include="Common\BdStreamCodingTypeConverterT.cs" />
     <Compile Include="Common\Serializing\BdRawIoTask.cs" />
     <Compile Include="Common\Serializing\IBdRawIoTask.cs" />
     <Compile Include="PlayList\PlPlayMarkType.cs" />

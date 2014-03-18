@@ -9,17 +9,17 @@ namespace BluraySharp.PlayList
 	[BdPartScope(BdIntSize.U8)]
 	internal class PlStnAttrInfoRoot : BdPart
 	{
-		public PlStnAttrInfoRoot(byte attrType)
+		public PlStnAttrInfoRoot(BdStreamCodingType attrType)
 		{
 			this.UpdateAttrInfoType(attrType);
 		}
 
 		#region AttrInfoType
 
-		private byte attrInfoType;
+		private BdStreamCodingType attrInfoType;
 
 		[BdUIntField(BdIntSize.U8)]
-		public byte AttrInfoType
+		public BdStreamCodingType AttrInfoType
 		{
 			get { return this.attrInfoType; }
 			set
@@ -41,29 +41,14 @@ namespace BluraySharp.PlayList
 				{"Tx", () => new PlStnTxAttrInfo() },
 				{"Sa", () => new PlStnAuAttrInfo() }
 			};
-		private static readonly Type[] bdStreamCodingTypes =
-			new Type[]
+		
+		private void UpdateAttrInfoType(BdStreamCodingType value)
 		{
-			typeof(BdViCodingType),
-			typeof(BdAuCodingType),
-			typeof(BdStCodingType),
-			typeof(BdIgCodingType),
-			typeof(BdSaCodingType)
-		};
+			Type tValueType = typeof(BdStreamCodingType);
 
-		private void UpdateAttrInfoType(byte value)
-		{
-			if (value == 0)
+			if (value == BdStreamCodingType.Unknown || !tValueType.IsEnumDefined(value))
 			{
 				//TODO: Invalid info type value;
-				throw new ArgumentException("value");
-			}
-
-			Type tValueType = PlStnAttrInfoRoot.bdStreamCodingTypes.First(
-				xType => PlStnAttrInfoRoot.IsEnumDefined(xType, value));
-
-			if (tValueType.IsNull())
-			{
 				throw new ArgumentException("value");
 			}
 
@@ -84,14 +69,6 @@ namespace BluraySharp.PlayList
 
 			this.attrInfo = tAttrInfoCreator();
 			this.attrInfoType = value;
-		}
-
-		private static bool IsEnumDefined(Type enumType, byte value)
-		{
-			Type tEnumUnderlyingType = Enum.GetUnderlyingType(enumType);
-			object tEnumValue = Convert.ChangeType(value, tEnumUnderlyingType);
-
-			return Enum.IsDefined(enumType, tEnumValue);
 		}
 
 		#endregion

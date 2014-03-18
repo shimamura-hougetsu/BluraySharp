@@ -117,36 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Enum_BdAuCodingType_AuDolby" xml:space="preserve">
-    <value>Dolby (AC3)</value>
-  </data>
-  <data name="Enum_BdAuCodingType_AuDolbyLossless" xml:space="preserve">
-    <value>Dolby Lossless (TrueHD)</value>
-  </data>
-  <data name="Enum_BdAuCodingType_AuDolbyPlus" xml:space="preserve">
-    <value>Dolby Digital Plus (AC3+)</value>
-  </data>
-  <data name="Enum_BdAuCodingType_AuDts" xml:space="preserve">
-    <value>DTS</value>
-  </data>
-  <data name="Enum_BdAuCodingType_AuDtsHDHR" xml:space="preserve">
-    <value>DTS-HD HR</value>
-  </data>
-  <data name="Enum_BdAuCodingType_AuDtsHDMA" xml:space="preserve">
-    <value>DTS-HD MA</value>
-  </data>
-  <data name="Enum_BdAuCodingType_AuLPCM" xml:space="preserve">
-    <value>LPCM</value>
-  </data>
-  <data name="Enum_BdAuCodingType_AuMpeg1" xml:space="preserve">
-    <value>MPEG-1</value>
-  </data>
-  <data name="Enum_BdAuCodingType_AuMpeg2" xml:space="preserve">
-    <value>MPEG-2</value>
-  </data>
-  <data name="Enum_BdAuCodingType_Unknown" xml:space="preserve">
-    <value>未知</value>
-  </data>
   <data name="Enum_BdAuPresentationType_Combo" xml:space="preserve">
     <value>立体声、多声道组合</value>
   </data>
@@ -202,30 +172,6 @@
     <value>无缝衔接</value>
   </data>
   <data name="Enum_BdConnectionCondition_Unknown" xml:space="preserve">
-    <value>未知</value>
-  </data>
-  <data name="Enum_BdIgCodingType_GxInterractive" xml:space="preserve">
-    <value>IG (交互图层)</value>
-  </data>
-  <data name="Enum_BdIgCodingType_Unknown" xml:space="preserve">
-    <value>未知</value>
-  </data>
-  <data name="Enum_BdSaCodingType_SaDolbyPlus" xml:space="preserve">
-    <value>Dolby Digital Plus (AC3+) 副音轨</value>
-  </data>
-  <data name="Enum_BdSaCodingType_SaDtsHD" xml:space="preserve">
-    <value>DTS-HD LBR 副音轨</value>
-  </data>
-  <data name="Enum_BdSaCodingType_Unknown" xml:space="preserve">
-    <value>未知</value>
-  </data>
-  <data name="Enum_BdStCodingType_GxPresentation" xml:space="preserve">
-    <value>PG (显示图层)</value>
-  </data>
-  <data name="Enum_BdStCodingType_TxSubtitle" xml:space="preserve">
-    <value>textST (文本字幕)</value>
-  </data>
-  <data name="Enum_BdStCodingType_Unknown" xml:space="preserve">
     <value>未知</value>
   </data>
   <data name="Enum_BdUOFlag_ActivateButton" xml:space="preserve">
@@ -329,24 +275,6 @@
   </data>
   <data name="Enum_BdUOFlag_TimeSearch" xml:space="preserve">
     <value>时间轴跳转</value>
-  </data>
-  <data name="Enum_BdViCodingType_Unknown" xml:space="preserve">
-    <value>未知</value>
-  </data>
-  <data name="Enum_BdViCodingType_ViAvc" xml:space="preserve">
-    <value>MPEG-4 AVC (H.264)</value>
-  </data>
-  <data name="Enum_BdViCodingType_ViMpeg1" xml:space="preserve">
-    <value>MPEG-1</value>
-  </data>
-  <data name="Enum_BdViCodingType_ViMpeg2" xml:space="preserve">
-    <value>MPEG-2</value>
-  </data>
-  <data name="Enum_BdViCodingType_ViMvc" xml:space="preserve">
-    <value>MVC</value>
-  </data>
-  <data name="Enum_BdViCodingType_ViVc1" xml:space="preserve">
-    <value>VC-1</value>
   </data>
   <data name="Enum_BdViFormat_Unknown" xml:space="preserve">
     <value>未知</value>
@@ -455,5 +383,65 @@
   </data>
   <data name="Enum_PlSubPathType_Unknown" xml:space="preserve">
     <value>媒体流</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_AuDolby" xml:space="preserve">
+    <value>Dolby (AC3)</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_AuDolbyLossless" xml:space="preserve">
+    <value>Dolby Lossless (TrueHD)</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_AuDolbyPlus" xml:space="preserve">
+    <value>Dolby Digital Plus (AC3+)</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_AuDts" xml:space="preserve">
+    <value>DTS</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_AuDtsHDHR" xml:space="preserve">
+    <value>DTS-HD HR</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_AuDtsHDMA" xml:space="preserve">
+    <value>DTS-HD MA</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_AuLPCM" xml:space="preserve">
+    <value>LPCM</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_AuMpeg1" xml:space="preserve">
+    <value>MPEG-1</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_AuMpeg2" xml:space="preserve">
+    <value>MPEG-2</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_GxInterractive" xml:space="preserve">
+    <value>IG (交互图层)</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_GxPresentation" xml:space="preserve">
+    <value>PG (显示图层)</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_SaDolbyPlus" xml:space="preserve">
+    <value>Dolby Digital Plus (AC3+) 副音轨</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_SaDtsHD" xml:space="preserve">
+    <value>DTS-HD LBR 副音轨</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_TxSubtitle" xml:space="preserve">
+    <value>textST (文本字幕)</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_ViAvc" xml:space="preserve">
+    <value>MPEG-4 AVC (H.264)</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_ViMpeg1" xml:space="preserve">
+    <value>MPEG-1</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_ViMpeg2" xml:space="preserve">
+    <value>MPEG-2</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_ViMvc" xml:space="preserve">
+    <value>MVC</value>
+  </data>
+  <data name="Enum_BdStreamCodingType_ViVc1" xml:space="preserve">
+    <value>VC-1</value>
   </data>
 </root>
