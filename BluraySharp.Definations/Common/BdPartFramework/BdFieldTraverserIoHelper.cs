@@ -178,7 +178,7 @@ namespace BluraySharp.Common.BdPartFramework
 			return tTotalLen;
 		}
 
-		private void Validate(IBdFieldTraverser obj)
+		private void ValidateArg(IBdFieldTraverser obj)
 		{
 			if (obj.IsNull())
 			{
@@ -211,7 +211,7 @@ namespace BluraySharp.Common.BdPartFramework
 		/// <returns>Total Length</returns>
 		public long GetRawLength(IBdFieldTraverser obj)
 		{
-			this.Validate(obj);
+			this.ValidateArg(obj);
 
 			//specifying a null value for operation to update all indicator fields
 			return this.ForTraverser(obj, null, null);
@@ -225,7 +225,7 @@ namespace BluraySharp.Common.BdPartFramework
 		/// <returns>Total Length</returns>
 		public long SerializeTo(IBdFieldTraverser obj, IBdRawWriteContext context)
 		{
-			this.Validate(obj);
+			this.ValidateArg(obj);
 
 			RawOperation tOpr = delegate(IBdFieldVisitor xSubObj)
 			{
@@ -244,7 +244,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public long DeserializeFrom(IBdFieldTraverser obj, IBdRawReadContext context)
 		{
-			this.Validate(obj);
+			this.ValidateArg(obj);
 
 			RawOperation tOpr = delegate(IBdFieldVisitor xSubObj)
 			{

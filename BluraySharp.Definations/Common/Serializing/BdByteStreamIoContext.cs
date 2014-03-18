@@ -56,8 +56,8 @@ namespace BluraySharp.Architecture
 					}
 					else
 					{
-						//Cannot seek back on a non-random-access stream.
-						throw new NotSupportedException();
+						//TODO: Cannot seek back on a non-random-access stream.
+						throw new InvalidOperationException();
 					}
 				}
 			}
@@ -133,7 +133,7 @@ namespace BluraySharp.Architecture
 					throw new ArgumentException("length");
 				}
 
-				//required scope is beyond the left area.
+				//TODO: required scope is beyond the left area.
 				if (this.length != -1 && this.Position + length > this.length)
 				{
 					throw new ArgumentOutOfRangeException("length");
@@ -176,13 +176,13 @@ namespace BluraySharp.Architecture
 			{
 				if (length < 0)
 				{
-					//positive value required
+					//TODO: positive value required
 					throw new ArgumentException("length");
 				}
 
 				if (this.isLengthSpecified && this.Length != length)
 				{
-					//Scope length specified twice with different value.
+					//TODO: Scope length specified twice with different value.
 					throw new InvalidOperationException();
 				}
 
@@ -249,7 +249,7 @@ namespace BluraySharp.Architecture
 			{
 				if (this.taskLocker.IsNull())
 				{
-					//Ending a non-existing task.
+					//TODO: Ending a non-existing task.
 					throw new ApplicationException();
 				}
 				else

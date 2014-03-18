@@ -47,7 +47,7 @@ namespace BluraySharp.Common.BdPartFramework
 			return obj.Attribute as BdUIntFieldAttribute;
 		}
 
-		private void Validate(IBdFieldVisitor obj)
+		private void ValidateArg(IBdFieldVisitor obj)
 		{
 			if (obj.IsNull())
 			{
@@ -75,7 +75,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public long GetRawLength(IBdFieldVisitor obj)
 		{
-			this.Validate(obj);
+			this.ValidateArg(obj);
 
 			return (long) this.GetSize(obj);
 		}
@@ -83,7 +83,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public long SerializeTo(IBdFieldVisitor obj, IBdRawWriteContext context)
 		{
-			this.Validate(obj);
+			this.ValidateArg(obj);
 
 			BdIntSize tSize = this.GetSize(obj);
 
@@ -93,7 +93,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public long DeserializeFrom(IBdFieldVisitor obj, IBdRawReadContext context)
 		{
-			this.Validate(obj);
+			this.ValidateArg(obj);
 
 			BdIntSize tSize = this.GetSize(obj);
 			this.SetValue(obj, context.Deserialize(this.GetAttribute(obj).Size));

@@ -21,7 +21,7 @@ namespace BluraySharp.Architecture
 			{
 				if (!this.StartTask())
 				{
-					//context is busy.
+					//TODO: context is busy.
 					throw new ApplicationException();
 				}
 			}
@@ -55,7 +55,7 @@ namespace BluraySharp.Architecture
 			if (tReadLen != length)
 			{
 				//TODO: not expected stream end.
-				throw new Exception();
+				throw new ApplicationException();
 			}
 		}
 

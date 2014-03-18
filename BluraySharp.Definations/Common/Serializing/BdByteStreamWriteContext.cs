@@ -32,7 +32,7 @@ namespace BluraySharp.Architecture
 			{
 				if (!this.StartTask())
 				{
-					//context is busy.
+					//TODO: context is busy.
 					throw new ApplicationException();
 				}
 				this.EnterScope(obj.RawLength);

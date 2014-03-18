@@ -28,6 +28,7 @@ namespace BluraySharp.FileSystem
 		{
 			if (!this.compAttrib.IsBackupRequired)
 			{
+				//TODO:
 				throw new NotSupportedException();
 			}
 
@@ -40,6 +41,7 @@ namespace BluraySharp.FileSystem
 		{
 			if (!this.compAttrib.IsBackupRequired)
 			{
+				//TODO:
 				throw new NotSupportedException();
 			}
 

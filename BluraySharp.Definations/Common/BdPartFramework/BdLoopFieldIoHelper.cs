@@ -16,7 +16,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private BdLoopFieldIoHelper() { }
 
-		private void Validate(IBdFieldVisitor obj)
+		private void ValidateArg(IBdFieldVisitor obj)
 		{
 			if(obj.IsNull())
 			{
@@ -41,7 +41,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public long GetRawLength(IBdFieldVisitor obj)
 		{
-			this.Validate(obj);
+			this.ValidateArg(obj);
 
 			BdLoopFieldTraverser tSeeker = new BdLoopFieldTraverser(obj);
 			return this.ioHelper.GetRawLength(tSeeker);
@@ -49,7 +49,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public long SerializeTo(IBdFieldVisitor obj, IBdRawWriteContext context)
 		{
-			this.Validate(obj);
+			this.ValidateArg(obj);
 
 			BdLoopFieldTraverser tSeeker = new BdLoopFieldTraverser(obj);
 			return this.ioHelper.SerializeTo(tSeeker, context);
@@ -57,7 +57,7 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public long DeserializeFrom(IBdFieldVisitor obj, IBdRawReadContext context)
 		{
-			this.Validate(obj);
+			this.ValidateArg(obj);
 			
 			BdLoopFieldTraverser tSeeker = new BdLoopFieldTraverser(obj);
 			return this.ioHelper.DeserializeFrom(tSeeker, context);

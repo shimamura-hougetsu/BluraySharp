@@ -92,7 +92,7 @@ namespace BluraySharp.Common.BdPartFramework
 				Type[] tItemTypes = this.rootField.Type.GetGenericArguments();
 				if (tItemTypes.Length != 1)
 				{
-					//Unexpected exception
+					//TODO: Unexpected exception, fatal
 					throw new ApplicationException();
 				}
 				return tItemTypes[0];

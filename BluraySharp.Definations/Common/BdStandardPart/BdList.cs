@@ -91,7 +91,7 @@ namespace BluraySharp.Common.BdStandardPart
 		{
 			if (this.Count == this.Capacity)
 			{
-				//Out of capacity.
+				//TODO: Out of capacity.
 				throw new IndexOutOfRangeException();
 			}
 
@@ -150,7 +150,7 @@ namespace BluraySharp.Common.BdStandardPart
 		{
 			if(this.Count == this.Capacity)
 			{
-				//Out of capacity.
+				//TODO: Out of capacity.
 				throw new IndexOutOfRangeException();
 			}
 

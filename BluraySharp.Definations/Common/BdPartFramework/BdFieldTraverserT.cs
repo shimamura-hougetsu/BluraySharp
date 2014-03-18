@@ -73,7 +73,7 @@ namespace BluraySharp.Common.BdPartFramework
 				tAttribute.Size == BdIntSize.Auto ||
 				!Enum.IsDefined(typeof(BdIntSize), tAttribute.Size))
 			{
-				//Invalid intege type
+				//TODO: Invalid integer type
 				throw new ApplicationException();
 			}
 
@@ -151,7 +151,7 @@ namespace BluraySharp.Common.BdPartFramework
 					BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.LengthIndicator, null);
 				if (tLengthField.IsNull())
 				{
-					//FieldNotFound
+					//TODO: FieldNotFound
 					throw new ApplicationException();
 				}
 				return new BdFieldRandomVisitor(this.thisObj, tLengthField);
@@ -173,7 +173,7 @@ namespace BluraySharp.Common.BdPartFramework
 					BdFieldTraverser<T>.GetFieldDescriptor(tAttrib.SkipIndicator, null);
 				if (tSkipField.IsNull())
 				{
-					//FieldNotFound
+					//TODO: FieldNotFound
 					throw new ApplicationException();
 				}
 				return new BdFieldRandomVisitor(this.thisObj, tSkipField);
