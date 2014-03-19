@@ -1,4 +1,5 @@
 ﻿using BluraySharp.Common;
+using System;
 using System.Collections.Generic;
 
 namespace BluraySharp.Common
@@ -12,19 +13,52 @@ namespace BluraySharp.Common
 
 		private readonly Dictionary<string, BdmvEntryAttribute> attrTable = new Dictionary<string, BdmvEntryAttribute>();
 
-		public T CreateEntry<T>() where T : IBdmvEntry
+		/// <summary>
+		/// Create specified BDMV Entry
+		/// </summary>
+		/// <typeparam name="T">BDMV Entry Interface</typeparam>
+		/// <returns>Created entry</returns>
+		public T CreateEntry<T>() where T : class, IBdmvEntry
 		{
-			return (T) ctorTable[typeof(T).FullName]();
+			try
+			{
+				var tCreator = ctorTable[typeof(T).FullName];
+				if (tCreator.IsNull())
+				{
+					throw new KeyNotFoundException();
+				}
+
+				return (T) tCreator();
+			}
+			catch (KeyNotFoundException)
+			{
+				//TODO: entry type not registered
+				throw new ApplicationException();
+			}
 		}
 
-		public BdmvEntryAttribute GetEntryAttribute<T>() where T : IBdmvEntry
+		public BdmvEntryAttribute GetEntryAttribute<T>() where T : class, IBdmvEntry
 		{
-			return attrTable[typeof(T).FullName];
+			try
+			{
+				var tAttr = attrTable[typeof(T).FullName];
+				if (tAttr.IsNull())
+				{
+					throw new KeyNotFoundException();
+				}
+
+				return tAttr;
+			}
+			catch (KeyNotFoundException)
+			{
+				//TODO: entry type not registered
+				throw new ApplicationException();
+			}
 		}
 
 		private void RegisterArrayEntry<T, I>() 
 			where T : I, new()
-			where I : IBdmvArrayEntry
+			where I : class, IBdmvArrayEntry
 		{
 			object[] tObj = typeof(T).GetCustomAttributes(typeof(BdmvArrayEntryAttribute), true);
 

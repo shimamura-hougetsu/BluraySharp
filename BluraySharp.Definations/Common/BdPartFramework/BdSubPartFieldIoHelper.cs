@@ -35,7 +35,7 @@ namespace BluraySharp.Common.BdPartFramework
 			
 			if (this.GetAttribute(obj).IsNull())
 			{
-				//TODO: BdStringField required
+				//TODO: BdSubPartField required
 				throw new ArgumentException("obj");
 			}
 

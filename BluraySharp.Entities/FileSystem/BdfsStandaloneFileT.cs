@@ -3,7 +3,7 @@
 namespace BluraySharp.FileSystem
 {
 	public class BdfsStandaloneFile<T> : BdfsEntryFile<T>, IBdfsEntryFile<T>
-		where T : IBdmvEntry
+		where T : class, IBdmvEntry
 	{
 		public BdfsStandaloneFile(string path)
 		{

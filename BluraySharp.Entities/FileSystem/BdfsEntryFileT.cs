@@ -6,7 +6,7 @@ using System.IO;
 namespace BluraySharp.FileSystem
 {
 	public class BdfsEntryFile<T> : BdfsItem, IBdfsEntryFile<T>
-		where T : IBdmvEntry
+		where T : class, IBdmvEntry
 	{
 		protected BdmvEntryAttribute compAttrib = BdmvEntryRegistry.Instance.GetEntryAttribute<T>();
 
