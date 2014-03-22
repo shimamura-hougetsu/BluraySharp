@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BdExceptions.cs" />
     <Compile Include="ClipInfo\CiApplicationType.cs" />
     <Compile Include="ClipInfo\CiTsType.cs" />
     <Compile Include="ClipInfo\ICiAppFontRef.cs" />

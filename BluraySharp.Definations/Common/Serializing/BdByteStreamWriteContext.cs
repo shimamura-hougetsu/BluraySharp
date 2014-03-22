@@ -1,10 +1,23 @@
-﻿using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using BluraySharp.Common.Serializing;
+﻿/* ****************************************************************************
+ * 
+ * BluraySharp
+ * 
+ * This is a C# library project aimed to parse or compose BDMV files.
+ * 
+ * Maintained at Google Code (https://code.google.com/p/bluray-sharp/)
+ * Released under the terms of LGPL (http://www.gnu.org/licenses/lgpl.html).
+ *
+ * Mar. 2014, adm@subelf.net
+ * 
+ * ***************************************************************************/
+
 using BluraySharp.Common;
+using BluraySharp.Common.Serializing;
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace BluraySharp.Architecture
 {

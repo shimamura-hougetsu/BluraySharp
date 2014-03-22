@@ -11,20 +11,27 @@
  * 
  * ***************************************************************************/
 
-using BluraySharp.Common.BdStandardPart;
+using System;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp
 {
-	public interface IPlPlayItem : IPlPlayItemInfo
+	[Serializable]
+	public class BdException : ApplicationException
 	{
-		BdUOMask UoMask { get; }
+	}
 
-		bool RandomAccessFlag { get; set; }
-		IPlStillOptions StillOptions { get; }
+	[Serializable]
+	public class BdEntrySerializationException : BdException
+	{
+	}
 
-		bool IsMultiAngleDifferentAudios { get; set; }
-		bool IsMultiAngleOptionsSeamlessChange { get; set; }
+	[Serializable]
+	public class BdmvEntryComposingException : BdException
+	{
+	}
 
-		IPlStnTable StnTable { get; }
+	[Serializable]
+	public class BdFileSystemException : BdException
+	{
 	}
 }

@@ -1,16 +1,34 @@
-﻿using System;
-using System.IO;
+﻿/* ****************************************************************************
+ * 
+ * BluraySharp
+ * 
+ * This is a C# library project aimed to parse or compose BDMV files.
+ * 
+ * Maintained at Google Code (https://code.google.com/p/bluray-sharp/)
+ * Released under the terms of LGPL (http://www.gnu.org/licenses/lgpl.html).
+ *
+ * Mar. 2014, adm@subelf.net
+ * 
+ * ***************************************************************************/
+
 using BluraySharp.Architecture;
-using BluraySharp.PlayList;
-using BluraySharp.Common.Serializing;
 using BluraySharp.Common;
+using BluraySharp.Common.Serializing;
 using BluraySharp.FileSystem;
+using System;
+using System.IO;
 
 namespace BluraySharp
 {
 	public class BdmvContext
 	{
 		private static BdmvEntryRegistry entryRegistry = BdmvEntryRegistry.Instance;
+
+		/// <summary>
+		/// Create and return a BDMV entry object
+		/// </summary>
+		/// <typeparam name="T">BDMV entry type</typeparam>
+		/// <returns>Object created</returns>
 		public T CreateEntry<T>() where T : class, IBdmvEntry
 		{
 			return entryRegistry.CreateEntry<T>();
