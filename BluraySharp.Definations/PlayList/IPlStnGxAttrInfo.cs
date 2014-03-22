@@ -15,8 +15,14 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
+	/// <summary>
+	/// Properties of a STN Entry refering a graphics stream
+	/// </summary>
 	public interface IPlStnGxAttrInfo : IPlStnAttrInfo
 	{
+		/// <summary>
+		/// Get or Set language of the graphics' contents.
+		/// </summary>
 		BdLang Language { get; set; }
 	}
 }
