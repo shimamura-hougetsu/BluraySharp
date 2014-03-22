@@ -14,10 +14,23 @@
 
 namespace BluraySharp.FileSystem
 {
+	/// <summary>
+	/// Bdmv Folder interface
+	/// </summary>
+	/// <typeparam name="T">Base type of files in this folder</typeparam>
 	public interface IBdfsFolder<T> : IBdfsItem
 		where T : IBdfsItem
 	{
+		/// <summary>
+		/// Detach a file from this folder
+		/// </summary>
+		/// <param name="fsObject">A file object</param>
 		void Detach(T fsObject);
+
+		/// <summary>
+		/// Attach a file into this folder
+		/// </summary>
+		/// <param name="fsObject">A file object</param>
 		void Attach(T fsObject);
 	}
 }

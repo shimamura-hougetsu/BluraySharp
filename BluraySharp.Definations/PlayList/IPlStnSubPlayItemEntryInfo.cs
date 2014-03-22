@@ -14,11 +14,24 @@
 
 namespace BluraySharp.PlayList
 {
+	/// <summary>
+	/// Properties of STN Entry refering a stream from a SubPlayItem
+	/// </summary>
 	public interface IPlStnSubPlayItemEntryInfo : IPlStnEntryInfo
 	{
+		/// <summary>
+		/// Id of SubPath
+		/// </summary>
 		byte SubPathId { get; set; }
-		byte SubClipEntryId { get; set; }
 
+		/// <summary>
+		/// Id of SubPlayItem in SubPath
+		/// </summary>
+		byte SubPlayItemId { get; set; }
+
+		/// <summary>
+		/// Program Id of stream in SubPlayItem
+		/// </summary>
 		ushort StreamProgId { get; set; }
 	}
 }

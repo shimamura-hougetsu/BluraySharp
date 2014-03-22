@@ -14,10 +14,19 @@
 
 namespace BluraySharp.PlayList
 {
+	/// <summary>
+	/// Properties of STN Entry refering a PiP stream from a PiP SubPath
+	/// </summary>
 	public interface IPlStnInMuxPipEntryInfo : IPlStnEntryInfo
 	{
+		/// <summary>
+		/// Id of a PiP SubPath
+		/// </summary>
 		byte SubPathId { get; set; }
 
+		/// <summary>
+		/// Id of a PiP stream in SubPath items
+		/// </summary>
 		ushort StreamProgId { get; set; }
 	}
 }

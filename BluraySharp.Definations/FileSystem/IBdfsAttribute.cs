@@ -14,6 +14,9 @@
 
 namespace BluraySharp.FileSystem
 {
+	/// <summary>
+	/// Interface of BDMV file system objects' attributes
+	/// </summary>
 	public interface IBdfsAttribute
 	{
 	}

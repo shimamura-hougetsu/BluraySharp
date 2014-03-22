@@ -14,8 +14,14 @@
 
 namespace BluraySharp.ClipInfo
 {
+	/// <summary>
+	/// Font referer.
+	/// </summary>
 	public interface ICiAppFontRef : BluraySharp.Common.IBdPart
 	{
+		/// <summary>
+		/// Font file referer
+		/// </summary>
 		BluraySharp.Common.BdStandardPart.BdFontFileRef FontFileRef { get; }
 	}
 }

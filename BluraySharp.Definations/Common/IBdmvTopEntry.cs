@@ -13,6 +13,9 @@
 
 namespace BluraySharp.Common
 {
+	/// <summary>
+	/// Interface of BDMV entry named with .bdmv extension.
+	/// </summary>
 	public interface IBdmvTopEntry : IBdmvEntry
 	{
 	}

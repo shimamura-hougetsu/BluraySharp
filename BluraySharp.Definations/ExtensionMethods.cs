@@ -14,6 +14,7 @@
 using BluraySharp.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -126,14 +127,14 @@ namespace BluraySharp
 			return ExtensionMethods.bdAuSampleRateToDoubleTable[value];
 		}
 
-		public static bool RefEquals(this object obj1, object obj2)
+		public static bool RefEql(this object obj1, object obj2)
 		{
 			return object.ReferenceEquals(obj1, obj2);
 		}
 
 		public static bool IsNull(this object obj)
 		{
-			return obj.RefEquals(null);
+			return obj.RefEql(null);
 		}
 
 
@@ -237,6 +238,18 @@ namespace BluraySharp
 
 				return string.Format("{0} ({1})", tIsoLangCode, tDisplayName);
 			}
+		}
+
+		[Conditional("DEBUG")]
+		public static void AssertFalse(this bool condition)
+		{
+			Debug.Assert(!condition);
+		}
+
+		[Conditional("DEBUG")]
+		public static void AssertTrue(this bool condition)
+		{
+			Debug.Assert(condition);
 		}
 	}
 }

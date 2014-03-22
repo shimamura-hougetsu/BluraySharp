@@ -27,7 +27,7 @@ namespace BluraySharp.PlayList
 		}
 
 		[BdUIntField(BdIntSize.U8)]
-		public byte SubClipEntryId
+		public byte SubPlayItemId
 		{
 			get;
 			set;

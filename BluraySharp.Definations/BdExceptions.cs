@@ -15,23 +15,35 @@ using System;
 
 namespace BluraySharp
 {
+	/// <summary>
+	///Base of all exceptions defined in BluraySharp library.
+	/// </summary>
 	[Serializable]
-	public class BdException : ApplicationException
+	public abstract class BdException : ApplicationException
 	{
 	}
 
+	/// <summary>
+	/// Base of exceptions occurred during serializing or deserializng.
+	/// </summary>
 	[Serializable]
-	public class BdEntrySerializationException : BdException
+	public abstract class BdEntrySerializationException : BdException
 	{
 	}
 
+	/// <summary>
+	/// Base of exceptions occurred during editing bluray objects.
+	/// </summary>
 	[Serializable]
-	public class BdmvEntryComposingException : BdException
+	public abstract class BdmvEntryAthoringException : BdException
 	{
 	}
 
+	/// <summary>
+	/// Base of exceptions occurred during operating on bluray filesystem items.
+	/// </summary>
 	[Serializable]
-	public class BdFileSystemException : BdException
+	public abstract class BdFileSystemException : BdException
 	{
 	}
 }

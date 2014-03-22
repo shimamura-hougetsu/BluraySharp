@@ -14,6 +14,9 @@
 
 namespace BluraySharp.FileSystem
 {
+	/// <summary>
+	/// Base interface of BDMV root folders, like BDMV and CERTIFICATE
+	/// </summary>
 	public interface IBdfsRootFolder : IBdfsFolder<IBdfsItem>
 	{
 	}

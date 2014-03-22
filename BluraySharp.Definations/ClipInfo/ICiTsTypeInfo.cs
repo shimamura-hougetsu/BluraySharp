@@ -14,11 +14,26 @@
 
 namespace BluraySharp.ClipInfo
 {
+	/// <summary>
+	/// Extra properties for clips of Mpeg2 Transport Stream type
+	/// </summary>
 	public interface ICiTsTypeInfo : BluraySharp.Common.IBdPart
 	{
+		/// <summary>
+		/// Unknown, always 0x80
+		/// </summary>
 		byte ValidityFlags { get; set;}
+		/// <summary>
+		/// Unknown, always "HDMV"
+		/// </summary>
 		string FormatIdentifier { get; set; }
+		/// <summary>
+		/// Unknown, filled with 0
+		/// </summary>
 		string NetworkInformation { get; set; }
+		/// <summary>
+		/// Unknown, filled with 0
+		/// </summary>
 		string StreamFormatName { get; set; }
 	}
 }

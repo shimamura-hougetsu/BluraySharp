@@ -13,6 +13,9 @@
 
 namespace BluraySharp.Common
 {
+	/// <summary>
+	/// Interface of BDMV entry named with five-figure numbers, like mpls and clpi.
+	/// </summary>
 	public interface IBdmvArrayEntry : IBdmvEntry
 	{
 	}

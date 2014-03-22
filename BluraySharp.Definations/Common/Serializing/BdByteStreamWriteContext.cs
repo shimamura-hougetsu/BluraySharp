@@ -103,8 +103,11 @@ namespace BluraySharp.Architecture
 
 		public void Serialize(string value, int byteCount, Encoding encoding)
 		{
-			byte[] tBuffer = encoding.GetBytes(value);
-			Debug.Assert(tBuffer.Length == byteCount);
+			byte[] tStringBytes = encoding.GetBytes(value);
+			(tStringBytes.Length > byteCount).AssertFalse();
+
+			byte[] tBuffer = new byte[byteCount];
+			tStringBytes.CopyTo(tBuffer, 0);
 
 			this.Serialize(tBuffer);
 		}

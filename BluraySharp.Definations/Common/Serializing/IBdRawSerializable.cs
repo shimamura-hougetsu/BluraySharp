@@ -14,6 +14,10 @@
 
 namespace BluraySharp.Common.Serializing
 {
+	/// <summary>
+	/// Defines interface can be serialize to 
+	/// or deserialized from a <see cref="BluraySharp.Common.Serializing.IBdRawIoContext" />
+	/// </summary>
 	public interface IBdRawSerializable
 	{
 		/// <summary>
@@ -31,7 +35,7 @@ namespace BluraySharp.Common.Serializing
 		long DeserializeFrom(IBdRawReadContext context);
 
 		/// <summary>
-		/// Total length of raw data.
+		/// Update and get total length of raw data.
 		/// </summary>
 		long RawLength { get; }
 	}

@@ -13,10 +13,16 @@
 
 namespace BluraySharp.Common
 {
+	/// <summary>
+	/// Attribute indicating a five-figure numbered BDMV entry file, like mpls and clpi
+	/// </summary>
 	public class BdmvArrayEntryAttribute : BdmvEntryAttribute
 	{
 		private string folderName;
 
+		/// <summary>
+		/// Name of the entries' parent folder
+		/// </summary>
 		public string FolderName
 		{
 			get { return folderName; }
@@ -25,12 +31,22 @@ namespace BluraySharp.Common
 		
 		private int maxSerialNumber;
 
+		/// <summary>
+		/// The maximum of the entry file id number.
+		/// </summary>
 		public int MaxSerialNumber
 		{
 			get { return maxSerialNumber; }
 			set { maxSerialNumber = value; }
 		}
 
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="folderName">Name of the entries' parent folder</param>
+		/// <param name="extension">Extension name of the entry file.</param>
+		/// <param name="maxSerialNumber">Maximum of files' id number.</param>
+		/// <param name="isBackupRequired">Indicating existence of a backup version</param>
 		public BdmvArrayEntryAttribute(string folderName, string extension, int maxSerialNumber, bool isBackupRequired)
 			: base(extension, isBackupRequired)
 		{

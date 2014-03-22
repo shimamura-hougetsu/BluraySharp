@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\BluraySharp.Definations.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\BluraySharp.Definations.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,8 +58,6 @@
     <Compile Include="Common\BdStandardPart\BdFontFileRef.cs" />
     <Compile Include="Common\BdStandardPart\BdClipFileRef.cs" />
     <Compile Include="Common\BdStreamCodingTypeConverterT.cs" />
-    <Compile Include="Common\Serializing\BdRawIoTask.cs" />
-    <Compile Include="Common\Serializing\IBdRawIoTask.cs" />
     <Compile Include="PlayList\PlPlayMarkType.cs" />
     <Compile Include="Common\BdStandardPart\BdList.cs" />
     <Compile Include="Common\BdStandardPart\BdLangCode.cs" />
