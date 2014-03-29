@@ -126,7 +126,7 @@
     <Compile Include="PlayList\IPlPlayItemList.cs" />
     <Compile Include="PlayList\IPlPlayMark.cs" />
     <Compile Include="PlayList\IPlStillOptions.cs" />
-    <Compile Include="PlayList\IPlStnAuAttribInfo.cs" />
+    <Compile Include="PlayList\IPlStnAuAttrInfo.cs" />
     <Compile Include="PlayList\IPlStnEntryInfo.cs" />
     <Compile Include="PlayList\IPlStnEntry.cs" />
     <Compile Include="PlayList\IPlStnSvEntry.cs" />

@@ -19,18 +19,10 @@ namespace BluraySharp.Common.BdPartFramework
 {
 	public abstract class BdPart : IBdPart
 	{
-		private static IBdRawIoHelper<IBdFieldTraverser> ioHelp = BdPart.InitializeIoHelpers();
+		private static IBdRawIoHelper<IBdFieldTraverser> ioHelp = BdIoHelperFactory.GetHelper<IBdFieldTraverser>();
 
 		private IBdFieldTraverser fieldSeeker;
-
-		private static IBdRawIoHelper<IBdFieldTraverser> InitializeIoHelpers()
-		{
-			BdIoHelperFactory.RegisterHelper(BdFieldIoHelper.Instance);
-			BdIoHelperFactory.RegisterHelper(BdFieldTraverserIoHelper.Instance);
-
-			return BdIoHelperFactory.GetHelper<IBdFieldTraverser>();
-		}
-
+		
 		public BdPart()
 		{
 			Type tThisType = this.GetType();

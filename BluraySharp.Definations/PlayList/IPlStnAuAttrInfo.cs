@@ -15,7 +15,7 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	public interface IPlStnAuAttribInfo : IPlStnAttrInfo
+	public interface IPlStnAuAttrInfo : IPlStnAttrInfo
 	{
 		BdAuPresentationType Presentation { get; set; }
 		BdAuSampleRate SampleFrequency { get; set; }

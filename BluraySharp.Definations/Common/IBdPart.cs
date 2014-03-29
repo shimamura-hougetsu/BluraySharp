@@ -13,6 +13,7 @@
 
 using BluraySharp;
 using BluraySharp.Common.Serializing;
+using System.ComponentModel;
 
 namespace BluraySharp.Common
 {

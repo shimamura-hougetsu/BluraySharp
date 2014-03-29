@@ -11,6 +11,7 @@
  * 
  * ***************************************************************************/
 
+using BluraySharp.Common.BdPartFramework;
 using BluraySharp.Common.Serializing;
 
 namespace BluraySharp.Common.BdStandardPart
@@ -18,13 +19,14 @@ namespace BluraySharp.Common.BdStandardPart
 	/// <summary>
 	/// Defined BDMV user operation forbidding mask bits
 	/// </summary>
-	public class BdUOMask : IBdPart
+	public class BdUOMask : BdPart
 	{
 		private BdBitwise64 value = new BdBitwise64();
 
 		/// <summary>
 		/// Get or Set an unsigned long value containing all mask bits
 		/// </summary>
+		[BdUIntField(BdIntSize.U64)]
 		public ulong Value
 		{
 			get { return this.value.Value; }
@@ -48,40 +50,9 @@ namespace BluraySharp.Common.BdStandardPart
 			}
 		}
 
-		/// <summary>
-		/// Serializes this object to a <see cref="IBdRawWriteContext"/>.
-		/// </summary>
-		/// <param name="context">Target context of serialization</param>
-		/// <returns>Count of total bytes written</returns>
-		public long SerializeTo(IBdRawWriteContext context)
+		public override string ToString()
 		{
-			context.Serialize(this.value);
-
-			return context.Position;
-		}
-
-		/// <summary>
-		/// Deserialize data from a <see cref="IBdRawReadContext"/> into this object.
-		/// </summary>
-		/// <param name="context"></param>
-		/// <returns></returns>
-		public long DeserializeFrom(IBdRawReadContext context)
-		{
-			this.value = new BdBitwise64();
-			context.Deserialize(this.value);
-
-			return context.Position;
-		}
-
-		/// <summary>
-		/// Update overall and get total length of this object
-		/// </summary>
-		public long RawLength
-		{
-			get
-			{
-				return this.value.RawLength;
-			}
+			return "User Operation Fobidding Masks";
 		}
 	}
 }

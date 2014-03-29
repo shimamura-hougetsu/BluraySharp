@@ -18,7 +18,7 @@ using System;
 
 namespace BluraySharp.PlayList
 {
-	public class PlStnAuAttrInfo : BdPart, IPlStnAuAttribInfo
+	public class PlStnAuAttrInfo : BdPart, IPlStnAuAttrInfo
 	{
 		#region FormatValue
 
