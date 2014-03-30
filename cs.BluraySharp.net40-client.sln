@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp", "BluraySharp\BluraySharp.csproj", "{4FF5CF31-DB94-4962-A92D-17A149135012}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.net40-client", "BluraySharp\BluraySharp.net40-client.csproj", "{4FF5CF31-DB94-4962-A92D-17A149135012}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Entities", "BluraySharp.Entities\BluraySharp.Entities.csproj", "{DFC6212F-1896-4890-BB9B-4A2B34E8A85B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Entities.net40-client", "BluraySharp.Entities\BluraySharp.Entities.net40-client.csproj", "{DFC6212F-1896-4890-BB9B-4A2B34E8A85B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Definations", "BluraySharp.Definations\BluraySharp.Definations.csproj", "{14FF5AC6-E679-444D-B582-0B4AE067F595}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Definations.net40-client", "BluraySharp.Definations\BluraySharp.Definations.net40-client.csproj", "{14FF5AC6-E679-444D-B582-0B4AE067F595}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Test", "BluraySharp.Test\BluraySharp.Test.csproj", "{E28811E4-677C-4F70-A989-1D33B20BDAFD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{3D81FC71-2664-4365-8146-BF6128AA6575}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{3D81FC71-2664-4365-8146-BF6128AA6575}"
 	ProjectSection(SolutionItems) = preProject
 		License-LGPL.txt = License-LGPL.txt
 	EndProjectSection

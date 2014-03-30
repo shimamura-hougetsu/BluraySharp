@@ -9,5 +9,6 @@ syntax: regexp
 (?i)\bobj/.*/.*$
 (?i)\bIpch/.*$
 (?i)\bTestResults/.*$
+(?i)^Release/.*$
 (?i)\b.*\.suo$
 (?i)\b.*\.pdb$

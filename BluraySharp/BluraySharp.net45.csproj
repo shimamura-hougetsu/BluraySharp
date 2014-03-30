@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BluraySharp</RootNamespace>
     <AssemblyName>BluraySharp</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -27,16 +27,24 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Debug\BluraySharp.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Release\lib\net45\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Release\BluraySharp.XML</DocumentationFile>
+    <DocumentationFile>..\Release\lib\net45\BluraySharp.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>StrongNameKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,14 +69,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BluraySharp.Definations\BluraySharp.Definations.csproj">
+    <ProjectReference Include="..\BluraySharp.Definations\BluraySharp.Definations.net45.csproj">
       <Project>{14FF5AC6-E679-444D-B582-0B4AE067F595}</Project>
-      <Name>BluraySharp.Definations</Name>
+      <Name>BluraySharp.Definations.net45</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BluraySharp.Entities\BluraySharp.Entities.csproj">
+    <ProjectReference Include="..\BluraySharp.Entities\BluraySharp.Entities.net45.csproj">
       <Project>{DFC6212F-1896-4890-BB9B-4A2B34E8A85B}</Project>
-      <Name>BluraySharp.Entities</Name>
+      <Name>BluraySharp.Entities.net45</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StrongNameKey.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

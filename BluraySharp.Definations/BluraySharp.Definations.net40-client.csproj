@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{14FF5AC6-E679-444D-B582-0B4AE067F595}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BluraySharp</RootNamespace>
+    <AssemblyName>BluraySharp.Definations</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\BluraySharp.Definations.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\lib\net40-client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Release\lib\net40-client\BluraySharp.Definations.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>StrongNameKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BdExceptions.cs" />
+    <Compile Include="ClipInfo\CiApplicationType.cs" />
+    <Compile Include="ClipInfo\CiTsType.cs" />
+    <Compile Include="ClipInfo\ICiAppFontRef.cs" />
+    <Compile Include="ClipInfo\ICiAtcDeltaEntry.cs" />
+    <Compile Include="ClipInfo\ICiClipInfo.cs" />
+    <Compile Include="ClipInfo\ICiTsTypeInfo.cs" />
+    <Compile Include="Common\BdEnumConverterT.cs" />
+    <Compile Include="Common\BdLangConverter.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldRandomVisitor.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldVirtualVisitor.cs" />
+    <Compile Include="Common\BdPartFramework\BdPartScopeAttribute.cs" />
+    <Compile Include="Common\BdPartFramework\IBdFieldInfo.cs" />
+    <Compile Include="Common\BdStandardPart\BdFontFileRef.cs" />
+    <Compile Include="Common\BdStandardPart\BdClipFileRef.cs" />
+    <Compile Include="Common\BdStreamCodingTypeConverterT.cs" />
+    <Compile Include="PlayList\PlPlayMarkType.cs" />
+    <Compile Include="Common\BdStandardPart\BdList.cs" />
+    <Compile Include="Common\BdStandardPart\BdLangCode.cs" />
+    <Compile Include="Common\BdPartFramework\BdByteArrayFieldAttribute.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldIoHelper.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldIoHelperFactory.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldTraverserIoHelper.cs" />
+    <Compile Include="Common\BdPartFramework\BdLoopFieldIoHelper.cs" />
+    <Compile Include="Common\BdPartFramework\BdUIntFieldIoHelper.cs" />
+    <Compile Include="Common\BdPartFramework\BdSubPartFieldIoHelper.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldDescriptor.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldTraverserT.cs" />
+    <Compile Include="Common\BdPartFramework\BdLoopFieldTraverser.cs" />
+    <Compile Include="Common\BdPartFramework\BdByteArrayFieldIoHelper.cs" />
+    <Compile Include="Common\BdPartFramework\BdStringFieldIoHelper.cs" />
+    <Compile Include="Common\BdPartFramework\BdSubPartFieldAttribute.cs" />
+    <Compile Include="Common\BdPartFramework\BdUIntFieldAttribute.cs" />
+    <Compile Include="Common\BdPartFramework\BdStringFieldAttribute.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldType.cs" />
+    <Compile Include="Common\BdPartFramework\IBdFieldVisitor.cs" />
+    <Compile Include="Common\BdPartFramework\IBdFieldDescriptor.cs" />
+    <Compile Include="Common\BdPartFramework\IBdFieldTraverser.cs" />
+    <Compile Include="Common\BdPartFramework\IBdRawIoHelperT.cs" />
+    <Compile Include="Common\Serializing\BdByteStreamIoContext.cs" />
+    <Compile Include="Common\Serializing\BdByteStreamReadContext.cs" />
+    <Compile Include="Common\Serializing\BdByteStreamWriteContext.cs" />
+    <Compile Include="Common\BdmvArrayEntryAttribute.cs" />
+    <Compile Include="Common\BdmvEntryAttribute.cs" />
+    <Compile Include="Common\BdIntSize.cs" />
+    <Compile Include="Common\IBdmvEntry.cs" />
+    <Compile Include="Common\IBdList.cs" />
+    <Compile Include="Common\IBdListT.cs" />
+    <Compile Include="Common\BdPartFramework\BdPart.cs" />
+    <Compile Include="Common\BdPartFramework\BdFieldAttribute.cs" />
+    <Compile Include="Common\Serializing\IBdRawWriteContext.cs" />
+    <Compile Include="Common\IBdmvTopEntry.cs" />
+    <Compile Include="Common\BdmvTopEntryAttribute.cs" />
+    <Compile Include="Common\Serializing\IBdRawReadContext.cs" />
+    <Compile Include="ClipInfo\IBdClpi.cs" />
+    <Compile Include="Common\BdStreamFormat.cs" />
+    <Compile Include="Common\BdStreamSampleRate.cs" />
+    <Compile Include="Common\BdStandardPart\BdBitwiseValue.cs" />
+    <Compile Include="Common\BdConnectionCondition.cs" />
+    <Compile Include="Common\BdStandardPart\BdExtensionData.cs" />
+    <Compile Include="Common\BdStreamCodingType.cs" />
+    <Compile Include="Common\BdStandardPart\BdTime.cs" />
+    <Compile Include="Common\BdUOFlag.cs" />
+    <Compile Include="Common\BdStandardPart\BdUOMask.cs" />
+    <Compile Include="Common\BdLang.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FileSystem\IBdfsAttribute.cs" />
+    <Compile Include="FileSystem\IBdfsBdmvRoot.cs" />
+    <Compile Include="FileSystem\IBdfsArrayEntryFileT.cs" />
+    <Compile Include="FileSystem\IBdfsEntryFileT.cs" />
+    <Compile Include="FileSystem\IBdfsItem.cs" />
+    <Compile Include="FileSystem\IBdfsArrayEntryFolderT.cs" />
+    <Compile Include="FileSystem\IBdfsFolderT.cs" />
+    <Compile Include="FileSystem\IBdfsRootFolder.cs" />
+    <Compile Include="Common\IBdmvArrayEntry.cs" />
+    <Compile Include="Common\IBdmvEntryRegistry.cs" />
+    <Compile Include="Common\Serializing\IBdRawSerializable.cs" />
+    <Compile Include="FileSystem\IBdfsTopEntryFileT.cs" />
+    <Compile Include="JavaObject\IBdJavaObject.cs" />
+    <Compile Include="PlayList\IPlClipRef.cs" />
+    <Compile Include="PlayList\IPlPlayItem.cs" />
+    <Compile Include="PlayList\IPlPlayItemList.cs" />
+    <Compile Include="PlayList\IPlPlayMark.cs" />
+    <Compile Include="PlayList\IPlStillOptions.cs" />
+    <Compile Include="PlayList\IPlStnAuAttrInfo.cs" />
+    <Compile Include="PlayList\IPlStnEntryInfo.cs" />
+    <Compile Include="PlayList\IPlStnEntry.cs" />
+    <Compile Include="PlayList\IPlStnSvEntry.cs" />
+    <Compile Include="PlayList\IPlStnSaEntry.cs" />
+    <Compile Include="PlayList\IPlStnIgEntry.cs" />
+    <Compile Include="PlayList\IPlStnStEntry.cs" />
+    <Compile Include="PlayList\IPlStnAttrInfo.cs" />
+    <Compile Include="PlayList\IPlStnInMuxPipEntryInfo.cs" />
+    <Compile Include="PlayList\IPlStnPlayItemEntryInfo.cs" />
+    <Compile Include="Common\IBdPart.cs" />
+    <Compile Include="Common\Serializing\IBdRawIoContext.cs" />
+    <Compile Include="PlayList\IPlAppInfo.cs" />
+    <Compile Include="PlayList\IBdMpls.cs" />
+    <Compile Include="PlayList\IPlPlayMarkList.cs" />
+    <Compile Include="PlayList\IPlPlayItemInfo.cs" />
+    <Compile Include="PlayList\IPlStnAuEntry.cs" />
+    <Compile Include="PlayList\IPlStnViEntry.cs" />
+    <Compile Include="PlayList\IPlStnSubPlayItemEntryInfo.cs" />
+    <Compile Include="PlayList\IPlStnTxAttrInfo.cs" />
+    <Compile Include="PlayList\IPlStnViAttrInfo.cs" />
+    <Compile Include="PlayList\IPlStnTable.cs" />
+    <Compile Include="PlayList\IPlSubPath.cs" />
+    <Compile Include="PlayList\IPlSubPlayItem.cs" />
+    <Compile Include="PlayList\PlPlaybackType.cs" />
+    <Compile Include="PlayList\PlStillMode.cs" />
+    <Compile Include="PlayList\PlSubPathType.cs" />
+    <Compile Include="PlayList\PlStnEntryType.cs" />
+    <Compile Include="PlayList\IPlStnGxAttrInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\VersionInfo.cs" />
+    <Compile Include="Properties\~Revision.cs" />
+    <Compile Include="TopEntry\IBdButtonClickSound.cs" />
+    <Compile Include="TopEntry\IBdIdentifier.cs" />
+    <Compile Include="TopEntry\IBdIndex.cs" />
+    <Compile Include="TopEntry\IBdMovieObject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.zh-Hans.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StrongNameKey.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"$(ProjectDir)postbuild.cmd"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>"$(ProjectDir)prebuild.cmd"</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
