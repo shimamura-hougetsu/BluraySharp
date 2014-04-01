@@ -149,14 +149,35 @@ namespace BluraySharp.PlayList
 
 		#endregion
 
-		#region StillOptions
+		#region StillMode
 
-		private PlStillOptions stillOptions = new PlStillOptions();
+		private PlStillMode stillMode = PlStillMode.NotStill;
 
-		[BdSubPartField]
-		public IPlStillOptions StillOptions
+		[BdUIntField(BdIntSize.U8)]
+		public PlStillMode StillMode
 		{
-			get { return this.stillOptions; }
+			get { return this.stillMode; }
+			set { this.stillMode = value; }
+		}
+
+		#endregion
+
+		#region StillDuration
+
+		private ushort stillDuration = 0;
+
+		[BdUIntField(BdIntSize.U16)]
+		public ushort StillDuration
+		{
+			get
+			{
+				return (ushort)(
+					  this.StillMode == PlStillMode.StillForDuration ?
+					  this.stillDuration :
+					  0
+				  );
+			}
+			set { this.stillDuration = value; }
 		}
 
 		#endregion
