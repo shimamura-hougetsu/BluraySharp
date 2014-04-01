@@ -20,7 +20,8 @@ namespace BluraySharp.PlayList
 		BdUOMask UoMask { get; }
 
 		bool RandomAccessFlag { get; set; }
-		IPlStillOptions StillOptions { get; }
+		PlStillMode StillMode { get; set; }
+		ushort StillDuration { get; set; }
 
 		bool IsMultiAngleDifferentAudios { get; set; }
 		bool IsMultiAngleOptionsSeamlessChange { get; set; }
