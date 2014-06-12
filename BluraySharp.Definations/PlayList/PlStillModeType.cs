@@ -15,8 +15,8 @@ using BluraySharp.Common;
 
 namespace BluraySharp.PlayList
 {
-	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<PlStillMode>))]
-	public enum PlStillMode
+	[System.ComponentModel.TypeConverter(typeof(BdEnumConverter<PlStillModeType>))]
+	public enum PlStillModeType
 	{
 		NotStill = 0x0,
 		StillForDuration = 0x1,

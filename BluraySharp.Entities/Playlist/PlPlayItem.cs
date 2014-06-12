@@ -151,10 +151,10 @@ namespace BluraySharp.PlayList
 
 		#region StillMode
 
-		private PlStillMode stillMode = PlStillMode.NotStill;
+		private PlStillModeType stillMode = PlStillModeType.NotStill;
 
 		[BdUIntField(BdIntSize.U8)]
-		public PlStillMode StillMode
+		public PlStillModeType StillMode
 		{
 			get { return this.stillMode; }
 			set { this.stillMode = value; }
@@ -172,7 +172,7 @@ namespace BluraySharp.PlayList
 			get
 			{
 				return (ushort)(
-					  this.StillMode == PlStillMode.StillForDuration ?
+					  this.StillMode == PlStillModeType.StillForDuration ?
 					  this.stillDuration :
 					  0
 				  );

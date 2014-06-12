@@ -157,7 +157,7 @@
     <Compile Include="PlayList\IPlSubPath.cs" />
     <Compile Include="PlayList\IPlSubPlayItem.cs" />
     <Compile Include="PlayList\PlPlaybackType.cs" />
-    <Compile Include="PlayList\PlStillMode.cs" />
+    <Compile Include="PlayList\PlStillModeType.cs" />
     <Compile Include="PlayList\PlSubPathType.cs" />
     <Compile Include="PlayList\PlStnEntryType.cs" />
     <Compile Include="PlayList\IPlStnGxAttrInfo.cs" />

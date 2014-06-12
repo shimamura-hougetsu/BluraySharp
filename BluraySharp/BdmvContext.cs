@@ -27,23 +27,42 @@ namespace BluraySharp
 		/// <summary>
 		/// Create and return a BDMV entry object
 		/// </summary>
-		/// <typeparam name="T">BDMV entry type</typeparam>
+		/// <typeparam name="T">BDMV entry type.</typeparam>
 		/// <returns>Object created</returns>
 		public T CreateEntry<T>() where T : class, IBdmvEntry
 		{
 			return entryRegistry.CreateEntry<T>();
 		}
 
+		/// <summary>
+		/// Open a standalone BDMV file.
+		/// </summary>
+		/// <typeparam name="T">BDMV entry type.</typeparam>
+		/// <param name="filePath">Full path of the target.</param>
+		/// <returns>A BDMV entry loader/saver for the target file.</returns>
 		public IBdfsEntryFile<T> OpenFile<T>(string filePath) where T : class, IBdmvEntry
 		{
 			return new BdfsStandaloneFile<T>(filePath);
 		}
 
+		/// <summary>
+		/// Open a BDMV folder contains numbers of BDMV files.
+		/// 
+		/// Not implemented yet.
+		/// </summary>
+		/// <param name="directoryPath"></param>
+		/// <returns></returns>
 		public IBdfsRootFolder OpenFolder(string directoryPath)
 		{
 			throw new NotImplementedException();
 		}
 
+		/// <summary>
+		/// Copy data from a BDMV entry to another
+		/// </summary>
+		/// <typeparam name="T">BDMV entry type.</typeparam>
+		/// <param name="src">Copying source.</param>
+		/// <param name="dest">Copying target.</param>
 		public void Copy<T>(T src, T dest) where T : IBdPart
 		{
 			if (object.ReferenceEquals(dest, null))
