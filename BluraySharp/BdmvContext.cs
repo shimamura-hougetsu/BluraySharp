@@ -46,7 +46,7 @@ namespace BluraySharp
 		}
 
 		/// <summary>
-		/// Open a BDMV folder contains numbers of BDMV files.
+		/// Open a BDMV folder containing numbers of BDMV files.
 		/// 
 		/// Not implemented yet.
 		/// </summary>

@@ -134,7 +134,6 @@
     <Compile Include="PlayList\IPlPlayItem.cs" />
     <Compile Include="PlayList\IPlPlayItemList.cs" />
     <Compile Include="PlayList\IPlPlayMark.cs" />
-    <Compile Include="PlayList\IPlStillOptions.cs" />
     <Compile Include="PlayList\IPlStnAuAttrInfo.cs" />
     <Compile Include="PlayList\IPlStnEntryInfo.cs" />
     <Compile Include="PlayList\IPlStnEntry.cs" />
@@ -160,7 +159,7 @@
     <Compile Include="PlayList\IPlSubPath.cs" />
     <Compile Include="PlayList\IPlSubPlayItem.cs" />
     <Compile Include="PlayList\PlPlaybackType.cs" />
-    <Compile Include="PlayList\PlStillMode.cs" />
+    <Compile Include="PlayList\PlStillModeType.cs" />
     <Compile Include="PlayList\PlSubPathType.cs" />
     <Compile Include="PlayList\PlStnEntryType.cs" />
     <Compile Include="PlayList\IPlStnGxAttrInfo.cs" />
