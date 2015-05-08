@@ -26,7 +26,7 @@ namespace BluraySharp.PlayList
 		public PlPlayMarkType MarkType { get; set; }
 
 		[BdUIntField(BdIntSize.U16)]
-		public ushort PlayItemSId { get; set; }
+		public ushort PlayItemId { get; set; }
 
 
 		private BdTime timeStamp = new BdTime();

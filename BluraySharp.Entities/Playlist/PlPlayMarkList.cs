@@ -35,7 +35,7 @@ namespace BluraySharp.PlayList
 			};
 
 		[BdSubPartField]
-		IBdList<IPlPlayMark> MarkList
+		public IBdList<IPlPlayMark> MarkList
 		{
 			get { return this.markList; }
 		}
