@@ -12,13 +12,10 @@
  * ***************************************************************************/
 
 using BluraySharp.Common;
-using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.ClipInfo
 {
-	public interface ICiAtcDeltaEntry : IBdPart
+	public interface ICiAtcDeltaInfo : IBdPart
 	{
-		ulong AtcDelta { get; set; }
-		BdClipFileRef FollowingClip { get; }
 	}
 }

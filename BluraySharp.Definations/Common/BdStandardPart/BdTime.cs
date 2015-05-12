@@ -53,9 +53,11 @@ namespace BluraySharp.Common.BdStandardPart
 		/// <returns>HH:MM:SS:FF</returns>
 		public string AsNdfTimeCode(BdViFrameRate frameRate)
 		{
-			TimeSpan tTime = this.AsSpan;
+			var tFrames = Convert.ToInt32(this.AsFrameCount(frameRate));
+			var tNdfRate = frameRate.ToInteger();
+			var tTime = new TimeSpan(0, 0, tFrames / tNdfRate);
 			string tTimePart = tTime.ToString(@"hh\:mm\:ss");
-			double tFramePart = tTime.Milliseconds * Math.Ceiling(frameRate.ToDouble()) / 1000.0;
+			var tFramePart = tFrames % tNdfRate;
 
 			return string.Format("{0}:{1:00.}", tTimePart, tFramePart);
 		}

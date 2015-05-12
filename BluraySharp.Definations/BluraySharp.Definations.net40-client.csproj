@@ -54,7 +54,12 @@
     <Compile Include="ClipInfo\CiTsType.cs" />
     <Compile Include="ClipInfo\ICiAppFontRef.cs" />
     <Compile Include="ClipInfo\ICiAtcDeltaEntry.cs" />
+    <Compile Include="ClipInfo\ICiAtcDeltaInfo.cs" />
     <Compile Include="ClipInfo\ICiClipInfo.cs" />
+    <Compile Include="ClipInfo\ICiClipMark.cs" />
+    <Compile Include="ClipInfo\ICiCpi.cs" />
+    <Compile Include="ClipInfo\ICiProgramInfo.cs" />
+    <Compile Include="ClipInfo\ICiSequenceInfo.cs" />
     <Compile Include="ClipInfo\ICiTsTypeInfo.cs" />
     <Compile Include="Common\BdEnumConverterT.cs" />
     <Compile Include="Common\BdLangConverter.cs" />

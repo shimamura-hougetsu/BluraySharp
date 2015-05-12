@@ -22,5 +22,15 @@ namespace BluraySharp.ClipInfo
 		string ClpiVer { get; set; }
 
 		ICiClipInfo ClipInfo { get; }
+
+		ICiSequenceInfo SequenceInfo { get; }
+
+		ICiProgramInfo ProgramInfo { get; }
+
+		ICiCpi Cpi { get; }
+
+		ICiClipMark ClipMark { get; }
+
+		BluraySharp.Common.BdStandardPart.BdExtensionData ExtensionData { get; set; }
 	}
 }

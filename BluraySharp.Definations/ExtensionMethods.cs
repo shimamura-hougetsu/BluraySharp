@@ -113,6 +113,22 @@ namespace BluraySharp
 			return ExtensionMethods.bdViFrameRateToDoubleTable[value];
 		}
 
+		private static Dictionary<BdViFrameRate, int> bdViFrameRateToIntegerTable =
+			new Dictionary<BdViFrameRate, int>()
+			{
+				{BdViFrameRate.Vi23, 24 },
+				{BdViFrameRate.Vi24, 24 },
+				{BdViFrameRate.Vi25, 25 },
+				{BdViFrameRate.Vi29, 30 },
+				{BdViFrameRate.Vi50, 50 },
+				{BdViFrameRate.Vi59, 60 }
+			};
+		public static int ToInteger(this BdViFrameRate value)
+		{
+			return ExtensionMethods.bdViFrameRateToIntegerTable[value];
+		}
+
+
 		private static Dictionary<BdAuSampleRate, double> bdAuSampleRateToDoubleTable =
 			new Dictionary<BdAuSampleRate, double>()
 			{

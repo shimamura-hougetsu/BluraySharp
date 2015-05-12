@@ -11,14 +11,24 @@
  * 
  * ***************************************************************************/
 
-using BluraySharp.Common;
-using BluraySharp.Common.BdStandardPart;
+using BluraySharp.Common.BdPartFramework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace BluraySharp.ClipInfo
 {
-	public interface ICiAtcDeltaEntry : IBdPart
+	public class CiAppFontRef : BdPart, ICiAppFontRef
 	{
-		ulong AtcDelta { get; set; }
-		BdClipFileRef FollowingClip { get; }
+		public Common.BdStandardPart.BdFontFileRef FontFileRef
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override string ToString()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
