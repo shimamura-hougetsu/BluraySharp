@@ -35,12 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BluraySharp">
-      <HintPath>..\BluraySharp\bin\Release\BluraySharp.dll</HintPath>
-    </Reference>
-    <Reference Include="BluraySharp.Definations">
-      <HintPath>..\BluraySharp\bin\Release\BluraySharp.Definations.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -58,6 +52,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTest1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BluraySharp.Definations\BluraySharp.Definations.net40-client.csproj">
+      <Project>{14ff5ac6-e679-444d-b582-0b4ae067f595}</Project>
+      <Name>BluraySharp.Definations.net40-client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BluraySharp\BluraySharp.net40-client.csproj">
+      <Project>{4ff5cf31-db94-4962-a92d-17a149135012}</Project>
+      <Name>BluraySharp.net40-client</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

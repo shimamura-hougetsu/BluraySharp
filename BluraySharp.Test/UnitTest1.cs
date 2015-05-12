@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BluraySharp;
 using BluraySharp.PlayList;
+using BluraySharp.ClipInfo;
 
 namespace BluraySharp.Test
 {
@@ -14,11 +15,11 @@ namespace BluraySharp.Test
 		[TestMethod]
 		public void Load()
 		{
-			var fileName = @"00011.mpls";
+			var fileName = @"00001.clpi";
 			//open the file
-			var mplsFile = bdmv.OpenFile<IBdMpls>(fileName);
+			var clpiFile = bdmv.OpenFile<IBdClpi>(fileName);
 			//parse data of the file into a stuctured mpls object
-			var mpls = mplsFile.Load();
+			var clpi = clpiFile.Load();
 
 		}
 	}

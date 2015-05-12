@@ -11,6 +11,7 @@
  * 
  * ***************************************************************************/
 
+using BluraySharp.Common;
 using BluraySharp.Common.BdPartFramework;
 using System;
 using System.Collections.Generic;
@@ -19,59 +20,73 @@ using System.Text;
 
 namespace BluraySharp.ClipInfo
 {
+	[BdPartScope(BdIntSize.U16)]
 	public class CiTsTypeInfo : BdPart, ICiTsTypeInfo
 	{
+		#region ValidityFlags
+
+		private byte validityFlags = 0x80;
+
+		[BdUIntField(BdIntSize.U8)]
 		public byte ValidityFlags
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
+			get { return validityFlags;}
+			set { validityFlags = value;}
 		}
 
+		#endregion
+
+		#region FormatIdentifier
+
+		private const string formatIdentifierConst = "HDMV";
+		private string formatIdentifier = CiTsTypeInfo.formatIdentifierConst;
+
+		[BdStringField(4, BdCharacterCodingType.UTF8)]
 		public string FormatIdentifier
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
+			get { return this.formatIdentifier; }
 			set
 			{
-				throw new NotImplementedException();
+				if (!CiTsTypeInfo.formatIdentifierConst.Equals(value))
+				{
+					//TODO: Invalid codec
+					throw new ArgumentException();
+				}
+				this.formatIdentifier = value;
 			}
 		}
 
+		#endregion
+
+		#region NetworkInformation
+
+		private string networkInformation = string.Empty;
+
+		[BdStringField(9, BdCharacterCodingType.UTF8)]
 		public string NetworkInformation
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
+			get { return this.formatIdentifier; }
+			set { this.formatIdentifier = value; }
 		}
 
+		#endregion
+
+		#region StreamFormatName
+
+		private string streamFormatName = string.Empty;
+
+		[BdStringField(16, BdCharacterCodingType.UTF8)]
 		public string StreamFormatName
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
+			get { return this.streamFormatName; }
+			set { this.streamFormatName = value; }
 		}
+
+		#endregion
 
 		public override string ToString()
 		{
-			throw new NotImplementedException();
+			return "Stream Type Info Block";
 		}
 	}
 }

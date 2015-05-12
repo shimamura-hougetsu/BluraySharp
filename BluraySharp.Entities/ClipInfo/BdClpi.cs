@@ -63,7 +63,7 @@ namespace BluraySharp.ClipInfo
 		#region SequenceInfoOfs
 
 		private bool sequenceInfoSkip = false;
-		public bool SequenceInfoSkip
+		private bool SequenceInfoSkip
 		{
 			get { return this.sequenceInfoSkip; }
 			set
@@ -86,7 +86,7 @@ namespace BluraySharp.ClipInfo
 		private uint sequenceInfoOfs = 0;
 
 		[BdUIntField(BdIntSize.U32)]
-		public uint PlayItemListOfs
+		private uint SequenceInfoOfs
 		{
 			get { return this.sequenceInfoOfs; }
 			set
@@ -101,7 +101,7 @@ namespace BluraySharp.ClipInfo
 		#region ProgramInfoOfs
 
 		private bool programInfoSkip = false;
-		public bool ProgramInfoSkip
+		private bool ProgramInfoSkip
 		{
 			get { return this.programInfoSkip; }
 			set
@@ -124,7 +124,7 @@ namespace BluraySharp.ClipInfo
 		private uint programInfoOfs = 0;
 
 		[BdUIntField(BdIntSize.U32)]
-		public uint ProgramInfoOfs
+		private uint ProgramInfoOfs
 		{
 			get { return this.programInfoOfs; }
 			set
@@ -139,7 +139,7 @@ namespace BluraySharp.ClipInfo
 		#region CpiOfs
 
 		private bool cpiSkip = false;
-		public bool CpiSkip
+		private bool CpiSkip
 		{
 			get { return this.cpiSkip; }
 			set
@@ -162,7 +162,7 @@ namespace BluraySharp.ClipInfo
 		private uint cpiOfs = 0;
 
 		[BdUIntField(BdIntSize.U32)]
-		public uint CpiOfs
+		private uint CpiOfs
 		{
 			get { return this.cpiOfs; }
 			set
@@ -177,7 +177,7 @@ namespace BluraySharp.ClipInfo
 		#region ClipMarkOfs
 
 		private bool clipMarkSkip = false;
-		public bool ClipMarkSkip
+		private bool ClipMarkSkip
 		{
 			get { return this.clipMarkSkip; }
 			set
@@ -200,7 +200,7 @@ namespace BluraySharp.ClipInfo
 		private uint clipMarkOfs = 0;
 
 		[BdUIntField(BdIntSize.U32)]
-		public uint ClipMarkOfs
+		private uint ClipMarkOfs
 		{
 			get { return this.clipMarkOfs; }
 			set
@@ -262,7 +262,7 @@ namespace BluraySharp.ClipInfo
 
 		#endregion
 
-		#region AppInfo
+		#region ClipInfo
 
 		private CiClipInfo clipInfo = new CiClipInfo();
 

@@ -24,8 +24,8 @@ namespace BluraySharp.ClipInfo
 	{
 		#region ReservedForFutureUse1
 
-		[BdUIntField(BdIntSize.U8)]
-		private byte ReservedForFutureUse1 { get; set; }
+		[BdUIntField(BdIntSize.U16)]
+		private ushort ReservedForFutureUse1 { get; set; }
 
 		#endregion 
 
@@ -155,8 +155,12 @@ namespace BluraySharp.ClipInfo
 			get { return this.atcDeltaList; }
 		}
 
+		/*
+		
 		[BdUIntField(BdIntSize.U32, SkipIndicator = AtcDeltaInfoSkipIndicator)]
 		public ulong PresentationEndTime27MHz { get; set; }
+
+		*/
 
 		#endregion
 

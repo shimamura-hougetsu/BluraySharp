@@ -27,7 +27,7 @@ namespace BluraySharp.ClipInfo
 		ICiTsTypeInfo TsTypeInfo { get; }
 		IBdList<ICiAtcDeltaEntry> AtcDeltaList { get; }
 
-		ulong PresentationEndTime27MHz { get; set; }
+		//ulong PresentationEndTime27MHz { get; set; }
 		IBdList<ICiAppFontRef> AppFontRefList { get; }
 	}
 }

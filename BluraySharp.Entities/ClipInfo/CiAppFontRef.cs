@@ -11,7 +11,9 @@
  * 
  * ***************************************************************************/
 
+using BluraySharp.Common;
 using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +23,24 @@ namespace BluraySharp.ClipInfo
 {
 	public class CiAppFontRef : BdPart, ICiAppFontRef
 	{
-		public Common.BdStandardPart.BdFontFileRef FontFileRef
+		#region FontFileRef
+
+		private BdFontFileRef fontFileRef = new BdFontFileRef();
+
+		[BdSubPartField]
+		public BdFontFileRef FontFileRef
 		{
-			get { throw new NotImplementedException(); }
+			get { return this.fontFileRef; }
 		}
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte ReservedForFutureUse { get; set; }
+
+		#endregion
 
 		public override string ToString()
 		{
-			throw new NotImplementedException();
+			return this.FontFileRef.ToString();
 		}
 	}
 }

@@ -11,7 +11,9 @@
  * 
  * ***************************************************************************/
 
+using BluraySharp.Common;
 using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,26 +23,31 @@ namespace BluraySharp.ClipInfo
 {
 	public class CiAtcDeltaEntry : BdPart, ICiAtcDeltaEntry
 	{
-		public ulong AtcDelta
+		#region AtcDelta
+
+		[BdUIntField(BdIntSize.U32)]
+		public ulong AtcDelta { get; set; }
+
+		#endregion
+
+		#region FollowingClip
+
+		private BdClipFileRef followingClip = new BdClipFileRef();
+
+		[BdSubPartField]
+		public BdClipFileRef FollowingClip
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-			set
-			{
-				throw new NotImplementedException();
-			}
+			get { return this.followingClip; }
 		}
 
-		public Common.BdStandardPart.BdClipFileRef FollowingClip
-		{
-			get { throw new NotImplementedException(); }
-		}
+		[BdUIntField(BdIntSize.U8)]
+		private byte reservedForFutureUse { get; set; }
+
+		#endregion
 
 		public override string ToString()
 		{
-			throw new NotImplementedException();
+			return string.Format("ATC Delta: {0} ({1})", this.AtcDelta, this.followingClip.ToString());
 		}
 	}
 }

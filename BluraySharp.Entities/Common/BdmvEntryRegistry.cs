@@ -111,6 +111,7 @@ namespace BluraySharp.Common
 		private BdmvEntryRegistry()
 		{
 			this.RegisterArrayEntry<PlayList.BdMpls, PlayList.IBdMpls>();
+			this.RegisterArrayEntry<ClipInfo.BdClpi, ClipInfo.IBdClpi>();
 		}
 	}
 }
