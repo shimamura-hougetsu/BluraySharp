@@ -37,8 +37,8 @@ namespace BluraySharp.PlayList
 
 		public BdAuSampleRate SampleFrequency
 		{
-			get { return (BdAuSampleRate)this.FormatOptions[4, 4]; }
-			set { this.FormatOptions[4, 4] = (byte)value; }
+			get { return (BdAuSampleRate)this.FormatOptions[0, 4]; }
+			set { this.FormatOptions[0, 4] = (byte)value; }
 		}
 
 		#endregion

@@ -28,28 +28,28 @@ namespace BluraySharp.PlayList
 		{
 			get { return this.formatOptions; }
 		}
-		public BdViFormat VideoFormat
+		public BdViFrameRate FrameRate
 		{
 			get
 			{
-				return (BdViFormat)this.FormatOptions[0, 4];
+				return (BdViFrameRate)this.FormatOptions[0, 4];
 			}
 			set
 			{
 				this.FormatOptions[0, 4] = (byte)value;
 			}
-		}		
-		public BdViFrameRate FrameRate
+		}
+		public BdViFormat VideoFormat
 		{
 			get
 			{
-				return (BdViFrameRate)this.FormatOptions[4, 4];
+				return (BdViFormat)this.FormatOptions[4, 4];
 			}
 			set
 			{
 				this.FormatOptions[4, 4] = (byte)value;
 			}
-		}
+		}		
 		#endregion
 
 		#region ReservedForFutureUse

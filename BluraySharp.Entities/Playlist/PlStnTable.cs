@@ -98,7 +98,7 @@ namespace BluraySharp.PlayList
 		#region Entry Lists
 
 		private BdList<PlStnViEntry, IPlStnViEntry> viEntries =
-			new BdList<PlStnViEntry, IPlStnViEntry>(1) { new PlStnViEntry() };
+			new BdList<PlStnViEntry, IPlStnViEntry>(1, 1) { new PlStnViEntry() };
 
 		[BdSubPartField]
 		public IBdList<IPlStnViEntry> ViEntries
@@ -107,7 +107,7 @@ namespace BluraySharp.PlayList
 		}
 
 		private BdList<PlStnAuEntry, IPlStnAuEntry> auEntries =
-			new BdList<PlStnAuEntry, IPlStnAuEntry>(32);
+			new BdList<PlStnAuEntry, IPlStnAuEntry>(1, 32);
 
 		[BdSubPartField]
 		public IBdList<IPlStnAuEntry> AuEntries
@@ -116,7 +116,7 @@ namespace BluraySharp.PlayList
 		}
 		
 		private BdList<PlStnStEntry, IPlStnStEntry> stEntries =
-			new BdList<PlStnStEntry, IPlStnStEntry>(255);
+			new BdList<PlStnStEntry, IPlStnStEntry>(1, 255);
 
 		[BdSubPartField]
 		public IBdList<IPlStnStEntry> StEntries
@@ -125,7 +125,7 @@ namespace BluraySharp.PlayList
 		}
 
 		private BdList<PlStnStEntry, IPlStnStEntry> pipStEntries =
-			new BdList<PlStnStEntry, IPlStnStEntry>(32);
+			new BdList<PlStnStEntry, IPlStnStEntry>(1, 32);
 
 		[BdSubPartField]
 		public IBdList<IPlStnStEntry> PipStEntries
@@ -134,7 +134,7 @@ namespace BluraySharp.PlayList
 		}
 
 		private BdList<PlStnIgEntry, IPlStnIgEntry> igEntries =
-			new BdList<PlStnIgEntry, IPlStnIgEntry>(32);
+			new BdList<PlStnIgEntry, IPlStnIgEntry>(1, 32);
 
 		[BdSubPartField]
 		public IBdList<IPlStnIgEntry> IgEntries
@@ -143,7 +143,7 @@ namespace BluraySharp.PlayList
 		}
 
 		private BdList<PlStnSaEntry, IPlStnSaEntry> saEntries =
-			new BdList<PlStnSaEntry, IPlStnSaEntry>(32);
+			new BdList<PlStnSaEntry, IPlStnSaEntry>(1, 32);
 
 
 		[BdSubPartField]
@@ -153,7 +153,7 @@ namespace BluraySharp.PlayList
 		}
 
 		private BdList<PlStnSvEntry, IPlStnSvEntry> svEntries =
-			new BdList<PlStnSvEntry, IPlStnSvEntry>(32);
+			new BdList<PlStnSvEntry, IPlStnSvEntry>(1, 32);
 
 		[BdSubPartField]
 		public IBdList<IPlStnSvEntry> SvEntries
