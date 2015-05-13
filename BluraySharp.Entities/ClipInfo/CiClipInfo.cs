@@ -100,14 +100,14 @@ namespace BluraySharp.ClipInfo
 		#region TsRecordingRate
 
 		[BdUIntField(BdIntSize.U32)]
-		public ulong TsRecodingRate { get; set; }
+		public uint TsRecodingRate { get; set; }
 
 		#endregion
 
 		#region SourcePacketsCount
 
 		[BdUIntField(BdIntSize.U32)]
-		public ulong SourcePacketsCount { get; set; }
+		public uint SourcePacketsCount { get; set; }
 
 		#endregion
 
@@ -155,12 +155,12 @@ namespace BluraySharp.ClipInfo
 			get { return this.atcDeltaList; }
 		}
 
-		/*
-		
-		[BdUIntField(BdIntSize.U32, SkipIndicator = AtcDeltaInfoSkipIndicator)]
-		public ulong PresentationEndTime27MHz { get; set; }
 
-		*/
+		private BdList<uint, uint> presentationEndTime27MHz
+			= new BdList<uint, uint>(0, 1);
+
+		[BdUIntField(BdIntSize.U32, OptionalLength=4)]
+		public IBdList<uint> PresentationEndTime27MHz { get { return this.presentationEndTime27MHz; } }
 
 		#endregion
 

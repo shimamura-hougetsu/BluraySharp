@@ -24,6 +24,11 @@ namespace BluraySharp.Common.BdPartFramework
 		public string LengthIndicator { get; set; }
 		public string SkipIndicator { get; set; }
 
+		/// <summary>
+		/// Field will be ignored if length of the left data in scope is below OptionalLength
+		/// </summary>
+		public uint OptionalLength { get; set; }
+
 		public BdFieldAttribute(BdFieldType type)
 		{
 			this.FieldType = type;

@@ -34,16 +34,26 @@ namespace BluraySharp.Common.BdStandardPart
 		}
 
 		public BdList(int lowerBound)
-			: this(lowerBound, -1)
+			: this(lowerBound, -1, (Func<T>) null)
 		{
 		}
 
 		public BdList(int lowerBound, IEnumerable<I> collection)
-			: this(lowerBound, -1, collection)
+			: this(lowerBound, -1, collection, null)
 		{
 		}
 
 		public BdList(int lowerBound, int capacity)
+			: this(lowerBound, capacity, (Func<T>) null)
+		{
+		}
+
+		public BdList(int lowerBound, int capacity, IEnumerable<I> collection)
+			: this(lowerBound, capacity, collection, null)
+		{
+		}
+
+		public BdList(int lowerBound, int capacity, Func<T> creator)
 		{
 			this.lowerBound = lowerBound;
 			if (capacity > 0)
@@ -56,9 +66,11 @@ namespace BluraySharp.Common.BdStandardPart
 				this.capacity = -1;
 				this.innerList = new List<I>();
 			}
+
+			this.creator = creator;
 		}
 
-		public BdList(int lowerBound, int capacity, IEnumerable<I> collection)
+		public BdList(int lowerBound, int capacity, IEnumerable<I> collection, Func<T> creator)
 		{
 			this.lowerBound = lowerBound;
 
@@ -77,15 +89,23 @@ namespace BluraySharp.Common.BdStandardPart
 				this.capacity = -1;
 				this.innerList = new List<I>(collection);
 			}
+
+			this.creator = creator;
 		}
 
 		private List<I> innerList;
 		private int lowerBound;
 		private int capacity;
+		private Func<T> creator;
 
 		public I CreateNew()
 		{
-			return new T();
+			if (this.creator == null)
+			{
+				return new T();
+			}
+
+			return this.creator();
 		}
 
 		public I this[int index]
@@ -240,5 +260,20 @@ namespace BluraySharp.Common.BdStandardPart
 				private set;
 			}
 		}
+
+		public int SetCount(int count)
+		{
+			if (this.Count != count)
+			{
+				this.Clear();
+				for (int i = 0; i < count; ++i)
+				{
+					this.Add(this.CreateNew());
+				}
+			}
+
+			return this.Count;
+		}
+
 	}
 }

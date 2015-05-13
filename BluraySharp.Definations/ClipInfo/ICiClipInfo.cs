@@ -21,13 +21,14 @@ namespace BluraySharp.ClipInfo
 		CiApplicationType ApplicationType { get; set; }
 
 		//bool IsAtcDelta { get; set; }
-		ulong TsRecodingRate { get; set; }
-		ulong SourcePacketsCount { get; set; }
+		uint TsRecodingRate { get; set; }
+		uint SourcePacketsCount { get; set; }
 
 		ICiTsTypeInfo TsTypeInfo { get; }
 		IBdList<ICiAtcDeltaEntry> AtcDeltaList { get; }
 
-		//ulong PresentationEndTime27MHz { get; set; }
+		IBdList<uint> PresentationEndTime27MHz { get; }
+
 		IBdList<ICiAppFontRef> AppFontRefList { get; }
 	}
 }

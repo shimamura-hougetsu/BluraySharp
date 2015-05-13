@@ -192,6 +192,20 @@ namespace BluraySharp.Common.BdPartFramework
 				return new BdFieldRandomVisitor(this.thisObj, tSkipField);
 			}
 		}
+
+		uint IBdFieldVisitor.OptionalLength
+		{
+			get
+			{
+				BdFieldAttribute tAttrib = this.Current.Attribute;
+				if (tAttrib.IsNull())
+				{
+					return 0;
+				}
+
+				return tAttrib.OptionalLength;
+			}
+		}
 		
 		private static List<IBdFieldDescriptor> fields = 
 			new List<IBdFieldDescriptor>(BdFieldTraverser<T>.InitializeFields());

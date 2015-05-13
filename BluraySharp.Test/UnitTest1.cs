@@ -21,6 +21,11 @@ namespace BluraySharp.Test
 			//parse data of the file into a stuctured mpls object
 			var clpi = clpiFile.Load();
 
+			var output = @"00001.clpi";
+			var tOutFile = bdmv.OpenFile<IBdClpi>(output);
+			tOutFile.Save(clpi);
+
+			var clpi2 = tOutFile.Load();
 		}
 	}
 }

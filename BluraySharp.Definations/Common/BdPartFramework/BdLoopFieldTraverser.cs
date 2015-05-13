@@ -77,6 +77,10 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			get { return null; }
 		}
+		uint IBdFieldVisitor.OptionalLength
+		{
+			get { return 0; }
+		}
 
 		object IBdFieldVisitor.Value
 		{

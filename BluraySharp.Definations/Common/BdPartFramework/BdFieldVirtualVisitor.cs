@@ -33,6 +33,10 @@ namespace BluraySharp.Common.BdPartFramework
 		{
 			get { return null; }
 		}
+		public uint OptionalLength
+		{
+			get { return 0; }
+		}
 
 		public object Value
 		{

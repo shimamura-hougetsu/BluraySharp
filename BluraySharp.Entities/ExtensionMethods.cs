@@ -25,19 +25,5 @@ namespace BluraySharp
 			reader.Deserialize(tObject);
 			return tObject;
 		}
-
-		public static int SetCount<T>(this IBdList<T> list, int count)
-		{
-			if (list.Count != count)
-			{
-				list.Clear();
-				for (int i = 0; i < count; ++i)
-				{
-					list.Add(list.CreateNew());
-				}
-			}
-
-			return list.Count;
-		}
 	}
 }

@@ -65,8 +65,8 @@ namespace BluraySharp.ClipInfo
 		[BdStringField(9, BdCharacterCodingType.UTF8)]
 		public string NetworkInformation
 		{
-			get { return this.formatIdentifier; }
-			set { this.formatIdentifier = value; }
+			get { return this.networkInformation; }
+			set { this.networkInformation = value; }
 		}
 
 		#endregion

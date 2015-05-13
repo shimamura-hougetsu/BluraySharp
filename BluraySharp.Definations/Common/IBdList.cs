@@ -18,6 +18,7 @@ namespace BluraySharp.Common
 {
 	public interface IBdList : ICollection, IEnumerable
 	{
+		int SetCount(int count);
 		object this[int index] { get; set; }
 		int LowerBound { get; }
 		int UpperBound { get; }

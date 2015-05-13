@@ -71,6 +71,17 @@ namespace BluraySharp.Common.BdPartFramework
 		public long DeserializeFrom(IBdFieldVisitor obj, IBdRawReadContext context)
 		{
 			this.ValidateArg(obj);
+
+			//if this is an optional field
+			if (obj.OptionalLength > 0)
+			{
+				IBdList tList = obj.Value as IBdList;
+				tList.AssertNotNull();
+
+				bool tIsIgnored = obj.OptionalLength + context.Position > context.Length;
+
+				tList.SetCount(tIsIgnored ? 0 : 1);
+			}
 			
 			BdLoopFieldTraverser tSeeker = new BdLoopFieldTraverser(obj);
 			return this.ioHelper.DeserializeFrom(tSeeker, context);

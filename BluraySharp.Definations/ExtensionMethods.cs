@@ -267,5 +267,11 @@ namespace BluraySharp
 		{
 			Debug.Assert(condition);
 		}
+
+		[Conditional("DEBUG")]
+		public static void AssertNotNull(this object obj)
+		{
+			Debug.Assert(!obj.IsNull());
+		}
 	}
 }
