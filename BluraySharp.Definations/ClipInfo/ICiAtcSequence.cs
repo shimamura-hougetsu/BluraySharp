@@ -1,5 +1,4 @@
-﻿using BluraySharp.Common;
-/* ****************************************************************************
+﻿/* ****************************************************************************
  * 
  * BluraySharp
  * 
@@ -12,11 +11,14 @@
  * 
  * ***************************************************************************/
 
+using BluraySharp.Common;
 
 namespace BluraySharp.ClipInfo
 {
-	public interface ICiSequenceInfo : IBdPart
+	public interface ICiAtcSequence : IBdPart
 	{
-		IBdList<ICiAtcSequence> AtcSequenceList { get; }
+		uint SpnStcStart { get; set; }
+		byte OffsetStcId { get; set; }
+		IBdList<ICiStcSequence> StcSequenceList { get; }
 	}
 }

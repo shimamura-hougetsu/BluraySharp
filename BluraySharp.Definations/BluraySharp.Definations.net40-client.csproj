@@ -55,6 +55,8 @@
     <Compile Include="ClipInfo\ICiAppFontRef.cs" />
     <Compile Include="ClipInfo\ICiAtcDeltaEntry.cs" />
     <Compile Include="ClipInfo\ICiAtcDeltaInfo.cs" />
+    <Compile Include="ClipInfo\ICiStcSequence.cs" />
+    <Compile Include="ClipInfo\ICiAtcSequence.cs" />
     <Compile Include="ClipInfo\ICiClipInfo.cs" />
     <Compile Include="ClipInfo\ICiClipMark.cs" />
     <Compile Include="ClipInfo\ICiCpi.cs" />

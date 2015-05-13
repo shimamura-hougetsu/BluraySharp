@@ -15,52 +15,52 @@ using BluraySharp.Common;
 using BluraySharp.Common.BdPartFramework;
 using BluraySharp.Common.BdStandardPart;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BluraySharp.ClipInfo
 {
-	[BdPartScope(BdIntSize.U32)]
-	public class CiSequenceInfo : BdPart, ICiSequenceInfo
+	public class CiAtcSequence : BdPart, ICiAtcSequence
 	{
-		#region ReservedForFutureUse
+		#region SpnStcStart
 
-		[BdUIntField(BdIntSize.U8)]
-		private byte reservedForFutureUse { get; set; }
+		[BdUIntField(BdIntSize.U32)]
+		public uint SpnStcStart { get; set; }
 
 		#endregion
 
-		#region AtcSequenceList
+		#region StcSequenceList
 
 		[BdUIntField(BdIntSize.U8)]
-		private byte AtcSequenceEntryCount
+		private byte StcSequenceEntryCount
 		{
 			get
 			{
-				return (byte)this.AtcSequenceList.Count;
+				return (byte)this.StcSequenceList.Count;
 			}
 			set
 			{
-				this.atcSequenceList.SetCount(value);
+				this.stcSequenceList.SetCount(value);
 			}
 		}
 
-		private BdList<CiAtcSequence, ICiAtcSequence> atcSequenceList =
-			new BdList<CiAtcSequence, ICiAtcSequence>(0, 1);
+		private BdList<CiStcSequence, ICiStcSequence> stcSequenceList =
+			new BdList<CiStcSequence, ICiStcSequence>(0, 255);
+
+
+		[BdUIntField(BdIntSize.U8)]
+		public byte OffsetStcId { get; set; }
+
 
 		[BdSubPartField]
-		public IBdList<ICiAtcSequence> AtcSequenceList
+		public IBdList<ICiStcSequence> StcSequenceList
 		{
-			get { return this.atcSequenceList; }
+			get { return this.stcSequenceList; }
 		}
 
 		#endregion
 
 		public override string ToString()
 		{
-			return "SequenceInfo";
+			return "ATC Sequence";
 		}
-
 	}
 }

@@ -52,6 +52,8 @@
     <Compile Include="ClipInfo\BdClpi.cs" />
     <Compile Include="ClipInfo\CiAppFontRef.cs" />
     <Compile Include="ClipInfo\CiAtcDeltaEntry.cs" />
+    <Compile Include="ClipInfo\CiStcSequence.cs" />
+    <Compile Include="ClipInfo\CiAtcSequence.cs" />
     <Compile Include="ClipInfo\CiClipInfo.cs" />
     <Compile Include="ClipInfo\CiClipMark.cs" />
     <Compile Include="ClipInfo\CiCpi.cs" />
