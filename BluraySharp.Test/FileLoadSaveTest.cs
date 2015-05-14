@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BluraySharp;
 using BluraySharp.PlayList;
 using BluraySharp.ClipInfo;
+using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.Test
 {
@@ -43,6 +44,17 @@ namespace BluraySharp.Test
 			tOutFile.Save(clpi);
 
 			var clpi2 = tOutFile.Load();
+		}
+
+		[TestMethod]
+		public void BdTime()
+		{
+			var tTime = new BdTime();
+			tTime.AsSpan = new TimeSpan(0, 3, 20, 30, 233);
+
+			string t1 = tTime.ToNdfTimeCode(Common.BdViFrameRate.Vi23);
+			string t2 = tTime.AsTimeCode(Common.BdViFrameRate.Vi23);
+			string t3 = tTime.ToString();
 		}
 	}
 }

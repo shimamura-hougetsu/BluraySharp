@@ -13,33 +13,46 @@
 
 using BluraySharp.Common;
 using BluraySharp.Common.BdPartFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace BluraySharp.ClipInfo
 {
-	[BdPartScope(BdIntSize.U32, IndicatorField = "LengthIndicator")]
-	public class CiClipMark : BdPart, ICiClipMark
+	public class CiStreamInfo : BdPart, ICiStreamInfo
 	{
-		private byte[] value = new byte[0];
+		#region PID
 
-		public uint LengthIndicator
+		[BdUIntField(BdIntSize.U16)]
+		public ushort Pid { get; set; }
+
+		#endregion
+
+		#region CodingInfo
+
+		private CiStreamCodingInfo codingInfo = new CiStreamCodingInfo();
+
+		[BdSubPartField]
+		private CiStreamCodingInfo CodingInfo
 		{
-			get { return (uint)this.value.Length; }
-			set { Array.Resize(ref this.value, (int)value); }
+			get { return this.codingInfo; }
 		}
 
-		[BdByteArrayField]
-		public byte[] Value
+		public BdStreamCodingType CodingType
 		{
-			get { return this.value; }
-			set { this.value = value; }
+			get { return this.CodingInfo.CodingType; }
+			set { this.CodingInfo.CodingType = value; }
 		}
+
+		public ICiStreamAttrInfo CodingAttr
+		{
+			get { return this.CodingInfo.CodingAttr; }
+		}
+
+		#endregion
+
 		public override string ToString()
 		{
-			return "CiClipMark (dummy)";
+			return "Stream in a program sequence";
 		}
+
+
 	}
 }

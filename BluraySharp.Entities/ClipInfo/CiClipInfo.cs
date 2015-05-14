@@ -155,12 +155,15 @@ namespace BluraySharp.ClipInfo
 			get { return this.atcDeltaList; }
 		}
 
-
-		private BdList<uint, uint> presentationEndTime27MHz
-			= new BdList<uint, uint>(0, 1);
-
-		[BdUIntField(BdIntSize.U32, OptionalLength=4)]
-		public IBdList<uint> PresentationEndTime27MHz { get { return this.presentationEndTime27MHz; } }
+		//
+		//May be fields for muxing by ScenaristBD
+		//
+		//private BdList<uint, uint> presentationEndTime27MHz
+		//	= new BdList<uint, uint>(0, 1);
+		//
+		//[BdUIntField(BdIntSize.U32, OptionalLength = 4)]
+		//public IBdList<uint> PresentationEndTime27MHz { get { return this.presentationEndTime27MHz; } }
+		//
 
 		#endregion
 

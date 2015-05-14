@@ -1,5 +1,4 @@
-﻿using BluraySharp.Common.BdPartFramework;
-/* ****************************************************************************
+﻿/* ****************************************************************************
  * 
  * BluraySharp
  * 
@@ -13,16 +12,15 @@
  * ***************************************************************************/
 
 using BluraySharp.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using BluraySharp.Common.BdPartFramework;
+using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.ClipInfo
 {
-	[BdPartScope(BdIntSize.U32, IndicatorField = "LengthIndicator")]
+	[BdPartScope(BdIntSize.U32)]
 	public class CiProgramInfo : BdPart, ICiProgramInfo
 	{
+		/*
 		private byte[] value = new byte[0];
 
 		public uint LengthIndicator
@@ -36,10 +34,35 @@ namespace BluraySharp.ClipInfo
 		{
 			get { return this.value; }
 			set { this.value = value; }
+		}*/
+
+		#region Sequences
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte reservedForFutureUse { get; set; }
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte sequencesCount
+		{
+			get { return (byte) this.sequences.Count; }
+			set { this.Sequences.SetCount(value); }
 		}
+
+		private BdList<CiProgramSequence, ICiProgramSequence> sequences =
+			new BdList<CiProgramSequence, ICiProgramSequence>(0, 1);
+
+		[BdSubPartField]
+		public IBdList<ICiProgramSequence> Sequences
+		{
+			get { return this.sequences; }
+		}
+
+		#endregion
+
 		public override string ToString()
 		{
-			return "CiProgramInfo (dummy)";
+			return "CiProgramInfo";
 		}
+
 	}
 }

@@ -12,10 +12,12 @@
  * ***************************************************************************/
 
 using BluraySharp.Common;
+using BluraySharp.Common.BdStandardPart;
 
 namespace BluraySharp.ClipInfo
 {
 	public interface ICiStreamAttrInfo : IBdPart
 	{
+		BdIsrcCode ISRC { get; }
 	}
 }

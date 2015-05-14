@@ -52,6 +52,7 @@
     <Compile Include="ClipInfo\BdClpi.cs" />
     <Compile Include="ClipInfo\CiAppFontRef.cs" />
     <Compile Include="ClipInfo\CiAtcDeltaEntry.cs" />
+    <Compile Include="ClipInfo\CiProgramSequence.cs" />
     <Compile Include="ClipInfo\CiStcSequence.cs" />
     <Compile Include="ClipInfo\CiAtcSequence.cs" />
     <Compile Include="ClipInfo\CiClipInfo.cs" />
@@ -59,6 +60,9 @@
     <Compile Include="ClipInfo\CiCpi.cs" />
     <Compile Include="ClipInfo\CiProgramInfo.cs" />
     <Compile Include="ClipInfo\CiSequenceInfo.cs" />
+    <Compile Include="ClipInfo\CiStreamCodingInfo.cs" />
+    <Compile Include="ClipInfo\CiStreamInfo.cs" />
+    <Compile Include="ClipInfo\CiStreamNaAttrInfo.cs" />
     <Compile Include="ClipInfo\CiTsTypeInfo.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FileSystem\BdfsEntryFileT.cs" />
