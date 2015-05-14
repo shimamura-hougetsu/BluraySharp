@@ -161,7 +161,7 @@ namespace BluraySharp.Common.BdStandardPart
 			tStrLen += tLen; //length of total
 
 			StringBuilder tString = new StringBuilder(tStrLen, tStrLen);
-			ulong tMask = this.Bits;
+			ulong tMask = this.Bits << (64 - tLen);
 
 			for (int i = tLen - 1; i >= 0; --i)
 			{

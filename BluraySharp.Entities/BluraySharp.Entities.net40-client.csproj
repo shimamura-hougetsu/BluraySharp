@@ -60,8 +60,12 @@
     <Compile Include="ClipInfo\CiCpi.cs" />
     <Compile Include="ClipInfo\CiProgramInfo.cs" />
     <Compile Include="ClipInfo\CiSequenceInfo.cs" />
+    <Compile Include="ClipInfo\CiStreamTxAttrInfo.cs" />
+    <Compile Include="ClipInfo\CiStreamGxAttrInfo.cs" />
     <Compile Include="ClipInfo\CiStreamCodingInfo.cs" />
     <Compile Include="ClipInfo\CiStreamInfo.cs" />
+    <Compile Include="ClipInfo\CiStreamAuAttrInfo.cs" />
+    <Compile Include="ClipInfo\CiStreamViAttrInfo.cs" />
     <Compile Include="ClipInfo\CiStreamNaAttrInfo.cs" />
     <Compile Include="ClipInfo\CiTsTypeInfo.cs" />
     <Compile Include="ExtensionMethods.cs" />

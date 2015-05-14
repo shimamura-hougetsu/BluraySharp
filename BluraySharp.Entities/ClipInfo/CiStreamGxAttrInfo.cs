@@ -1,4 +1,4 @@
-/* ****************************************************************************
+﻿/* ****************************************************************************
  * 
  * BluraySharp
  * 
@@ -11,22 +11,14 @@
  * 
  * ***************************************************************************/
 
-
 using BluraySharp.Common;
 using BluraySharp.Common.BdPartFramework;
 using BluraySharp.Common.BdStandardPart;
 
-namespace BluraySharp.PlayList
+namespace BluraySharp.ClipInfo
 {
-	public class PlStnTxAttrInfo : BdPart, IPlStnTxAttrInfo
+	public class CiStreamGxAttrInfo: BdPart, ICiStreamGxAttrInfo
 	{
-		#region CharCode
-
-		[BdUIntField(BdIntSize.U8)]
-		public BdCharacterCodingType CharCode { get; set; }
-
-		#endregion
-
 		#region Language
 
 		private BdLangCode language = new BdLangCode();
@@ -44,9 +36,35 @@ namespace BluraySharp.PlayList
 
 		#endregion
 
+		#region ReservedForFutureUse
+
+		[BdUIntField(BdIntSize.U8)]
+		private byte ReservedForFutureUse { get; set; }
+
+		#endregion
+
+		#region ISRC
+
+		private BdIsrcCode isrc = new BdIsrcCode();
+
+		[BdSubPartField]
+		public BdIsrcCode ISRC
+		{
+			get { return this.isrc; }
+		}
+
+		#endregion
+
+		#region ReservedForFutureUse2
+
+		[BdUIntField(BdIntSize.U32)]
+		private uint ReservedForFutureUse2 { get; set; }
+
+		#endregion
+
 		public override string ToString()
 		{
-			return "STN Graphics AttrInfo";
+			return "Graphics Stream Attributes.";
 		}
 	}
 }
