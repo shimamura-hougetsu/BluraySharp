@@ -15,19 +15,11 @@ using BluraySharp.Common;
 
 namespace BluraySharp.ClipInfo
 {
-	public interface ICiClipInfo : IBdPart
+	public interface ICiProgramSequence : IBdPart
 	{
-		CiTsType StreamType { get; }
-		CiApplicationType ApplicationType { get; set; }
+		uint StartSpn { get; set; }
+		ushort MapPid { get; set; }
 
-		uint TsRecodingRate { get; set; }
-		uint SourcePacketsCount { get; set; }
-
-		ICiTsTypeInfo TsTypeInfo { get; }
-		IBdList<ICiAtcDeltaEntry> AtcDeltaList { get; }
-
-		//IBdList<uint> PresentationEndTime27MHz { get; }		//May be fields for muxing by ScenaristBD
-
-		IBdList<ICiAppFontRef> AppFontRefList { get; }
+		IBdList<ICiStreamInfo> Streams { get; }
 	}
 }

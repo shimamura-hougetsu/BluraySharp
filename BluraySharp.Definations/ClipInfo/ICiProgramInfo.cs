@@ -21,5 +21,6 @@ namespace BluraySharp.ClipInfo
 {
 	public interface ICiProgramInfo : IBdPart
 	{
+		IBdList<ICiProgramSequence> Sequences { get; }
 	}
 }

@@ -62,8 +62,12 @@
     <Compile Include="ClipInfo\ICiCpi.cs" />
     <Compile Include="ClipInfo\ICiProgramInfo.cs" />
     <Compile Include="ClipInfo\ICiSequenceInfo.cs" />
+    <Compile Include="ClipInfo\ICiStreamAttrInfo.cs" />
+    <Compile Include="ClipInfo\ICiProgramSequence.cs" />
+    <Compile Include="ClipInfo\ICiStreamInfo.cs" />
     <Compile Include="ClipInfo\ICiTsTypeInfo.cs" />
     <Compile Include="Common\BdEnumConverterT.cs" />
+    <Compile Include="Common\BdStandardPart\BdIsrcCode.cs" />
     <Compile Include="Common\BdLangConverter.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldRandomVisitor.cs" />
     <Compile Include="Common\BdPartFramework\BdFieldVirtualVisitor.cs" />

@@ -12,12 +12,13 @@
  * ***************************************************************************/
 
 
+using BluraySharp.Common;
 namespace BluraySharp.ClipInfo
 {
 	/// <summary>
 	/// Extra properties for clips of Mpeg2 Transport Stream type
 	/// </summary>
-	public interface ICiTsTypeInfo : BluraySharp.Common.IBdPart
+	public interface ICiTsTypeInfo : IBdPart
 	{
 		/// <summary>
 		/// Unknown, always 0x80
