@@ -17,7 +17,7 @@ namespace BluraySharp.ClipInfo
 {
 	public interface ICiAtcSequence : IBdPart
 	{
-		uint SpnStcStart { get; set; }
+		uint SpnAtcStart { get; set; }
 		byte OffsetStcId { get; set; }
 		IBdList<ICiStcSequence> StcSequenceList { get; }
 	}

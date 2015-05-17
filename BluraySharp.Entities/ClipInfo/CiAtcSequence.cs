@@ -23,7 +23,7 @@ namespace BluraySharp.ClipInfo
 		#region SpnStcStart
 
 		[BdUIntField(BdIntSize.U32)]
-		public uint SpnStcStart { get; set; }
+		public uint SpnAtcStart { get; set; }
 
 		#endregion
 

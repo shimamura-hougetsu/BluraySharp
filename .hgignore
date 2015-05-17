@@ -2,8 +2,10 @@ syntax: regexp
 
 (?i)\$.*$
 (?i)\~.*$
+(?i)^\.Test/*$
 (?i)^[\w\.]*.sdf$
 (?i)^[\w\.]*.7z$
+(?i)^packages/.*/.*$
 (?i)\b([\w\.]*)/\1\.sdf$
 (?i)\bbin/.*/.*$
 (?i)\bobj/.*/.*$
@@ -11,4 +13,5 @@ syntax: regexp
 (?i)\bTestResults/.*$
 (?i)^Release/.*$
 (?i)\b.*\.suo$
+(?i)\b.*proj.user$
 (?i)\b.*\.pdb$

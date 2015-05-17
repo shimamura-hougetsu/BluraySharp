@@ -53,7 +53,7 @@ namespace BluraySharp.PlayList
 
 		#region ClipArrangingOptions
 
-		private BdBitwise32 clipArrangingOptions = new BdBitwise32(0x20);
+		private BdBitwise32 clipArrangingOptions = new BdBitwise32(0x02);
 
 		[BdSubPartField]
 		private BdBitwise32 ClipArrangingOptions
