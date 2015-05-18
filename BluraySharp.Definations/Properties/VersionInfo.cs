@@ -21,8 +21,8 @@ internal static partial class VersionInfo
 	private const string D = ".";
 
 	private const string M = "0";
-	private const string S = "2";
-	private const string I = "2";
+	private const string S = "3";
+	private const string I = "1";
 
-	public const string Value = M + D + S + D + I + D + R;
+	public const string Value = string.Join(D, M, S, I, R);
 }
