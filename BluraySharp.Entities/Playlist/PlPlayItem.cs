@@ -188,7 +188,11 @@ namespace BluraySharp.PlayList
 		private byte AngleCount
 		{
 			get { return (byte)angles.Count; }
-			set { this.angles.SetCount(value); }
+			set {
+				var tMainAngle = this.MainAngle;
+				this.angles.SetCount(value);
+				this.angles[0] = tMainAngle;
+			}
 		}
 
 		#endregion
