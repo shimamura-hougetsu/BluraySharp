@@ -22,7 +22,7 @@ internal static partial class VersionInfo
 
 	private const string M = "0";
 	private const string S = "3";
-	private const string I = "1";
+	private const string I = "3";
 
-	public const string Value = string.Join(D, M, S, I, R);
+	public const string Value = M + D + S + D + I + D + R;
 }
