@@ -444,4 +444,10 @@
   <data name="Enum_BdViFrameRate_Vi59" xml:space="preserve">
     <value>59.94 fps</value>
   </data>
+  <data name="Enum_BdViAspectRatio_Vi16to9" xml:space="preserve">
+    <value>16:9</value>
+  </data>
+  <data name="Enum_BdViAspectRatio_Vi4to3" xml:space="preserve">
+    <value>4:3</value>
+  </data>
 </root>

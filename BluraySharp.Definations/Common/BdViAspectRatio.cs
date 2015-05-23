@@ -1,4 +1,17 @@
-﻿using System;
+﻿/* ****************************************************************************
+ * 
+ * BluraySharp
+ * 
+ * This is a C# library project aimed to parse or compose BDMV files.
+ * 
+ * Maintained at BitBucket (https://bitbucket.org/subelf/bluraysharp)
+ * Released under the terms of LGPL (http://www.gnu.org/licenses/lgpl.html).
+ *
+ * Mar. 2014, adm@subelf.net
+ * 
+ * ***************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,6 +24,7 @@ namespace BluraySharp.Common
 	{
 		Unknown = 0x0,
 
-		AR_16_9 = 0x03,
+		Vi4to3= 0x02,
+		Vi16to9 = 0x03,
 	}
 }

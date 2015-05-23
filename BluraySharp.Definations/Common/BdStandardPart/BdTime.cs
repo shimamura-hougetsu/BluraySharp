@@ -37,7 +37,8 @@ namespace BluraySharp.Common.BdStandardPart
 			}
 			set
 			{
-				this.Value = (uint)(value.Ticks * 9 / 2000);
+				var tValue = (value.Ticks * 9 / 1000);
+				this.Value = (uint)((tValue >> 1) + (tValue & 1));
 			}
 		}
 

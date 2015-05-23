@@ -4,6 +4,7 @@ using BluraySharp;
 using BluraySharp.PlayList;
 using BluraySharp.ClipInfo;
 using BluraySharp.Common.BdStandardPart;
+using System.Diagnostics;
 
 namespace BluraySharp.Test
 {
@@ -49,12 +50,17 @@ namespace BluraySharp.Test
 		[TestMethod]
 		public void BdTime()
 		{
-			var tTime = new BdTime();
-			tTime.AsSpan = new TimeSpan(0, 3, 20, 30, 233);
+			var rand = new Random();
 
-			string t1 = tTime.ToNdfTimeCode(Common.BdViFrameRate.Vi23);
-			string t2 = tTime.AsTimeCode(Common.BdViFrameRate.Vi23);
-			string t3 = tTime.ToString();
+			for (int i = 0; i < 30000; ++i)
+			{
+				var tTime = new BdTime();
+				tTime.Value = (uint)rand.Next();
+				var tTime2 = new BdTime();
+				tTime2.AsSpan = tTime.AsSpan;
+
+				Assert.AreEqual(tTime.Value, tTime2.Value);
+			}
 		}
 	}
 }
