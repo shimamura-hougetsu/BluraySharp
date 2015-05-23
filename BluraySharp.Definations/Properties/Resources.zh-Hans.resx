@@ -364,7 +364,7 @@
     <value>未知</value>
   </data>
   <data name="Enum_PlSubPathType_IgMenu" xml:space="preserve">
-    <value>交换式图形菜单</value>
+    <value>交互式图形菜单</value>
   </data>
   <data name="Enum_PlSubPathType_IMSync" xml:space="preserve">
     <value>内封同步式画中画视频流</value>
