@@ -43,6 +43,7 @@ namespace BluraySharp.Common
 		/// FPS 29.97
 		/// </summary>
 		Vi29 = 0x04,
+		//Vi30 = 0x05,
 		/// <summary>
 		/// FPS 50
 		/// </summary>
@@ -50,7 +51,8 @@ namespace BluraySharp.Common
 		/// <summary>
 		/// FPS 59.94
 		/// </summary>
-		Vi59 = 0x07
+		Vi59 = 0x07,
+		//Vi60 = 0x08,
 	}
 
 	/// <summary>
