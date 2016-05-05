@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.net40-client", "BluraySharp\BluraySharp.net40-client.csproj", "{4FF5CF31-DB94-4962-A92D-17A149135012}"
 EndProject
@@ -14,6 +14,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{3D81FC71-2664-4365-8146-BF6128AA6575}"
 	ProjectSection(SolutionItems) = preProject
 		License-LGPL.txt = License-LGPL.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGet.BluraySharp", "NuGet.BluraySharp\NuGet.BluraySharp.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DFC6212F-1896-4890-BB9B-4A2B34E8A85B} = {DFC6212F-1896-4890-BB9B-4A2B34E8A85B}
+		{4FF5CF31-DB94-4962-A92D-17A149135012} = {4FF5CF31-DB94-4962-A92D-17A149135012}
+		{14FF5AC6-E679-444D-B582-0B4AE067F595} = {14FF5AC6-E679-444D-B582-0B4AE067F595}
 	EndProjectSection
 EndProject
 Global
@@ -35,9 +42,9 @@ Global
 		{14FF5AC6-E679-444D-B582-0B4AE067F595}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14FF5AC6-E679-444D-B582-0B4AE067F595}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E28811E4-677C-4F70-A989-1D33B20BDAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E28811E4-677C-4F70-A989-1D33B20BDAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E28811E4-677C-4F70-A989-1D33B20BDAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E28811E4-677C-4F70-A989-1D33B20BDAFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

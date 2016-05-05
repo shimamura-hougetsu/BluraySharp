@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BluraySharp</id>
+    <version>0.3.4</version>
+    <title>BluraySharp</title>
+    <authors>Subelf</authors>
+    <owners>U2-CSM</owners>
+    <description>
+		A blu-ray disc editor library. Including classes for read and write BD-Spec files like mpls and clpi.
+    </description>
+    <releaseNotes>
+    </releaseNotes>
+    <summary>
+		A blu-ray disc editor library.
+	</summary>
+    <language>en-US</language>
+    <projectUrl>https://nuget.org/packages/NuGet.BluraySharp</projectUrl>
+    <iconUrl>https://bitbucket.org/subelf/bluraysharp/avatar/64/</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>http://www.gnu.org/licenses/lgpl.html</licenseUrl>
+    <copyright></copyright>
+    <references></references>
+    <tags>bluray blu-ray BDMV HDMV mpls</tags>
+  </metadata>
+  <files>
+    <file src="..\Release\lib\" target="lib" />
+    <file src="tools\" target="tools" />
+    <file src="content\" target="content" />
+  </files>
+</package>
