@@ -62,7 +62,7 @@ namespace BluraySharp.Common.BdPartFramework
 					//update offset indicators when operation delegate is null
 					if (operation.IsNull())
 					{
-						this.SetIndicatorValue(tIndVisitor, (ulong)tLenTotal);
+						this.SetIndicatorValue(tIndVisitor, (ulong)tLenTotal);	//TODO: alignment
 					}
 
 					//retrieve offset value

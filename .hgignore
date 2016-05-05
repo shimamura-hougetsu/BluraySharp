@@ -1,6 +1,7 @@
 syntax: regexp
 
 (?i)\$.*$
+(?i)\.git\w*$
 (?i)\~.*$
 (?i)^\.Test/*$
 (?i)^[\w\.]*.sdf$
