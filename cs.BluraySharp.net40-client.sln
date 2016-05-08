@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Entities.net40-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Definations.net40-client", "BluraySharp.Definations\BluraySharp.Definations.net40-client.csproj", "{14FF5AC6-E679-444D-B582-0B4AE067F595}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluraySharp.Test", "BluraySharp.Test\BluraySharp.Test.csproj", "{E28811E4-677C-4F70-A989-1D33B20BDAFD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{3D81FC71-2664-4365-8146-BF6128AA6575}"
 	ProjectSection(SolutionItems) = preProject
 		License-LGPL.txt = License-LGPL.txt
@@ -34,8 +32,6 @@ Global
 		{14FF5AC6-E679-444D-B582-0B4AE067F595}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14FF5AC6-E679-444D-B582-0B4AE067F595}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14FF5AC6-E679-444D-B582-0B4AE067F595}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E28811E4-677C-4F70-A989-1D33B20BDAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E28811E4-677C-4F70-A989-1D33B20BDAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

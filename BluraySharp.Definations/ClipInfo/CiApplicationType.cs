@@ -11,17 +11,22 @@
  * 
  * ***************************************************************************/
 
+using BluraySharp.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
 namespace BluraySharp.ClipInfo
 {
+	[TypeConverter(typeof(BdEnumConverter<CiApplicationType>))]
 	public enum CiApplicationType : byte
 	{
+		[Browsable(false)]
+		[EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 		Unknown = 0x00,
-		
+
 		MainTsMovie = 0x01,
 		MainTsTimeBasedSlideShow,
 		MainTsBrowsableSlideShow,

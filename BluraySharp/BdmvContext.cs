@@ -20,6 +20,9 @@ using System.IO;
 
 namespace BluraySharp
 {
+	/// <summary>
+	/// Entrancy class of Bluray#, constructing and providing all other entity objects.
+	/// </summary>
 	public class BdmvContext
 	{
 		private static BdmvEntryRegistry entryRegistry = BdmvEntryRegistry.Instance;
