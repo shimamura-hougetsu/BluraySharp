@@ -13,22 +13,70 @@
 
 using BluraySharp.Common.Serializing;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace BluraySharp.Common.BdPartFramework
 {
 	public abstract class BdPart : IBdPart
 	{
+		#region Static Shared Stuff
+
 		private static IBdRawIoHelper<IBdFieldTraverser> ioHelp = BdIoHelperFactory.GetHelper<IBdFieldTraverser>();
+
+		private static object lkSeekers = new object();
+		private static Dictionary<Type, WeakReference> fieldSeekers = new Dictionary<Type, WeakReference>();
+		
+		private static ConstructorInfo GetFieldSeekerCtorNonSafe(Type thisType)
+		{
+			if (fieldSeekers.ContainsKey(thisType))
+			{
+				var wkRef = fieldSeekers[thisType];
+				if (wkRef.IsAlive)
+				{
+					var seeker = wkRef.Target as ConstructorInfo;
+					if (!seeker.IsNull())
+					{
+						return seeker;
+					}
+				}
+			}
+
+			return null;
+		}
+
+		private static ConstructorInfo GetFieldSeekerCtor(Type thisType)
+		{
+			var tCtor = GetFieldSeekerCtorNonSafe(thisType);
+
+			if (tCtor.IsNull())
+			{
+				lock (lkSeekers)
+				{
+					tCtor = GetFieldSeekerCtorNonSafe(thisType);
+
+					if (tCtor.IsNull())
+					{
+						Type tSeekerType = typeof(BdFieldTraverser<>).MakeGenericType(thisType);
+						tCtor = tSeekerType.GetConstructor(new Type[] { thisType });
+
+						fieldSeekers[thisType] = new WeakReference(tCtor);
+					}
+				}
+			}
+			
+			return tCtor;
+		}
+
+		#endregion
 
 		private IBdFieldTraverser fieldSeeker;
 		
 		public BdPart()
 		{
 			Type tThisType = this.GetType();
-			Type tSeekerType = typeof(BdFieldTraverser<>).MakeGenericType(tThisType);
-			ConstructorInfo tCtor = tSeekerType.GetConstructor(new Type[] { tThisType });
-			this.fieldSeeker = (IBdFieldTraverser)tCtor.Invoke(new object[] { this });
+			var tCtor = BdPart.GetFieldSeekerCtor(tThisType);
+			this.fieldSeeker = (IBdFieldTraverser) tCtor.Invoke(new object[] { this });
 		}
 		
 		public long SerializeTo(IBdRawWriteContext context)

@@ -23,42 +23,58 @@ namespace BluraySharp.FileSystem
 	{
 		protected BdmvEntryAttribute compAttrib = BdmvEntryRegistry.Instance.GetEntryAttribute<T>();
 
-		public void Save(T entry)
+		public bool Save(T entry)
 		{
 			string tPath = this.GetFullPath();
+			if (string.IsNullOrWhiteSpace(tPath))
+			{
+				return false;
+			}
 
 			BdfsEntryFile<T>.Save(entry, tPath);
+			return true;
 		}
 
 		public T Load()
 		{
 			string tPath = this.GetFullPath();
+			if (string.IsNullOrWhiteSpace(tPath))
+			{
+				return null;
+			}
 
 			return BdfsEntryFile<T>.Load(tPath);
 		}
 
-		public void SaveBackup(T entry)
+		public bool SaveBackup(T entry)
 		{
 			if (!this.compAttrib.IsBackupRequired)
 			{
-				//TODO:
-				throw new NotSupportedException();
+				return false;
 			}
 
 			string tPath = this.GetBackupPath();
+			if (string.IsNullOrWhiteSpace(tPath))
+			{
+				return false;
+			}
 
 			BdfsEntryFile<T>.Save(entry, tPath);
+			return true;
 		}
 
 		public T LoadBackup()
 		{
 			if (!this.compAttrib.IsBackupRequired)
 			{
-				//TODO:
-				throw new NotSupportedException();
+				return null;
 			}
 
 			string tPath = this.GetBackupPath();
+			if (string.IsNullOrWhiteSpace(tPath))
+			{
+				return null;
+			}
 
 			return BdfsEntryFile<T>.Load(tPath);
 		}
@@ -68,7 +84,7 @@ namespace BluraySharp.FileSystem
 			using (FileStream tFile = new FileStream(tPath, FileMode.Create, FileAccess.ReadWrite))
 			{
 				BdByteStreamWriteContext tRawIo = new BdByteStreamWriteContext(tFile);
-					tRawIo.Serialize(entry);
+				tRawIo.Serialize(entry);
 			}
 		}
 

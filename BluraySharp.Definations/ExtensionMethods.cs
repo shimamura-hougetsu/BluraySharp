@@ -153,6 +153,15 @@ namespace BluraySharp
 			return obj.RefEql(null);
 		}
 
+		public static bool IsNullOrWhiteSpace(this string str)
+		{
+			return string.IsNullOrWhiteSpace(str);
+		}
+
+		public static bool IsNullOrEmpty(this string str)
+		{
+			return string.IsNullOrEmpty(str);
+		}
 
 		private static readonly Dictionary<BdLang, string> langCodeTable =
 			ExtensionMethods.CreateLangCodeTable();

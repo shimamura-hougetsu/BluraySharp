@@ -27,7 +27,8 @@ namespace BluraySharp.Common.BdPartFramework
 		public BdFieldTraverser(T thisObj)
 		{
 			this.thisObj = thisObj;
-			this.scopeIndicator = this.InitializeScopeIndicator();
+			this.scopeIndicator = 
+				BdFieldTraverser<T>.GetIndicatorFieldVisitor(this.thisObj);
 		}
 
 		#region Seeker
@@ -70,43 +71,9 @@ namespace BluraySharp.Common.BdPartFramework
 
 		private IBdFieldVisitor scopeIndicator;
 
-		private IBdFieldVisitor InitializeScopeIndicator()
-		{
-			object[] tAttributes =
-				typeof(T).GetCustomAttributes(typeof(BdPartScopeAttribute), true);
-			if (tAttributes.Length != 1)
-			{
-				return null;
-			}
+		#endregion
 
-			BdPartScopeAttribute tAttribute =
-				tAttributes[0] as BdPartScopeAttribute;
-
-			if (tAttribute.Size == BdIntSize.None ||
-				tAttribute.Size == BdIntSize.Auto ||
-				!Enum.IsDefined(typeof(BdIntSize), tAttribute.Size))
-			{
-				//TODO: Invalid integer type
-				throw new ApplicationException();
-			}
-
-			BdFieldAttribute tScopeIndicAttrib = new BdUIntFieldAttribute(tAttribute.Size);
-			if (tAttribute.IndicatorField.IsNull())
-			{
-				return new BdFieldVirtualVisitor<ulong>(
-					typeof(T).Name + " Scope Indicator",
-					tScopeIndicAttrib
-					);
-			}
-			else
-			{
-				IBdFieldDescriptor tIndField = 
-					BdFieldTraverser<T>.GetFieldDescriptor(tAttribute.IndicatorField, tScopeIndicAttrib);
-				return new BdFieldRandomVisitor(this.thisObj, tIndField);
-			}
-		}
-
-		#endregion 
+		#region IBdFieldVisitor.*
 
 		string IBdFieldInfo.Name
 		{
@@ -206,7 +173,11 @@ namespace BluraySharp.Common.BdPartFramework
 				return tAttrib.OptionalLength;
 			}
 		}
-		
+
+		#endregion
+
+		#region Fields of type, shared and static
+
 		private static List<IBdFieldDescriptor> fields = 
 			new List<IBdFieldDescriptor>(BdFieldTraverser<T>.InitializeFields());
 
@@ -248,5 +219,62 @@ namespace BluraySharp.Common.BdPartFramework
 
 			return new BdFieldDescriptor(tOfsMembers[0], attribute);
 		}
+		
+		private static BdPartScopeAttribute indicatorFieldDescriptor = InitializeIndicatorFieldDescriptor();
+		private static BdPartScopeAttribute InitializeIndicatorFieldDescriptor()
+		{
+			object[] tAttributes =
+				typeof(T).GetCustomAttributes(typeof(BdPartScopeAttribute), true);
+			if (tAttributes.Length != 1)
+			{
+				return null;
+			}
+
+			BdPartScopeAttribute tAttribute =
+				tAttributes[0] as BdPartScopeAttribute;
+
+			if (tAttribute.Size == BdIntSize.None ||
+				tAttribute.Size == BdIntSize.Auto ||
+				!Enum.IsDefined(typeof(BdIntSize), tAttribute.Size))
+			{
+				//TODO: Invalid integer type
+				throw new ApplicationException();
+			}
+
+			return tAttribute;
+		}
+
+		private static IBdFieldVisitor GetIndicatorFieldVisitor(T thisObj)
+		{
+			if(indicatorFieldDescriptor == null)
+			{
+				return null;
+			}
+			else
+			{
+				BdFieldAttribute tScopeIndicAttrib =
+					new BdUIntFieldAttribute(indicatorFieldDescriptor.Size);
+
+				if (indicatorFieldDescriptor.IndicatorField.IsNull())
+				{
+					//the indicator is read and calculated to be written, while not stored in memory
+					return new BdFieldVirtualVisitor<ulong>(
+						typeof(T).Name + " Scope Indicator",
+						tScopeIndicAttrib
+						);
+				}
+				else
+				{
+					//stored in a field of this class
+					IBdFieldDescriptor tIndField =
+						BdFieldTraverser<T>.GetFieldDescriptor(
+							indicatorFieldDescriptor.IndicatorField,
+							tScopeIndicAttrib);
+					return new BdFieldRandomVisitor(thisObj, tIndField);
+				}
+			}
+		}
+
+		#endregion
 	}
 }
