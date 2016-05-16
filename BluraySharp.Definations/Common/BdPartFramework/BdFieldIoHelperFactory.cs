@@ -11,13 +11,14 @@
  * 
  * ***************************************************************************/
 
+using System;
 using System.Collections.Generic;
 
 namespace BluraySharp.Common.BdPartFramework
 {
 	internal static class BdIoHelperFactory
 	{
-		private static Dictionary<string, object> helpers = new Dictionary<string, object>();
+		private static Dictionary<Type, object> helpers = new Dictionary<Type, object>();
 
 		static BdIoHelperFactory()
 		{
@@ -27,12 +28,12 @@ namespace BluraySharp.Common.BdPartFramework
 
 		public static IBdRawIoHelper<T> GetHelper<T>()
 		{
-			return BdIoHelperFactory.helpers[typeof(T).FullName] as IBdRawIoHelper<T>;
+			return BdIoHelperFactory.helpers[typeof(T)] as IBdRawIoHelper<T>;
 		}
 
 		private static void RegisterHelper<T>(IBdRawIoHelper<T> helper)
 		{
-			BdIoHelperFactory.helpers[typeof(T).FullName] = helper;
+			BdIoHelperFactory.helpers[typeof(T)] = helper;
 		}
 	}
 }

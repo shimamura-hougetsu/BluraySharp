@@ -48,28 +48,60 @@ namespace BluraySharp.Common.BdStandardPart
 		}
 
 		/// <summary>
-		/// Get Non-Drop-Frame TimeCode for 
+		/// Get Non-Drop-Frame TimeCode
 		/// </summary>
 		/// <param name="frameRate">Frame rate</param>
 		/// <returns>HH:MM:SS:FF</returns>
 		public string ToNdfTimeCode(BdViFrameRate frameRate)
 		{
+			var tNdfFps = frameRate.ToInteger();
 			var tFrames = Convert.ToInt32(this.AsFrameCount(frameRate));
-			var tNdfRate = frameRate.ToInteger();
-			var tTime = new TimeSpan(0, 0, tFrames / tNdfRate);
+			
+			var tSec = tFrames / tNdfFps; tFrames %= tNdfFps;
+			var tTime = new TimeSpan(0, 0, tSec);
 			string tTimePart = tTime.ToString(@"hh\:mm\:ss");
-			var tFramePart = tFrames % tNdfRate;
 
-			return string.Format("{0}:{1:00.}", tTimePart, tFramePart);
+			return string.Format("{0};{1:00.}", tTimePart, tFrames);
 		}
 
-		public string AsTimeCode(BdViFrameRate frameRate)
+		/// <summary>
+		/// Get Drop-Frame TimeCode
+		/// </summary>
+		/// <param name="frameRate">Frame rate</param>
+		/// <returns>HH:MM:SS;FF</returns>
+		public string ToDfTimeCode(BdViFrameRate frameRate)
 		{
-			var tTime = this.AsSpan;
-			var tFramePart = Math.Ceiling(frameRate.ToInteger() * tTime.Milliseconds / 1e3);
+			const int SecPerMin = 60;
+			
+			var tFDpM = 0;	//frames dropt per minute
+			switch(frameRate)
+			{
+				case BdViFrameRate.Vi29:
+					tFDpM = 2;
+					break;
+				case BdViFrameRate.Vi59:
+					tFDpM = 4;
+					break;
+				default:
+					//TODO
+					//warning:("Drop-Frame-Timecode makes no sense other than Vi29 and Vi59");
+					tFDpM = 0;
+					break;
+			}
+
+			var tNdfFps = frameRate.ToInteger();
+			var tFpM = tNdfFps * SecPerMin - tFDpM;	//Frames per minute
+			var tFpDM = tFpM * 10 + tFDpM;	//Frame per dec-minute
+			var tFrames = Convert.ToInt32(this.AsFrameCount(frameRate));
+
+			var tDM = tFrames / tFpDM; tFrames = tFrames % tFpDM - tFDpM;
+			var tM = tFrames / tFpM; tFrames = tFrames % tFpM + tFDpM;
+			var tSec = tFrames / tNdfFps; tFrames %= tNdfFps;
+			
+			var tTime = new TimeSpan(0, tDM * 10 + tM, tSec);
 			string tTimePart = tTime.ToString(@"hh\:mm\:ss");
 
-			return string.Format("{0}:{1:00.}", tTimePart, tFramePart);
+			return string.Format("{0};{1:00.}", tTimePart, tFrames);
 		}
 
 		public override string ToString()
