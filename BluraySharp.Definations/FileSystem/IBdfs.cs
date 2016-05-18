@@ -11,16 +11,15 @@
  * 
  * ***************************************************************************/
 
-using BluraySharp.Common;
+using System.Collections.Generic;
+using System.IO;
 
 namespace BluraySharp.FileSystem
 {
-	public class BdfsStandaloneFile<T> : BdfsEntryFile<T>, IBdfsEntryFile<T>
-		where T : class, IBdmvEntry
+	public interface IBdfs
 	{
-		public BdfsStandaloneFile(string path)
-			: base(path, null)
-		{
-		}
+		bool IsFileExist(string name);
+		bool IsFolderExist(string name);
+		Stream OpenFile(string name, FileMode mode, FileAccess access);
 	}
 }

@@ -18,15 +18,12 @@ namespace BluraySharp.FileSystem
 {
 	public interface IBdfsItem : IEnumerable<IBdfsItem>
 	{
-		string Name { get; set; }
+		string Path { get; }
+		string BackupPath { get; }
 
-		FileSystemInfo DetailedInfo { get; }
-		IBdfsAttribute Attribute { get; }
-
-		IBdfsItem Parent { get; }
-		IEnumerable<IBdfsItem> Children { get; }
+		void Rename(IBdfs fileSystem, string newName);
+		void MoveTo(IBdfs fileSystem, string newPath);
 		
-		string GetFullPath();
-		string GetBackupPath();
+		IEnumerable<IBdfsItem> Children { get; }
 	}
 }

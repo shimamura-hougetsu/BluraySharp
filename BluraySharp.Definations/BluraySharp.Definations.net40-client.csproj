@@ -81,6 +81,7 @@
     <Compile Include="Common\BdStandardPart\BdFontFileRef.cs" />
     <Compile Include="Common\BdStandardPart\BdClipFileRef.cs" />
     <Compile Include="Common\BdStreamCodingTypeConverterT.cs" />
+    <Compile Include="FileSystem\IBdfs.cs" />
     <Compile Include="PlayList\PlPlayMarkType.cs" />
     <Compile Include="Common\BdStandardPart\BdList.cs" />
     <Compile Include="Common\BdStandardPart\BdLangCode.cs" />
@@ -131,7 +132,6 @@
     <Compile Include="Common\BdStandardPart\BdUOMask.cs" />
     <Compile Include="Common\BdLang.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="FileSystem\IBdfsAttribute.cs" />
     <Compile Include="FileSystem\IBdfsBdmvRoot.cs" />
     <Compile Include="FileSystem\IBdfsArrayEntryFileT.cs" />
     <Compile Include="FileSystem\IBdfsEntryFileT.cs" />

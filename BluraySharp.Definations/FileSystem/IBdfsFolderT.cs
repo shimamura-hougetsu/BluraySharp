@@ -21,16 +21,7 @@ namespace BluraySharp.FileSystem
 	public interface IBdfsFolder<T> : IBdfsItem
 		where T : IBdfsItem
 	{
-		/// <summary>
-		/// Detach a file from this folder
-		/// </summary>
-		/// <param name="fsObject">A file object</param>
-		void Detach(T fsObject);
-
-		/// <summary>
-		/// Attach a file into this folder
-		/// </summary>
-		/// <param name="fsObject">A file object</param>
-		void Attach(T fsObject);
+		T CreateFile(IBdfs fileSystem, string name);
+		IBdfsFolder<TT> CreateFolder<TT>(IBdfs fileSystem, string name) where TT : IBdfsItem;
 	}
 }

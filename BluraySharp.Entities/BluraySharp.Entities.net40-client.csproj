@@ -68,11 +68,14 @@
     <Compile Include="ClipInfo\CiStreamViAttrInfo.cs" />
     <Compile Include="ClipInfo\CiStreamNaAttrInfo.cs" />
     <Compile Include="ClipInfo\CiTsTypeInfo.cs" />
+    <Compile Include="Common\BdPartNavigator.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FileSystem\BdfsEntryFileT.cs" />
     <Compile Include="Common\BdmvEntryRegistry.cs" />
     <Compile Include="FileSystem\BdfsItem.cs" />
     <Compile Include="FileSystem\BdfsStandaloneFileT.cs" />
+    <Compile Include="FileSystem\BdfsNormal.cs" />
+    <Compile Include="FileSystem\BdfsUdf.cs" />
     <Compile Include="PlayList\PlAppInfo.cs" />
     <Compile Include="PlayList\BdMpls.cs" />
     <Compile Include="PlayList\PlClipRef.cs" />
@@ -103,13 +106,13 @@
     <Compile Include="PlayList\PlStnGxAttrInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="StrongNameKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\BluraySharp.Definations\BluraySharp.Definations.net40-client.csproj">
       <Project>{14FF5AC6-E679-444D-B582-0B4AE067F595}</Project>
       <Name>BluraySharp.Definations.net40-client</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="StrongNameKey.snk" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
