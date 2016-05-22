@@ -11,6 +11,7 @@
  * 
  * ***************************************************************************/
 
+using BluraySharp.Common;
 using System.Collections.Generic;
 using System.IO;
 
@@ -18,8 +19,6 @@ namespace BluraySharp.FileSystem
 {
 	public interface IBdfs
 	{
-		bool IsFileExist(string name);
-		bool IsFolderExist(string name);
-		Stream OpenFile(string name, FileMode mode, FileAccess access);
+		IBdfsBdmvRoot BdmvFolder { get; }
 	}
 }

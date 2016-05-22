@@ -21,12 +21,13 @@ namespace BluraySharp.FileSystem
 	public class BdfsEntryFile<T> : BdfsItem, IBdfsEntryFile<T>
 		where T : class, IBdmvEntry
 	{
-		public BdfsEntryFile(string path, string backupPath)
+		public BdfsEntryFile(BdfsBase fs, string path, string backupPath)
 		{
 			this.path = path;
 			this.backupPath = backupPath;
 		}
 
+		BdfsBase fs;
 		protected BdmvEntryAttribute compAttrib = BdmvEntryRegistry.Instance.GetEntryAttribute<T>();
 
 		private string path;
@@ -43,28 +44,28 @@ namespace BluraySharp.FileSystem
 			get { return backupPath; }
 		}
 
-		public bool Save(IBdfs fileSystem, T entry)
+		public bool Save(T entry)
 		{
 			if (string.IsNullOrWhiteSpace(Path))
 			{
 				return false;
 			}
 
-			BdfsEntryFile<T>.Save(entry, fileSystem, Path);
+			this.Save(entry, Path);
 			return true;
 		}
 
-		public T Load(IBdfs fileSystem)
+		public T Load()
 		{
-			if (! fileSystem.IsFileExist(Path))
+			if (!fs.IsFileExisted(Path))
 			{
 				return null;
 			}
 
-			return BdfsEntryFile<T>.Load(fileSystem, Path);
+			return this.Load(Path);
 		}
 
-		public bool SaveBackup(IBdfs fileSystem, T entry)
+		public bool SaveBackup(T entry)
 		{
 			if (!this.compAttrib.IsBackupRequired)
 			{
@@ -76,11 +77,11 @@ namespace BluraySharp.FileSystem
 				return false;
 			}
 
-			BdfsEntryFile<T>.Save(entry, fileSystem, BackupPath);
+			this.Save(entry, BackupPath);
 			return true;
 		}
 
-		public T LoadBackup(IBdfs fileSystem)
+		public T LoadBackup()
 		{
 			if (!this.compAttrib.IsBackupRequired)
 			{
@@ -92,21 +93,21 @@ namespace BluraySharp.FileSystem
 				return null;
 			}
 
-			return BdfsEntryFile<T>.Load(fileSystem, BackupPath);
+			return this.Load(BackupPath);
 		}
 
-		private static void Save(T entry, IBdfs fileSystem, string path)
+		private void Save(T entry, string path)
 		{
-			using (Stream tFile = fileSystem.OpenFile(path, FileMode.Create, FileAccess.ReadWrite))
+			using (Stream tFile = fs.OpenFile(path, FileMode.Create, FileAccess.ReadWrite))
 			{
 				BdByteStreamWriteContext tRawIo = new BdByteStreamWriteContext(tFile);
 				tRawIo.Serialize(entry);
 			}
 		}
 
-		private static T Load(IBdfs fileSystem, string path)
+		private T Load(string path)
 		{
-			using (Stream tFile = fileSystem.OpenFile(path, FileMode.Open, FileAccess.Read))
+			using (Stream tFile = fs.OpenFile(path, FileMode.Open, FileAccess.Read))
 			{
 				T tRet = BdmvEntryRegistry.Instance.CreateEntry<T>();
 
@@ -116,16 +117,6 @@ namespace BluraySharp.FileSystem
 				return tRet;
 			}
 		}
-
-		public override void Rename(IBdfs fileSystem, string newName)
-		{
-			//TODO:
-			throw new NotImplementedException();
-		}
-
-		public override void MoveTo(IBdfs fileSystem, string newPath)
-		{
-			throw new NotImplementedException();
-		}
+				
 	}
 }

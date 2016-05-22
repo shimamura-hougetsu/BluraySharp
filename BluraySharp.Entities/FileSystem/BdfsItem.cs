@@ -47,12 +47,9 @@ namespace BluraySharp.FileSystem
 			}
 		}
 
-		public abstract void Rename(IBdfs fileSystem, string newName);
-		public abstract void MoveTo(IBdfs fileSystem, string newPath);
-
 		public virtual IEnumerator<IBdfsItem> GetEnumerator()
 		{
-			yield return this;
+			yield break;
 		}
 
 		IEnumerator System.Collections.IEnumerable.GetEnumerator()
@@ -60,5 +57,16 @@ namespace BluraySharp.FileSystem
 			return this.GetEnumerator();
 		}
 
+		public void Rename(string newName)
+		{
+			//TODO:
+			throw new NotImplementedException();
+		}
+
+		public void MoveTo(string newPath)
+		{
+			//TODO:
+			throw new NotImplementedException();
+		}
 	}
 }

@@ -29,12 +29,12 @@ namespace BluraySharp.Common
 			set { folderName = value; }
 		}
 		
-		private int maxSerialNumber;
+		private uint maxSerialNumber;
 
 		/// <summary>
 		/// The maximum of the entry file id number.
 		/// </summary>
-		public int MaxSerialNumber
+		public uint MaxSerialNumber
 		{
 			get { return maxSerialNumber; }
 			set { maxSerialNumber = value; }
@@ -47,7 +47,7 @@ namespace BluraySharp.Common
 		/// <param name="extension">Extension name of the entry file.</param>
 		/// <param name="maxSerialNumber">Maximum of files' id number.</param>
 		/// <param name="isBackupRequired">Indicating existence of a backup version</param>
-		public BdmvArrayEntryAttribute(string folderName, string extension, int maxSerialNumber, bool isBackupRequired)
+		public BdmvArrayEntryAttribute(string folderName, string extension, uint maxSerialNumber, bool isBackupRequired)
 			: base(extension, isBackupRequired)
 		{
 			this.folderName = folderName;

@@ -70,6 +70,7 @@
     <Compile Include="ClipInfo\CiTsTypeInfo.cs" />
     <Compile Include="Common\BdPartNavigator.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FileSystem\BdfsBase.cs" />
     <Compile Include="FileSystem\BdfsEntryFileT.cs" />
     <Compile Include="Common\BdmvEntryRegistry.cs" />
     <Compile Include="FileSystem\BdfsItem.cs" />

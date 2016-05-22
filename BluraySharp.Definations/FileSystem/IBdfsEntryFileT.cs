@@ -19,10 +19,10 @@ namespace BluraySharp.FileSystem
 	public interface IBdfsEntryFile<T> : IBdfsItem
 		where T : IBdmvEntry
 	{
-		bool Save(IBdfs fileSystem, T entry);
-		T Load(IBdfs fileSystem);
+		bool Save(T entry);
+		T Load();
 
-		bool SaveBackup(IBdfs fileSystem, T entry);
-		T LoadBackup(IBdfs fileSystem);
+		bool SaveBackup(T entry);
+		T LoadBackup();
 	}
 }

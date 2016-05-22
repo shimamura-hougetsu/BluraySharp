@@ -21,7 +21,7 @@ namespace BluraySharp.FileSystem
 	public interface IBdfsFolder<T> : IBdfsItem
 		where T : IBdfsItem
 	{
-		T CreateFile(IBdfs fileSystem, string name);
-		IBdfsFolder<TT> CreateFolder<TT>(IBdfs fileSystem, string name) where TT : IBdfsItem;
+		T CreateFileContext(string name);
+		IBdfsFolder<TT> CreateFolder<TT>(string name) where TT : IBdfsItem;
 	}
 }

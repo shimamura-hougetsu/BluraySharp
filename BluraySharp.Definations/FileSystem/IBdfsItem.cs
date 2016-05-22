@@ -21,8 +21,8 @@ namespace BluraySharp.FileSystem
 		string Path { get; }
 		string BackupPath { get; }
 
-		void Rename(IBdfs fileSystem, string newName);
-		void MoveTo(IBdfs fileSystem, string newPath);
+		void Rename(string newName);
+		void MoveTo(string newPath);
 		
 		IEnumerable<IBdfsItem> Children { get; }
 	}

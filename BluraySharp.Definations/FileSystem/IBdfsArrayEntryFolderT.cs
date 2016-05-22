@@ -19,6 +19,7 @@ namespace BluraySharp.FileSystem
 	public interface IBdfsArrayEntryFolder<T> : IBdfsFolder<IBdfsArrayEntryFile<T>>
 		where T : IBdmvArrayEntry
 	{
+		T CreateFileContext(uint id);
 		IBdList<IBdfsArrayEntryFile<T>> Files { get; }
 	}
 }

@@ -19,21 +19,48 @@ using System.Text;
 
 namespace BluraySharp.FileSystem
 {
-	class BdfsUdf : IBdfs
+	/// <summary>
+	/// Not implemented yet.
+	/// </summary>
+	class BdfsUdf : BdfsBase
 	{
-		public bool IsFileExist(string name)
+		public override IBdfsBdmvRoot BdmvFolder
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public override void CreateFolder(string path)
 		{
 			throw new NotImplementedException();
 		}
 
-		public bool IsFolderExist(string name)
+		public override bool IsFileExisted(string path)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Stream OpenFile(string name, FileMode mode, FileAccess access)
+		public override bool IsFolderExisted(string path)
+		{
+			throw new NotImplementedException();
+		}
+
+		public override void Move(string srcPath, string dstPath)
+		{
+			throw new NotImplementedException();
+		}
+
+		public override Stream OpenFile(string path, FileMode mode, FileAccess access)
+		{
+			throw new NotImplementedException();
+		}
+
+		public override void Reload(string path)
 		{
 			throw new NotImplementedException();
 		}
 	}
 }
+
