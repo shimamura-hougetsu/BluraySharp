@@ -21,9 +21,14 @@ namespace BluraySharp.Common.BdStandardPart
 	{
 		public BdTime() { }
 
-		public BdTime(int hours, int minutes, int seconds, int milliseconds)
+		public BdTime(TimeSpan span)
 		{
-			this.AsSpan = new TimeSpan(0, hours, minutes, seconds, milliseconds);
+			this.AsSpan = span;
+		}
+
+		public BdTime(int hours, int minutes, int seconds, int milliseconds):
+			this(new TimeSpan(0, hours, minutes, seconds, milliseconds))
+		{
 		}
 
 		[BdUIntField(BdIntSize.U32)]
@@ -33,12 +38,11 @@ namespace BluraySharp.Common.BdStandardPart
 		{
 			get
 			{
-				return new TimeSpan(this.Value * 2000L / 9);
+				return new TimeSpan(TimeValueToTicks(this.Value));
 			}
 			set
 			{
-				var tValue = (value.Ticks * 9 / 1000);
-				this.Value = (uint)((tValue >> 1) + (tValue & 1));
+				this.Value = TicksToTimeValue(value.Ticks);
 			}
 		}
 
@@ -103,10 +107,21 @@ namespace BluraySharp.Common.BdStandardPart
 
 			return string.Format("{0};{1:00.}", tTimePart, tFrames);
 		}
-
+		
 		public override string ToString()
 		{
 			return this.AsSpan.ToString(@"hh\:mm\:ss\.ff");
+		}
+
+		public static long TimeValueToTicks(uint timeValue)
+		{
+			return timeValue * 2000L / 9;
+		}
+
+		public static uint TicksToTimeValue(long ticks)
+		{
+			var tValue = ticks * 9 / 1000;
+			return (uint)((tValue + 1) >> 1);
 		}
 	}
 }
