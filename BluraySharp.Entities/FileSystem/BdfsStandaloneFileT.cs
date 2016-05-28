@@ -37,12 +37,12 @@ namespace BluraySharp.FileSystem
 
 			public override bool IsFileExisted(string path)
 			{
-				throw new NotImplementedException();
+				return File.Exists(path);
 			}
 
 			public override bool IsFolderExisted(string path)
 			{
-				throw new NotImplementedException();
+				return Directory.Exists(path);
 			}
 
 			public override void Move(string srcPath, string dstPath)
