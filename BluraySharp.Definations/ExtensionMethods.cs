@@ -38,7 +38,7 @@ namespace BluraySharp
 			string tEnumName = Enum.GetName(obj.GetType(), obj);
 			string tEnumDesc = null;
 
-			if (!culture.Equals(CultureInfo.InvariantCulture))
+			if (culture != CultureInfo.InvariantCulture)
 			{
 				tEnumDesc = string.Format("Enum_{0}_{1}", obj.GetType().Name, tEnumName);
 				tEnumDesc = Properties.Resources.ResourceManager.GetString(tEnumDesc, culture);
@@ -221,7 +221,7 @@ namespace BluraySharp
 			}
 		}
 
-		internal static BdLang ToBdLang(this string langCode)
+		public static BdLang ToBdLang(this string langCode)
 		{
 			Match tMatches = Regex.Match(langCode, @"^([a-z]{3})\b");
 			if (!tMatches.Success)
@@ -245,7 +245,7 @@ namespace BluraySharp
 			CultureInfo tCultureInfo = ExtensionMethods.cultureInfoTable[lang];
 			string tIsoLangCode = lang.ToIsoLangCode();
 
-			if (culture.Equals(CultureInfo.InvariantCulture))
+			if (culture == CultureInfo.InvariantCulture)
 			{
 				return tIsoLangCode;
 			}

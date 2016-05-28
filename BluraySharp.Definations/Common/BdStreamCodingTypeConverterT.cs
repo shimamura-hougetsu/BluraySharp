@@ -20,7 +20,7 @@ using System.Reflection;
 
 namespace BluraySharp.Common
 {
-	internal class BdStreamCodingTypeConverter<T> : EnumConverter
+	internal class BdStreamCodingTypeConverter<T> : BdEnumConverter<T>
 	{
 		private Dictionary<string, Dictionary<string, T>> enumDict =
 			new Dictionary<string, Dictionary<string, T>>();
@@ -28,7 +28,7 @@ namespace BluraySharp.Common
 		private bool isBdEnum = true;
 
 		public BdStreamCodingTypeConverter()
-			: base(typeof(T))
+			: base()
 		{
 			Type tType = typeof(T);
 			this.isBdEnum &= tType.BaseType.Equals(typeof(Enum));
@@ -78,20 +78,6 @@ namespace BluraySharp.Common
 			}
 
 			return base.ConvertTo(context, culture, value, destinationType);
-		}
-
-		private Dictionary<string, T> GetNameDictLocalized(CultureInfo culture)
-		{
-			if (this.enumDict.ContainsKey(culture.Name))
-			{
-				return this.enumDict[culture.Name];
-			}
-			else
-			{
-				Dictionary<string, T> tDict = new Dictionary<string, T>();
-
-				return this.enumDict[culture.Name] = tDict;
-			}
 		}
 	}
 }

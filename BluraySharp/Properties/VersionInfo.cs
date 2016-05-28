@@ -23,7 +23,7 @@ internal static partial class VersionInfo
 
 	private const string M = "0";
 	private const string S = "3";
-	private const string I = "4";
+	private const string I = "5";
 
 	public const string Value = M + D + S + D + I + D + R;
 }

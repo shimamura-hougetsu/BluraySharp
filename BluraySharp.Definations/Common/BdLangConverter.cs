@@ -19,13 +19,13 @@ using System.Linq;
 
 namespace BluraySharp.Common
 {
-	internal class BdLangConverter : EnumConverter
+	internal class BdLangConverter : BdEnumConverter<BdLang>
 	{
 		Dictionary<string, Dictionary<string, BdLang>> enumDict =
 			new Dictionary<string, Dictionary<string, BdLang>>();
 
 		public BdLangConverter()
-			: base(typeof(BdLang)) { }
+			: base() { }
 		
 		public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
 		{
@@ -78,20 +78,6 @@ namespace BluraySharp.Common
 			}
 
 			return base.ConvertTo(context, culture, value, destinationType);
-		}
-
-		private Dictionary<string, BdLang> GetNameDictLocalized(CultureInfo culture)
-		{
-			if (this.enumDict.ContainsKey(culture.Name))
-			{
-				return this.enumDict[culture.Name];
-			}
-			else
-			{
-				Dictionary<string, BdLang> tDict = new Dictionary<string, BdLang>();
-
-				return this.enumDict[culture.Name] = tDict;
-			}
 		}
 	}
 }

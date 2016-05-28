@@ -78,17 +78,19 @@ namespace BluraySharp.Common
 			return base.ConvertTo(context, culture, value, destinationType);
 		}
 
-		private Dictionary<string, T> GetNameDictLocalized(CultureInfo culture)
+		protected Dictionary<string, T> GetNameDictLocalized(CultureInfo culture)
 		{
-			if (this.enumDict.ContainsKey(culture.Name))
+			var tCultureName = (culture ?? CultureInfo.InvariantCulture).Name;
+
+			if (this.enumDict.ContainsKey(tCultureName))
 			{
-				return this.enumDict[culture.Name];
+				return this.enumDict[tCultureName];
 			}
 			else
 			{
 				Dictionary<string, T> tDict = new Dictionary<string, T>();
 
-				return this.enumDict[culture.Name] = tDict;
+				return this.enumDict[tCultureName] = tDict;
 			}
 		}
 	}
