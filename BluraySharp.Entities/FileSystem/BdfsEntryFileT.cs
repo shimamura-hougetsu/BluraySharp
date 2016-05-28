@@ -23,6 +23,7 @@ namespace BluraySharp.FileSystem
 	{
 		public BdfsEntryFile(BdfsBase fs, string path, string backupPath)
 		{
+			this.fs = fs;
 			this.path = path;
 			this.backupPath = backupPath;
 		}

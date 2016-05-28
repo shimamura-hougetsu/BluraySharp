@@ -110,7 +110,7 @@ namespace BluraySharp.Common.BdStandardPart
 		
 		public override string ToString()
 		{
-			return this.AsSpan.ToString(@"hh\:mm\:ss\.ff");
+			return this.AsSpan.ToString(@"hh\:mm\:ss\.fff");
 		}
 
 		public static long TimeValueToTicks(uint timeValue)
